@@ -1,0 +1,34 @@
+id: agiorgitiko
+name: Agiorgitiko
+wine_type: [rosé, light-red, full-red]                     # red | white | rosé | sparkling | dessert
+grapes: [agiorgitiko]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 4
+acidity: 3
+alcohol: 3
+flavours: [raspberry, blackberry, plum-sauce, black-pepper, nutmeg]
+regions: [nemea, macedonia]
+countries: [greece]
+popularity: rare                 # rare | uncommon | common | popular
+price_band: "££"                   # price range £ - ££££
+serving:
+  temp_c: [15, 20]
+  glass: oversized               # burgundy | bordeaux | universal | flute | ...
+  decant_minutes: 60
+  cellar_years: [5, 25]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [roasted-meat]
+    strength: perfect           # perfect | great | good
+    why: "Subtle flavours of nutmeg and cinnamon work well with roasted meat."
+  - tags: [tomato-sauce]
+    strength: perfect
+    why: "Subtle flavours of nutmeg and cinnamon work well with tomato sauced cuisine"
+  - tags: [spiced-cuisine]
+    strength: perfect
+    why: "Subtle flavours of nutmeg and cinnamon work well with spiced cuisine from Middle East to India."
+notes: >
+  "The top red of Greece offers a wide range of style from rosé to deep red. Most exceptional Agiorgitiko are the full-bodied red wines from Nemea in Peloponnese."
+also_try: [xinomavro, merlot, barbera, nero-d'avola]

@@ -1,0 +1,31 @@
+id: albarino
+name: Albariño
+wine_type: [light-white]                     # red | white | rosé | sparkling | dessert
+grapes: [albarino]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 2
+tannin: 1
+acidity: 5
+alcohol: 3
+flavours: [lemon-zest, graphfruit, honeydew, nectarine, saline]
+regions: [iberian, rias-baixas, catalonia, vinho-verde, tejo, california]
+countries: [spain, portugal, usa, argentina, chile, brazil]
+popularity: uncommon                 # rare | uncommon | common | popular
+price_band: "£"                   # price range £ - ££££
+serving:
+  temp_c: [3, 7]
+  glass: white-glass               # burgundy | bordeaux | universal | flute | ...
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [fin-fish]
+    strength: perfect           # perfect | great | good
+    why: "Exceptionally well with fin fish with leafy herbs."
+  - tags: [light-meat]
+    strength: perfect           # perfect | great | good
+    why: "Lovely with fish tacos."
+notes: >
+  "One of the most delightfully refreshing whites from Iberian peninsula. It's found in cooler areas, close to the sea, which is how it gains its salty flavours."
+also_try: [loureiro, riesling, furmint, verdejo, vinho-verde]

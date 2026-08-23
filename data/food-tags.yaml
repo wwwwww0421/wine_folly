@@ -1,0 +1,42 @@
+- id: bbq
+  label: Barbecue & smoked
+  aliases: [bbq, barbecue, smoked ribs, pulled pork, brisket]
+- id: grilled
+  label: Grilled & charred
+  aliases: [grilled, char grilled, kebab, souvlaki]
+- id: sweet-glazed
+  label: Sweet-glazed dishes
+  aliases: [teriyaki, hoisin, honey glazed]
+- id: fish-oily
+  label: Oily fish
+  aliases: [mackerel, sardines, herring]
+- id: fish-cured
+  label: Cured & salted fish
+  aliases: [bacalhau, salt cod, smoked salmon, anchovies]
+- id: shellfish
+  label: Shellfish
+  aliases: [clams, oysters]
+- id: tomato-feta
+  label: Tomato & feta dishes
+  aliases: [tomato feta pasta, tomato feta salad, greek salad]
+- id: tomato-sauce
+  label: Tomato-sauce dishes
+  aliases: [tomato pasta, marinara, pizza, napoletana]
+- id: spiced-cuisine
+  label: Spiced cuisine (Indian, Middle Eastern)
+  aliases: [curry, indian curry, tagine, lahmacun, shawarma]
+- id: tapas
+  label: Spanish cuisine
+  aliases: [croquetas, spanish olives, salt almonds]
+- id: roasted-meat
+  label: Roasted Meat
+  aliases: [roast beef, rack of lamb, prime rib, roast pork, leg of lamb, roasted venison, roast chicken, sunday roast]
+- id: fin-fish
+  label: Fin Fish
+  aliases: [salmon, cod, halibut, trout, seabass, snapper, tuna, mahi-mahi, sole]
+- id: light-meat
+  label: Light Meat
+  aliases: [chicken breast, turkey breast, veal, pork tenderloin, quail, pheasant]
+- id: rich-seafood
+  label: Rich Seafood
+  aliases: [lobster, crab, scallops, salmon steak, swordfish, mussels, prawns, monkfish, sea bass]

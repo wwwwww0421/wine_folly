@@ -1,0 +1,31 @@
+id: assyrtiko
+name: Assyrtiko
+wine_type: [light-white]                     # red | white | rosé | sparkling | dessert
+grapes: [assyrtiko]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 1
+tannin: 1
+acidity: 5
+alcohol: 4
+flavours: [lime, passion-fruit, beeswax, flint, saline]
+regions: [santorini, macedonia, thessaly]
+countries: [greece, australia]
+popularity: rare                 # rare | uncommon | common | popular
+price_band: "£££"                   # price range £ - ££££
+serving:
+  temp_c: [3, 7]
+  glass: white-glass               # burgundy | bordeaux | universal | flute | ...
+  decant_minutes: 0
+  cellar_years: [5, 10]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [shellfish]
+    strength: perfect           # perfect | great | good
+    why: "Perfect match with shellfish. Very nice with shellfish spaghetti!"
+  - tags: [tomato-feta]
+    strength: perfect
+    why: "The wine is extremely versatile with a wide range of cuisine."
+notes: >
+  "It is rare in terms of vineyard area, but it is one of Greece's most famous grapes. You can find the best examples from the island of Santorini."
+also_try: [dry-riesling, albarino, furmint, picpoul, arinto]

@@ -1,0 +1,31 @@
+id: alicante-bouschet
+name: Alicante Bouschet
+wine_type: [full-red]                     # red | white | rosé | sparkling | dessert
+grapes: [alicante-bouschet]
+# --- Wine Folly 1–5 scales ---
+body: 5
+sweetness: 1
+tannin: 4
+acidity: 3
+alcohol: 4
+flavours: [black-cherry, blackberry-bramble, black-plum, black-pepper, sweet-tobacco]
+regions: [castilla-la-mancha, galicia, languedoc-roussillon, central-valley-region, alentejo, tejo]
+countries: [spain, france, chile, portugal, algeria, morocco, tunisia, italy, turkey]
+popularity: common                 # rare | uncommon | common | popular
+price_band: "£"                   # price range £ - ££££
+serving:
+  temp_c: [15, 20]
+  glass: oversized               # burgundy | bordeaux | universal | flute | ...
+  decant_minutes: 30
+  cellar_years: [3, 7]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [bbq]
+    strength: perfect           # perfect | great | good
+    why: "The intense smokey-sweet flavour of wine match well with intense foods like BBQ, teriyaki, carne asada, and grilled vegetables."
+  - tags: [grilled]
+    strength: perfect           # perfect | great | good
+    why: "The intense smokey-sweet flavour of wine match well with intense foods like BBQ, teriyaki, carne asada, and grilled vegetables."
+notes: >
+  "A rare type of graph called a teinturier with red skins and red flesh. It was created when botanist Henri Bouschet crossed Garnacha with Petit Bouschet in Southern France"
+also_try: [monastrell, syrah, petite-sirah, zinfandel, touriga-nacional]

@@ -1,0 +1,28 @@
+id: arinto
+name: Arinto
+wine_type: [light-white, full-white]                     # red | white | rosé | sparkling | dessert
+grapes: [arinto]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 1
+tannin: 1
+acidity: 5
+alcohol: 3
+flavours: [lemon-zest, graphfruit, hazelnut, beeswax, chamomile]
+regions: [vinho-verde, alentejo, tejo]
+countries: [portugal]
+popularity: uncommon                 # rare | uncommon | common | popular
+price_band: "£"                   # price range £ - ££££
+serving:
+  temp_c: [7, 12]
+  glass: white-glass               # burgundy | bordeaux | universal | flute | ...
+  decant_minutes: 0
+  cellar_years: [5, 10]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [rich-seafood]
+    strength: perfect           # perfect | great | good
+    why: "Arinto has high acidity and lemon zest-like flavours suits well with seafood like Bacalhau (salt cod)."
+notes: >
+  "Indigenous grape to Portugal that produces exceptional, age-worthy whites that can evolve over times (7yr+) to reveal flavours of beeswax and nuts."
+also_try: [garganega, falanghina, trebbiano-toscano, grenache-blanc, semillon]

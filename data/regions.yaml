@@ -1,0 +1,182 @@
+- id: piedmont
+  name: Piedmont
+  country: Italy
+  climate: continental           # cool | continental | mediterranean | maritime
+  known_for: [nebbiolo, barbera, moscato]
+  notes: "Foggy foothills of the Alps; nebbia (fog) names the grape."
+  subregions:
+    - id: barolo
+      name: Barolo
+      known_for: [nebbiolo]
+      notes: "Nebbiolo at full power; DOCG, long aging requirements."
+    - id: barbaresco
+      name: Barbaresco
+      known_for: [nebbiolo]
+      notes: "Nebbiolo's gentler, earlier-drinking side."
+
+- id: burgundy
+  name: Burgundy (Bourgogne)
+  country: France
+  climate: continental
+  known_for: [pinot-noir, chardonnay]
+  notes: "Terroir taken to its logical extreme; village > grape on labels."
+  subregions:
+    - id: chablis
+      name: Chablis
+      known_for: [chardonnay]
+      notes: "Unoaked, steely Chardonnay from Kimmeridgian limestone."
+
+
+- id: nemea
+  name: Nemea
+  country: Greece
+  climate: mediterranean
+  known_for: [agiorgitiko]
+  notes: "Greece's most celebrated red wine region, located in the northeastern Peloponnese. Its flagship grape, Agiorgitiko, is remarkably versatile, producing everything from approachable, fruit-forward reds to deeply complex, structured bottles capable of decades of aging."
+  subregions:
+    - id: nemea-valley-floor
+      name: Valley Floor (Zone A)
+      known_for: [agiorgitiko]
+      notes: "Warmer, lower-elevation flatlands producing plush, juicy, and fruit-forward wines with soft tannins and generous dark berry flavors."
+    - id: nemea-mid-slopes
+      name: Mid-Slopes (Zone B)
+      known_for: [agiorgitiko]
+      notes: "Moderate elevations offering a balance of warmth and cooling breezes, yielding classic, structured wines with good acidity and spicy complexity."
+    - id: nemea-highlands
+      name: Highlands (Zone C)
+      known_for: [agiorgitiko]
+      notes: "Cooler, higher-altitude vineyards (up to 900 meters) producing fresher, more aromatic, and high-acid styles ideal for oak aging."
+
+- id: macedonia
+  name: Macedonia (Makedonia)
+  country: Greece
+  climate: continental
+  known_for: [xinomavro, malagousia, assyrtiko]
+  notes: "Northern Greece's powerhouse wine region, defined by rugged mountains and high-altitude vineyards. Its flagship red grape, Xinomavro, is frequently compared to Nebbiolo for its high acidity, gripping tannins, and savory aging potential."
+  subregions:
+    - id: naoussa
+      name: Naoussa
+      known_for: [xinomavro]
+      notes: "The benchmark appellation requiring 100% Xinomavro. Produces structured, highly age-worthy wines with hallmark aromas of sundried tomato, olive tapenade, and dark spice."
+    - id: amynteo
+      name: Amynteo (Amyndeo)
+      known_for: [xinomavro, assyrtiko]
+      notes: "A cooler, high-elevation plateau influenced by surrounding lakes. Yields more elegant, floral, and lighter-bodied Xinomavro, alongside excellent rosés and traditional method sparkling wines."
+    - id: goumenissa
+      name: Goumenissa
+      known_for: [xinomavro, negoska]
+      notes: "A slightly warmer enclave where Xinomavro must be co-fermented with at least 20% Negoska, resulting in softer tannins, higher alcohol, and deeper color."
+
+- id: campania
+  name: Campania
+  country: Italy
+  climate: mediterranean
+  known_for: [fiano, greco, falanghina, aglianico]
+  notes: "One of Italy's oldest and most dramatic wine regions, dominated by ancient volcanic soils (Vesuvius and Irpinia) and steep, sun-drenched hillsides. Famed for producing some of Italy's most age-worthy, mineral-driven whites and powerhouse reds."
+  subregions:
+    - id: taurasi
+      name: Taurasi
+      known_for: [aglianico]
+      notes: "The 'Barolo of the South.' High-elevation volcanic and clay soils produce deeply structured, muscular Aglianico with soaring acidity, firm tannins, and complex aromas of dark cherry, leather, and smoke."
+    - id: fiano-di-avellino
+      name: Fiano di Avellino
+      known_for: [fiano]
+      notes: "Cool, inland Apennine hills yielding a world-class white wine known for its distinct golden color, texture, and complex notes of toasted hazelnut, honey, pear, and struck flint."
+    - id: greco-di-tufo
+      name: Greco di Tufo
+      known_for: [greco]
+      notes: "Sulfur- and tuff-rich volcanic soils give this crisp white its signature intense minerality, bright citrus profile, and a dry, almond-bitter finish."
+
+- id: castilla-la-mancha
+  name: Castilla-La Mancha
+  country: Spain
+  climate: continental
+  known_for: [airen, tempranillo, cencibel, bobal, syrah, cabernet-sauvignon]
+  notes: "The largest continuous vine-growing area in the world, stretching across the vast central plateau of Spain. Historically known for high-volume bulk production, it has undergone a massive modernization wave, now producing incredible value-driven varietal wines and deep, sun-drenched reds from old-bush vines."
+  subregions:
+    - id: la-mancha
+      name: La Mancha DO
+      known_for: [airen, tempranillo]
+      notes: "The heartland spanning the high plains, dominated by the drought-resistant white Airén grape and robust, fruit-forward Tempranillo."
+      
+    - id: ribera-del-jucar
+      name: Ribera del Júcar
+      known_for: [bobal, tempranillo]
+      notes: "A unique pocket featuring pebble-strewn soils and a slightly cooling microclimate from the Júcar river, yielding deeply colored, structured reds with excellent balance."
+    
+    - id: dominio-de-valdepusa
+      name: Dominio de Valdepusa
+      known_for: [cabernet-sauvignon, syrah, petit-verdot]
+      notes: "A prestigious, single-estate Vino de Pago located near Toledo, pioneering international grape varieties on limestone-clay soils with great success."
+
+- id: iberian
+  name: Iberian Peninsula (Spain and Portugal)
+  country: Spain, Portugal
+  climate: diverse
+  known_for: [tempranillo, touriga-nacional, albarino, garnacha]
+  notes: "A massive, topographically diverse wine mega-region encompassing the entirety of Spain and Portugal. It boasts an astonishing array of ancient native grape varieties, extreme climatic contrasts from Atlantic coasts to arid interior mesetas, and legendary styles ranging from crisp coastal whites to fortified ports and sherries."
+  subregions:
+    - id: douro
+      name: Douro
+      known_for: [touriga-nacional, tinta-roriz, touriga-franca]
+      notes: "A dramatic, steeply terraced schist valley carved by the Douro River, world-famous for crafting legendary Port wines as well as structured, deeply concentrated dry reds."
+
+- id: rias-baixas
+  name: Rías Baixas
+  country: Spain
+  climate: maritime
+  known_for: [albarino, loureira, caino-blanco]
+  notes: "The emerald-green cradle of world-class white wines in northwestern Spain's Galicia region. Shaped by heavy Atlantic rainfall, cooling breezes, and granite-rich soils, it produces intensely aromatic, high-acid, and salinity-driven wines."
+  subregions:
+    - id: val-do-salnes
+      name: Val do Salnés
+      known_for: [albarino]
+      notes: "The historical birthplace and coolest subzone of Rías Baixas, flanking the Atlantic coast; yields the most quintessential, bone-dry, razor-sharp, and laser-focused Albariños with vibrant mineral character."
+
+- id: catalonia
+  name: Catalonia (Catalunya)
+  country: Spain
+  climate: mediterranean
+  known_for: [xarel-lo, macabeu, parellada, garnacha, carinena]
+  notes: "A dynamic northeastern Spanish wine powerhouse stretching from the Mediterranean coast to the Pyrenees. Famed globally as the birthplace of Cava, it also houses some of the world's most dramatic, mineral-driven slate and limestone terroir for world-class still reds."
+  subregions:
+    - id: priorat
+      name: Priorat
+      known_for: [garnacha, carinena]
+      notes: "A rugged, steep-sloped DOCa featuring crumbly black slate soils known as llicorella, producing intensely concentrated, mineral, and powerful age-worthy red wines from ancient bush vines."
+
+- id: vinho-verde
+  name: Vinho Verde
+  country: Portugal
+  climate: maritime
+  known_for: [alvarinho, loureiro, avesso, trajadura]
+  notes: "Portugal's largest appellation, located in the lush, rainy northwestern corner of the country. Translating to 'green wine,' it is historically famed for crisp, vibrant, and low-alcohol wines meant to be enjoyed young, though top estates now produce complex, age-worthy single-varietal expressions."
+  subregions:
+    - id: moncao-e-melgaco
+      name: Monção e Melgaço
+      known_for: [alvarinho]
+      notes: "The northernmost, warmer, and sheltered subregion bordering Spain; the undisputed home of powerful, structured, and complex Alvarinho with notes of stone fruit and citrus peel."
+
+- id: tejo
+  name: Tejo
+  country: Portugal
+  climate: mediterranean
+  known_for: [fernao-pires, touriga-nacional, aragonez, trincadeira]
+  notes: "Formerly known as Ribatejo, this historic wine region flanks the Tagus (Tejo) River north of Lisbon. Blending fertile alluvial floodplains with nutrient-poor sandy and clay-limestone plateau soils, it has evolved from mass-producing bulk wine to crafting exceptional, fruit-forward reds and expressive, aromatic whites."
+  subregions:
+    - id: do-tejo-charneca
+      name: Charneca
+      known_for: [touriga-nacional, aragonez, syrah]
+      notes: "The drier, southern bank of the river featuring sandy and poor clay soils, yielding deeply colored, concentrated, and structured red wines."
+
+- id: california
+  name: California
+  country: United States
+  climate: diverse
+  known_for: [cabernet-sauvignon, chardonnay, pinot-noir, zinfandel, syrah]
+  notes: "The undisputed economic and cultural powerhouse of New World wine. Stretching over 900 miles of coastline, its vast climatic range spans cool, fog-shrouded maritime microclimates to baking inland valleys, producing an immense diversity of styles."
+  subregions:
+    - id: sonoma-county
+      name: Sonoma County
+      known_for: [chardonnay, pinot-noir, cabernet-sauvignon, zinfandel]
+      notes: "Directly west of Napa, Sonoma features a cooler, wilder, and more expansive landscape heavily shaped by Pacific fog currents, renowned for world-class cool-climate Burgundian varieties and bold, spicy old-vine Zinfandels."

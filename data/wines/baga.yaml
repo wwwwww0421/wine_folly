@@ -1,0 +1,31 @@
+id: baga
+name: Baga
+wine_type: [sparkling, rosé, medium-red, full-red]                     # red | white | rosé | sparkling | dessert
+grapes: [baga]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 3
+tannin: 5
+acidity: 5
+alcohol: 3
+flavours: [blackberry, black-currant, dried-cherry, cocoa, black-plum]
+regions: [bairrada]
+countries: [portugal]
+popularity: uncommon                 # rare | uncommon | common | popular
+price_band: "££"                   # price range £ - ££££
+serving:
+  temp_c: [12, 15]
+  glass: red-glass               # burgundy | bordeaux | universal | flute | ...
+  decant_minutes: 60
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [roasted-meat]
+    strength: perfect           # perfect | great | good
+    why: "Fatty, roasted meat to complement its sometimes robust, gravelly, or tar-like flavour."
+  - tags: [spiced-cuisine]
+    strength: perfect
+    why: "Riched red like Baga suits well with strong flavour food."
+notes: >
+  "A large proportion of Baga is used in Portugal's leading value wine, Mateus Rosé, the grapes can produce age-worthy reds and complex sparkling rosés."
+also_try: [dolcetto, bonarda, monastrell, negroamaro, pinotage]
