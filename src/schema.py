@@ -45,7 +45,7 @@ Glass = Literal[
 
 PriceBand = Literal['£', '££', '£££', '££££']
 
-Climate = Literal["cool", "continental", "mediterranean", "maritime", "diverse"]
+Climate = Literal["cool", "continental", "continental-mediterranean", "continental-sub-mediterranean", "mediterranean", "maritime", "maritime-continental", "diverse", "continental-desert", "continental-monsoon", "high-altitude desert", "desert", "monsoon"]
 
 class Strength(str, Enum):
     PERFECT = 'perfect'
@@ -217,6 +217,18 @@ class FoodTag(BaseModel):
         seen_ids: dict[str, str] = {}
         seen_aliases: dict[str, str] = {}
         errors: list[str] = []
+        # for i, raw in enumerate(entries):
+        #     tag_id = raw.get("id", f"index #{i}") if isinstance(raw, dict) else f"index #{i}"
+
+        #     try:
+        #         tags.append(FoodTag.model_validate(raw))
+        #     except ValidationError as e:
+        #         for err in e.errors():
+        #             loc = '.'.join(str(p) for p in err['loc'])
+        #             input_val = err.get('input', '')
+        #             errors.append(f"{tag_id} -> field '{loc}: {err['msg']}")
+        #         continue
+
         for t in tags:
             if t.id in seen_ids:
                 errors.append(f"duplicate tag id - {t.id}")
@@ -276,8 +288,19 @@ class RegionEntry(BaseModel):
     def _load_regions(entries: list[dict]) -> dict[str, Region]:
         regions: dict[str, Region] = {}
         errors: list[str] = []
-        for raw in entries:
-            entry = RegionEntry.model_validate(raw)
+
+        for i, raw in enumerate(entries):
+            region_id = raw.get("id", f"index #{i}") if isinstance(raw, dict) else f"index #{i}"
+
+            try:
+                entry = RegionEntry.model_validate(raw)
+            except ValidationError as e:
+                for err in e.errors():
+                    loc = '.'.join(str(p) for p in err['loc'])
+                    input_val = err.get('input', '')
+                    errors.append(f"{region_id} -> field '{loc}: {err['msg']}")
+                continue
+
             for region in entry.flatten():
                 if region.id in regions:
                     errors.append(f"Duplicate region id '{region.id}'")
@@ -337,14 +360,14 @@ if __name__ == "__main__":
         print("Food Tag Valid!")
     except (ValueError, ValidationError) as e:
         failures += 1
-        print(f"FAIL! {tags}: {e}")
+        print(f"FAIL! {e}")
 
     try:
         reg = RegionEntry._load_regions(yaml.safe_load(REGION_DIR.read_text(encoding='utf-8')))
         print("Region File Valid!")
     except (ValueError, ValidationError) as e:
         failures += 1
-        print(f"FAIL! {reg}: {e}")
+        print(f"FAIL! {e}")
 
 
     sys.exit(1 if failures else 0)

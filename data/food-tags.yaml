@@ -1,42 +1,75 @@
+# --- smoke, char & glaze ---
 - id: bbq
   label: Barbecue & smoked
-  aliases: [bbq, barbecue, smoked ribs, pulled pork, brisket]
+  aliases: [bbq, barbecue, smoked ribs, pulled pork, brisket, smoked sausage]
+- id: vinegar-bbq
+  label: Vinegar-based BBQ
+  aliases: [vinegar bbq, carolina bbq, tangy barbecue]
 - id: grilled
   label: Grilled & charred
   aliases: [grilled, char grilled, kebab, souvlaki]
 - id: sweet-glazed
   label: Sweet-glazed dishes
   aliases: [teriyaki, hoisin, honey glazed]
+- id: salty-fried
+  label: Salty & Fried dishes
+  aliases: [fried chicken, french fries, potato chips, tempura, calamari, fried fish, arancini, churros]
+
+# --- red meat: quick-cooked vs slow-cooked pair differently ---
+- id: steak
+  label: Steak
+  aliases: [ribeye, filet mignon, strip steak, porterhouse, flank steak, skirt steak, t-bone]
+- id: braised-meat
+  label: Braised & stewed meats
+  aliases: [beef stew, braised short ribs, osso buco]
+- id: roasted-meat-rich
+  label: Rich roasted meats
+  aliases: [roast beef, rack of lamb, prime rib, roast pork, leg of lamb, roasted venison, sunday roast]
+- id: light-meat
+  label: Light & white meats
+  aliases: [chicken breast, roast chicken, turkey breast, veal, pork tenderloin, quail, pheasant]
+
+# --- fish & seafood: lean / oily / cured / shellfish ---
+- id: fish-lean
+  label: Lean & white fish
+  aliases: [cod, halibut, sole, snapper, sea bass, mahi mahi, monkfish]
 - id: fish-oily
-  label: Oily fish
-  aliases: [mackerel, sardines, herring]
+  label: Oily & rich fish
+  aliases: [salmon, tuna, trout, mackerel, sardines, herring, swordfish]
 - id: fish-cured
   label: Cured & salted fish
   aliases: [bacalhau, salt cod, smoked salmon, anchovies]
 - id: shellfish
   label: Shellfish
-  aliases: [clams, oysters]
-- id: tomato-feta
-  label: Tomato & feta dishes
-  aliases: [tomato feta pasta, tomato feta salad, greek salad]
+  aliases: [clams, oysters, mussels, prawns, scallops, lobster, crab]
+
+# --- sauce & cuisine families ---
 - id: tomato-sauce
   label: Tomato-sauce dishes
   aliases: [tomato pasta, marinara, pizza, napoletana]
+- id: tomato-feta
+  label: Tomato & feta dishes
+  aliases: [tomato feta pasta, tomato feta salad, greek salad]
 - id: spiced-cuisine
-  label: Spiced cuisine (Indian, Middle Eastern)
-  aliases: [curry, indian curry, tagine, lahmacun, shawarma]
+  label: Spiced cuisine (Indian, Middle Eastern, Mexican)
+  aliases: [curry, indian curry, tagine, lahmacun, shawarma, mole sauces, curried potatoes]
 - id: tapas
-  label: Spanish cuisine
-  aliases: [croquetas, spanish olives, salt almonds]
-- id: roasted-meat
-  label: Roasted Meat
-  aliases: [roast beef, rack of lamb, prime rib, roast pork, leg of lamb, roasted venison, roast chicken, sunday roast]
-- id: fin-fish
-  label: Fin Fish
-  aliases: [salmon, cod, halibut, trout, seabass, snapper, tuna, mahi-mahi, sole]
-- id: light-meat
-  label: Light Meat
-  aliases: [chicken breast, turkey breast, veal, pork tenderloin, quail, pheasant]
-- id: rich-seafood
-  label: Rich Seafood
-  aliases: [lobster, crab, scallops, salmon steak, swordfish, mussels, prawns, monkfish, sea bass]
+  label: Spanish tapas
+  aliases: [croquetas, spanish olives, salt almonds, empanadas, tacos al pastor, portuguese octopus, paella]
+- id: east-european-cuisine
+  label: East European cuisine
+  aliases: [goulash, red potato goulash, spaetzle, cheesy spaetzle dumplings]
+- id: spice-accented
+  label: Spice- & herb-accented dishes
+  aliases: [sage, anise, cinnamon, sumac, white pepper, five spice]
+- id: berry-sauce
+  label: Berry-based sauce dishes
+  aliases: [berry sauce, raspberry glazed, cranberry reduction, blackberry sauce, duck with berry reduction, venison with berry sauce]
+
+# --- vegetables & sweets ---
+- id: vegetable-driven
+  label: Vegetable-driven dishes
+  aliases: [roasted vegetables, ratatouille, grilled zucchini, asparagus, mushroom risotto, stuffed peppers]
+- id: chocolate-desserts
+  label: Rich chocolate desserts
+  aliases: [chocolate truffles, ganache, chocolate mousse, dark chocolate, molten lava cake]

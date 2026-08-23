@@ -20,7 +20,7 @@ serving:
   cellar_years: [5, 10]
 # --- pairings live ON the wine ---
 pairings:
-  - tags: [rich-seafood]
+  - tags: [fish-oily]
     strength: perfect           # perfect | great | good
     why: "Arinto has high acidity and lemon zest-like flavours suits well with seafood like Bacalhau (salt cod)."
 notes: >

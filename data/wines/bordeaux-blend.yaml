@@ -1,0 +1,32 @@
+id: bordeaux-blend
+name: Bordeaux Blend (Red)
+wine_type: [rosé, medium-red, full-red]                     # red | white | rosé | sparkling | dessert
+grapes: [cabernet, merlot, cabernet-franc, malbec, petit-verdot, camenere]
+# --- Wine Folly 1–5 scales ---
+body: 5
+sweetness: 1
+tannin: 5
+acidity: 3
+alcohol: 4
+flavours: [blackcurrant, black-cherry, graphite, chocolate, dried-herbs]
+regions: [bordeaux, western-australia, bolgheri]
+countries: [france, australia, italy]
+popularity: popular
+price_band: "£££"
+serving:
+  temp_c: [15, 20]
+  glass: oversized
+  decant_minutes: 60
+  cellar_years: [5, 25]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [steak]
+    strength: perfect           # perfect | great | good
+    why: "Perfect match with steak and red-meat dishes. Keep seasoning simple (salt and pepper)."
+notes: >
+  "A red blend that's primarily Cabernet Sauvignon and Merlot along with several other grape varieties that originated in Bordeaux, France.
+  Bordeaux region's Bordeaux-blend tend to have flavours of blackcurrant, anise, tobacco leaf, plum sauce, baking spices.
+  Western Australia region's tend to have flavours of redcurrant, black cherry, sage, coffee, bay leaf.
+  Bolgheri, Tuscany region's tend to have flavours of black cherry, blackberry, sandalwood, leather, anise.
+  "
+also_try: [cabernet-sauvignon, merlot, cabernet-franc, malbec, petit-verdot]

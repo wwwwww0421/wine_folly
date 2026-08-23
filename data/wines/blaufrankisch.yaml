@@ -1,0 +1,30 @@
+id: blaufrankisch
+name: Blaufränkisch
+wine_type: [rosé, medium-red]                     # red | white | rosé | sparkling | dessert
+grapes: [blaufrankisch]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 1
+tannin: 4
+acidity: 5
+alcohol: 4
+flavours: [blackberry-bramble, black-cherry, allspice, dark-chocolate, pepper]
+countries: [hungary, austria, germany, slovakia, czech-republic, romania, slovenia, croatia, peru]
+popularity: uncommon                 # rare | uncommon | common | popular
+price_band: "££"                   # price range £ - ££££
+serving:
+  temp_c: [15, 20]
+  glass: red-glass
+  decant_minutes: 30
+  cellar_years: [3, 7]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [bbq]
+    strength: perfect           # perfect | great | good
+    why: "Great pairing with smoked sausage."
+  - tags: [east-european-cuisine]
+    strength: perfect
+    why: "Great pairing with red potato goulash, cheesy spaetzle dumplings."
+notes: >
+  "Filled with rich and peppery black fruit flavours and zippy acidity. An ideal food friendly red. It's related to both Gamay and Zweigelt."
+also_try: [syrah, bonarda, malbec, monastrell, pinotage]

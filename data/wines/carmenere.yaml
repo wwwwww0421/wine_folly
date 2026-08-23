@@ -1,0 +1,31 @@
+id: carmenere
+name: Carménère
+wine_type: [rosé, medium-red]                     # red | white | rosé | sparkling | dessert
+grapes: [carmenere]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 1
+tannin: 3
+acidity: 3
+alcohol: 3
+flavours: [raspberry, sweet-pepper, black-plum, paprika, vanilla]
+regions: [colchagua, aconcagua, cachapoal, jiaodong, hebei, lombardy, veneto, mendoza, bordeaux, california, washington, british-columbia]
+countries: [chile, china, italy, argentina, france, usa, croatia, brazil, canada, australia, hungary]
+popularity: uncommon                 # rare | uncommon | common | popular
+price_band: "££"                   # price range £ - ££££
+serving:
+  temp_c: [15, 20]
+  glass: red-glass               # burgundy | bordeaux | universal | flute | ...
+  decant_minutes: 30
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [roasted-meat-rich]
+    strength: perfect           # perfect | great | good
+    why: "Great esbellishment to roast meats from chicken to beef"
+  - tags: [spiced-cuisine]
+    strength: great
+    why: "Spiced with cumin"
+notes: >
+  Once thought to be a nearly extinct Bordeaux variesty, we now know nearly 50% of the Merlot planted in Chile is actually Carménère!
+also_try: [cabernet-franc, cabernet-sauvignon, hondarribi-beltza, bordeaux-blend, merlot]

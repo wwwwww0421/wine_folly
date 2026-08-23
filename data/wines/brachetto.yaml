@@ -1,0 +1,28 @@
+id: brachetto
+name: Brachetto
+wine_type: [rosé, light-red]                     # red | white | rosé | sparkling | dessert
+grapes: [brachetto]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 4
+tannin: 1
+acidity: 3
+alcohol: 1
+flavours: [candied-strawberry, orange-zest, blackcurrant, apricot, cream]
+regions: [piedmont]
+countries: [italy, australia, usa]
+popularity: rare                 # rare | uncommon | common | popular
+price_band: "£"                   # price range £ - ££££
+serving:
+  temp_c: [12, 15]
+  glass: red-glass
+  decant_minutes: 0
+  cellar_years: [1, 3]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [chocolate-desserts]
+    strength: perfect           # perfect | great | good
+    why: "Perfect match with richm creamy chocolate truffles ganache and mousse."
+notes: >
+  A rare, sweet red wine from Piedmont that's famous for its perfumed aromatics and frothy, creamy bubbles.
+also_try: [lambrusco, black-muscat, freisa, concord]

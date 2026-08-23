@@ -1,0 +1,30 @@
+id: champagne
+name: Champagne
+wine_type: [sparkling]                     # red | white | rosé | sparkling | dessert
+grapes: [chardonnay, pinot-noir, pinot-meunier]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 3
+tannin: 1
+acidity: 5
+alcohol: 2
+flavours: [citrus, yellow-apple, cream, almond, toast]
+regions: [champagne]
+countries: [france]
+price_band: "££££"                   # price range £ - ££££
+serving:
+  temp_c: [3, 7]
+  glass: flute-glass               # burgundy | bordeaux | universal | flute | ...
+  decant_minutes: 0
+  cellar_years: [5, 20]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [salty-fried]
+    strength: perfect           # perfect | great | good
+    why: "Anything salty or fried or anything or main course!"
+notes: >
+  The most iconic sparkling wine! The most reasured wines age for 3 or more years.
+  Montagne-de-Reim flavours - white cherry, golden raisin, lemon zest, parmesan cheese, brioche.
+  Côte des Blancs - yellow apple, lemon curd, honeysuckle, cultured cream, marzipan.
+  Vallée de la Marne - yellow plum, quince, cultured cream, mushroom, smoke
+also_try: [cremant, cava, sekt, metodo-classico, cap-classique]

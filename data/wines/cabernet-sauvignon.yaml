@@ -1,0 +1,31 @@
+id: cabernet-sauvignon
+name: Cabernet Sauvignon
+wine_type: [rosé, medium-red]                     # red | white | rosé | sparkling | dessert
+grapes: [cabernet-sauvignon]
+# --- Wine Folly 1–5 scales ---
+body: 5
+sweetness: 1
+tannin: 5
+acidity: 3
+alcohol: 4
+flavours: [black-cherry, blackcurrant, cedar, baking-spices, graphite]
+regions: [bordeaux, bergerac, languedoc-roussilon, maipo, colchagua, aconcagua, napa-valley, sonoma, paso-robles, coonawarra, margaret-river, castilla-la-mancha, extremadura, ucles, hebei, xinjiang, ningxia, shandong, mendoza, san-juan, veneto, sicily, tuscany, stellenbosch]
+countries: [france, chile, usa, australia, spain, china, argentina, italy, south-africa, bulgaria, moldova, russia]
+popularity: popular                 # rare | uncommon | common | popular
+price_band: "£££"                   # price range £ - ££££
+serving:
+  temp_c: [15, 20]
+  glass: oversized
+  decant_minutes: 60
+  cellar_years: [5, 25]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [grilled]
+    strength: perfect           # perfect | great | good
+    why: "Perfect partner wotj rich grilled meats, peppery sauce, and dished with high flavours"
+notes: >
+  The world's most popular wine is a natural cross between Cabernet Franc and Sauvignon Blanc that orignated in Bordeaux. Wines are concentrated and age-worthy.
+  Chile region flavours have blackberry, black cherry, fig paste, baking spices, green peppercorn.
+  Napa Valley, CA region have flavours of blackcurrant, pencil lead, tobacco, blackberry, mint.
+  South Australia region have flavours of black plum, white pepper, currant candy, chocolate, bay leaf.
+also_try: [bordeaux-blend, merlot, cabernet-franc, carmenere, nero-d-avola]

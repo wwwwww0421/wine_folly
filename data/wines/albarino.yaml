@@ -20,7 +20,7 @@ serving:
   cellar_years: [1, 5]
 # --- pairings live ON the wine ---
 pairings:
-  - tags: [fin-fish]
+  - tags: [fish-lean]
     strength: perfect           # perfect | great | good
     why: "Exceptionally well with fin fish with leafy herbs."
   - tags: [light-meat]

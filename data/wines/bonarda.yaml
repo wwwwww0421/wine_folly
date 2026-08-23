@@ -1,0 +1,31 @@
+id: bonarda
+name: Bonarda (Douce Noir)
+wine_type: [medium-red]                     # red | white | rosé | sparkling | dessert
+grapes: [bonarda]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 4
+acidity: 3
+alcohol: 3
+flavours: [plum-sauce, cherry, cardamom, fig-paste, graphite]
+regions: [mendoza, san-juan, california]
+countries: [argentina, usa, france]
+popularity: uncommon
+price_band: "£"
+serving:
+  temp_c: [15, 20]
+  glass: red-glass
+  decant_minutes: 30
+  cellar_years: [3, 7]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [spiced-cuisine]
+    strength: perfect           # perfect | great | good
+    why: "Great choice for dishes with mole sauces, curried potatoes"
+  - tags: [tapas]
+    strength: perfect           # perfect | great | good
+    why: "Great choice with empanadas and tacos al pastor."
+notes: >
+  Not the same Bonarda that grows in Northern Italy. This Bonarda (aka Douce Noir) grows alongside Malbec in Argentina, where it produces smooth and fruity wines."
+also_try: [merlot, syrah, dolcetto, petite-sirah]

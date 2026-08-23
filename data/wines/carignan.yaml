@@ -1,0 +1,34 @@
+id: carignan
+name: Carignan
+wine_type: [rosé, medium-red]                     # red | white | rosé | sparkling | dessert
+grapes: [carignan]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 2
+tannin: 3
+acidity: 4
+alcohol: 4
+flavours: [dried-cranberry, respberry, tobacco-leaf, baking-spices, cured-meat]
+regions: [languedoc-roussillon, mornag, sidi-salem, medea, aragon, catalonia, rioja, sardinia, berkane, beni-mtir, guerrouane, lodi, sonoma]
+countries: [france, tunisia, algeria, spain, italy, morroco, usa, israel, cyprus, chile, mexico, portugal]
+popularity: popular                 # rare | uncommon | common | popular
+price_band: "££"                   # price range £ - ££££
+serving:
+  temp_c: [15, 20]
+  glass: red-glass               # burgundy | bordeaux | universal | flute | ...
+  decant_minutes: 30
+  cellar_years: [5, 10]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [spiced-cuisine]
+    strength: perfect           # perfect | great | good
+    why: "Perfect with cinnamon-spiced dishes."
+  - tags: [berry-sauce]
+    strength: perfect
+    why: "Amazing for Christmas and winter fare."
+  - tags: [bbq]
+    strength: perfect
+    why: "Amazing for Christmas and winter fare."
+notes: >
+  A productive, drought-resistant vine that had a poor reputation until recently when several winemakers started making great wines sourced from old vineyards.
+also_try: [grenache, sangiovese, rhone-blend, castelao, zinfandel]

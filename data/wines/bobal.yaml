@@ -1,0 +1,28 @@
+id: bobal
+name: Bobal
+wine_type: [medium-red]                     # red | white | rosé | sparkling | dessert
+grapes: [bobal]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 1
+tannin: 3
+acidity: 4
+alcohol: 3
+flavours: [blackberry, pomegranate, liquorice, black-tea, cocoa-powder]
+regions: [castilla-la-mancha, valencia]
+countries: [spain]
+popularity: popular                 # rare | uncommon | common | popular
+price_band: "£"                   # price range £ - ££££
+serving:
+  temp_c: [15, 20]
+  glass: red-glass
+  decant_minutes: 30
+  cellar_years: [3, 7]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [roasted-meat-rich]
+    strength: perfect           # perfect | great | good
+    why: "orange chiken or roast chicken with pomegranate-molasses sauce."
+notes: >
+  This under-the-radar graph happens to be the second most planted red wine in Spain. Wines are loved for their fruity flavours, soft tannins, and velvety finish."
+also_try: [gamay, dornfelder, dolcetto, zweigelt, blaufrankisch]

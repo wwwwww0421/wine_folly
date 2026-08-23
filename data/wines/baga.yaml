@@ -8,7 +8,7 @@ sweetness: 3
 tannin: 5
 acidity: 5
 alcohol: 3
-flavours: [blackberry, black-currant, dried-cherry, cocoa, black-plum]
+flavours: [blackberry, blackcurrant, dried-cherry, cocoa, black-plum]
 regions: [bairrada]
 countries: [portugal]
 popularity: uncommon                 # rare | uncommon | common | popular
@@ -20,7 +20,7 @@ serving:
   cellar_years: [5, 15]
 # --- pairings live ON the wine ---
 pairings:
-  - tags: [roasted-meat]
+  - tags: [roasted-meat-rich]
     strength: perfect           # perfect | great | good
     why: "Fatty, roasted meat to complement its sometimes robust, gravelly, or tar-like flavour."
   - tags: [spiced-cuisine]

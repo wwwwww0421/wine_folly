@@ -1,0 +1,31 @@
+id: barbera
+name: Barbera
+wine_type: [rosé, medium-red]                     # red | white | rosé | sparkling | dessert
+grapes: [barbera]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 1
+acidity: 4
+alcohol: 4
+flavours: [tart-cherry, liquorice, blackberry, dried-herbs, black-pepper]
+regions: [piedmont, emilia-romagna, lombardy, central-valley, sierra-foothills, mendoza]
+countries: [italy, usa, argentina, slovenia, australia, south-africa]
+popularity: common                 # rare | uncommon | common | popular
+price_band: "££"                   # price range £ - ££££
+serving:
+  temp_c: [15, 20]
+  glass: aroma-collector
+  decant_minutes: 30
+  cellar_years: [3, 7]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [roasted-meat-rich]
+    strength: perfect           # perfect | great | good
+    why: "Perfect with roasted meat."
+  - tags: [spiced-cuisine]
+    strength: perfect
+    why: "Make pairings pop by spicing your dished with cherry, sage, anise, cinnamon, white, pepper, or sumac."
+notes: >
+  "Barbera is the everyday drinking red wine or Piedmont, Italy. Wines are approachable, affordable, and have a lip-smacking high acidity."
+also_try: [agiorgitiko, mencia, docetto, blaufrankisch, montepulciano]

@@ -20,7 +20,7 @@ serving:
   cellar_years: [5, 25]
 # --- pairings live ON the wine ---
 pairings:
-  - tags: [roasted-meat]
+  - tags: [roasted-meat-rich]
     strength: perfect           # perfect | great | good
     why: "Subtle flavours of nutmeg and cinnamon work well with roasted meat."
   - tags: [tomato-sauce]
