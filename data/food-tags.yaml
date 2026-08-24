@@ -41,7 +41,7 @@
   aliases: [bacalhau, salt cod, smoked salmon, anchovies]
 - id: shellfish
   label: Shellfish
-  aliases: [clams, oysters, mussels, prawns, scallops, lobster, crab]
+  aliases: [clams, oysters, mussels, prawns, scallops, lobster, crab, seafood pasta]
 
 # --- sauce & cuisine families ---
 - id: tomato-sauce
@@ -65,6 +65,15 @@
 - id: berry-sauce
   label: Berry-based sauce dishes
   aliases: [berry sauce, raspberry glazed, cranberry reduction, blackberry sauce, duck with berry reduction, venison with berry sauce]
+- id: thai-vietnamese
+  label: Thai & Vietnamese cuisine
+  aliases: [pad thai, pho, green curry, som tam, banh mi, spring rolls, lemongrass chicken, pad see ew]
+- id: light-dish
+  label: Light Dish
+  aliases: [sushi, salad]
+- id: peanut-butter
+  label: Peanut butter dishes & pairings
+  aliases: [peanut butter, peanut sauce, satay, peanut butter cookies, pad thai sauce, peanut butter cups]
 
 # --- vegetables & sweets ---
 - id: vegetable-driven
@@ -73,3 +82,7 @@
 - id: chocolate-desserts
   label: Rich chocolate desserts
   aliases: [chocolate truffles, ganache, chocolate mousse, dark chocolate, molten lava cake]
+- id: pesto-pasta
+  label: Pesto sauce pasta
+  aliases: [pesto pasta, basil pesto, pasta al pesto, pesto genovese, linguine with pesto]
+

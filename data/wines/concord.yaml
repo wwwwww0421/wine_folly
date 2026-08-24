@@ -1,0 +1,28 @@
+id: concord
+name: Concord
+wine_type: [medium-red]
+grapes: [concord]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 4
+tannin: 3
+acidity: 3
+alcohol: 4
+flavours: [grape, plum-sauce, musk, potting-soil, cumin]
+regions: [new-york, ohio, pennsylvania, ontario]
+countries: [usa, canada, uruguay, brazil]
+popularity: uncommon
+price_band: "£"                   # price range £ - ££££
+serving:
+  temp_c: [12, 15]
+  glass: red-glass
+  decant_minutes: 30
+  cellar_years: [1, 3]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [peanut-butter]
+    strength: great           # perfect | great | good
+    why: "Good pairing with peanut butter sandwiches. Very American style."
+notes: >
+  An American grape of the native Vitis labrusca species, from Concord, Massachusetts, it is the most planted grape in New York and used for juices and flavouring.
+also_try: [catawba, niagara, muscadine, lambrusco]

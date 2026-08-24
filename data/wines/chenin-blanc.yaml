@@ -1,0 +1,31 @@
+id: chenin-blanc
+name: Chenin Blanc
+wine_type: [sparkling, light-white, aromatic-white]                     # red | white | rosé | sparkling | dessert
+grapes: [chenin-blanc]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 4
+tannin: 1
+acidity: 5
+alcohol: 3
+flavours: [quince, yellow-apple, pear, chamomile, honey]
+regions: [stellenbosch, paarl, vauvray, montlouis-sur-loire, savennieres, anjou-saumur, california, washington]
+countries: [south-africa, france, usa, argentina, australia, mexico, israel, spain, chile]
+popularity: common
+price_band: "£££"                   # price range £ - ££££
+serving:
+  temp_c: [7, 12]
+  glass: aroma-collector               # burgundy | bordeaux | universal | flute | ...
+  decant_minutes: 0
+  cellar_years: [5, 10]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [thai-vietnamese]
+    strength: good           # perfect | great | good
+    why: "Cannot fail with Thai or Vietnamese cuisines."
+notes: >
+  Chenin Blanc has diversity of styles from lean, dry whites and aromatic sparklers to sweet golden nectars and rich balanced brandy.
+  Rich and Off-Dry Chenin Blanc flavours asian pear, yellow apple, honeysuckle, orange blossom, allspice.
+  Lean and Dry Chenin Blanc flavours quince, pear, pomelo, ginger, tarragon.
+  Sparkling Chenin Blanc flavours honeydew melon, lemon, jasmine, lemon curd, cream.
+also_try: [garganega, grechetto, chardonnay, malagousia]

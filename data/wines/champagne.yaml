@@ -11,6 +11,7 @@ alcohol: 2
 flavours: [citrus, yellow-apple, cream, almond, toast]
 regions: [champagne]
 countries: [france]
+popularity: common
 price_band: "££££"                   # price range £ - ££££
 serving:
   temp_c: [3, 7]

@@ -1,0 +1,34 @@
+id: chardonnay
+name: Chardonnay
+wine_type: [sparkling, light-white, full-white]                     # red | white | rosé | sparkling | dessert
+grapes: [chardonnay]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 2
+tannin: 1
+acidity: 3
+alcohol: 4
+flavours: [yellow-apple, starfruit, pineapple, vanilla, butter]
+regions: [burgundy, loire-valley, limoux, adelaide-hills, margaret-river, yarra-valley, trentino, franciacorta, sicily, casablanca-valley, limari-valley, franschhoek, elgin, stellenbosch, mendaza, patagonia]
+countries: [france, usa, australia, italy, chile, south-africa, spain, argentina, moldova]
+popularity: popular
+price_band: "££££"                   # price range £ - ££££
+serving:
+  temp_c: [7, 12]
+  glass: aroma-collector               # burgundy | bordeaux | universal | flute | ...
+  decant_minutes: 0
+  cellar_years: [5, 10]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [spice-accented]
+    strength: perfect           # perfect | great | good
+    why: "Best with subtle spces and flavours."
+  - tags: [shellfish]
+    strength: perfect
+    why: "Perfect match with lobsters!"
+notes: >
+  One of the world's most popular grapes. Chardonnay is made in a wide range of styles from sparkling Blanc de Blancs to rich white wines aged in oak.
+  Chablis, France region flavours quince, starfruit, lime peel, white blossom, chalk.
+  Santa Barbara region flavours yellow apple, pineapple, lemon zest, pie crust, nutmeg.
+  Western Australia region flavours white peach, tangerine, honeysuckle, vanilla, lemon curd.
+also_try: [marsanne, roussanne, viognier, savatiano, trebbiano-toscano]

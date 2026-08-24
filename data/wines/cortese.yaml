@@ -1,0 +1,31 @@
+id: cortese
+name: Cortese
+wine_type: [light-white]
+grapes: [cortese]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 1
+tannin: 1
+acidity: 4
+alcohol: 3
+flavours: [meyer-lemon, gala-apple, honeydew, seashell, almond]
+regions: [piedmont]
+countries: [italy]
+popularity: rare
+price_band: "££"                   # price range £ - ££££
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [shellfish]
+    strength: perfect           # perfect | great | good
+    why: "Seafood pasta with basil and lemon or fragrant pesto pastas."
+  - tags: [pesto-pasta]
+    strength: perfect           # perfect | great | good
+    why: "Perfect with fragrant pesto pastas in northern Italy."
+notes: >
+  Known as Cortese de Gavi or just Gavi, which is where the graph grows in Piedmont, Italy. Wines are zesty and lean with green almond notes on the finish.
+also_try: [grechetto, garganega, arneis, grillo, falanghina]

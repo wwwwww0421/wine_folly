@@ -298,7 +298,7 @@ class RegionEntry(BaseModel):
                 for err in e.errors():
                     loc = '.'.join(str(p) for p in err['loc'])
                     input_val = err.get('input', '')
-                    errors.append(f"{region_id} -> field '{loc}: {err['msg']}")
+                    errors.append(f"{region_id} -> field '{loc}: {err['msg']} \n\n")
                 continue
 
             for region in entry.flatten():

@@ -26,6 +26,66 @@
       known_for: [chardonnay]
       notes: "Unoaked, steely Chardonnay from Kimmeridgian limestone."
 
+- id: south-west-france
+  name: South West France (Sud-Ouest)
+  country: France
+  climate: continental
+  known_for: [tannat, malbec, manseng, sauvignon-blanc, fer-servadou]
+  notes: "A diverse, rugged, and fiercely independent wine mosaic stretching from the Atlantic coast to the Pyrenees and the Massif Central, celebrated for producing rustic, deeply concentrated, and character-driven red, white, and sweet wines."
+  subregions:
+    - id: cahors
+      name: Cahors
+      known_for: [malbec, tannat, merlot]
+      notes: "The legendary historical homeland of Malbec situated along the meandering Lot River, featuring ancient limestone plateaus and rich alluvial terraces that yield dark, structured, and age-worthy red wines with earthy elegance."
+
+- id: cotes-du-rhone
+  name: Côtes du Rhône
+  country: France
+  climate: mediterranean
+  known_for: [grenache, syrah, mourvedre, viognier, marsanne, roussanne]
+  notes: "France's historic and expansive regional appellation stretching along the magnificent Rhône River, famed for delivering sun-drenched, generous, and food-friendly red, white, and rosé wines defined by warm stony soils and cooling mistral winds."
+  subregions:
+    - id: cotes-du-rhone-villages
+      name: Côtes du Rhône Villages
+      known_for: [grenache, syrah, mourvedre]
+      notes: "A tier of superior designated communes offering stricter yield limits and greater terroir complexity, producing deeper, more structured, and spicy red wines with excellent aging potential."
+
+- id: vouvray
+  name: Vouvray
+  country: France
+  climate: continental
+  known_for: [chenin-blanc]
+  notes: "The legendary Loire Valley appellation dedicated entirely to Chenin Blanc, situated on the right bank of the Loire River where chalky *tuffeau* limestone soils allow the grape to express remarkable versatility, ranging from bone-dry and sparkling to lusciously sweet, ageless dessert wines."
+  subregions:
+    - id: cote-de-vouvray
+      name: Côte de Vouvray
+      known_for: [chenin-blanc]
+      notes: "The prime south-facing slopes overlooking the Loire River, featuring deep *tuffeau* limestone and clay-silica soils that produce rich, opulent, and vibrantly acidic Chenin Blancs with exceptional aging potential."
+
+- id: montlouis-sur-loire
+  name: Montlouis-sur-Loire
+  country: France
+  climate: continental
+  known_for: [chenin-blanc]
+  notes: "The charming neighbor of Vouvray situated directly across the Loire River on a plateau between the Loire and Cher rivers, dedicated exclusively to Chenin Blanc and celebrated for crafting vibrant, expressive dry, off-dry, and world-class sparkling wines."
+  subregions:
+    - id: plateau-de-montlouis
+      name: Plateau de Montlouis
+      known_for: [chenin-blanc]
+      notes: "The elevated plateau featuring distinct *perruches* (clay-silica flints) and *tuffeau* limestone subsoils that yield exceptionally mineral-driven, razor-sharp, and aromatic Chenin Blancs with striking natural acidity."
+
+- id: savennieres
+  name: Savennières
+  country: France
+  climate: continental
+  known_for: [chenin-blanc]
+  notes: "An elite and historic wine region on the right bank of the Loire River in Anjou, renowned for producing some of the world's most complex, powerful, and age-worthy dry Chenin Blancs, defined by dramatic schist, sandstone, and volcanic soils."
+  subregions:
+    - id: savennieres-roche-aux-moines
+      name: Savennières-Roche-aux-Moines
+      known_for: [chenin-blanc]
+      notes: "A prestigious, steep south-facing historic vineyard enclave overlooking the Loire, rooted in hard, fractured volcanic and schist soils that yield monumental, intensely concentrated, and mineral-driven dry white wines."
+
 - id: bordeaux
   name: Bordeaux
   country: France
@@ -123,6 +183,30 @@
       known_for: [syrah, grenache, carignan]
       notes: "Rugged, wild hillsides featuring diverse schist, limestone, and sandstone soils yielding deep, spicy, and earthy Mediterranean red blends."
 
+- id: provence
+  name: Provence
+  country: France
+  climate: mediterranean
+  known_for: [grenache, cinsault, syrah, tibouron, mourvedre, rolle]
+  notes: "France's sun-baked, lavender-scented southern paradise, cradled by the Mediterranean Sea and rugged limestone mountains, world-renowned as the global capital of pale, crisp, and elegant rosé wines."
+  subregions:
+    - id: cotes-de-provence
+      name: Côtes de Provence
+      known_for: [grenache, cinsault, syrah, tibouron, rolle]
+      notes: "The largest and most famous appellation stretching across varied schist and limestone terroirs, crafting iconic, refreshingly delicate pink wines with herbal, citrus, and red-berry aromatics."
+
+- id: limoux
+  name: Limoux
+  country: France
+  climate: mediterranean
+  known_for: [chardonnay, mauzac, chenin-blanc, pinot-noir]
+  notes: "An ancient southern French wine region nestled in the foothills of the Pyrenees in the upper Aude Valley, celebrated as the historic birthplace of sparkling wine (Blanquette de Limoux) crafted centuries before Champagne, alongside stellar still Chardonnays."
+  subregions:
+    - id: haut-vallee-de-l-aude
+      name: Haute Vallée de l'Aude
+      known_for: [chardonnay, chenin-blanc, pinot-noir]
+      notes: "The highest, coolest, and most altitude-driven sector of the appellation, featuring limestone and clay soils swept by Atlantic winds, producing exceptionally vibrant, crisp, and mineral-driven sparkling and still white wines."
+
 - id: nemea
   name: Nemea
   country: Greece
@@ -204,6 +288,18 @@
       name: Dominio de Valdepusa
       known_for: [cabernet-sauvignon, syrah, petit-verdot]
       notes: "A prestigious, single-estate Vino de Pago located near Toledo, pioneering international grape varieties on limestone-clay soils with great success."
+
+- id: puglia
+  name: Puglia
+  country: Italy
+  climate: mediterranean
+  known_for: [primitivo, negroamaro, nero-di-troia, fiano, falanghina]
+  notes: "The sun-drenched 'heel' of Italy's boot, sweeping between the Adriatic and Ionian seas, where ancient limestone soils, cooling sea breezes, and intense Mediterranean sunshine produce rich, generous, and deeply fruit-forward red and white wines."
+  subregions:
+    - id: salento
+      name: Salento
+      known_for: [negroamaro, primitivo, malvasia-nera]
+      notes: "The sun-baked peninsula forming the very heel of Puglia, featuring iron-rich red clay (*terra rossa*) over limestone bedrock that yields legendary, velvety, and spice-laden red wines."
 
 - id: valencia
   name: Valencia
@@ -368,6 +464,18 @@
       known_for: [chardonnay, pinot-noir, cabernet-sauvignon, zinfandel]
       notes: "Directly west of Napa, Sonoma features a cooler, wilder, and more expansive landscape heavily shaped by Pacific fog currents, renowned for world-class cool-climate Burgundian varieties and bold, spicy old-vine Zinfandels."
 
+- id: madera
+  name: Madera
+  country: United States
+  climate: continental-mediterranean
+  known_for: [zinfandel, muscat, chardonnay, touriga-nacional, grenache]
+  notes: "One of California's oldest and warmest wine regions situated in the heart of the San Joaquin Valley, renowned for its sun-drenched climate, sandy-loam soils, and a historic legacy of producing rich, full-bodied table wines as well as world-class dessert and fortified wines."
+  subregions:
+    - id: madera-east
+      name: East Madera Foothills
+      known_for: [zinfandel, barbera, sangiovese]
+      notes: "The elevated eastern boundary approaching the Sierra Nevada foothills, featuring rockier, well-drained soils and cooler nighttime mountain air that yield more balanced, vibrant, and structured red wines."
+
 - id: emilia-romagna
   name: Emilia-Romagna
   country: Italy
@@ -464,6 +572,18 @@
       known_for: [syrah, malbec]
       notes: "The central irrigated lowlands producing rich, velvety, and fruit-forward reds, with Syrah shining as the local specialty."
 
+- id: patagonia
+  name: Patagonia
+  country: Argentina
+  climate: continental
+  known_for: [malbec, pinot-noir, merlot, chardonnay, semillon]
+  notes: "Argentina's southernmost wine frontier, stretching across windswept, dramatic plains fed by crystal-clear glacial rivers from the Andes, where intense sunshine, constant cooling winds, and high diurnal ranges create exceptionally fresh, vibrant, and elegant wines."
+  subregions:
+    - id: alto-valle-del-rio-negro
+      name: Alto Valle del Río Negro
+      known_for: [malbec, pinot-noir, merlot, semillon]
+      notes: "The historic heart of Patagonian winemaking flanking the Río Negro, featuring ancient sandy-loam and alluvial soils that yield refined, highly aromatic, and complex wines with striking natural acidity."
+
 - id: western-australia
   name: Western Australia
   country: Australia
@@ -475,6 +595,49 @@
       name: Margaret River
       known_for: [cabernet-sauvignon, merlot]
       notes: "Coastal gravelly loam soils producing refined, structured, and age-worthy Cabernet-dominant blends with signature blackcurrant and bay leaf notes."
+
+- id: riverland
+  name: Riverland
+  country: Australia
+  climate: mediterranean
+  known_for: [chardonnay, shiraz, cabernet-sauvignon, sauvignon-blanc, colombard]
+  notes: "Australia's largest and most prolific wine-producing region, stretching along the winding Murray River in South Australia, where abundant sunshine and controlled irrigation produce fruit-forward, approachable, and versatile table and fortified wines."
+  subregions:
+    - id: loxton
+      name: Loxton
+      known_for: [shiraz, chardonnay, cabernet-sauvignon]
+      notes: "A key viticultural hub along the Murray River featuring deep, red sandy-loam soils and consistent sunshine, yielding generous, plush, and fruit-driven red and white wines."
+
+- id: riverina
+  name: Riverina
+  country: Australia
+  climate: mediterranean
+  known_for: [semillon, chardonnay, shiraz, cabernet-sauvignon, nero-d-avola]
+  notes: "Australia's second-largest wine-producing region located in New South Wales around Griffith, famous for producing generous, fruit-driven table wines and world-renowned, luscious botrytis sweet wines enabled by warm sunshine and regulated irrigation."
+
+- id: adelaide-hills
+  name: Adelaide Hills
+  country: Australia
+  climate: maritime
+  known_for: [sauvignon-blanc, chardonnay, pinot-noir, shiraz]
+  notes: "One of Australia's premier cool-climate wine regions nestled in the Mount Lofty Ranges just east of Adelaide, characterized by high elevations, diverse meso-climates, and ancient soils that produce vibrant, elegant, and finely structured wines."
+  subregions:
+    - id: piccadilly-valley
+      name: Piccadilly Valley
+      known_for: [chardonnay, pinot-noir]
+      notes: "The cool, misty heartland of the region situated in an ancient amphitheater of hills, featuring weathered sandstone and clay soils over yellow-brown podzolic earth that yield world-class, complex, and mineral-driven sparkling and still wines."
+
+- id: yarra-valley
+  name: Yarra Valley
+  country: Australia
+  climate: maritime
+  known_for: [chardonnay, pinot-noir, shiraz, cabernet-sauvignon]
+  notes: "Victoria's oldest and most prestigious wine region, nestled along the Yarra River and framed by the Great Dividing Range, renowned for producing world-class, elegant, and complex cool-climate wines."
+  subregions:
+    - id: upper-yarra
+      name: Upper Yarra
+      known_for: [chardonnay, pinot-noir]
+      notes: "The higher-altitude, cooler sector featuring ancient red volcanic and grey loamy soils, yielding exceptionally refined, highly aromatic, and structure-driven Chardonnays and Pinot Noirs."
 
 - id: tuscany
   name: Tuscany (Toscana)
@@ -548,6 +711,18 @@
       known_for: [nerello-mascalese, nerello-capuccio, carricante]
       notes: "Dramatic high-altitude volcanic slopes surrounding Mount Etna, featuring dark basaltic ash soils that yield ethereal, highly mineral, and elegant Pinot Noir-like reds and vibrant, complex whites."
 
+- id: trentino
+  name: Trentino
+  country: Italy
+  climate: continental
+  known_for: [chardonnay, pinot-grigio, teroldego, marzemino, trentodoc]
+  notes: "A stunning alpine wine region nestled in northern Italy's Adige River valley, where dramatic mountain peaks shield vineyards from cold northern winds while warm valley breezes and extreme diurnal shifts produce exceptionally crisp, aromatic, and structured wines."
+  subregions:
+    - id: val-di-cembra
+      name: Val di Cembra
+      known_for: [chardonnay, muller-thurgau, riesling]
+      notes: "A breathtakingly steep, terraced side valley carved by the Avisio River, featuring porphyry volcanic soils and extreme high-altitude vineyards that yield world-class, ultra-refined, and mineral-driven sparkling and white wines."
+
 - id: napa-valley
   name: Napa Valley
   country: United States
@@ -578,6 +753,30 @@
   climate: continental
   known_for: [riesling, cabernet-franc, chardonnay, pinot-noir]
   notes: "The premier wine producer of the American Northeast, defined by cool climates, glacial lake influences, and a strong mastery of cold-hardy vinifera and native hybrids."
+
+- id: ohio
+  name: Ohio
+  country: United States
+  climate: continental
+  known_for: [catawba, riesling, chardonnay, vidal-blanc, cabernet-franc]
+  notes: "One of America's oldest winemaking states, centered along the scenic Lake Erie shoreline and the Ohio River valley, where moderating lake effects, diverse glacial soils, and a rich history of viticulture produce aromatic whites, sparkling styles, and unique native-hybrid wines."
+  subregions:
+    - id: grand-river-valley
+      name: Grand River Valley
+      known_for: [riesling, chardonnay, pinot-gris, vidal-blanc]
+      notes: "Ohio's premier microclimate appellation situated along the Grand River near Lake Erie, featuring deep sandy-loam and silt soils heavily moderated by lake breezes that yield exceptional, well-balanced cool-climate white wines."
+
+- id: pennsylvania
+  name: Pennsylvania
+  country: United States
+  climate: continental
+  known_for: [riesling, cabernet-franc, chardonnay, vidal-blanc, chambourcin]
+  notes: "One of America's historic brewing and winemaking cradles, shaped by the rolling ridges of the Appalachian Mountains, diverse microclimates around Lake Erie, and ancient shale-limestone soils that produce vibrant, food-friendly vinifera and hybrid wines."
+  subregions:
+    - id: lehigh-valley
+      name: Lehigh Valley
+      known_for: [riesling, cabernet-franc, chardonnay, traminette]
+      notes: "A premier viticultural area in eastern Pennsylvania featuring rich limestone-influenced soils and protective mountain ridges that moderate temperatures, yielding exceptionally balanced, aromatic, and mineral-driven white and red wines."
 
 - id: villany
   name: Villány
@@ -621,6 +820,13 @@
   known_for: [sauvignon-blanc, chardonnay, pinot-noir, syrah]
   notes: "A pioneering cool-climate wine region carved into coastal hills between Santiago and the Pacific Ocean, heavily influenced by morning fogs and chilled ocean breezes."
 
+- id: bio-bio
+  name: Bío Bío Valley
+  country: Chile
+  climate: maritime
+  known_for: [pinot-noir, chardonnay, riesling, sauvignon-blanc, moscatel]
+  notes: "One of Chile's most exciting southern frontier wine regions, centered along the rushing Bío Bío River, characterized by high rainfall, strong winds, and ancient volcanic and alluvial soils that yield vibrant, highly aromatic, and intensely crisp cool-climate wines."
+
 - id: cachapoal
   name: Cachapoal Valley
   country: Chile
@@ -633,12 +839,115 @@
       known_for: [carmenere, cabernet-sauvignon, sauvignon-blanc]
       notes: "The historic heartland for Carménère in Chile, located along the Cachapoal River with deep alluvial soils and a cooling maritime breeze from the Rapel reservoir, yielding exceptionally complex, velvety, and spice-driven red wines."
 
+- id: limari-valley
+  name: Limarí Valley
+  country: Chile
+  climate: desert
+  known_for: [chardonnay, pinot-noir, syrah, sauvignon-blanc]
+  notes: "A stunning and unique northern Chilean wine region situated on the edge of the Atacama Desert, heavily cooled by morning coastal fogs (*camanchaca*) and Pacific breezes, and defined by ancient, chalk-rich alluvial soils that impart a distinct, flinty minerality."
+  subregions:
+    - id: limari-coastal
+      name: Coastal Limarí
+      known_for: [chardonnay, pinot-noir]
+      notes: "The western sector sitting just kilometers from the ocean, featuring unique marine-fossil-laced clay and calcium carbonate soils that produce world-class, intensely linear, saline, and mineral-driven Chardonnays and Pinot Noirs."
+
 - id: stellenbosch
   name: Stellenbosch
   country: South Africa
   climate: mediterranean
   known_for: [cabernet-sauvignon, chenin-blanc, syrah, pinotage, bordeaux-blends]
   notes: "South Africa's historic and prestigious winemaking capital, featuring dramatic mountain ranges, ancient weathered soils, and cooling maritime breezes."
+
+- id: orange-river
+  name: Orange River
+  country: South Africa
+  climate: continental
+  known_for: [colombard, chenin-blanc, chardonnay, shiraz, souzao]
+  notes: "South Africa's northernmost and most sprawling wine region, stretching along the banks of the mighty Orange River in a desert landscape, where abundant sunshine and controlled drip-irrigation yield fresh, accessible, and fruit-forward table wines as well as exceptional fortified styles."
+  subregions:
+    - id: upington
+      name: Upington
+      known_for: [colombard, chenin-blanc, shiraz]
+      notes: "The primary hub of the region featuring deep alluvial and sandy soils alongside intense sunlight, producing large volumes of vibrant, easy-drinking white and red wines."
+
+- id: olifants-river
+  name: Olifants River
+  country: South Africa
+  climate: mediterranean
+  known_for: [chenin-blanc, colombard, sauvignon-blanc, pinotage, shiraz]
+  notes: "A diverse and historic wine region in South Africa's Western Cape stretching along the banks of the Olifants River, where cooling Atlantic breezes from the nearby coast moderate a warm, arid climate, producing fresh, vibrant, and accessible wines."
+
+- id: robertson
+  name: Robertson
+  country: South Africa
+  climate: mediterranean
+  known_for: [chardonnay, sauvignon-blanc, shiraz, cabernet-sauvignon, chenin-blanc]
+  notes: "Known as the 'Valley of Vines and Roses', Robertson is one of South Africa's premier limestone-rich wine valleys, situated along the Breede River where cool mountain breezes and chalky soils produce world-class, elegant Chardonnays and structured reds."
+  subregions:
+    - id: bonniemvale
+      name: Bonnievale
+      known_for: [chardonnay, shiraz, cabernet-sauvignon]
+      notes: "A warm yet river-cooled subregion featuring rich alluvial and lime-infused soils that yield plush, fruit-forward, and generously textured red and white wines."
+
+- id: paarl
+  name: Paarl
+  country: South Africa
+  climate: mediterranean
+  known_for: [chenin-blanc, shiraz, cabernet-sauvignon, pinotage, chardonnay]
+  notes: "One of South Africa's historic and largest wine-producing regions, nestled beneath massive granite domes along the Berg River, renowned for producing bold, rich, and deeply structured red and white wines."
+  subregions:
+    - id: simonsberg-paarl
+      name: Simonsberg-Paarl
+      known_for: [cabernet-sauvignon, shiraz, merlot, chardonnay]
+      notes: "The prestigious mountain ward flanking the Simonsberg massif, featuring well-drained decomposed granite and weathered sandstone soils that yield world-class, elegant, and age-worthy red wines."
+
+- id: breedekloof
+  name: Breedekloof
+  country: South Africa
+  climate: mediterranean
+  known_for: [chenin-blanc, sauvignon-blanc, pinotage, shiraz, chardonnay]
+  notes: "A dynamic and picturesque wine region situated in a dramatic mountain basin along the Breede River east of Worcester, characterized by dramatic shale and sandstone soils, high diurnal temperature ranges, and a pioneering spirit that champions world-class, expressive Chenin Blancs."
+  subregions:
+    - id: slanghoek
+      name: Slanghoek
+      known_for: [chenin-blanc, chardonnay, sauvignon-blanc, pinotage]
+      notes: "A stunning, secluded valley cradled by the Slanghoek Mountains, featuring weathered granite and alluvial soils swept by cooling mountain winds, yielding exceptionally aromatic, fresh, and complex white and red wines."
+
+- id: swartland
+  name: Swartland
+  country: South Africa
+  climate: mediterranean
+  known_for: [chenin-blanc, syrah, grenache, carignan, cinsault]
+  notes: "South Africa's rebel wine heartland, located north of Cape Town, famed for its rugged landscapes, old dry-farmed bush vines, and ancient decomposed granite and shale soils that yield avant-garde, intensely concentrated, and deeply expressive natural-leaning wines."
+  subregions:
+    - id: malmesbury
+      name: Malmesbury
+      known_for: [chenin-blanc, syrah, cinsault]
+      notes: "The historic southern core of the region characterized by rolling wheat and vineyard hills, featuring deep, weathered Malmesbury shale soils that produce structured, savory, and powerfully complex red and white wines."
+
+- id: franschhoek
+  name: Franschhoek Valley
+  country: South Africa
+  climate: mediterranean
+  known_for: [semillon, chardonnay, sauvignon-blanc, syrah, cabernet-sauvignon]
+  notes: "One of South Africa's oldest and most picturesque wine valleys, cradled by the dramatic Drakenstein and Franschhoek Mountains, featuring ancient sandstone and weathered granite soils that produce rich, elegant, and historically acclaimed wines."
+  subregions:
+    - id: franschhoek-mountain-slopes
+      name: Franschhoek Mountain Slopes
+      known_for: [semillon, syrah, chardonnay]
+      notes: "Steep, elevated vineyard sites benefiting from cool mountain shadows, high diurnal temperature variation, and poor, well-draining soils that yield concentrated, highly structured, and age-worthy white and red wines."
+
+- id: elgin
+  name: Elgin
+  country: South Africa
+  climate: maritime
+  known_for: [chardonnay, sauvignon-blanc, pinot-noir, syrah]
+  notes: "South Africa's coolest wine region, situated in a high-altitude inland plateau surrounded by dramatic mountain ranges and cooled by Atlantic breezes from nearby Walker Bay, producing exceptionally elegant, balanced, and vibrant wines."
+  subregions:
+    - id: elgin-valley-plateau
+      name: Elgin Valley Plateau
+      known_for: [chardonnay, pinot-noir, sauvignon-blanc]
+      notes: "The central basin featuring weathered Bokkeveld shale and clay soils, characterized by high diurnal shifts and cool mist cover that yield world-class, highly aromatic, and complex cool-climate wines."
 
 - id: ontario
   name: Ontario
@@ -767,3 +1076,15 @@
       name: Guerrouane Sud
       known_for: [carignan, syrah, grenache]
       notes: "The sun-baked southern sector featuring clay-limestone and stony soils that yield concentrated, spicy, and deeply structured Mediterranean-style red wines."
+
+- id: marmara
+  name: Marmara Region
+  country: Turkey
+  climate: maritime-continental
+  known_for: [papazkarasi, adakarasi, cabernet-sauvignon, chardonnay, merlot]
+  notes: "Turkey's historic bridge between Europe and Asia, surrounded by the Marmara, Black, and Aegean seas, featuring rolling hills and moderated maritime climates that yield elegant, food-friendly, and aromatic wines."
+  subregions:
+    - id: thrace
+      name: Thrace (Trakya)
+      known_for: [cabernet-sauvignon, merlot, chardonnay, papazkarasi]
+      notes: "The European part of the region, benefiting from cooling breezes and well-drained clay-limestone soils, renowned as modern Turkey's premier hub for structured red blends and expressive whites."

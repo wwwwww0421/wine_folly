@@ -1,0 +1,28 @@
+id: colombard
+name: Colombard
+wine_type: [light-white]                     # red | white | rosé | sparkling | dessert
+grapes: [colombard]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 1
+tannin: 1
+acidity: 5
+alcohol: 3
+flavours: [green-apple, honeydew, white-peach, lemongrass, almond]
+regions: [orange-river, olifants-river, robertson, madera, south-west-france, riverland, riverina]
+countries: [south-africa, usa, france, australia, israel, brazil, thailand, uruguay, spain]
+popularity: common
+price_band: "£"                   # price range £ - ££££
+serving:
+  temp_c: [7, 12]
+  glass: white-glass               # burgundy | bordeaux | universal | flute | ...
+  decant_minutes: 0
+  cellar_years: [1, 3]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [light-dish]
+    strength: great           # perfect | great | good
+    why: "Good pairing with light flavour dishes like sushi and salad."
+notes: >
+  Even though it's planted around the world, you won't find many Colombard wines. This grape is preferred for brandy production, traditionally in Armagnac, France.
+also_try: [sauvignon-blanc, fruilano, picpoul]
