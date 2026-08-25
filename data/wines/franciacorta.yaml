@@ -1,0 +1,32 @@
+id: franciacorta
+name: Franciacorta
+wine_type: [sparkling]
+grapes: [pinot-blanc, chardonnay, pinot-noir, erbamat]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 3
+tannin: 1
+acidity: 5
+alcohol: 2
+flavours: [lemon, peach, white-cherry, almond, toast]
+regions: [lombardy]
+countries: [italy]
+price_band: "££££"
+serving:
+  temp_c: [3, 7]
+  glass: flute-glass
+  decant_minutes: 0
+  cellar_years: [5, 20]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [soft-cheese]
+    strength: perfect           # perfect | great | good
+    why: "Perfectly match with soft ripened cheese like Brie, dried fruite like apricot and cherry, and roasted, salted nuts."
+notes: >
+  A region Lombardy, Italy, dedicated to the production of traditional method sparkling wine using the same grapes as Champagne with the addition of Pinot Blanc.
+  Riserva - Vintage dated. Aged 67 months.
+  Millesimato - Vintage dated. Aged 37 months.
+  Rosé - Chardonnay, Pinot Blanc, Pinot Noir (upto 10% Erbamat) in a rosé style.
+  Satèn - Chardonnay with up to 50% Pinot Blanc made in a Brut style.
+  Franciacorta - Chardonnay, Pinot Blanc, and Pinot Noir (upto 10% Erbamat)
+also_try: [champagne, cremant, cava, metodo-classico, cap-classique]

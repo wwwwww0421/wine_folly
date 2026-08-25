@@ -1,0 +1,37 @@
+id: cremant
+name: Crémant
+wine_type: [sparkling]
+grapes: [pinot-noir, pinot-blanc, pinot-gris, chardonnay, chennin-blanc, mauzac, cabernet-franc, merlot, clairette, jacquere, altesse, chasselas, poulsard]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 3
+tannin: 1
+acidity: 5
+alcohol: 2
+flavours: [lemon, white-peach, white-cherry, almond, toast]
+countries: [france]
+price_band: "£££"                   # price range £ - ££££
+serving:
+  temp_c: [3, 7]
+  glass: flute-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [salty-fried]
+    strength: good           # perfect | great | good
+    why: "Safe choice"
+  - tags: [soft-cheese]
+    strength: perfect           # perfect | great | good
+    why: "Never went wrong"
+notes: >
+  A group of sparkling wines found mostly in France made using the traditional sparkling wine method (same as Champagne), but often specialising in a regional variety.
+  Crémant D'Alsace - Pinot Noir, Pinot Blanc, Pinot Gris, Chardonnay, etc.
+  Crémant De Limoux - Chardonnay, Chenin Blanc, Mauzac, etc.
+  Crémant De Bourgogne - Chardonnay, Pinot Noir, etc.
+  Crémant De Loire - Chenin Blanc, Cabernet Franc, Pinot Noir.
+  Crémant De Bourdeaux - Merlot, etc.
+  Crémant De Die - Clairette
+  Crémant De Savoie - Jacquère, Altesse, Chasselas, etc.
+  Crémant Du Jura - Chardonnay, Pinot Noir, Poulsard, etc.
+also_try: [champagne, cava, sekt, franciacorta, metodo-classico]

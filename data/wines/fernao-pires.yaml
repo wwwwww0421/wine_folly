@@ -1,0 +1,28 @@
+id: fernao-pires
+name: Fernão Pires
+wine_type: [sparkling, light-white, aromatic-white]
+grapes: [fernao-pires]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 3
+tannin: 1
+acidity: 2
+alcohol: 3
+flavours: [lime, peach, orange-blossom, honeysuckle, clove]
+regions: [beira-atlantico, lisboa, transmontano, tejo]
+countries: [portugal, south-africa]
+popularity: uncommon
+price_band: "£"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 3]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [light-dish]
+    strength: great           # perfect | great | good
+    why: "Great with herbal note dishes like cucumber dill salad, classic California sushi rolls, or Vietnamese fresh spring rolls."
+notes: >
+  A top white graph in Portugal that delivers wines with high-intensity floral aromas and medium body. It's been blended successfully with Viognier.
+also_try: [torrontes, moschofilero, grasevina, muller-thurgau, pinot-blanc]

@@ -1,0 +1,28 @@
+id: dolcetto
+name: Dolcetto
+wine_type: [medium-red]
+grapes: [dolcetto]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 2
+tannin: 4
+acidity: 2
+alcohol: 3
+flavours: [plum, blackberry, cocoa, black-pepper, violet]
+regions: [piedmont]
+countries: [italy, usa, australia, argentina, new-zealand]
+popularity: uncommon
+price_band: "££"                   # price range £ - ££££
+serving:
+  temp_c: [15, 20]
+  glass: red-glass
+  decant_minutes: 30
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [roasted-meat-rich]
+    strength: perfect           # perfect | great | good
+    why: "Classic Italian food wine best with richer, darker meats and vegetable dishes with roasted tomatoes, aubergine, and garlic."
+notes: >
+  Dolcetto mean "little sweet one" in Northern Italy. Surprisingly, wines are typically tart with loads of black fruit flavours and occasionally aggressive tannins.
+also_try: [blaufrankisch, bonarda, merlot, montepulciano, malbec]

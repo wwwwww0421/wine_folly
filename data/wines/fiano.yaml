@@ -1,0 +1,28 @@
+id: fiano
+name: Fiano
+wine_type: [light-white]
+grapes: [fiano]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 1
+tannin: 1
+acidity: 3
+alcohol: 3
+flavours: [honeydew, asian-pear, hazelnut, orange-peel, pine]
+regions: [campania, sicily]
+countries: [italy, australia]
+popularity: rare
+price_band: "££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [5, 10]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [light-meat]
+    strength: great           # perfect | great | good
+    why: "Matches well with savoury glased light meats like orange-rosemary roasted chicken and soy-glazed salmon."
+notes: >
+  A fascinating, age-worthy Southern Italian white with a rich, almost waxy texture. Easy to find labelled as Fiano di Avellino from Campania.
+also_try: [vermentino, rkatsiteli, savatiano, grenache-blanc, roussanne]

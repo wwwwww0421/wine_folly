@@ -1,0 +1,28 @@
+id: falanghina
+name: Falanghina
+wine_type: [light-white, full-white]
+grapes: [falanghina]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 1
+tannin: 1
+acidity: 4
+alcohol: 3
+flavours: [lemon, citrus-blossom, peach, honey, almond]
+regions: [campania, lazio]
+countries: [italy]
+popularity: rare
+price_band: "££"                   # price range £ - ££££
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [shellfish]
+    strength: perfect           # perfect | great | good
+    why: "Meant for scallops, prawns, clams."
+notes: >
+  2 unique varieties (Falanghina Beneventano and F. Flegrea) define Campania's signiture white. Wines are zesty and minerally with peach and almond notes.
+also_try: [marsanne, roussanne, garganega, chardonnay, trebbiano-toscano]

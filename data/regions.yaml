@@ -267,6 +267,18 @@
       known_for: [greco]
       notes: "Sulfur- and tuff-rich volcanic soils give this crisp white its signature intense minerality, bright citrus profile, and a dry, almond-bitter finish."
 
+- id: lazio
+  name: Lazio
+  country: Italy
+  climate: mediterranean
+  known_for: [malvasia-puntinata, trebbiano, cesanese, sangiovese, bellone]
+  notes: "The historic heartland of Italy surrounding Rome, stretching from volcanic hills to the Tyrrhenian coast, celebrated for its ancient winemaking heritage and vibrant, refreshing white wines alongside expressive indigenous reds."
+  subregions:
+    - id: castelli-romani
+      name: Castelli Romani
+      known_for: [malvasia-puntinata, trebbiano, bellone]
+      notes: "The scenic volcanic hills just south of Rome featuring mineral-rich, porous soils that yield iconic, aromatic, and zesty white wines with distinctive crisp freshness."
+
 - id: castilla-la-mancha
   name: Castilla-La Mancha
   country: Spain
@@ -416,6 +428,30 @@
       known_for: [ramisco, malvasia-fina]
       notes: "One of Europe's most unique and extreme historic appellations, featuring ungrafted, own-rooted vines planted directly in deep, shifting coastal sand dunes (*chão de areia*), producing exceptionally tannic, long-lived, and saline red wines."
 
+- id: beira-atlantico
+  name: Beira Atlântico
+  country: Portugal
+  climate: maritime
+  known_for: [bical, arinto, cerceal, baga, touriga-nacional]
+  notes: "A dynamic and maritime-influenced Portuguese wine region located in the historical Bairrada heartland, characterized by wet, cool Atlantic winds, clay-limestone soils, and legendary, high-acid, age-worthy red and sparkling wines."
+  subregions:
+    - id: bairrada-classico
+      name: Bairrada
+      known_for: [baga, bical, arinto]
+      notes: "The historic core of the region featuring rolling hills with clay-limestone and sandy soils that yield structured, tannin-rich Baga reds and world-class, crisp traditional-method sparkling wines."
+
+- id: transmontano
+  name: Trás-os-Montes
+  country: Portugal
+  climate: continental
+  known_for: [tinta-amarela, touriga-franca, bastardo, malvasia-fina, viosinho]
+  notes: "A rugged, remote, and mountainous wine region in northeastern Portugal bordered by Spain, where extreme continental temperatures, high altitudes, and ancient schist and granite soils produce bold, structured red wines and vibrant, aromatic whites."
+  subregions:
+    - id: chaves
+      name: Chaves
+      known_for: [tinta-amarela, bastardo, malvasia-fina]
+      notes: "The northernmost subregion near the Spanish border, featuring cool mountain elevations and granitic-alluvial soils that yield elegant, fresh, and distinctively aromatic red and white wines."
+
 - id: setubal
   name: Setúbal Peninsula
   country: Portugal
@@ -499,6 +535,30 @@
       name: Franciacorta
       known_for: [chardonnay, pinot-noir, pinot-blanc]
       notes: "Italy's premier sparkling wine region, crafted via the traditional method (refermentation in the bottle) to produce rich, creamy, and complex bubbles."
+
+- id: friuli-venezia-giulia
+  name: Friuli-Venezia Giulia
+  country: Italy
+  climate: maritime
+  known_for: [friulano, ribolla-gialla, pinot-grigio, sauvignon-blanc, merlot]
+  notes: "A premier northeastern Italian wine region nestled between the Alps and the Adriatic Sea, celebrated for producing some of the world's finest, most aromatic, and structured white wines alongside world-class skin-contact orange wines and elegant reds."
+  subregions:
+    - id: collio
+      name: Collio Goriziano
+      known_for: [friulano, ribolla-gialla, sauvignon-blanc, pinot-bianco]
+      notes: "A breathtaking hilly border region featuring iconic *ponca* (marl and sandstone flysch) soils that impart striking minerality, depth, and elegance to iconic white wines."
+
+- id: mount-etna
+  name: Mount Etna (Etna)
+  country: Italy
+  climate: mediterranean
+  known_for: [nerello-mascalese, nerello-capuccio, carricante, catarratto]
+  notes: "Europe's highest active volcano, located on the island of Sicily, where dramatic high-altitude terraced vineyards planted in dark, mineral-rich volcanic ash yield hauntingly elegant, Burgundian-style reds and intensely vibrant, saline white wines."
+  subregions:
+    - id: etna-contrade
+      name: Etna Contrade
+      known_for: [nerello-mascalese, carricante]
+      notes: "The historic cru designations (contrade) scattered across the volcano's slopes, featuring unique microclimates and ancient basaltic lava soils that produce exceptionally expressive, terroir-driven single-vineyard wines."
 
 - id: sardinia
   name: Sardinia
@@ -666,18 +726,6 @@
       name: San Gimignano
       known_for: [vernaccia]
       notes: "Medieval tower town producing Tuscany's most famous historic white, offering crisp citrus, almond, and distinct mineral character."
-
-- id: friuli-venezia-giulia
-  name: Friuli-Venezia Giulia
-  country: Italy
-  climate: continental
-  known_for: [friulano, pinot-grigio, sauvignon-blanc, ribolla-gialla]
-  notes: "Northeast Italy's premier white wine sanctuary nestled against the Alps and Slovenia, famous for crisp, aromatic, and textured whites."
-  subregions:
-    - id: collio
-      name: Collio
-      known_for: [friulano, ribolla-gialla, sauvignon-blanc]
-      notes: "Hilly border region with marl and sandstone soils yielding rich, complex, and mineral-driven whites."
 
 - id: veneto
   name: Veneto
@@ -850,6 +898,30 @@
       name: Coastal Limarí
       known_for: [chardonnay, pinot-noir]
       notes: "The western sector sitting just kilometers from the ocean, featuring unique marine-fossil-laced clay and calcium carbonate soils that produce world-class, intensely linear, saline, and mineral-driven Chardonnays and Pinot Noirs."
+
+- id: coquimbo
+  name: Coquimbo Region
+  country: Chile
+  climate: mediterranean
+  known_for: [syrah, chardonnay, pinot-noir, pedro-ximenez, moscatel]
+  notes: "Chile's dramatic northernmost wine frontier, where the dry Atacama Desert meets the Pacific Ocean, featuring cool coastal fog, intense sunshine, and ancient rocky soils that yield mineral-driven, vibrant, and highly expressive cool-climate wines."
+  subregions:
+    - id: elqui-valley
+      name: Elqui Valley
+      known_for: [syrah, chardonnay, sauvignon-blanc, pedro-ximenez]
+      notes: "A stunning, high-altitude valley stretching from the Andes down to the Pacific, featuring rocky alluvial and quartz soils that produce striking, intensely aromatic, and savory cool-climate Syrahs and crisp whites."
+
+- id: sur-chile
+  name: South Region (Región del Sur)
+  country: Chile
+  climate: maritime
+  known_for: [pinot-noir, chardonnay, sauvignon-blanc, pais, riesling]
+  notes: "Chile's verdant and high-rainfall southern wine heartland, stretching across lush river valleys and ancient volcanic landscapes where cooling maritime influences and historic bush vines produce vibrant, high-acid, and characterful cool-climate wines."
+  subregions:
+    - id: itata-valley
+      name: Itata Valley
+      known_for: [pais, cinsault, muscat-of-alexandria, riesling]
+      notes: "One of Chile's oldest and most dynamic historic winemaking regions, featuring rolling hills with weathered granitic soils and dry-farmed bush vines that yield rustic, juicy, and expressive natural-style red and white wines."
 
 - id: stellenbosch
   name: Stellenbosch

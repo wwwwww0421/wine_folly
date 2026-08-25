@@ -1,0 +1,28 @@
+id: friuano
+name: Friuano
+wine_type: [light-white]
+grapes: [friuano, sauvignonasse]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 1
+tannin: 1
+acidity: 5
+alcohol: 3
+flavours: [grapefruit, green-pear, white-peach, tarragon, crushed-gravel]
+regions: [fiuili-venezia-giulia, veneto, coquimbo-region, sur-chile, mendoza]
+countries: [italy, chile, argentina, slovenia, usa]
+popularity: uncommon
+price_band: "££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [vegetable-driven]
+    strength: great           # perfect | great | good
+    why: "Great choice alongside salads, roasted green vegetables and more challenging pairing such as green beans, artichokes, cabbage, and Brussel sprouts"
+notes: >
+  Offically called Sauvignonasse, this lean, dry white wine is often mistaken for Sauvignon Blanc but bolder fruit and herbal flavours.
+also_try: [sauvignon-blanc, melon, verdejo, albarino, furmint]

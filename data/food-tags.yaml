@@ -27,7 +27,10 @@
   aliases: [roast beef, rack of lamb, prime rib, roast pork, leg of lamb, roasted venison, sunday roast]
 - id: light-meat
   label: Light & white meats
-  aliases: [chicken breast, roast chicken, turkey breast, veal, pork tenderloin, quail, pheasant]
+  aliases: [chicken breast, roast chicken, turkey breast, roast turkey, veal, pork tenderloin, quail, pheasant]
+- id: salty-appetizer
+  label: Salty appetizers & finger foods
+  aliases: [salted nuts, pretzels, olives, popcorn, cured meats, crostini with tapenade]
 
 # --- fish & seafood: lean / oily / cured / shellfish ---
 - id: fish-lean
@@ -70,15 +73,18 @@
   aliases: [pad thai, pho, green curry, som tam, banh mi, spring rolls, lemongrass chicken, pad see ew]
 - id: light-dish
   label: Light Dish
-  aliases: [sushi, salad]
+  aliases: [sushi, salad, california-sushi-rolls, spring-rolls, summer-rolls]
 - id: peanut-butter
   label: Peanut butter dishes & pairings
   aliases: [peanut butter, peanut sauce, satay, peanut butter cookies, pad thai sauce, peanut butter cups]
+- id: soft-cheese
+  label: Soft cheeses
+  aliases: [brie, camembert, goat cheese, feta, ricotta, cream cheese, burrata, reblochon]
 
 # --- vegetables & sweets ---
 - id: vegetable-driven
   label: Vegetable-driven dishes
-  aliases: [roasted vegetables, ratatouille, grilled zucchini, asparagus, mushroom risotto, stuffed peppers]
+  aliases: [roasted vegetables, ratatouille, grilled zucchini, asparagus, mushroom risotto, stuffed peppers, roasted red pepper, sun-dried tomato, green beans, artichokes, cabbage, brussel sprout]
 - id: chocolate-desserts
   label: Rich chocolate desserts
   aliases: [chocolate truffles, ganache, chocolate mousse, dark chocolate, molten lava cake]
