@@ -217,7 +217,7 @@
     - id: nemea-valley-floor
       name: Valley Floor (Zone A)
       known_for: [agiorgitiko]
-      notes: "Warmer, lower-elevation flatlands producing plush, juicy, and fruit-forward wines with soft tannins and generous dark berry flavors."
+      notes: "Warmer, lower-elevation flatlands producing plush, juicy, and fruit-forward wines with soft tannins and generous dark berry flavours."
     - id: nemea-mid-slopes
       name: Mid-Slopes (Zone B)
       known_for: [agiorgitiko]
@@ -737,7 +737,7 @@
     - id: valpolicella
       name: Valpolicella
       known_for: [corvina, rondinella, corvinone]
-      notes: "Hilly limestone valleys north of Verona; home to fresh daily reds as well as powerhouse Amarone, crafted by air-drying grapes to concentrate sugars and rich flavors."
+      notes: "Hilly limestone valleys north of Verona; home to fresh daily reds as well as powerhouse Amarone, crafted by air-drying grapes to concentrate sugars and rich flavours."
     - id: prosecco
       name: Prosecco (Conegliano Valdobbiadene)
       known_for: [glera, prosecco]

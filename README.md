@@ -27,7 +27,7 @@ from my phone or laptop, powered by a dataset I author myself as I read.
 2. **Wine → Knowledge:** open any wine style → taste profile, serving
    temperature, glassware, decanting, cellaring, regions, price band,
    and my notes on where to buy it.
-3. **Explore:** browse by region, grape, body, or flavor; full-text
+3. **Explore:** browse by region, grape, body, or flavour; full-text
    search across everything.
 
 ### Guiding principles
