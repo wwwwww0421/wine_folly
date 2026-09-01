@@ -1,0 +1,28 @@
+id: grechetto
+name: Grechetto
+wine_type: [light-white]
+grapes: [grechetto]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 4
+tannin: 1
+acidity: 4
+alcohol: 3
+flavours: [white-peach, honeydew, strawnerry, wildflowers, seashell]
+regions: [orvieto, umbria, lazio]
+countries: [italy]
+popularity: rare
+price_band: "££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [fish-oily]
+    strength: perfect           # perfect | great | good
+    why: "Excellemt match with tuna and other steak-like sea fare."
+notes: >
+  Primary graph in Italy's well-known Orviato wines from Umbria and Lazio. Even though the wines are white, if you close your eyes, they alomost taste like dry rosé.
+also_try: [fruilano, albarino, chenin-blanc, garganega, melon]

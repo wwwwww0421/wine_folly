@@ -45,7 +45,7 @@ Glass = Literal[
 
 PriceBand = Literal['£', '££', '£££', '££££']
 
-Climate = Literal["cool", "continental", "continental-mediterranean", "continental-sub-mediterranean", "mediterranean", "maritime", "maritime-continental", "diverse", "continental-desert", "continental-monsoon", "high-altitude desert", "desert", "monsoon"]
+Climate = Literal["cool", "continental", "continental-mediterranean", "continental-sub-mediterranean", "mediterranean", "maritime", "mediterranean-maritime", "maritime-continental", "diverse", "continental-desert", "continental-monsoon", "high-altitude desert", "desert", "monsoon", "mediterranean-continental"]
 
 class Strength(str, Enum):
     PERFECT = 'perfect'

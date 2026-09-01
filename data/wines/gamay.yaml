@@ -1,0 +1,31 @@
+id: gamay
+name: Gamay
+wine_type: [rosé, light-red]
+grapes: [gamay]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 2
+tannin: 1
+acidity: 4
+alcohol: 2
+flavours: [pomegranate, blackberry-bramble, violet, potting-soil, banana]
+regions: [beaujolais, loire-valley, valais, vaud, geneva, ontario, marmara, umbria]
+countries: [france, switzerland, canada, turkey, italy, uruguay, usa, hungary, luxembourg, south-africa, brazil, new-zealand]
+popularity: common
+price_band: "££"
+serving:
+  temp_c: [12, 15]
+  glass: aroma-collector
+  decant_minutes: 30
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [fish-oily]
+    strength: great           # perfect | great | good
+    why: "Pair with all manner of dishes from sweet-and-sour salman."
+  - tags: [beef-stroganoff]
+    strength: good
+    why: "to beef stroganoff or even sesame tempeh."
+notes: >
+  A fruity, floral, and sometimes earthy light-bodied red that is the main variety planted in Beaujolais. Outside of France, Gamay has a tiny but devoted following.
+also_try: [zweigelt, schiava, pinot-noir, valpolicella, frappato]

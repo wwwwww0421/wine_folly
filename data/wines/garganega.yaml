@@ -1,0 +1,28 @@
+id: garganeaga
+name: garganeaga
+wine_type: [light-white, dessert]
+grapes: [garganeaga]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 1
+tannin: 1
+acidity: 4
+alcohol: 3
+flavours: [peach, honeydew,tangerine, marjoram, saline]
+regions: [soave, gambellara, sicily]
+countries: [italy, argentina]
+popularity: uncommon
+price_band: "£"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [3, 7]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [light-meat]
+    strength: great           # perfect | great | good
+    why: "Pairing Soave with lighter meats, tofu or fish and season with citrus-tarragon dressing and other aromatic green herbs."
+notes: >
+  An important Italian white that's loved for its lean, dry style and the rich tangerine and toasted almond notes it gains as it ages. Garganega is the main grape of Soave.
+also_try: [chenin-blanc, grechetto, albarino, friulano, arnes]

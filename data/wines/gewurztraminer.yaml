@@ -1,0 +1,28 @@
+id: gewurztraminer
+name: Gewürztraminer
+wine_type: [aromatic-white]
+grapes: [gewurztraminer]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 4
+tannin: 1
+acidity: 1
+alcohol: 4
+flavours: [lychee, rose, grapefruit, tangerine, ginger]
+regions: [mendoza, salta, alto-adige, monterey, sanoma, mendocino, columbia-gorge, british-columbia]
+countries: [argentina, moldova, italy, usa, ukraine, australia, bulgaria, czech-republic, canada, new-zealand, romania, slovakia, germnay, austria, spain, france]
+popularity: uncommon
+price_band: "££"
+serving:
+  temp_c: [3, 7]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [spiced-cuisine]
+    strength: great           # perfect | great | good
+    why: "Paired with a fuller body make of Gewürztraminer a great partner to Indian and Moroccan cuisine."
+notes: >
+  Treasured for its intense floral aromas, Gewürztraminer has thrived for centuries in Europe. Wines are best enjoyed in their youth when acidity is highest.
+also_try: [moschofilero, muscat-blanc, torrontes, cserszegi-fuszeres, muller-thurgau]

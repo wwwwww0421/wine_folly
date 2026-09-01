@@ -27,10 +27,13 @@
   aliases: [roast beef, rack of lamb, prime rib, roast pork, leg of lamb, roasted venison, sunday roast]
 - id: light-meat
   label: Light & white meats
-  aliases: [chicken breast, roast chicken, turkey breast, roast turkey, veal, pork tenderloin, quail, pheasant]
+  aliases: [chicken breast, roast chicken, turkey breast, roast turkey, veal, pork tenderloin, quail, pheasant, tofu]
 - id: salty-appetizer
   label: Salty appetizers & finger foods
   aliases: [salted nuts, pretzels, olives, popcorn, cured meats, crostini with tapenade]
+- id: beef-stroganoff
+  label: Beef Stroganoff & creamy mushroom dishes
+  aliases: [beef stroganoff, stroganoff, mushroom stroganoff, creamy beef pasta]
 
 # --- fish & seafood: lean / oily / cured / shellfish ---
 - id: fish-lean

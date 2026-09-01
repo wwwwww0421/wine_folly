@@ -1,0 +1,28 @@
+id: grenache
+name: Grenache
+wine_type: [medium-red]
+grapes: [grenache]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 3
+acidity: 3
+alcohol: 5
+flavours: [stewed-starberry, grilled-plum, leather, dried-herbs, blood-orange]
+regions: [cotes-du-rhone, languedoc-roussillon, provence, sardinia, central-coast, paso-robles, columbia-valley, barossa-valley, mclaren-vale, swartland]
+countries: [france, spain, italy, algeria, usa, tunisia, australia, morocco, south-africa]
+popularity: popular
+price_band: "£££"
+serving:
+  temp_c: [15, 20]
+  glass: red-glass
+  decant_minutes: 30
+  cellar_years: [5, 10]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [grilled]
+    strength: great           # perfect | great | good
+    why: "Match with roasted meats and vegetables that include extoic spices like cumin, allspice, and Asian five-spice."
+notes: >
+  Grenache produces rich, flavourful red wines as well as deep ruby-tinted rosé. Grenache is the most important variety in Châteauneuf-du-Pape and the Rhône / GSM Blend.
+also_try: [cariganan, zinfandel, merlot, valpolicella]
