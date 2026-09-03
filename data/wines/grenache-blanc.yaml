@@ -1,0 +1,28 @@
+id: grenache-blanc
+name: Grenache Blanc
+wine_type: [light-white, full-white]
+grapes: [grenache-blanc]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 1
+tannin: 1
+acidity: 2
+alcohol: 4
+flavours: [yellow-plum, pear, lemon-zest, honeysuckle, toast]
+regions: [cotes-du-rhone, languedoc-roussillon, provence, catalonia, aragon, paso-robles, columbia-valley, swartland]
+countries: [france, spain, usa, south-africa, croatia]
+popularity: uncommon
+price_band: "£££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [fish-oily]
+    strength: great           # perfect | great | good
+    why: "Great choice with more steak-like fish including tuna steaks, swordfish, grilled snapper, and mahi mahi"
+notes: >
+  Grenache Blanc is a colour mutation of Grenache that produces full-bodied white wines that are sometimes aged in oak to delivery toasty, creamy, dill-like flavours.
+also_try: [roussanne, savatiano, rkatsiteli, viura, garganega]

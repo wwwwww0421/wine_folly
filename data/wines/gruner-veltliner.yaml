@@ -1,0 +1,31 @@
+id: gruner-veltliner
+name: Grüner Veltliner
+wine_type: [sparkling, light-white, full-white]
+grapes: [gruner-veltliner]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 2
+tannin: 1
+acidity: 5
+alcohol: 3
+flavours: [yellow-apple, pear, asparagus, white-pepper, flint]
+regions: [lower-austria, vienna]
+countries: [austria, slovakia, hungary, czech-republic, italy, argentina, germany, romania, usa]
+popularity: uncommon
+price_band: "£££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [light-meat]
+    strength: great           # perfect | great | good
+    why: "Very versatile food wine. With light meat and seafood like tarragon chicken and sashimi"
+  - tags: [light-dish]
+    strength: great
+    why: "Good with sashimi."
+notes: >
+  Austria's most important wine is produced in myriad of styles, the most popular of which are lean, herbaceous, and peppery wines with mouth-watering acidity.
+also_try: [sauvignon-blanc, vinho-verde, vermentino, friulano, verdejo]

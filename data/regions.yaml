@@ -1374,3 +1374,27 @@
       name: Le Mandement
       known_for: [chasselas, gamay, pinot-noir, gamaret]
       notes: "The largest contiguous wine-producing area in Switzerland, nestled between the Rhône river and the Jura foothills, featuring deep gravelly-clay soils that produce well-structured, fruit-forward reds and crisp, elegant whites."
+
+- id: niederosterreich
+  name: Lower Austria (Niederösterreich)
+  country: Austria
+  climate: continental
+  known_for: [gruner-veltliner, riesling, zweigelt, pinot-noir, chardonnay]
+  notes: "Austria's largest and most important wine region, stretching along the Danube and its tributaries north and west of Vienna, where dramatic thermal swings between warm Pannonian days and cool northern forest nights, combined with ancient loess, primary rock, and limestone soils, produce world-class, precise, and intensely mineral-driven white and red wines."
+  subregions:
+    - id: wachau
+      name: Wachau
+      known_for: [gruner-veltliner, riesling]
+      notes: "The breathtaking steep-terraced valley along the Danube featuring primary crystalline rock (gneiss and granite) soils and dramatic river-reflected solar warmth that yield some of the world's most powerful, complex, and age-worthy dry white wines."
+
+- id: vienna
+  name: Vienna (Wien)
+  country: Austria
+  climate: continental
+  known_for: [gruner-veltliner, riesling, weissburgunder, chardonnay, gemischter-satz]
+  notes: "A unique global capital of winemaking where thriving vineyards are planted directly within the city limits, sheltered by the Vienna Woods and warmed by the Pannonian basin, producing fresh, aromatic white wines anchored by the traditional field blend known as Wiener Gemischter Satz."
+  subregions:
+    - id: nussberg
+      name: Nussberg
+      known_for: [riesling, weissburgunder, gemischter-satz]
+      notes: "Vienna's premier steep hillside vineyard zone overlooking the Danube, featuring shallow limestone, marl, and volcanic soils that yield mineral-driven, elegant, and exceptionally complex white wines."

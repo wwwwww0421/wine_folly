@@ -1,0 +1,32 @@
+id: ice-wine
+name: Ice Wine
+wine_type: [dessert]
+grapes: [riesling, gruner-veltliner, vidal-blanc, gewurztraminer, chenin-blanc, cabernet-franc]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 5
+tannin: 1
+acidity: 5
+alcohol: 2
+flavours: [pineapple, lemon-curd, honeysuckle, apricot, lychee]
+countries: [canada, germany, austria, usa]
+price_band: "££££"
+serving:
+  temp_c: [7, 12]
+  glass: dessert-glass
+  decant_minutes: 0
+  cellar_years: [5, 10]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [creamy-desserts]
+    strength: perfect           # perfect | great | good
+    why: "Perfect with fruit tarts, cheesecake, ice cream."
+  - tags: [soft-cheese]
+    strength: perfect
+    why: "Also perfect with soft and pungent cheeses like Brie and Camembert."
+notes: >
+  A late-harvest sweet wine that can only be made when grapes naturally freeze in the vineyard. Popular varieties include Riesling, Vidal Blanc, and Cabernet Franc.
+  To be labelled Ice Wine, grapes must be picked and pressed while frozen naturally. This only happens in cool climates where temperatures get below -7ºC in the late-harvest period.
+  Because the juice is so sweet, fermentations are quite long, taking about 2-6 months.
+  Ice Wines have low alcohol and high sweetness 10% ABV and 160-220g/L residual sugar.
+also_try: [sauternes, furmint, late-harvest-riesling]

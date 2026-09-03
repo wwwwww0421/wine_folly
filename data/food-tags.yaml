@@ -76,13 +76,19 @@
   aliases: [pad thai, pho, green curry, som tam, banh mi, spring rolls, lemongrass chicken, pad see ew]
 - id: light-dish
   label: Light Dish
-  aliases: [sushi, salad, california-sushi-rolls, spring-rolls, summer-rolls]
+  aliases: [sushi, salad, california-sushi-rolls, spring-rolls, summer-rolls, sashimi]
 - id: peanut-butter
   label: Peanut butter dishes & pairings
   aliases: [peanut butter, peanut sauce, satay, peanut butter cookies, pad thai sauce, peanut butter cups]
 - id: soft-cheese
   label: Soft cheeses
   aliases: [brie, camembert, goat cheese, feta, ricotta, cream cheese, burrata, reblochon]
+- id: creamy-desserts
+  label: Creamy desserts
+  aliases: [fruit tarts, cheesecake, ice cream]
+- id: aged-cured-meats-cheeses
+  label: Aged & cured meats and cheeses
+  aliases: [prosciutto di parma, parmigiano-reggiano, parmesan, aged cheddar, ibérico ham, pecorino, manchego, bresaola, carbonara]
 
 # --- vegetables & sweets ---
 - id: vegetable-driven

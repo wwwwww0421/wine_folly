@@ -1,0 +1,45 @@
+# Wine Folly pairing chart, transcribed as test cases.
+# Add a row whenever the book states a pairing; the suite then checks the
+# engine agrees. Cases naming a wine you haven't written yet SKIP, so this
+# file doubles as a study to-do list.
+#
+#   query : what a person would actually type
+#   expect: wine id that must appear
+#   rank  : it must land within the top N results (default 3)
+#   note  : where in the book / why
+
+- query: bacalhau
+  expect: assyrtiko
+  rank: 1
+  note: "High-acid volcanic white vs salt cod"
+
+- query: oysters
+  expect: assyrtiko
+  rank: 3
+  note: "Briny minerality with raw shellfish"
+
+- query: ribeye
+  expect: bordeaux-blend
+  rank: 1
+  note: "Classic tannin-cuts-fat contrast"
+
+- query: t-bone
+  expect: agiorgitiko
+  rank: 3
+  note: "Greece's plush red also handles grilled beef"
+
+- query: spanish olives
+  expect: agiorgitiko
+  rank: 3
+  note: "Fruit-forward red for salty tapas"
+
+# --- not written yet: these skip until the wine YAML exists -------------
+- query: truffle cheddar
+  expect: nebbiolo
+  rank: 3
+  note: "Earthy tar/truffle congruence + tannin vs fat — WF p.142"
+
+- query: goat cheese
+  expect: sauvignon-blanc
+  rank: 2
+  note: "Herbaceous white with fresh chevre"

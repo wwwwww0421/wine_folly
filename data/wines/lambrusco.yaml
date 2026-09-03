@@ -1,0 +1,37 @@
+id: lambrusco
+name: Lambrusco
+wine_type: [sparkling, rosé, light-red]
+grapes: [lambrusco]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 4
+tannin: 2
+acidity: 4
+alcohol: 2
+flavours: [strawberry, blackberry, rhubarb, hibiscus, potting-soil]
+regions: [emilia-romagna]
+countries: [italy, usa]
+popularity: uncommon
+price_band: "£"
+serving:
+  temp_c: [7, 12]
+  glass: red-glass
+  decant_minutes: 0
+  cellar_years: [1, 3]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [tomato-sauce]
+    strength: great           # perfect | great | good
+    why: "Goes well with everything from pizza to burgers"
+  - tags: [aged-cured-meats-cheeses]
+    strength: perfect
+    why: "Authentic way to pair with Proscuitto di Parma and Parmagiano-Reggiano."
+notes: >
+  Meaning `wild grape`. A family of 8 closely related grapes native to Italy. Wines are typically sparkling and range from dry to sweet.
+  Lambrusco di Sorbara tastes of orange blossom, mandarin orange, cherry, violet, watermelon.
+  Lambrusco Grasparossa tastes of blackcurrant, blueberry, oregano, cocoa powder, and cultured cream.
+
+  Secco - Dry wines with floral or herbal notes.
+  Semisecco - Just off-dry styles with more fruitiness.
+  Amabile and Dolce - Noticeably sweet styles, great for pairing with dessert, particularly milk chocolate.
+also_try: [schiava, brachetto-d-acqui, zweigelt, concord]
