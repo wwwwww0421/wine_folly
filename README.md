@@ -277,21 +277,21 @@ same results for the same query — that's a test in itself.
   succeeds cleanly otherwise.
 
 **Week 2 — Pairing lookup engine**
-- [ ] `engine.py`: alias resolution → tag match → ranking → whys
-- [ ] Similarity function on the attribute vector
-- [ ] `query.py` CLI (`query "truffle cheddar"`, `similar nebbiolo`)
+- [x] `engine.py`: alias resolution → tag match → ranking → whys
+- [x] Similarity function on the attribute vector
+- [x] `query.py` CLI (`query "truffle cheddar"`, `similar nebbiolo`)
 - 🎯 *Milestone:* `python -m src.query "truffle cheddar"` prints ranked
   wines **with my hand-written reasons**.
 
 **Week 3 — Test against the book**
-- [ ] Transcribe 15–20 pairings from Wine Folly's charts into
+- [x] Transcribe 15–20 pairings from Wine Folly's charts into
   `test_pairings.py` (e.g. *Cabernet ↔ ribeye must rank top-3*)
-- [ ] Fill gaps the tests reveal (missing tags, missing pairings)
+- [x] Fill gaps the tests reveal (missing tags, missing pairings)
 - 🎯 *Milestone:* green pytest run against the book's own pairings.
 
 **Week 4 — Grow the dataset**
-- [ ] Expand to ~20 wines while reading; vocabulary grows as needed
-- [ ] `export.py`: JSON bundles + **XLSX audit export**; eyeball the grid
+- [x] Expand to ~20 wines while reading; vocabulary grows as needed
+- [x] `export.py`: JSON bundles + **XLSX audit export**; eyeball the grid
   for inconsistent attribute scores
 - 🎯 *Milestone:* attribute numbers audited & consistent across dataset.
 
@@ -347,7 +347,7 @@ same results for the same query — that's a test in itself.
 ## 8. Getting Started
 
 ```bash
-git init sommelier && cd sommelier
+git init wine_folly && cd wine_folly
 python -m venv .venv && source .venv/bin/activate
 pip install pydantic pyyaml jinja2 pytest openpyxl
 # Week 1 starts here: write schema.py, then your first nebbiolo.yaml

@@ -16,10 +16,11 @@ from typing import Annotated, ClassVar, Optional, Literal
 
 from pydantic import BaseModel, ConfigDict, field_validator, model_validator, Field
 
-
 Slug = Annotated[str, Field(pattern=r"^[a-z0-9]+(?:[-'][a-z0-9]+)*$")]
 
-Scale = Annotated[int, Field(ge=1, le=5)] ## The 5 scale chart
+Scale = Annotated[int, Field(ge=1, le=5)]  ## The 5 scale chart
+
+SCALE_DIMS: tuple[str, ...] = ("body", "sweetness", "tannin", "acidity", "alcohol")
 
 
 WineType = Literal[
@@ -35,43 +36,61 @@ WineType = Literal[
 ]
 
 Glass = Literal[
-    'flute-glass',
-    'white-glass',
-    'red-glass',
-    'aroma-collector',
-    'oversized',
-    'dessert-glass',
+    "flute-glass",
+    "white-glass",
+    "red-glass",
+    "aroma-collector",
+    "oversized",
+    "dessert-glass",
 ]
 
-PriceBand = Literal['£', '££', '£££', '££££']
+PriceBand = Literal["£", "££", "£££", "££££"]
 
-Climate = Literal["cool", "continental", "continental-mediterranean", "continental-sub-mediterranean", "mediterranean", "maritime", "mediterranean-maritime", "maritime-continental", "diverse", "continental-desert", "continental-monsoon", "high-altitude desert", "desert", "monsoon", "mediterranean-continental"]
+Climate = Literal[
+    "cool",
+    "continental",
+    "continental-mediterranean",
+    "continental-sub-mediterranean",
+    "mediterranean",
+    "maritime",
+    "mediterranean-maritime",
+    "maritime-continental",
+    "diverse",
+    "continental-desert",
+    "continental-monsoon",
+    "high-altitude desert",
+    "desert",
+    "monsoon",
+    "mediterranean-continental",
+]
+
 
 class Strength(str, Enum):
-    PERFECT = 'perfect'
-    GREAT = 'great'
-    GOOD = 'good'
+    PERFECT = "perfect"
+    GREAT = "great"
+    GOOD = "good"
 
     @property
     def score(self) -> int:
-        return {'perfect': 3, 'great': 2, 'good': 1}[self.value]
+        return {"perfect": 3, "great": 2, "good": 1}[self.value]
 
 
 class Popularity(str, Enum):
-    RARE = 'rare'
-    UNCOMMON = 'uncommon'
-    COMMON = 'common'
-    POPULAR = 'popular'
+    RARE = "rare"
+    UNCOMMON = "uncommon"
+    COMMON = "common"
+    POPULAR = "popular"
 
     @property
     def score(self) -> int:
-        return {'rare': 4, 'uncommon': 3, 'popular': 2, 'common': 1}[self.value]
-    
+        return {"rare": 4, "uncommon": 3, "popular": 2, "common": 1}[self.value]
+
 
 ### Base Models
 
+
 class Serving(BaseModel):
-    model_config = ConfigDict(extra='forbid')
+    model_config = ConfigDict(extra="forbid")
 
     temp_c: Optional[tuple[int, int]] = None
     glass: Optional[Glass] = None
@@ -88,7 +107,8 @@ class Serving(BaseModel):
 
 class Pairings(BaseModel):
     """No empty stubs allowed! Every field here is required and non-empty."""
-    model_config = ConfigDict(extra='forbid')
+
+    model_config = ConfigDict(extra="forbid")
 
     tags: Annotated[list[str], Field(min_length=1)]
     strength: Strength
@@ -96,15 +116,17 @@ class Pairings(BaseModel):
 
 
 class Avoid(BaseModel):
-    model_config = ConfigDict(extra='forbid')
+    model_config = ConfigDict(extra="forbid")
 
     tags: Annotated[list[str], Field(min_length=1)]
     why: Annotated[str, Field(min_length=1)]
 
+
 ## Entities
 
+
 class Wine(BaseModel):
-    model_config = ConfigDict(extra='forbid')
+    model_config = ConfigDict(extra="forbid")
 
     ## Core Info
     id: Slug
@@ -135,7 +157,6 @@ class Wine(BaseModel):
     ## Similarity
     also_try: list[Slug] = []
 
-
     @field_validator("notes")
     @classmethod
     def _strip_wrapping_quotes(cls, v: Optional[str]) -> Optional[str]:
@@ -150,7 +171,6 @@ class Wine(BaseModel):
 
         return v
 
-
     @field_validator("flavours")
     @classmethod
     def _tidy_flavours(cls, v: Optional[str]) -> list[str]:
@@ -160,18 +180,16 @@ class Wine(BaseModel):
 
         return cleaned
 
-
-    @model_validator(mode='after')
+    @model_validator(mode="after")
     def _dont_try_itself(self) -> "Wine":
         if self.id in self.also_try:
             raise ValueError("also_try cannot include itself!")
 
         return self
 
-
     ## Helpers for build.py
 
-    STUDY_FIELDS: ClassVar[tuple[str, ...]] = ("body", "sweetness", "tannin", "acidity", "alcohol", "serving", "also_try")
+    STUDY_FIELDS: ClassVar[tuple[str, ...]] = (*SCALE_DIMS, "serving", "notes")
 
     def missing_info(self) -> list[str]:
         """Fields still unstudied - powers the completeness report."""
@@ -180,15 +198,16 @@ class Wine(BaseModel):
             gaps.append("pairings")
         return gaps
 
-
     def attribute_vector(self) -> dict[str, int]:
         """
         Known scale attributes only.
 
         Similarity in engine.py compares whichever dimensions two wines SHARE, so gaps degrade gracefully.
         """
-        dims = ('body', 'sweetness', 'tannin', 'acidity', 'alcohol')
-        return {d: v for d in dims if (v := getattr(self, d)) is not None}
+        # dims = ("body", "sweetness", "tannin", "acidity", "alcohol")
+        # return {d: v for d in dims if (v := getattr(self, d)) is not None}
+        return {d: v for d in SCALE_DIMS if (v := getattr(self, d)) is not None}
+
 
 class FoodTag(BaseModel):
     """
@@ -197,7 +216,7 @@ class FoodTag(BaseModel):
     The bridge between food types and wines. Labels are UI heading. Aliases are matched against search input.
     """
 
-    model_config = ConfigDict(extra='forbid')
+    model_config = ConfigDict(extra="forbid")
 
     id: Slug
     label: str = Field(min_length=1)
@@ -236,7 +255,9 @@ class FoodTag(BaseModel):
 
             for a in t.aliases:
                 if a in seen_aliases:
-                    errors.append(f"alias '{a}' is in both '{seen_aliases[a]}'. Please map it to one tag only.")
+                    errors.append(
+                        f"alias '{a}' is in both '{seen_aliases[a]}'. Please map it to one tag only."
+                    )
                 else:
                     seen_aliases[a] = t.id
 
@@ -247,22 +268,24 @@ class FoodTag(BaseModel):
 
 class Region(BaseModel):
 
-    model_config = ConfigDict(extra='forbid')
+    model_config = ConfigDict(extra="forbid")
     id: Slug
     name: str
     country: str
     parent: str | None = None
 
+
 class SubRegion(BaseModel):
-    model_config = ConfigDict(extra='forbid')
+    model_config = ConfigDict(extra="forbid")
 
     id: Slug
     name: str
     known_for: list[Slug] = []
     notes: Optional[str] = None
 
+
 class RegionEntry(BaseModel):
-    model_config = ConfigDict(extra='forbid')
+    model_config = ConfigDict(extra="forbid")
 
     id: Slug
     name: str
@@ -290,14 +313,16 @@ class RegionEntry(BaseModel):
         errors: list[str] = []
 
         for i, raw in enumerate(entries):
-            region_id = raw.get("id", f"index #{i}") if isinstance(raw, dict) else f"index #{i}"
+            region_id = (
+                raw.get("id", f"index #{i}") if isinstance(raw, dict) else f"index #{i}"
+            )
 
             try:
                 entry = RegionEntry.model_validate(raw)
             except ValidationError as e:
                 for err in e.errors():
-                    loc = '.'.join(str(p) for p in err['loc'])
-                    input_val = err.get('input', '')
+                    loc = ".".join(str(p) for p in err["loc"])
+                    input_val = err.get("input", "")
                     errors.append(f"{region_id} -> field '{loc}: {err['msg']} \n\n")
                 continue
 
@@ -336,18 +361,18 @@ if __name__ == "__main__":
 
     for path in targets:
         try:
-            wine = Wine.model_validate(yaml.safe_load(path.read_text(encoding='utf-8')))
+            wine = Wine.model_validate(yaml.safe_load(path.read_text(encoding="utf-8")))
 
         except ValidationError as e:
             print(f"FAIL {path.relative_to(ROOT)}!!!")
             for err in e.errors():
-                loc = '.'.join(str(p) for p in err['loc']) or "(root)"
+                loc = ".".join(str(p) for p in err["loc"]) or "(root)"
                 print(f" - {loc}: {err['msg']}")
 
             continue
 
         print(f"{wine.name} is valid!")
-        
+
         if gaps := wine.missing_info():
             print(f" still to study {', '.join(gaps)}")
 
@@ -356,18 +381,21 @@ if __name__ == "__main__":
     print(f"{len(targets)} wine files are valid.")
 
     try:
-        tags = FoodTag.load_food_tags(yaml.safe_load(FOOD_DIR.read_text(encoding='utf-8')))
+        tags = FoodTag.load_food_tags(
+            yaml.safe_load(FOOD_DIR.read_text(encoding="utf-8"))
+        )
         print("Food Tag Valid!")
     except (ValueError, ValidationError) as e:
         failures += 1
         print(f"FAIL! {e}")
 
     try:
-        reg = RegionEntry._load_regions(yaml.safe_load(REGION_DIR.read_text(encoding='utf-8')))
+        reg = RegionEntry._load_regions(
+            yaml.safe_load(REGION_DIR.read_text(encoding="utf-8"))
+        )
         print("Region File Valid!")
     except (ValueError, ValidationError) as e:
         failures += 1
         print(f"FAIL! {e}")
-
 
     sys.exit(1 if failures else 0)

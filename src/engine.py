@@ -12,7 +12,6 @@ It can answers 4 questions, all of which return objects that carry the ids you'd
 Nothing here knows about HTML. export.py walks these same functions to pre-compute JSON for the offline app, and query.py wraps them for the CLI - one brain, 3 faces.
 """
 
-
 from __future__ import annotations
 
 import json
@@ -23,9 +22,10 @@ import unicodedata
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
+from .schema import SCALE_DIMS
 
 STRENGTH_SCORE = {"perfect": 3.0, "great": 2.0, "good": 1.0}
-SCALE_DIM = {"body", "sweetness", "tannin", "acidity", "alcohol"}
+
 
 def normalise(text: str) -> str:
     """
@@ -33,13 +33,14 @@ def normalise(text: str) -> str:
     """
 
     text = unicodedata.normalize("NFKD", text.lower())
-    text = ''.join(c for c in text if not unicodedata.combining(c))
+    text = "".join(c for c in text if not unicodedata.combining(c))
     return re.sub(r"[^a-z0-9 ]+", " ", text).strip()
 
 
 @dataclass
 class Match:
     """One interpretation of a search box query."""
+
     kind: str
     id: str
     label: str
@@ -56,6 +57,7 @@ class PairedWine:
     flavours: list[str] = field(default_factory=list)
     regions: list[str] = field(default_factory=list)
     also_try: list[str] = field(default_factory=list)
+
 
 @dataclass
 class SimilarWine:
@@ -92,15 +94,13 @@ class Engine:
         self.con = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
         self.con.row_factory = sqlite3.Row
 
-
     def _wine_record(self, wine_id: str) -> dict | None:
         row = self.con.execute(
             "SELECT data FROM wines WHERE id = ?", (wine_id,)
         ).fetchone()
-        if row and row['data']:
-            return json.loads(row['data'] if row else None)
+        if row and row["data"]:
+            return json.loads(row["data"] if row else None)
         return None
-
 
     def _regions_of(self, record: dict) -> list[dict]:
         out = []
@@ -111,7 +111,6 @@ class Engine:
             if r:
                 out.append(dict(r))
         return out
-
 
     def resolve(self, query: str, limit: int = 8) -> list[Match]:
         """
@@ -134,22 +133,27 @@ class Engine:
                 matches.append(Match(kind, rid, label))
 
         for row in self.con.execute(
-            "SELECT a.tag_id, f.label FROM aliases a JOIN food_tags f ON f.id = a.tag_id WHERE a.alias = ?", (q,)
+            "SELECT a.tag_id, f.label FROM aliases a JOIN food_tags f ON f.id = a.tag_id WHERE a.alias = ?",
+            (q,),
         ):
             add("food", row["tag_id"], row["label"])
-
 
         fts_query = " OR ".join(f'"{w}"*' for w in q.split())
         try:
             rows = self.con.execute(
-                "SELECT doc_type, ref_id, rank FROM search_index WHERE search_index MATCH ? ORDER BY rank LIMIT ?", (fts_query, limit * 3),
+                "SELECT doc_type, ref_id, rank FROM search_index WHERE search_index MATCH ? ORDER BY rank LIMIT ?",
+                (fts_query, limit * 3),
             ).fetchall()
         except sqlite3.OperationalError:
             rows = []
 
-        order = {'food': 0, 'wine': 1, 'region': 2}
-        for row in sorted(rows, key=lambda r: order.get(r['doc_type'], 9)):
-            add(row['doc_type'], row['ref_id'], self.label_for(row['doc_type'], row['ref_id']))
+        order = {"food": 0, "wine": 1, "region": 2}
+        for row in sorted(rows, key=lambda r: order.get(r["doc_type"], 9)):
+            add(
+                row["doc_type"],
+                row["ref_id"],
+                self.label_for(row["doc_type"], row["ref_id"]),
+            )
 
         return matches[:limit]
 
@@ -161,7 +165,6 @@ class Engine:
         ).fetchone()
         return row["l"] if row else rid
 
-
     ### Food to Wine Pairing
 
     def pair_food(self, tag_ids: list[str], limit: int = 10) -> list[PairedWine]:
@@ -172,44 +175,55 @@ class Engine:
 
         if not tag_ids:
             return []
-        placeholder = ','.join(["?"] * len(tag_ids))
+        placeholder = ",".join(["?"] * len(tag_ids))
 
         excluded = {
-            r["wine_id"] for r in self.con.execute(
-                f"SELECT wine_id FROM pairings WHERE is_avoid = 1 AND tag_id IN ({placeholder})", tag_ids
+            r["wine_id"]
+            for r in self.con.execute(
+                f"SELECT wine_id FROM pairings WHERE is_avoid = 1 AND tag_id IN ({placeholder})",
+                tag_ids,
             )
         }
 
         acc: dict[str, PairedWine] = {}
         for row in self.con.execute(
-            f"SELECT p.wine_id, w.name, p.tag_id, p.strength, p.why FROM pairings p JOIN wines w ON w.id = p.wine_id WHERE p.is_avoid = 0 AND p.tag_id IN ({placeholder})", tag_ids
+            f"SELECT p.wine_id, w.name, p.tag_id, p.strength, p.why FROM pairings p JOIN wines w ON w.id = p.wine_id WHERE p.is_avoid = 0 AND p.tag_id IN ({placeholder})",
+            tag_ids,
         ):
             if row["wine_id"] in excluded:
                 continue
-            pw = acc.get(row['wine_id'])
+            pw = acc.get(row["wine_id"])
             if pw is None:
-                pw = acc[row['wine_id']] = PairedWine(
-                    wine_id=row['wine_id'], name=row['name'], score=0.0, strength=row['strength'], why=[], matched_tags=[],
+                pw = acc[row["wine_id"]] = PairedWine(
+                    wine_id=row["wine_id"],
+                    name=row["name"],
+                    score=0.0,
+                    strength=row["strength"],
+                    why=[],
+                    matched_tags=[],
                 )
-            pw.score += STRENGTH_SCORE.get(row['strength'], 0.0)
-            pw.matched_tags.append(row['tag_id'])
-            pw.why.append(row['why'])
-            if STRENGTH_SCORE.get(row['strength'], 0) > STRENGTH_SCORE.get(pw.strength, 0):
-                pw.strength = row['strength']
+            pw.score += STRENGTH_SCORE.get(row["strength"], 0.0)
+            pw.matched_tags.append(row["tag_id"])
+            pw.why.append(row["why"])
+            if STRENGTH_SCORE.get(row["strength"], 0) > STRENGTH_SCORE.get(
+                pw.strength, 0
+            ):
+                pw.strength = row["strength"]
 
         for pw in acc.values():
             pw.score += 0.5 * (len(set(pw.matched_tags)) - 1)
             record = self._wine_record(pw.wine_id) or {}
-            pw.flavours = record.get('flavours', [])
+            pw.flavours = record.get("flavours", [])
             pw.regions = self._regions_of(record)
             pw.also_try = record.get("also_try", [])
 
         return sorted(acc.values(), key=lambda p: (-p.score, p.name))[:limit]
 
-    def pair_text(self, query: str, limit: int = 10) -> tuple[list[Match], list[PairedWine]]:
-        foods = [m for m in self.resolve(query) if m.kind == 'food']
+    def pair_text(
+        self, query: str, limit: int = 10
+    ) -> tuple[list[Match], list[PairedWine]]:
+        foods = [m for m in self.resolve(query) if m.kind == "food"]
         return foods, self.pair_food([m.id for m in foods], limit)
-
 
     ### wine -> info
 
@@ -220,19 +234,22 @@ class Engine:
 
         pairs, avoid = [], []
         for row in self.con.execute(
-            "SELECT p.tag_id, p.strength, p.why, p.is_avoid, COALESCE(f.label, p.tag_id) AS label FROM pairings p LEFT JOIN food_tags f ON f.id = p.tag_id WHERE p.wine_id = ?", (wine_id,)
+            "SELECT p.tag_id, p.strength, p.why, p.is_avoid, COALESCE(f.label, p.tag_id) AS label FROM pairings p LEFT JOIN food_tags f ON f.id = p.tag_id WHERE p.wine_id = ?",
+            (wine_id,),
         ):
-            item = {"tag_id": row["tag_id"], "label": row["label"], "why": row['why']}
-            if row['is_avoid']:
+            item = {"tag_id": row["tag_id"], "label": row["label"], "why": row["why"]}
+            if row["is_avoid"]:
                 avoid.append(item)
             else:
                 pairs.append({**item, "strength": row["strength"]})
 
-        pairs.sort(key=lambda p: -STRENGTH_SCORE.get(p['strength'], 0))
+        pairs.sort(key=lambda p: -STRENGTH_SCORE.get(p["strength"], 0))
 
         also_try = []
         for other in record.get("also_try", []):
-            row = self.con.execute("SELECT id, name FROM wines WHERE id = ?", (other,)).fetchone()
+            row = self.con.execute(
+                "SELECT id, name FROM wines WHERE id = ?", (other,)
+            ).fetchone()
             if row:
                 also_try.append(dict(row))
 
@@ -243,22 +260,22 @@ class Engine:
             regions=self._regions_of(record),
             similar=self.similar(wine_id),
             also_try=also_try,
-            flavours=record.get("flavours", [])
+            flavours=record.get("flavours", []),
         )
-
 
     ### region -> wines
     def region_detail(self, region_id: str) -> RegionDetail | None:
         row = self.con.execute(
-            "SELECT id, name, country, parent_id FROM regions WHERE id = ?", (region_id,)
+            "SELECT id, name, country, parent_id FROM regions WHERE id = ?",
+            (region_id,),
         ).fetchone()
         if row is None:
             return None
         region = dict(row)
 
-
         children = {
-            r['id'] for r in self.con.execute(
+            r["id"]
+            for r in self.con.execute(
                 "SELECT id FROM regions WHERE parent_id = ?", (region_id,)
             )
         }
@@ -267,28 +284,35 @@ class Engine:
         wines, flavour_counts = [], {}
 
         for wrow in self.con.execute("SELECT id, name, data FROM wines ORDER BY name"):
-            record = json.loads(wrow['data'])
+            record = json.loads(wrow["data"])
             if not (set(record.get("regions", [])) & wanted):
                 continue
-            wines.append({
-                "id": wrow['id'], 
-                "name": wrow['name'],
-                "flavours": record.get("flavours", []),
-                "wine_type": record.get('wine_type', []),
-            })
+            wines.append(
+                {
+                    "id": wrow["id"],
+                    "name": wrow["name"],
+                    "flavours": record.get("flavours", []),
+                    "wine_type": record.get("wine_type", []),
+                }
+            )
 
             for f in record.get("flavours", []):
                 flavour_counts[f] = flavour_counts.get(f, 0) + 1
 
         siblings = [
-            dict(r) for r in self.con.execute("SELECT id, name FROM regions WHERE country = ? AND id != ?", (region['country'], region_id),)
+            dict(r)
+            for r in self.con.execute(
+                "SELECT id, name FROM regions WHERE country = ? AND id != ?",
+                (region["country"], region_id),
+            )
         ]
-        profile = [f for f, _ in sorted(flavour_counts.items(), key=lambda kv: -kv[1])][:8]
+        profile = [f for f, _ in sorted(flavour_counts.items(), key=lambda kv: -kv[1])][
+            :8
+        ]
         return RegionDetail(region, wines, profile, siblings)
 
-
     ### Similarity & Flavouring Browsing
-    
+
     def similar(self, wine_id: str, limit: int = 5) -> list(SimilarWine):
         """
         Cosine similar over the scale dimensions BOTH wines have, so a missing paramter degrades gracefully instead of crashing.
@@ -298,30 +322,36 @@ class Engine:
         if base is None:
             return []
 
-        base_vec = {d: base[d] for d in SCALE_DIM if base.get(d) is not None}
+        base_vec = {d: base[d] for d in SCALE_DIMS if base.get(d) is not None}
         base_flavours = set(base.get("flavours", []))
         if not base_vec:
             return []
 
         out: list[SimilarWine] = []
-        for row in self.con.execute("SELECT id, name, data FROM wines WHERE id != ?", (wine_id, )):
-            other = json.loads(row['data'])
+        for row in self.con.execute(
+            "SELECT id, name, data FROM wines WHERE id != ?", (wine_id,)
+        ):
+            other = json.loads(row["data"])
             dims = [d for d in base_vec if other.get(d) is not None]
             if not dims:
                 continue
             dot = sum(base_vec[d] * other[d] for d in dims)
-            mag = math.sqrt(sum(base_vec[d] ** 2 for d in dims)) * math.sqrt(sum(other[d] ** 2 for d in dims))
+            mag = math.sqrt(sum(base_vec[d] ** 2 for d in dims)) * math.sqrt(
+                sum(other[d] ** 2 for d in dims)
+            )
             if not mag:
                 continue
 
             shared = sorted(base_flavours & set(other.get("flavours", [])))
-            out.append(SimilarWine(
-                wine_id=row['id'],
-                name=row['name'],
-                similarity=round(dot / mag, 4),
-                shared_dim=dims, 
-                shared_flavours=shared,
-            ))
+            out.append(
+                SimilarWine(
+                    wine_id=row["id"],
+                    name=row["name"],
+                    similarity=round(dot / mag, 4),
+                    shared_dim=dims,
+                    shared_flavours=shared,
+                )
+            )
 
         out.sort(key=lambda s: (-s.similarity, -len(s.shared_flavours), s.name))
         return out[:limit]
@@ -333,15 +363,14 @@ class Engine:
         target = normalise(flavour)
         out = []
         for row in self.con.execute("SELECT id, name, data FROM  wines ORDER BY name"):
-            record = json.loads(row['data'])
+            record = json.loads(row["data"])
             hits = [f for f in record.get("flavours", []) if target in normalise(f)]
             if hits:
-                out.append({'id': row['id'],
-                            'name': row['name'],
-                            'matched_flavours': hits})
+                out.append(
+                    {"id": row["id"], "name": row["name"], "matched_flavours": hits}
+                )
 
         return out[:limit]
-
 
     def all_flavours(self) -> list[dict]:
         """
@@ -349,11 +378,13 @@ class Engine:
         """
         counts: dict[str, int] = {}
         for row in self.con.execute("SELECT data FROM wines"):
-            for f in json.loads(row['data']).get("flavours", []):
+            for f in json.loads(row["data"]).get("flavours", []):
                 counts[f] = counts.get(f, 0) + 1
 
-        return [{"flavour": f, "count": c} for f,c in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))]
-
+        return [
+            {"flavour": f, "count": c}
+            for f, c in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
+        ]
 
     def to_json(self, obj) -> dict:
         """Dataclass -> plain dict, ready for export.py"""
