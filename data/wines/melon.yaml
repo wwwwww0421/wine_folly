@@ -1,0 +1,28 @@
+id: melon
+name: Melon
+wine_type: [light-white]
+grapes: [melon]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 1
+tannin: 1
+acidity: 5
+alcohol: 2
+flavours: [lime, seashell, green-apple, green-pear, bread-dough]
+regions: [muscadet-sevre-et-maine, pays-nantais]
+countries: [france, argentina, usa]
+popularity: uncommon
+price_band: "£"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [5, 20]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [shellfish]
+    strength: perfect           # perfect | great | good
+    why: "Throw some clams or mussels in a pan with little garlic, parsley, butter, and a splash of Melon and you'll find out why this wine is perfect for seafood!"
+notes: >
+  Melon or Melon de Bourgogne is the grape of Muscadet region that pair famously with seafood.
+also_try: [friulano, grechetto, verdejo, chasselas]

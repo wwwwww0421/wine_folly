@@ -1,0 +1,35 @@
+id: merlot
+name: Merlot
+wine_type: [rosé, medium-red, full-red]
+grapes: [merlot]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 4
+acidity: 3
+alcohol: 4
+flavours: [cherry, plum, chocolate, dried-herbs, vanilla]
+regions: [bordeaux, tuscany, veneto, california, washington, catalonia, castilla-la-mancha, navarra, south-west-romania, muntenia, black-sea-bulgaria, danube-plain]
+countries: [france, italy, usa, spain, romania, bulgaria, chile, australia, moldova, south-africa, china, argentina, russia]
+popularity: popular
+price_band: "££"
+serving:
+  temp_c: [15, 20]
+  glass: oversized
+  decant_minutes: 30
+  cellar_years: [5, 20]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [roasted-meat-rich]
+    strength: great           # perfect | great | good
+    why: "Great alongside roasted food like pork shoulder, roasted mushrooms, or braised short ribs."
+  - tags: [spice-accented]
+    strength: good
+    why: "Also try complementing the fruit notes with chimichurri sauce!"
+notes: >
+  Merlot is loved for its boisterous black cherry flavours, supply tannins, and smokey or chocolaty finish. It's often found in a Bordeaux blend with Cabernet Franc.
+
+  Right Bank Bordeaux region tastes cherry, new leather, cedar, incense, bay leaf
+  Columbia Valley region tastes black cherry, boysenberry, chocolate cream, violet, mint
+  North Coast region tastes sweet cherry, sugar plum, baking chocolate, vanilla, desert dust
+also_try: [cabernet-sauvignon, malbec, petit-verdot, montepulciano, valpolicella]

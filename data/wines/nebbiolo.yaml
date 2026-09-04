@@ -1,0 +1,38 @@
+id: nebbiolo
+name: Nebbiolo
+wine_type: [rosé, medium-red, full-red]
+grapes: [nebbiolo]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 5
+acidity: 5
+alcohol: 4
+flavours: [cherry, rose, leather, anise, clay-pot]
+regions: [piedmont, lombardy, california, washington, mendoza]
+countries: [italy, mexico, australia, usa, argentina, uruguay]
+popularity: uncommon
+price_band: "£££"
+serving:
+  temp_c: [12, 15]
+  glass: aroma-collector
+  decant_minutes: 60
+  cellar_years: [5, 25]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [creamy-desserts]
+    strength: great           # perfect | great | good
+    why: "Great match with creamy, cheesy dishes with a high fat content to counteract the wine's natural intense tannin."
+  - tags: [truffle]
+    strength: perfect
+    why: "Dishes like truffle risotto is a revelation."
+  - tags: [stuffed-pasta]
+    strength: great
+    why: "Dishes like butternut ravioli is a revelation."
+notes: >
+  One of Italy's top reds made famous by the Barolo region of Piedmont. It's here where wines deliver both delicate aromas and rigorous tannins the grape is famour for.
+
+  Southern Piedmont region taste of black cherry, spice cake / tar, rose, liquorice, carob.
+  Norhtern Piedmont region taste of sour cherry, rose hip, tobacco leaf, leather, black tea.
+  Valtellina region taste of cranberry, hibiscus, peony, dried herbs, and clove.
+also_try: [xinomavro, aglianico, tempranillo, sangiovese]

@@ -1,0 +1,41 @@
+id: marsala
+name: Marsala
+wine_type: [dessert]
+grapes: [grillo, cattaratto, inzolia, grecanico, nero-d-avola, nerello-mascalese, frappato]
+# --- Wine Folly 1–5 scales ---
+body: 5
+sweetness: 5
+tannin: 1
+acidity: 3
+alcohol: 5
+flavours: [stewed-apricot, vanilla, tamarind, brown-sugar, tobacco]
+regions: [sicily]
+countries: [italy]
+price_band: "££"
+serving:
+  temp_c: [12, 15]
+  glass: dessert-glass
+  decant_minutes: 0
+  cellar_years: [5, 25]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [custard-desserts]
+    strength: great           # perfect | great | good
+    why: "Sweet styles are preferred for desserts such as zabaglione or as a reduction sauce over ice cream."
+notes: >
+  Marsala is a fortified wine from Sicily commly used in cooking to create rich, caramelised sauces, but the higher-quality tiers also make exceptional sipping wines.
+
+  Fine / Fine I.P.: Aged 1 year.
+  Superior: Aged 2 years.
+  Superior Reserve: Aged 4+ years. Not available in sweet.
+  Virgin / Virgen Solera: Aged 5+ years. Only in dry.
+  Virgin Stravecchio / Virgin Reserve: Aged 10+ years. Only in dry.
+
+  Red (Rubino): Rare: A blend made with up to 30% red grapes.
+  Amber (Ambra): A blend of white grapes and cooked grape must (mosto cotto).
+  Gold (Oro): A blend of white grapes. The finest of Marsala styles.
+
+  Dry (Secco): 0-40g/L RS
+  Semi-Sweet (Semisecco): 40-100g/L RS
+  Sweet (Dolce): 100+g/L RS
+also_try: [madeira, palo-cortado-sherry, amontillado-sherry]

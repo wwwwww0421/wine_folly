@@ -1,0 +1,28 @@
+id: negroamaro
+name: Begroamaro
+wine_type: [rosé, medium-red]
+grapes: [negroamaro]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 4
+acidity: 3
+alcohol: 4
+flavours: [black-cherry, black-plum, blackberry, prune, dried-thyme]
+regions: [puglia]
+countries: [italy]
+popularity: uncommon
+price_band: "£"
+serving:
+  temp_c: [15, 20]
+  glass: oversized
+  decant_minutes: 30
+  cellar_years: [5, 10]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [bbq]
+    strength: great           # perfect | great | good
+    why: "With foods like barbecue chicken pizza, pulled pork sandwiches, and teriyaki since caramelised foods seem to bring out the sweetness in Negroamaro."
+notes: >
+  A red wine that grows in abundance in Puglia producing wines with rich black fruit flavours with a distinct finish of dried herbs.
+also_try: [montepulciano, merlot, nero-d-avola, baga]

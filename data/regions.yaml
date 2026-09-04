@@ -22,6 +22,18 @@
       known_for: [malbec, tannat, merlot]
       notes: "The legendary historical homeland of Malbec situated along the meandering Lot River, featuring ancient limestone plateaus and rich alluvial terraces that yield dark, structured, and age-worthy red wines with earthy elegance."
 
+- id: muscadet-sevre-et-maine
+  name: Muscadet Sèvre et Maine
+  country: France
+  climate: maritime
+  known_for: [melon-de-bourgogne]
+  notes: "The largest and most renowned cru of the Muscadet region in the eastern Loire Valley, stretching across rolling hills shaped by the Sèvre and Maine rivers, where granite, schist, and gneiss soils combined with extended aging on fine lees (*sur lie*) produce crisp, saline, and intensely textured white wines."
+  subregions:
+    - id: clisson
+      name: Clisson (Cru Communal)
+      known_for: [melon-de-bourgogne]
+      notes: "A premium sub-appellation situated on warm, well-drained granite and pebble soils along the Sèvre river, yielding powerful, structured, and age-worthy Muscadet with signature notes of ripe citrus and wet stone."
+
 - id: beaujolais
   name: Beaujolais
   country: France
@@ -45,6 +57,30 @@
       name: Côtes du Rhône Villages
       known_for: [grenache, syrah, mourvedre]
       notes: "A tier of superior designated communes offering stricter yield limits and greater terroir complexity, producing deeper, more structured, and spicy red wines with excellent aging potential."
+
+- id: bandol
+  name: Bandol
+  country: France
+  climate: mediterranean
+  known_for: [mourvedre, grenache, cinsault]
+  notes: "A prestigious and rugged coastal wine appellation in Provence stretching across amphitheater-like limestone hills facing the Mediterranean Sea, where intense sunshine, protective maritime breezes, and poor, stony soils allow the late-ripening Mourvèdre grape to achieve extraordinary power, longevity, and complexity."
+  subregions:
+    - id: le-beausset
+      name: Le Beausset
+      known_for: [mourvedre, grenache, cinsault]
+      notes: "An elevated inland sector characterized by rocky, highly calcareous soils and steep slopes that yield deeply structured, intensely aromatic red wines dominated by old-vine Mourvèdre."
+
+- id: corsica
+  name: Corsica
+  country: France
+  climate: mediterranean
+  known_for: [nielluccio, sciaccarellu, vermentino, muscat-petit-grain]
+  notes: "The rugged 'Island of Beauty' in the Mediterranean Sea, where dramatic granite and schist mountain ranges plunge into the sea, creating a diverse mosaic of microclimates and ancient soils that yield distinctive, highly individualistic red, white, and rosé wines."
+  subregions:
+    - id: patrimonio
+      name: Patrimonio
+      known_for: [nielluccio, vermentino, sciaccarellu]
+      notes: "Corsica's premier northern appellation situated on a unique geological amphitheater of limestone and clay-schist soils, yielding deeply structured, savory, and age-worthy red wines led by Nielluccio."
 
 - id: vouvray
   name: Vouvray
@@ -203,25 +239,22 @@
       known_for: [chardonnay, chenin-blanc, pinot-noir]
       notes: "The highest, coolest, and most altitude-driven sector of the appellation, featuring limestone and clay soils swept by Atlantic winds, producing exceptionally vibrant, crisp, and mineral-driven sparkling and still white wines."
 
-- id: nemea
-  name: Nemea
+
+- id: peloponnese
+  name: Peloponnese
   country: Greece
-  climate: mediterranean
-  known_for: [agiorgitiko]
-  notes: "Greece's most celebrated red wine region, located in the northeastern Peloponnese. Its flagship grape, Agiorgitiko, is remarkably versatile, producing everything from approachable, fruit-forward reds to deeply complex, structured bottles capable of decades of aging."
+  climate: mediterranean-continental
+  known_for: [agiorgitiko, moschofilero, mavrodaphne, roditis, assyrtiko]
+  notes: "Greece's premier winemaking peninsula, featuring a dramatic landscape of rugged mountain ranges, high plateaus, and coastal valleys where varied microclimates and ancient limestone-rich soils support a vast array of celebrated indigenous grape varieties."
   subregions:
-    - id: nemea-valley-floor
-      name: Valley Floor (Zone A)
+    - id: nemea
+      name: Nemea
       known_for: [agiorgitiko]
-      notes: "Warmer, lower-elevation flatlands producing plush, juicy, and fruit-forward wines with soft tannins and generous dark berry flavours."
-    - id: nemea-mid-slopes
-      name: Mid-Slopes (Zone B)
-      known_for: [agiorgitiko]
-      notes: "Moderate elevations offering a balance of warmth and cooling breezes, yielding classic, structured wines with good acidity and spicy complexity."
-    - id: nemea-highlands
-      name: Highlands (Zone C)
-      known_for: [agiorgitiko]
-      notes: "Cooler, higher-altitude vineyards (up to 900 meters) producing fresher, more aromatic, and high-acid styles ideal for oak aging."
+      notes: "Greece's most celebrated red wine region, located in the northeastern Peloponnese. Its flagship grape, Agiorgitiko, is remarkably versatile, producing everything from approachable, fruit-forward reds to deeply complex, structured bottles capable of decades of aging."
+    - id: mantineia
+      name: Mantineia
+      known_for: [moschofilero]
+      notes: "A high-altitude, plateau-based wine region in the central Peloponnese surrounded by towering mountains, where cool continental winds, poor sandy-clay soils, and dramatic diurnal shifts create an ideal environment for producing exceptionally aromatic, crisp, and floral white wines."
 
 - id: macedonia
   name: Macedonia (Makedonia)
@@ -242,6 +275,18 @@
       name: Goumenissa
       known_for: [xinomavro, negoska]
       notes: "A slightly warmer enclave where Xinomavro must be co-fermented with at least 20% Negoska, resulting in softer tannins, higher alcohol, and deeper color."
+
+- id: samos
+  name: Samos
+  country: Greece
+  climate: mediterranean
+  known_for: [muscat-blanc-a-petits-grains]
+  notes: "A dramatic, sun-drenched Greek island in the eastern Aegean Sea featuring steep, terraced mountain slopes carved into schist and limestone, where cooling maritime breezes temper the intense heat to produce some of the world's most renowned aromatic, sweet, and dry Muscat wines."
+  subregions:
+    - id: altars-of-vinion
+      name: Vourliotes
+      known_for: [muscat-blanc-a-petits-grains]
+      notes: "An elevated northern mountain subregion featuring steep, poor slate terraces that yield exceptionally concentrated, intensely aromatic, and balanced sweet Muscat wines."
 
 - id: campania
   name: Campania
@@ -278,6 +323,18 @@
       name: Barbaresco
       known_for: [nebbiolo]
       notes: "Nebbiolo's gentler, earlier-drinking side."
+
+- id: abruzzo
+  name: Abruzzo
+  country: Italy
+  climate: mediterranean-continental
+  known_for: [montepulciano, trebbiano-d-abruzzo, pecorino, passerina, cococciola]
+  notes: "A rugged and wild wine region on Italy's Adriatic coast dominated by the towering Apennine Mountains, where dramatic diurnal temperature shifts, sea breezes, and limestone-rich alluvial soils produce robust, deeply colored red wines and complex, texturally rich whites."
+  subregions:
+    - id: montepulciano-d-abruzzo-colline-teramane
+      name: Colline Teramane
+      known_for: [montepulciano]
+      notes: "The premier northern hill subregion of Abruzzo nestled between the mountains and the sea, featuring well-drained clay-limestone soils and excellent solar exposure that yield structured, elegant, and exceptionally age-worthy Montepulciano d'Abruzzo."
 
 - id: umbria
   name: Umbria
@@ -332,6 +389,90 @@
       known_for: [cabernet-sauvignon, syrah, petit-verdot]
       notes: "A prestigious, single-estate Vino de Pago located near Toledo, pioneering international grape varieties on limestone-clay soils with great success."
 
+- id: bierzo
+  name: Bierzo
+  country: Spain
+  climate: continental
+  known_for: [mencia, godello, palomino-fino, garnacha-tintorera]
+  notes: "A dramatic mountainous wine region in northwestern Spain where green Galician valleys meet the dry plains of Castilla y León, featuring steep terraced hillsides, slate and clay soils, and old-vine plantings that yield aromatic, mineral-driven white wines and vibrant, floral, and structured reds."
+  subregions:
+    - id: bierzo-alto
+      name: Bierzo Alto
+      known_for: [mencia, godello]
+      notes: "The rugged, higher-altitude slopes of the region featuring steep, poor slate soils and old, low-yielding bush vines that produce deeply complex, elegant, and mineral-infused Mencía and age-worthy Godello."
+
+- id: ribeira-sacra
+  name: Ribeira Sacra
+  country: Spain
+  climate: continental
+  known_for: [mencia, godello, brancellao, merenzao, treixadura]
+  notes: "A dramatic and vertigo-inducing wine region in inland Galicia carved by the steep canyons of the Sil and Miño rivers, where extreme terraced hillside vineyards (*socalcos*), granitic and slate soils, and Atlantic-continental influences produce mineral-driven, elegant red and white wines of exceptional purity."
+  subregions:
+    - id: rinas-do-sil
+      name: Ribeiras do Sil
+      known_for: [mencia, godello]
+      notes: "The sun-drenched canyon subregion along the Sil river featuring vertiginous slate-and-granite terraces that yield deeply concentrated, structured, and intensely aromatic Mencía reds and crisp, vibrant Godellos."
+
+- id: valdeorras
+  name: Valdeorras
+  country: Spain
+  climate: continental
+  known_for: [godello, mencia, merenzao, gran-negro]
+  notes: "An ancient wine region in northeastern Galicia set along the steep valley of the Sil River, where a unique transitional climate combining Atlantic rainfall with continental warmth, alongside distinctive slate and alluvial soils, has revived world-class, mineral-driven white Godello and expressive, elegant reds."
+  subregions:
+    - id: o-barco
+      name: O Barco
+      known_for: [godello, mencia]
+      notes: "The central valley core of Valdeorras featuring terraced hillside vineyards planted in poor, iron-rich slate and decomposed granite soils that yield intensely textured, complex, and age-worthy Godello."
+
+- id: yecla
+  name: Yecla
+  country: Spain
+  climate: continental-mediterranean
+  known_for: [monastrell, garnacha-tintorera, syrah, cabernet-sauvignon, macabeo]
+  notes: "A high-altitude, sun-drenched plateau wine region in southeastern Spain where extreme temperature swings, low rainfall, and poor, limestone-rich soils allow ancient, head-trained Monastrell vines to produce deeply concentrated, powerful, and aromatic red wines."
+  subregions:
+    - id: campo-arriba
+      name: Campo Arriba
+      known_for: [monastrell]
+      notes: "The elevated interior zone featuring stony, chalky alluvial soils over hard limestone bedrock that yield exceptionally structured, dark-fruited, and complex old-vine Monastrell."
+
+- id: jumilla
+  name: Jumilla
+  country: Spain
+  climate: continental-mediterranean
+  known_for: [monastrell, syrah, garnacha-tintorera, cabernet-sauvignon, macabeo]
+  notes: "A rugged, sun-scorched high-altitude wine region in southeastern Spain characterized by extreme aridity, intense summer heat, and sandy, limestone-rich soils that remained entirely phylloxera-free, allowing vast expanses of ancient, ungrafted Monastrell bush vines to thrive and produce deeply concentrated, powerful red wines."
+  subregions:
+    - id: estenas
+      name: Tierra de Barahonda (Jumilla Alta)
+      known_for: [monastrell, syrah]
+      notes: "The higher-altitude, mountainous northern subregion featuring chalky, poor soils and cooler night temperatures that yield structured, fresher, and more aromatically complex old-vine Monastrell."
+
+- id: bullas
+  name: Bullas
+  country: Spain
+  climate: continental-mediterranean
+  known_for: [monastrell, syrah, tempranillo, garnacha-tintorera, macabeo]
+  notes: "A mountainous and arid wine appellation in the northwest of the Murcia region, where high altitudes (up to 900 meters), intense sunlight, and poor, limestone-rich soils produce fresh, elegant, and deeply colored red wines centered around ancient old-vine Monastrell."
+  subregions:
+    - id: el-ripio
+      name: El Ripio
+      known_for: [monastrell, syrah]
+      notes: "An elevated subzone characterized by stony, chalky, and gravelly soils that experience dramatic day-to-night temperature variations, yielding exceptionally structured, balanced, and perfumed Monastrell."
+
+- id: andalucia
+  name: Andalucía
+  country: Spain
+  climate: mediterranean
+  known_for: [palomino-fino, pedro-ximenez, moscatel, tempranillo, syrah]
+  notes: "A sun-baked, historically rich wine macro-region in southernmost Spain shaped by intense heat, Atlantic sea winds, and unique albariza chalk soils, famous worldwide for producing complex, biological and oxidative fortified wines."
+  subregions:
+    - id: jerez-xeres-sherry
+      name: Jerez-Xérès-Sherry
+      known_for: [palomino-fino, pedro-ximenez, moscatel]
+      notes: "The legendary Sherry triangle in the coastal west featuring chalk-rich *albariza* soils that retain crucial moisture under the blistering sun, yielding world-class fortified wines ranging from bone-dry Fino to decadent, aged Oloroso."
+
 - id: puglia
   name: Puglia
   country: Italy
@@ -343,6 +484,30 @@
       name: Salento
       known_for: [negroamaro, primitivo, malvasia-nera]
       notes: "The sun-baked peninsula forming the very heel of Puglia, featuring iron-rich red clay (*terra rossa*) over limestone bedrock that yields legendary, velvety, and spice-laden red wines."
+
+- id: marche
+  name: Marche
+  country: Italy
+  climate: maritime-mediterranean
+  known_for: [verdicchio, montepulciano, sangiovese, biancame, pecorino]
+  notes: "A picturesque coastal and hilly wine region in central Italy stretching from the Apennine Mountains to the Adriatic Sea, where cooling mountain drafts, sea breezes, and complex clay-limestone soils produce world-class, ageworthy white wines and vibrant, savory reds."
+  subregions:
+    - id: verdicchio-dei-castelli-di-jesi
+      name: Verdicchio dei Castelli di Jesi
+      known_for: [verdicchio]
+      notes: "The premier white wine heartland of the region situated in rolling hills near Jesi, featuring chalky-clay soils and a favorable microclimate that yield structured, intensely mineral, and long-lived Verdicchio wines with signature almond notes."
+
+- id: molise
+  name: Molise
+  country: Italy
+  climate: mediterranean-continental
+  known_for: [tintilia, montepulciano, aglianico, trebbiano-toscano, falanghina]
+  notes: "A rugged, mountainous, and relatively undiscovered wine region in southern Italy nestled between Abruzzo, Campania, and Puglia, where steep Apennine slopes, cooling Adriatic breezes, and diverse limestone and clay soils produce authentic, rustic, and increasingly refined red and white wines."
+  subregions:
+    - id: tintilia-del-molise
+      name: Tintilia del Molise
+      known_for: [tintilia]
+      notes: "The premier high-altitude hilly subregion dedicated to the indigenous Tintilia grape, featuring poor clay-limestone soils and cool diurnal shifts that yield deeply colored, spicy, and distinctive red wines with exceptional local character."
 
 - id: valencia
   name: Valencia
@@ -423,6 +588,30 @@
       known_for: [garnacha, tempranillo, syrah]
       notes: "Known globally as the 'Empire of Garnacha,' featuring iron-rich clay and stony limestone soils at the foot of the Moncayo mountains that produce powerful, fruit-forward, and velvety red wines."
 
+- id: navarra
+  name: Navarra
+  country: Spain
+  climate: mediterranean
+  known_for: [garnacha, tempranillo, cabernet-sauvignon, merlot, chardonnay, viura]
+  notes: "A historically rich wine region in northern Spain stretching from the damp, green foothills of the western Pyrenees down to the dry, sun-baked Ebro River basin, where a unique clash of Atlantic, continental, and Mediterranean climates produces diverse styles ranging from world-class rosés to structured, fruit-driven reds."
+  subregions:
+    - id: baja-montana
+      name: Baja Montaña
+      known_for: [garnacha]
+      notes: "The rugged, elevated northern subregion nestled against the Pyrenean foothills, featuring poor limestone and clay soils that yield exceptionally fresh, aromatic, and elegant old-vine Garnacha red wines."
+
+- id: alicante
+  name: Alicante
+  country: Spain
+  climate: mediterranean
+  known_for: [monastrell, moscatel-de-alejandria, garnacha-tintorera, merseguera, tempranillo]
+  notes: "A historic Mediterranean wine region in southeastern Spain framed by rugged mountain ranges and sweeping coastal plains, where intense sunshine, dry conditions, and poor limestone soils produce powerful, deep-colored red wines alongside the legendary sweet dessert wine Fondillón."
+  subregions:
+    - id: alicante-vinalopo
+      name: Vinalopó (Alto Vinalopó and Medio Vinalopó)
+      known_for: [monastrell, garnacha-tintorera, merseguera]
+      notes: "The inland valley subregion carved by the Vinalopó River, featuring high-altitude, limestone-rich soils and dramatic diurnal temperature shifts that yield structured, highly concentrated old-vine Monastrell and fresh, aromatic whites."
+
 - id: rioja
   name: Rioja
   country: Spain
@@ -446,6 +635,30 @@
       name: Monção e Melgaço
       known_for: [alvarinho]
       notes: "The northernmost, warmer, and sheltered subregion bordering Spain; the undisputed home of powerful, structured, and complex Alvarinho with notes of stone fruit and citrus peel."
+
+- id: madeira
+  name: Madeira
+  country: Portugal
+  climate: maritime
+  known_for: [bual, malvasia, sercial, verdelho, tinta-negra]
+  notes: "A breathtaking volcanic island in the Atlantic Ocean governed by a sub-tropical maritime climate, where steep, hand-farmed terraces (*poios*), basaltic soils, and a unique winemaking process involving controlled heat and oxygen exposure create legendary, virtually immortal fortified wines."
+  subregions:
+    - id: camara-de-lobos
+      name: Câmara de Lobos
+      known_for: [tinta-negra, bual, malvasia]
+      notes: "One of the island's most historic and productive south-facing wine areas, featuring steep, sun-drenched coastal and mid-level basaltic slopes that yield rich, concentrated, and complex fortified wines."
+
+- id: dao
+  name: Dão
+  country: Portugal
+  climate: continental
+  known_for: [touriga-nacional, tinta-roriz, alfrocheiro, jaen, encruzado, bical]
+  notes: "A historic and picturesque wine region in north-central Portugal encircled by protective mountain ranges—including Serra da Estrela—that block Atlantic storms, creating a cool, continental microclimate where granitic, acidic soils produce elegant, aromatic, and remarkably age-worthy red and white wines."
+  subregions:
+    - id: alva
+      name: Alva
+      known_for: [encruzado, touriga-nacional, bical]
+      notes: "An elevated subregion situated along the foothills of the Serra da Estrela, featuring poor, highly weathered granitic soils that yield exceptionally fresh, mineral-driven whites and refined, perfumed red wines."
 
 - id: lisboa
   name: Lisboa
@@ -651,6 +864,30 @@
       known_for: [malbec, cabernet-franc, chardonnay]
       notes: "High-elevation alluvial soils producing exceptionally floral, structured, and vibrant Malbecs with soaring natural acidity."
 
+- id: la-rioja-argentina
+  name: La Rioja
+  country: Argentina
+  climate: desert
+  known_for: [torrontes, bonarda, malbec, syrah, cabernet-sauvignon]
+  notes: "One of Argentina's oldest viticultural regions, nestled in the arid foothills of the Andes where intense solar radiation, ancient irrigation channels fed by mountain snowmelt, and poor sandy-alluvial soils yield deeply aromatic white wines and fruit-forward, structured reds."
+  subregions:
+    - id: famatina-valley
+      name: Famatina Valley (Valle de Famatina)
+      known_for: [torrontes, bonarda, syrah]
+      notes: "The premier winemaking valley cradled between the Famatina and Velasco mountain ranges, featuring high-altitude alluvial soils and extreme thermal amplitude that produce world-class, intensely perfumed Torrontés and lush, concentrated red wines."
+
+- id: catamarca
+  name: Catamarca
+  country: Argentina
+  climate: desert
+  known_for: [torrontes, malbec, syrah, bonarda, cabernet-sauvignon]
+  notes: "A dramatic and arid high-altitude wine province in northwestern Argentina, anchored by the extreme desert conditions of the Fiambalá Valley, where glacial meltwater, intense solar radiation, and sandy-rocky soils create exceptionally concentrated, powerful wines."
+  subregions:
+    - id: fiambala
+      name: Fiambalá
+      known_for: [torrontes, malbec, syrah]
+      notes: "The premier winemaking enclave of Catamarca cradled between Andean peaks, featuring deep alluvial and sandy soils exposed to high thermal ranges, yielding intensely aromatic whites and lush, full-bodied red wines."
+
 - id: salta
   name: Salta
   country: Argentina
@@ -735,6 +972,18 @@
   climate: mediterranean
   known_for: [semillon, chardonnay, shiraz, cabernet-sauvignon, nero-d-avola]
   notes: "Australia's second-largest wine-producing region located in New South Wales around Griffith, famous for producing generous, fruit-driven table wines and world-renowned, luscious botrytis sweet wines enabled by warm sunshine and regulated irrigation."
+
+- id: goulburn-valley
+  name: Goulburn Valley
+  country: Australia
+  climate: continental
+  known_for: [shiraz, marsanne, cabernet-sauvignon, chardonnay, riesling]
+  notes: "One of Victoria's historic inland wine regions framed by the Goulburn River, where flat terrain, ancient sandy-loam soils, and protective irrigation and cooling evening drafts combine to produce remarkably balanced, age-worthy red wines and world-class, slow-aging Marsanne."
+  subregions:
+    - id: tahbilk
+      name: Nagambie Lakes
+      known_for: [marsanne, shiraz, cabernet-sauvignon]
+      notes: "A unique subregion defined by a network of man-made and natural waterways moderated by the Goulburn River, featuring ironstone gravel and sandy loam soils that create a distinct microclimate ideal for producing legendary, long-lived Marsanne and complex, spiced Shiraz from ungrafted pre-phylloxera vines."
 
 - id: barossa-valley
   name: Barossa Valley
@@ -1063,12 +1312,17 @@
       known_for: [pais, cinsault, muscat-of-alexandria, riesling]
       notes: "One of Chile's oldest and most dynamic historic winemaking regions, featuring rolling hills with weathered granitic soils and dry-farmed bush vines that yield rustic, juicy, and expressive natural-style red and white wines."
 
-- id: stellenbosch
-  name: Stellenbosch
+- id: western-cape
+  name: Western Cape
   country: South Africa
-  climate: mediterranean
-  known_for: [cabernet-sauvignon, chenin-blanc, syrah, pinotage, bordeaux-blends]
-  notes: "South Africa's historic and prestigious winemaking capital, featuring dramatic mountain ranges, ancient weathered soils, and cooling maritime breezes."
+  climate: mediterranean-maritime
+  known_for: [chenin-blanc, cabernet-sauvignon, syrah, pinotage, sauvignon-blanc, chardonnay]
+  notes: "South Africa's preeminent wine macro-region shaped by the converging Atlantic and Indian oceans, ancient and diverse geological formations including Table Mountain sandstone and weathered granite, and a Mediterranean climate that fosters both legendary structured reds and exceptionally vibrant, complex whites."
+  subregions:
+    - id: stellenbosch
+      name: Stellenbosch
+      known_for: [cabernet-sauvignon, syrah, chenin-blanc, merlot]
+      notes: "The historic heart of South African winemaking nestled among dramatic mountain amphitheatres, featuring deep weathered granite and shale soils that yield world-class, structured Cabernet Sauvignon, powerful blends, and refined whites."
 
 - id: orange-river
   name: Orange River
@@ -1398,3 +1652,51 @@
       name: Nussberg
       known_for: [riesling, weissburgunder, gemischter-satz]
       notes: "Vienna's premier steep hillside vineyard zone overlooking the Danube, featuring shallow limestone, marl, and volcanic soils that yield mineral-driven, elegant, and exceptionally complex white wines."
+
+- id: south-west-romania
+  name: South-West Romania (Oltenia and Banat)
+  country: Romania
+  climate: continental
+  known_for: [feteasca-neagra, cabernet-sauvignon, merlot, riesling-italian, sauvignon-blanc]
+  notes: "A historic and sun-drenched wine macro-region stretching across the lower Danube and the southern slopes of the Southern Carpathians, where protected microclimates, rolling hills, and rich clay-loam and alluvial soils foster robust, full-bodied red wines alongside aromatic and well-structured whites."
+  subregions:
+    - id: dejalu
+      name: Dealu Mare (Extension/Oltenia Hills)
+      known_for: [feteasca-neagra, cabernet-sauvignon, novac, neagra-de-dragasani]
+      notes: "The picturesque and sun-exposed hills of Oltenia (centering around Drăgășani) featuring well-drained clay and sandy soils that yield exceptional indigenous red varieties like Novac and Negru de Drăgășani alongside powerful international reds."
+
+- id: muntenia
+  name: Muntenia (and Dobruja)
+  country: Romania
+  climate: continental
+  known_for: [feteasca-neagra, cabernet-sauvignon, merlot, chardonnay, sauvignon-blanc, riesling]
+  notes: "A prolific Romanian wine region stretching across the southern plains and rolling hills beneath the shadow of the Carpathians, where abundant sunshine, moderate rainfall, and fertile clay-loam and limestone soils produce rich, structured red wines and expressive, aromatic whites."
+  subregions:
+    - id: dealu-mare
+      name: Dealu Mare
+      known_for: [feteasca-neagra, cabernet-sauvignon, merlot, pinot-noir]
+      notes: "Romania's premier and most celebrated red wine appellation situated along the southern sub-Carpathian hills, featuring sun-drenched south-facing slopes and well-drained clay soils that yield legendary, deeply concentrated, and velvety Fetească Neagră and powerful international blends."
+
+- id: black-sea-bulgaria
+  name: Black Sea Region (Bulgaria)
+  country: Bulgaria
+  climate: continental-maritime
+  known_for: [dimyat, rkatsiteli, chardonnay, sauvignon-blanc, misket]
+  notes: "Bulgaria's principal coastal wine macro-region stretching along the dramatic western shores of the Black Sea, where warm, long autumns and sea-tempered breezes create an ideal microclimate for fresh, aromatic, and mineral-driven white wines."
+  subregions:
+    - id: varna
+      name: Varna
+      known_for: [dimyat, chardonnay, sauvignon-blanc, riesling]
+      notes: "The northern coastal subregion characterized by sandy-clay soils and a strong marine influence that yields exceptionally crisp, high-acid white wines with vibrant floral and citrus profiles."
+
+- id: danube-plain
+  name: Danube Plain (Northern Bulgaria)
+  country: Bulgaria
+  climate: continental
+  known_for: [mavrud, gamza, cabernet-sauvignon, chardonnay, muscat-ottonel]
+  notes: "Bulgaria's expansive northern wine region stretching from the southern banks of the Danube River to the northern slopes of the Balkan Mountains, where hot, sunny summers and fertile loess, clay, and limestone soils produce robust, fruit-forward red wines and refreshing, aromatic whites."
+  subregions:
+    - id: suhindol
+      name: Suhindol
+      known_for: [gamza, cabernet-sauvignon, merlot]
+      notes: "A historic winemaking heartland within the central Danube Plain featuring rolling limestone hills and well-drained soils that yield elegant, earthy red wines led by the indigenous Gamza grape."

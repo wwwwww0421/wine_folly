@@ -1,0 +1,34 @@
+id: muscat-of-alexandria
+name: Muscat of Alexandria
+wine_type: [dessert]
+grapes: [muscat-of-alexandria]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 5
+tannin: 1
+acidity: 3
+alcohol: 1
+flavours: [mandarin-orange, honey, lychee, peach-skin, white-flowers]
+regions: [valencia, andalucia, languedoc-roussillon]
+countries: [spain, morocco, argentina, france, south-africa, australia, italy, usa, chile]
+popularity: common
+price_band: "£"
+serving:
+  temp_c: [12, 15]
+  glass: dessert-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [almond-biscotti]
+    strength: great           # perfect | great | good
+    why: "Great match with almond biscotti."
+  - tags: [charcuterie-plate]
+    strength: great
+    why: "Great match with charcuteries plates"
+  - tags: [blue-cheese]
+    strength: great
+    why: "Great match with soft or pungent cheeses like Roquefort."
+notes: >
+  Another important Muscat variety used primarily for dessert wines and off-dry white wines (like Spanish Moscatel). Muscat of Alexandria offers slightly more orange zest and sweet rose notes than Muscat Blanc.
+also_try: [muscat-blanc, moscatel-de-setubal, rutherglen-muscat, black-muscat]

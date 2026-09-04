@@ -1,0 +1,32 @@
+id: monastrell
+name: Monastrell
+wine_type: [rosé, full-red]
+grapes: [monastrell]
+# --- Wine Folly 1–5 scales ---
+body: 5
+sweetness: 1
+tannin: 5
+acidity: 3
+alcohol: 4
+flavours: [blackberry, black-pepper, cocoa, tobacco, roasted-meat]
+regions: [yecla, jumilla, bullas, alicante, bandol, cotes-du-rhone, corsica, mclaren-vale, barossa-valley, california, washington, swartland, paarl]
+countries: [spain, france, australia, usa, south-africa, tunisia, cyprus, chile, argentina]
+popularity: popular
+price_band: "£"
+serving:
+  temp_c: [15, 20]
+  glass: red-glass
+  decant_minutes: 60
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [bbq]
+    strength: perfect           # perfect | great | good
+    why: "Perfect wine with smoked meats and barbecue where the wine's peppery ad gamey flavours seem to vanish, revealing layers of black fruits and chocolate."
+notes: >
+  A deeply bold, smokey red wine found in abundance in Central Spain. It's known as Mourvèdre in Southern France, where it's an essential grape in the Rhône / GSM Blend.
+
+  Bandol, France with tastes of black plum, roasted meat, black pepper, cocoa powder, herbs de provence.
+  South-Eastern Spain with tastes of Blackberry, black raisin, mocha, tobacco smoke, black pepper.
+  BAndol Rosé taste like strawberry, white peach, white pepper, white blossom and violet.
+also_try: [petite-sirah, tannat, syrah, petit-verdot, alicante-bouschet]

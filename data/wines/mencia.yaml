@@ -1,0 +1,31 @@
+id: mencia
+name: Mencía
+wine_type: [medium-red]
+grapes: [mencia]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 4
+acidity: 4
+alcohol: 4
+flavours: [tart-cherry, pomegranate, blackberry, liquorice, crushed-gravel]
+regions: [bierzo, ribeira-sacra, valdeorras, dao, iberian]
+countries: [spain, portugal, chile, brazil]
+popularity: uncommon
+price_band: "££"
+serving:
+  temp_c: [12, 15]
+  glass: red-glass
+  decant_minutes: 60
+  cellar_years: [5, 20]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [light-meat]
+    strength: good           # perfect | great | good
+    why: "Lean towards richer white meats like turkey due to its acidity and structure."
+  - tags: [cured-deli-meats]
+    strength: good
+    why: "And pork or peppery meats (pastrami) to balance intensity"
+notes: >
+  A red variety from the Iberian peninsula (Spain and Portugal) that's quickly developing a following for its heady aromatics and potential to age.
+also_try: [xinomavro, nero-d-avola, barbera, syrah]

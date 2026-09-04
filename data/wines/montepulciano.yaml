@@ -1,0 +1,28 @@
+id: montepulciano
+name: Montepulciano
+wine_type: [medium-red, full-red]
+grapes: [montepulciano]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 4
+acidity: 4
+alcohol: 3
+flavours: [red-plum, blackberry, dried-thyme, baking-spices, mesquite]
+regions: [abruzzo, le-marche, molise]
+countries: [italy, argentina, usa, new-zealand, brazil]
+popularity: common
+price_band: "££"
+serving:
+  temp_c: [15, 20]
+  glass: oversized
+  decant_minutes: 60
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [bbq]
+    strength: perfect           # perfect | great | good
+    why: "An amazing wine to pair alongside with sausages of all kinds! Wweet fennel salsiccia (Italian sauage) are the first that come to mind."
+notes: >
+  A high-quality Italian red found mostly in Abruzzo, where it produces wines with black fruit flavours and a smokey sweet finish when it's made with care.
+also_try: [negroamaro, merlot, bordeaux-blend, ariorgitiko, nero-d-avola]

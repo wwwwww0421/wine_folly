@@ -55,6 +55,8 @@ Climate = Literal[
     "maritime",
     "mediterranean-maritime",
     "maritime-continental",
+    "maritime-mediterranean",
+    "continental-maritime",
     "diverse",
     "continental-desert",
     "continental-monsoon",

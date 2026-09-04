@@ -1,0 +1,31 @@
+id: marsanne
+name: Marsanne
+wine_type: [light-white, full-white]
+grapes: [marsanne]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 3
+tannin: 1
+acidity: 2
+alcohol: 4
+flavours: [quince, mandarin-orange, apricot, acacia, beeswax]
+regions: [cotes-du-rhone, languedoc-roussillon, riverina, goulburn-valley, barossa-valley, emilia-romagna, valais, central-coast]
+countries: [france, australia, italy, switzerland, usa, chile, canada, uruguay, argentina]
+popularity: rare
+price_band: "£££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [shellfish]
+    strength: perfect           # perfect | great | good
+    why: "Excellent with rich shellfish like prawns."
+  - tags: [thai-vietnamese]
+    strength: great
+    why: "The citrus notes make it a great counterpoint to Asian cuisine like Thai or Vietnamese."
+notes: >
+  Marsanne is a primary blending grape in white Rhône blends along with Roussane, Grenache Blanc, and Viognier. It is a great alternative to Chardonnay.
+also_try: [roussanne, chardonnay, viognier]

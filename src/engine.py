@@ -112,7 +112,7 @@ class Engine:
                 out.append(dict(r))
         return out
 
-    def resolve(self, query: str, limit: int = 8) -> list[Match]:
+        # def resolve(self, query: str, limit: int = 8) -> list[Match]:
         """
         Input: Free text related to wine, food or regions.
         Logic: Exact alias hits win, otherwise FTS5 prefix matching gives search-as-you-type behaviour.
@@ -148,12 +148,159 @@ class Engine:
             rows = []
 
         order = {"food": 0, "wine": 1, "region": 2}
+        # for row in sorted(rows, key=lambda r: order.get(r["doc_type"], 9)):
+        #     add(
+        #         row["doc_type"],
+        #         row["ref_id"],
+        #         self.label_for(row["doc_type"], row["ref_id"]),
+        #     )
         for row in sorted(rows, key=lambda r: order.get(r["doc_type"], 9)):
+            if row["doc_type"] == "food" and matches:
+                continue
+
             add(
                 row["doc_type"],
                 row["ref_id"],
                 self.label_for(row["doc_type"], row["ref_id"]),
             )
+
+        return matches[:limit]
+
+    def resolve(self, query: str, limit: int = 8) -> list[Match]:
+        """
+        Resolve free-text into food, wine, and region matches.
+
+        Resolution priority:
+        1. Exact whole-query food alias.
+        2. Exact aliases for individual query terms.
+        3. FTS prefix matching for remaining/general search.
+
+        Exact food aliases are authoritative: once a food term has been
+        resolved exactly, FTS is not allowed to add unrelated food tags.
+        FTS may still contribute wine and region matches.
+
+        Results are deduplicated and capped at `limit`.
+        """
+        q = normalise(query)
+        if not q or limit <= 0:
+            return []
+
+        matches: list[Match] = []
+        seen: set[tuple[str, str]] = set()
+        exact_food_ids: set[str] = set()
+
+        def add(kind: str, rid: str, label: str) -> None:
+            key = (kind, rid)
+            if key not in seen and len(matches) < limit:
+                seen.add(key)
+                matches.append(Match(kind, rid, label))
+
+        # ---------------------------------------------------------------
+        # 1. Exact whole-query food alias.
+        #
+        # This must happen before token matching so that an alias such as
+        # "aged cured meats" or "truffle cheddar" wins as a single match.
+        # ---------------------------------------------------------------
+        rows = self.con.execute(
+            """
+            SELECT a.tag_id, f.label
+            FROM aliases a
+            JOIN food_tags f ON f.id = a.tag_id
+            WHERE a.alias = ?
+            """,
+            (q,),
+        ).fetchall()
+
+        for row in rows:
+            exact_food_ids.add(row["tag_id"])
+            add("food", row["tag_id"], row["label"])
+
+        # If the entire query was an exact food alias, there is no reason
+        # for FTS to add broader food interpretations.
+        if exact_food_ids:
+            return matches[:limit]
+
+        # ---------------------------------------------------------------
+        # 2. Exact aliases for individual terms.
+        #
+        # Example:
+        #     "truffle cheddar"
+        #
+        # should resolve to:
+        #     truffle
+        #     aged-cured-meats-cheeses
+        #
+        # rather than allowing FTS to invent an additional unrelated
+        # food match such as chocolate-desserts.
+        # ---------------------------------------------------------------
+        terms = q.split()
+
+        for term in terms:
+            rows = self.con.execute(
+                """
+                SELECT a.tag_id, f.label
+                FROM aliases a
+                JOIN food_tags f ON f.id = a.tag_id
+                WHERE a.alias = ?
+                """,
+                (term,),
+            ).fetchall()
+
+            for row in rows:
+                exact_food_ids.add(row["tag_id"])
+                add("food", row["tag_id"], row["label"])
+
+        # ---------------------------------------------------------------
+        # 3. FTS fallback/general search.
+        #
+        # FTS is useful for search-as-you-type, wines, regions, and terms
+        # that aren't exact aliases. But it must not add extra food tags
+        # when exact food aliases have already been found.
+        # ---------------------------------------------------------------
+        fts_query = " OR ".join(f'"{word}"*' for word in terms)
+
+        try:
+            rows = self.con.execute(
+                """
+                SELECT doc_type, ref_id, rank
+                FROM search_index
+                WHERE search_index MATCH ?
+                ORDER BY rank
+                LIMIT ?
+                """,
+                (fts_query, limit * 3),
+            ).fetchall()
+        except sqlite3.OperationalError:
+            rows = []
+
+        order = {
+            "food": 0,
+            "wine": 1,
+            "region": 2,
+        }
+
+        for row in sorted(rows, key=lambda r: order.get(r["doc_type"], 9)):
+            kind = row["doc_type"]
+            rid = row["ref_id"]
+
+            # Exact food aliases are authoritative. Don't let FTS add
+            # additional food interpretations for the same query.
+            if kind == "food":
+                if exact_food_ids:
+                    continue
+
+                # Avoid adding an FTS food result that is already present.
+                if rid in exact_food_ids:
+                    continue
+
+            add(
+                kind,
+                rid,
+                self.label_for(kind, rid),
+            )
+
+            if len(matches) >= limit:
+                break
 
         return matches[:limit]
 

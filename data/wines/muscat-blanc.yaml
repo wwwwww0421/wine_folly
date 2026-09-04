@@ -1,0 +1,35 @@
+id: muscat-blanc
+name: Muscat Blanc
+wine_type: [aromatic-white, dessert]
+grapes: [muscat-blanc]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 5
+tannin: 1
+acidity: 4
+alcohol: 2
+flavours: [orange-blossom, meyer-lemon, mandarin-orange, ripe-pear, honeysuckle]
+regions: [piedmont, lombardy, veneto, cotes-du-rhone, languedoc-roussillon, peloponnese, samos, audalucia, california, western-cape]
+countries: [italy, france, greece, spain, brazil, romania, usa, hungary, south-africe, australia, portugal, russia]
+popularity: common
+price_band: "££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [light-dish]
+    strength: great           # perfect | great | good
+    why: "Pair well with salads, sushi, and fresh fruit."
+  - tags: [nut-cakes]
+    strength: perfect
+    why: "Sparkling Moscato d'Asti is excellent with almond cake. Fortified Muscat tastes great with cheeses and nuts."
+notes: >
+  An ancient aromatic white variety originally from Greece that's available in all styles from dry to sweet, still to sparkling, and even fortified.
+
+  Msocato d'Asti taste of mandarin orange, honeysuckle, meyer lemon, rose petal, vanilla bean.
+  Alsace Muscat taste of fresh grape, perfume, lemongrass, coriander, nutmeg.
+  Rutherglen Muscat taste of caramel, candied cherry, coffee, sassafras, vanilla bean.
+also_try: [muscat-of-alexandria, muller-thurgau, gewurztraminer, torrontes, cserszegi-fuszeres]

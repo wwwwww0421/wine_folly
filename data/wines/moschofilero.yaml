@@ -1,0 +1,28 @@
+id: moschofilero
+name: Moschofilero
+wine_type: [aromatic-white, rosé]
+grapes: [moschofilero]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 3
+tannin: 1
+acidity: 4
+alcohol: 3
+flavours: [potpourri, honeydew, pink-grapefruit, lemon, almond]
+regions: [mantineia]
+countries: [greece]
+popularity: rare
+price_band: "£"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 3]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [afternoon-tea]
+    strength: good           # perfect | great | good
+    why: "It serves at high tea, including cucumber sandwiches, lox with cream cheese, or fruit tarts."
+notes: >
+  A richly aromatic white wine that hails from small region of Mantineia close to Tripoli in Peloponnese, Greece. The grape has pink skins and can be made into rosé.
+also_try: [fernao-pires, torrontes, cserszegi-fuszeres, gewurztraminer, muller-thurgau]

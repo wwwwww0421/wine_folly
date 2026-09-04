@@ -1,16 +1,13 @@
 # --- smoke, char & glaze ---
 - id: bbq
   label: Barbecue & smoked
-  aliases: [bbq, barbecue, smoked ribs, pulled pork, brisket, smoked sausage]
+  aliases: [bbq, barbecue, smoked ribs, pulled pork, brisket, smoked sausage, teriyaki]
 - id: vinegar-bbq
   label: Vinegar-based BBQ
   aliases: [vinegar bbq, carolina bbq, tangy barbecue]
 - id: grilled
   label: Grilled & charred
   aliases: [grilled, char grilled, kebab, souvlaki]
-- id: sweet-glazed
-  label: Sweet-glazed dishes
-  aliases: [teriyaki, hoisin, honey glazed]
 - id: salty-fried
   label: Salty & Fried dishes
   aliases: [fried chicken, french fries, potato chips, tempura, calamari, fried fish, arancini, churros]
@@ -34,6 +31,12 @@
 - id: beef-stroganoff
   label: Beef Stroganoff & creamy mushroom dishes
   aliases: [beef stroganoff, stroganoff, mushroom stroganoff, creamy beef pasta]
+- id: exotic-lean-meats
+  label: Exotic & lean game meats
+  aliases: [ostrich, venison steak, wild boar, kangaroo, bison, elk]
+- id: cured-deli-meats
+  label: Cured & smoked deli meats
+  aliases: [pastrami, corned beef, smoked brisket, roast beef deli style, salami, mortadella]
 
 # --- fish & seafood: lean / oily / cured / shellfish ---
 - id: fish-lean
@@ -67,7 +70,7 @@
   aliases: [goulash, red potato goulash, spaetzle, cheesy spaetzle dumplings]
 - id: spice-accented
   label: Spice- & herb-accented dishes
-  aliases: [sage, anise, cinnamon, sumac, white pepper, five spice]
+  aliases: [sage, anise, cinnamon, sumac, white pepper, five spice, chimichurri, salsa verde, gremolata, mint sauce, herb oil]
 - id: berry-sauce
   label: Berry-based sauce dishes
   aliases: [berry sauce, raspberry glazed, cranberry reduction, blackberry sauce, duck with berry reduction, venison with berry sauce]
@@ -76,7 +79,7 @@
   aliases: [pad thai, pho, green curry, som tam, banh mi, spring rolls, lemongrass chicken, pad see ew]
 - id: light-dish
   label: Light Dish
-  aliases: [sushi, salad, california-sushi-rolls, spring-rolls, summer-rolls, sashimi]
+  aliases: [sushi, salad, california-sushi-rolls, spring-rolls, summer-rolls, sashimi, fresh fruit]
 - id: peanut-butter
   label: Peanut butter dishes & pairings
   aliases: [peanut butter, peanut sauce, satay, peanut butter cookies, pad thai sauce, peanut butter cups]
@@ -86,18 +89,41 @@
 - id: creamy-desserts
   label: Creamy desserts
   aliases: [fruit tarts, cheesecake, ice cream]
+- id: custard-desserts
+  label: Custard & egg-based desserts
+  aliases: [zabaglione, flan, crème brûlée, crème caramel, panna cotta, egg custard]
 - id: aged-cured-meats-cheeses
   label: Aged & cured meats and cheeses
-  aliases: [prosciutto di parma, parmigiano-reggiano, parmesan, aged cheddar, ibérico ham, pecorino, manchego, bresaola, carbonara]
+  aliases: [prosciutto di parma, parmigiano-reggiano, parmesan, aged cheddar, ibérico ham, pecorino, manchego, bresaola, carbonara, queijo de ovelha]
+- id: blue-cheese
+  label: Pungent & blue cheeses
+  aliases: [blue cheese, roquefort, gorgonzola, stilton, blue d'auvergne]
+- id: afternoon-tea
+  label: Afternoon tea & finger foods
+  aliases: [high tea, afternoon tea, cucumber sandwiches, scones, clotted cream, finger sandwiches, tea pastries]
+- id: almond-biscotti
+  label: Almond biscotti & hard Italian cookies
+  aliases: [almond biscotti, biscotti, cantucci, hard almond cookies, Italian dry cookies]
+- id: charcuterie-plate
+  label: Charcuterie & mixed cured platters
+  aliases: [charcuterie plate, charcuterie board, mixed cured meats, antipasto board, salumi platter]
+- id: truffle
+  label: Truffle & earth-forward dishes
+  aliases: [truffle risotto, mushroom truffle rice, black truffle risotto, white truffle risotto, truffle cheddar, truffle, black truffle, white truffle, truffle sauce]
+- id: stuffed-pasta
+  label: Stuffed & sweet-savory pasta
+  aliases: [butternut ravioli, pumpkin ravioli, sweet potato gnocchi, agnolotti, squash tortelli]
 
 # --- vegetables & sweets ---
 - id: vegetable-driven
   label: Vegetable-driven dishes
-  aliases: [roasted vegetables, ratatouille, grilled zucchini, asparagus, mushroom risotto, stuffed peppers, roasted red pepper, sun-dried tomato, green beans, artichokes, cabbage, brussel sprout]
+  aliases: [roasted vegetables, ratatouille, grilled zucchini, asparagus, mushroom risotto, stuffed peppers, roasted red pepper, sun-dried tomato, green beans, artichokes, cabbage, brussel sprout, artichoke, pea soup]
 - id: chocolate-desserts
   label: Rich chocolate desserts
   aliases: [chocolate truffles, ganache, chocolate mousse, dark chocolate, molten lava cake]
 - id: pesto-pasta
   label: Pesto sauce pasta
   aliases: [pesto pasta, basil pesto, pasta al pesto, pesto genovese, linguine with pesto]
-
+- id: nut-cakes
+  label: Nut-based & almond cakes
+  aliases: [almond cake, torta di mandorle, pistachio cake, walnut cake, hazelnut torte, financier]
