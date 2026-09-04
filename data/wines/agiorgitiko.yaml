@@ -29,6 +29,9 @@ pairings:
   - tags: [spiced-cuisine]
     strength: perfect
     why: "Subtle flavours of nutmeg and cinnamon work well with spiced cuisine from Middle East to India."
+  - tags: [tapas]
+    strength: perfect
+    why: "Good with spanish olives, croquetas, empanadas and paella."
 notes: >
   "The top red of Greece offers a wide range of style from rosé to deep red. Most exceptional Agiorgitiko are the full-bodied red wines from Nemea in Peloponnese."
 also_try: [xinomavro, merlot, barbera, nero-d'avola]

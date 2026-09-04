@@ -1,7 +1,7 @@
-id: friuano
-name: Friuano
+id: friulano
+name: Friulano
 wine_type: [light-white]
-grapes: [friuano, sauvignonasse]
+grapes: [friulano, sauvignonasse]
 # --- Wine Folly 1–5 scales ---
 body: 1
 sweetness: 1

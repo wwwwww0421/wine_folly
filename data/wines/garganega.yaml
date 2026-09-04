@@ -1,7 +1,7 @@
-id: garganeaga
-name: Garganeaga
+id: garganega
+name: Garganega
 wine_type: [light-white, dessert]
-grapes: [garganeaga]
+grapes: [garganega]
 # --- Wine Folly 1–5 scales ---
 body: 2
 sweetness: 1

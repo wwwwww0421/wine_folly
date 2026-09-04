@@ -23,7 +23,7 @@ pairings:
   - tags: [spice-accented]
     strength: perfect           # perfect | great | good
     why: "Superb match with herb-cursted poultry or fish."
-  - tags: [ligth-dish]
+  - tags: [light-dish]
     strength: good
     why: "Also try with sushi and Chinese dumplings."
 notes: >

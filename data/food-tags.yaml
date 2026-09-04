@@ -30,7 +30,7 @@
   aliases: [chicken breast, roast chicken, turkey breast, roast turkey, veal, pork tenderloin, quail, pheasant, tofu]
 - id: salty-appetizer
   label: Salty appetizers & finger foods
-  aliases: [salted nuts, pretzels, olives, popcorn, cured meats, crostini with tapenade]
+  aliases: [salted nuts, pretzels, olives, popcorn, cured meats, crostini with tapenade, bérico ham]
 - id: beef-stroganoff
   label: Beef Stroganoff & creamy mushroom dishes
   aliases: [beef stroganoff, stroganoff, mushroom stroganoff, creamy beef pasta]
