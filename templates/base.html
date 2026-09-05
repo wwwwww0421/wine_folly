@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Wine Folly{% endblock %}</title>
+<link rel="stylesheet" href="{{ root }}assets/style.css">
+</head>
+<body>
+<header class="masthead">
+  <a href="{{ root }}index.html"><h1>Wine Folly</h1></a>
+  <nav>
+    <a href="{{ root }}wines.html">Wines</a>
+    <a href="{{ root }}foods.html">Food</a>
+    <a href="{{ root }}regions.html">Regions</a>
+    <a href="{{ root }}flavours.html">Flavours</a>
+  </nav>
+</header>
+<main class="wrap">
+{% block content %}{% endblock %}
+</main>
+<footer class="wrap">
+  {{ counts.wines }} wines · {{ counts.food_tags }} food tags · {{ counts.regions }} regions.
+  Built from my Wine Folly notes on {{ built_on }}.
+</footer>
+</body>
+</html>

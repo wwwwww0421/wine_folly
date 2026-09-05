@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ payload.label }} — Wine Folly{% endblock %}
+{% block content %}
+  <h2>{{ payload.label }}</h2>
+  <p class="subtitle">
+    {% if payload.aliases %}Also: {{ payload.aliases|join(', ') }}{% endif %}
+  </p>
+
+  {% if payload.wines %}
+    <ul class="pairs">
+    {% for w in payload.wines %}
+      <li>
+        <div class="head">
+          <a href="{{ root }}wines/{{ w.wine_id }}.html">{{ w.name }}</a>
+          <span class="strength" data-s="{{ w.strength }}">{{ w.strength }}</span>
+        </div>
+        {% for why in w.why %}<p class="why">{{ why }}</p>{% endfor %}
+        {% if w.regions %}
+          <div class="wine-meta">
+            {% for r in w.regions %}<a href="{{ root }}regions/{{ r.id }}.html">{{ r.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+          </div>
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p class="empty">No wine in my notes pairs with this yet.</p>
+  {% endif %}
+{% endblock %}

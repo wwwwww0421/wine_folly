@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% from "macros.html" import wine_list %}
+{% block content %}
+  <h2>What are you eating?</h2>
+  <div class="search">
+    <input id="q" type="search" placeholder="bacalhau, ribeye, Assyrtiko…">
+    <ul class="results" id="results"></ul>
+  </div>
+
+  <h3>Start from a dish</h3>
+  <ul class="chips">
+    {% for tag in food_tags %}
+      <li><a href="{{ root }}foods/{{ tag.id }}.html">{{ tag.label }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

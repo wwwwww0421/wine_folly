@@ -1,4 +1,24 @@
-"""Runs the whole pipeline end-to-end."""
+#!/usr/bin/env python3
+"""
+
+Runs the whole pipeline end-to-end. - The root of the report
+
+```
+    python build.py
+```
+
+Pipeline:
+    1. Validate every file + all cross-file reference (src.load)
+    2. Compile build/wines.db (SQLite + FTS5)
+    3. Export site/data/*.json + build/wine_audit.xlsx  (src.export)
+    4. Render browsable HTML into site/ (src.build_site)
+    5. Print warnings and the completeness report - The Study List
+
+Exit codes:
+    - 0: Built
+    - 1: Data errors (i.e. nothing written)
+
+"""
 
 from __future__ import annotations
 import sys
@@ -6,6 +26,7 @@ import time
 from pathlib import Path
 
 from src.load import DatasetError, load_dataset, write_sqlite
+from src.build_site import SiteBuilder
 from src.export import Exporter, write_audit_excel
 from src.engine import Engine
 
@@ -31,6 +52,7 @@ def main() -> int:
     sizes = Exporter(engine).run()
     total_kb = sum(sizes.values()) / 1024
     audit = write_audit_excel(engine)
+    pages = SiteBuilder(engine).run()
 
     ## 4. report
     for w in df.warnings:
@@ -43,6 +65,10 @@ def main() -> int:
 
     print(
         f"OK  site/data/ ({total_kb:.0f} KB across {len(sizes)} groups) and {audit} written."
+    )
+
+    print(
+        f"OK  site/ rendered: {pages['wines']} wine, {pages['foods']}, {pages['regions']} regions pages + 5 index pages"
     )
 
     study = [(w.id, gaps) for w in df.wines if (gaps := w.missing_info())]

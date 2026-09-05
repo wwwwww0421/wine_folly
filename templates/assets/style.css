@@ -1,0 +1,164 @@
+/* Wine Folly — one stylesheet, no framework, no web fonts (offline first). */
+
+:root {
+  --paper:      #EDEEE9;
+  --card:       #F7F8F5;
+  --ink:        #1C2321;
+  --ink-soft:   #5A625E;
+  --rule:       #D3D6CE;
+
+  /* wine types carry their own colour — functional, not decoration */
+  --white:      #C9A227;
+  --rose:       #D2687F;
+  --red:        #7E2B3C;
+  --sparkling:  #6E9E93;
+  --dessert:    #A96A20;
+
+  --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --space: 1rem;
+  --measure: 62ch;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+.wrap { max-width: 44rem; margin: 0 auto; padding: var(--space); }
+
+/* ---------------------------------------------------------------- header */
+
+.masthead {
+  display: flex; align-items: baseline; gap: 1rem;
+  padding: .75rem var(--space);
+  border-bottom: 1px solid var(--rule);
+  background: var(--card);
+  position: sticky; top: 0; z-index: 5;
+}
+.masthead a { color: inherit; text-decoration: none; }
+.masthead h1 { font: 600 1.05rem/1 var(--sans); margin: 0; letter-spacing: -.01em; }
+.masthead nav { margin-left: auto; display: flex; gap: .9rem; font-size: .85rem; }
+.masthead nav a { color: var(--ink-soft); }
+.masthead nav a:hover, .masthead nav a:focus-visible { color: var(--ink); }
+
+/* ---------------------------------------------------------------- search */
+
+.search { margin: 1.25rem 0; }
+.search input {
+  width: 100%; padding: .7rem .85rem;
+  font: 1rem var(--sans); color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--rule); border-radius: 4px;
+}
+.search input:focus-visible { outline: 2px solid var(--red); outline-offset: 1px; }
+.results { list-style: none; margin: .4rem 0 0; padding: 0; }
+.results li a {
+  display: flex; gap: .6rem; align-items: baseline;
+  padding: .5rem .6rem; border-bottom: 1px solid var(--rule);
+  color: inherit; text-decoration: none;
+}
+.results li a:hover, .results li a:focus-visible { background: var(--card); }
+.kind { font-size: .7rem; color: var(--ink-soft); }
+
+/* ------------------------------------------------------------- wine list */
+
+.wines { list-style: none; margin: 0; padding: 0; }
+.wines li { border-bottom: 1px solid var(--rule); }
+.wines a {
+  display: block; padding: .7rem .8rem;
+  border-left: 4px solid var(--rule);
+  color: inherit; text-decoration: none;
+}
+.wines a:hover, .wines a:focus-visible { background: var(--card); }
+.wine-name { font-weight: 600; }
+.wine-meta { font-size: .82rem; color: var(--ink-soft); }
+
+/* wine-type colour coding */
+[data-type~="light-white"] a, [data-type~="full-white"] a,
+[data-type~="aromatic-white"] a { border-left-color: var(--white); }
+[data-type~="rosé"] a           { border-left-color: var(--rose); }
+[data-type~="light-red"] a, [data-type~="medium-red"] a,
+[data-type~="full-red"] a       { border-left-color: var(--red); }
+[data-type~="sparkling"] a      { border-left-color: var(--sparkling); }
+[data-type~="dessert"] a        { border-left-color: var(--dessert); }
+
+/* ------------------------------------------------- the signature element */
+/* Five stepped blocks — Wine Folly's 1-5 charts, read at a glance.        */
+
+.scales { display: grid; gap: .35rem; margin: 1rem 0 1.5rem; }
+.scale { display: grid; grid-template-columns: 5.5rem 1fr; align-items: center; gap: .6rem; }
+.scale-name { font-size: .8rem; color: var(--ink-soft); }
+.steps { display: flex; gap: 3px; }
+.step {
+  width: 1.6rem; height: .7rem;
+  background: var(--rule); border-radius: 1px;
+}
+.step.on { background: var(--ink); }
+.scale-value { font-size: .75rem; color: var(--ink-soft); }
+
+/* ---------------------------------------------------------------- detail */
+
+h2 { font: 600 1.5rem/1.2 var(--sans); margin: 1.5rem 0 .2rem; letter-spacing: -.015em; }
+h3 { font: 600 .95rem/1.3 var(--sans); margin: 1.75rem 0 .5rem; }
+.subtitle { color: var(--ink-soft); margin: 0 0 1rem; font-size: .9rem; }
+
+.note {
+  font-family: var(--serif); font-size: 1.05rem; line-height: 1.65;
+  max-width: var(--measure);
+  border-left: 2px solid var(--rule); padding-left: 1rem; margin: 1rem 0;
+}
+
+.facts { display: grid; grid-template-columns: 8rem 1fr; gap: .35rem 1rem; font-size: .9rem; }
+.facts dt { color: var(--ink-soft); }
+.facts dd { margin: 0; }
+
+.pairs { list-style: none; margin: 0; padding: 0; }
+.pairs li { padding: .8rem 0; border-bottom: 1px solid var(--rule); }
+.pairs .head { display: flex; align-items: baseline; gap: .5rem; }
+.pairs a { color: inherit; font-weight: 600; text-decoration: none; }
+.pairs a:hover { text-decoration: underline; }
+.why { font-family: var(--serif); font-size: 1rem; line-height: 1.6; margin: .3rem 0 0; max-width: var(--measure); }
+
+.strength {
+  font-size: .7rem; padding: .1rem .4rem; border-radius: 3px;
+  background: var(--rule); color: var(--ink-soft);
+}
+.strength[data-s="perfect"] { background: var(--red); color: #fff; }
+.strength[data-s="great"]   { background: var(--sparkling); color: #fff; }
+
+.avoid { border-left: 2px solid var(--rose); padding-left: 1rem; }
+
+.chips { display: flex; flex-wrap: wrap; gap: .35rem; margin: .5rem 0 0; padding: 0; list-style: none; }
+.chips a {
+  display: inline-block; padding: .25rem .55rem;
+  background: var(--card); border: 1px solid var(--rule); border-radius: 3px;
+  font-size: .82rem; color: var(--ink); text-decoration: none;
+}
+.chips a:hover, .chips a:focus-visible { border-color: var(--ink-soft); }
+
+.empty { color: var(--ink-soft); font-size: .9rem; }
+
+footer {
+  margin-top: 3rem; padding: 1rem var(--space) 2rem;
+  border-top: 1px solid var(--rule); color: var(--ink-soft); font-size: .8rem;
+}
+
+@media (max-width: 30rem) {
+  .facts { grid-template-columns: 1fr; gap: 0 0; }
+  .facts dt { margin-top: .5rem; }
+  .scale { grid-template-columns: 4.5rem 1fr; }
+  .step { width: 1.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

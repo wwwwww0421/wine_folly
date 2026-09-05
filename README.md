@@ -1,4 +1,4 @@
-# 🍷 Sommelier — A Personal, Offline Wine Pairing Engine
+# 🍷 Wine Folly — A Personal, Offline Wine Pairing Engine
 
 A Vivino-style companion built from my own Wine Folly study notes.
 Ask it *"What wine goes with truffle cheddar, and why?"* — fully offline,

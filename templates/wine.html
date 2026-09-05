@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% from "macros.html" import scales, pairing_list, wine_list %}
+{% block title %}{{ d.wine.name }} — Wine Folly{% endblock %}
+{% block content %}
+  <h2>{{ d.wine.name }}</h2>
+  <p class="subtitle">
+    {{ (d.wine.wine_type or [])|join(', ') }}
+    {% if d.regions %} · {{ d.regions|map(attribute='name')|join(', ') }}{% endif %}
+  </p>
+
+  {{ scales(d.wine) }}
+
+  {% if d.wine.notes %}<p class="note">{{ d.wine.notes }}</p>{% endif %}
+
+  <dl class="facts">
+    {% if d.flavours %}<dt>Tastes of</dt><dd>{{ d.flavours|join(', ') }}</dd>{% endif %}
+    {% if d.wine.grapes %}<dt>Grapes</dt><dd>{{ d.wine.grapes|join(', ') }}</dd>{% endif %}
+    {% if d.regions %}<dt>From</dt><dd>
+      {% for r in d.regions %}<a href="{{ root }}regions/{{ r.id }}.html">{{ r.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+    </dd>{% endif %}
+    {% if serving.temp %}<dt>Serve at</dt><dd>{{ serving.temp }}</dd>{% endif %}
+    {% if serving.glass %}<dt>Glass</dt><dd>{{ serving.glass }}</dd>{% endif %}
+    {% if serving.decant %}<dt>Decant</dt><dd>{{ serving.decant }}</dd>{% endif %}
+    {% if serving.cellar %}<dt>Cellar</dt><dd>{{ serving.cellar }}</dd>{% endif %}
+    {% if d.wine.price_band %}<dt>Price</dt><dd>{{ d.wine.price_band }}</dd>{% endif %}
+  </dl>
+
+  {% if d.pairs_with %}
+    <h3>Pairs with</h3>
+    {{ pairing_list(d.pairs_with, root) }}
+  {% endif %}
+
+  {% if d.avoid %}
+    <h3>Avoid</h3>
+    <div class="avoid">
+    {% for a in d.avoid %}
+      <p class="why"><a href="{{ root }}foods/{{ a.tag_id }}.html">{{ a.label }}</a> — {{ a.why }}</p>
+    {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if d.similar %}
+    <h3>Tastes similar</h3>
+    <ul class="pairs">
+    {% for s in d.similar %}
+      <li>
+        <div class="head"><a href="{{ root }}wines/{{ s.wine_id }}.html">{{ s.name }}</a></div>
+        <div class="wine-meta">
+          {{ '%.0f'|format(s.similarity * 100) }}% alike on {{ s.shared_dims|join(', ') }}
+          {%- if s.shared_flavours %}; both show {{ s.shared_flavours|join(', ') }}{% endif %}
+        </div>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if d.also_try %}
+    <h3>My notes say also try</h3>
+    <ul class="chips">
+      {% for a in d.also_try %}<li><a href="{{ root }}wines/{{ a.id }}.html">{{ a.name }}</a></li>{% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

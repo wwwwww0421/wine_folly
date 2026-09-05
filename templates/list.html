@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% from "macros.html" import wine_list %}
+{% block title %}{{ heading }} — Wine Folly{% endblock %}
+{% block content %}
+  <h2>{{ heading }}</h2>
+  {% if subtitle %}<p class="subtitle">{{ subtitle }}</p>{% endif %}
+
+  {% if groups %}
+    {% for group in groups %}
+      <h3>{{ group.name }}</h3>
+      {% if group.wines is defined %}
+        {{ wine_list(group.wines, root) }}
+      {% else %}
+        <ul class="chips">
+          {% for item in group.links %}<li><a href="{{ root }}{{ item.href }}">{{ item.label }}</a></li>{% endfor %}
+        </ul>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% from "macros.html" import wine_list %}
+{% block title %}{{ d.region.name }} — Wine Folly{% endblock %}
+{% block content %}
+  <h2>{{ d.region.name }}</h2>
+  <p class="subtitle">
+    {{ d.region.country }}
+    {% if parent %} · part of <a href="{{ root }}regions/{{ parent.id }}.html">{{ parent.name }}</a>{% endif %}
+  </p>
+
+  {% if d.flavour_profile %}
+    <h3>What it tastes of</h3>
+    <ul class="chips">
+      {% for f in d.flavour_profile %}<li><a href="{{ root }}flavours.html#{{ f }}">{{ f }}</a></li>{% endfor %}
+    </ul>
+  {% endif %}
+
+  <h3>Wines from here</h3>
+  {{ wine_list(d.wines, root) }}
+
+  {% if d.siblings %}
+    <h3>Elsewhere in {{ d.region.country }}</h3>
+    <ul class="chips">
+      {% for s in d.siblings %}<li><a href="{{ root }}regions/{{ s.id }}.html">{{ s.name }}</a></li>{% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Flavours — Wine Folly{% endblock %}
+{% block content %}
+  <h2>Flavours</h2>
+  <p class="subtitle">Every note in my tasting vocabulary, and which wines show it.</p>
+  <ul class="pairs">
+  {% for f in flavours %}
+    <li id="{{ f.flavour }}">
+      <div class="head"><strong>{{ f.flavour }}</strong> <span class="kind">{{ f.count }} wine{{ 's' if f.count != 1 }}</span></div>
+      <ul class="chips">
+        {% for w in f.wines %}<li><a href="{{ root }}wines/{{ w.id }}.html">{{ w.name }}</a></li>{% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+  </ul>
+{% endblock %}

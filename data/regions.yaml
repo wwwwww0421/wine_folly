@@ -990,7 +990,7 @@
   country: Australia
   climate: mediterranean
   known_for: [shiraz, cabernet-sauvignon, grenache, mataro, semillon, riesling]
-  notes: "One of Australia's oldest and most revered wine regions, situated just northeast of Adelaide, where a warm Mediterranean climate, ancient dry-farmed soils, and some of the world's oldest surviving ungrafted vines yield rich, powerful, and intensely flavored red and white wines."
+  notes: "One of Australia's oldest and most revered wine regions, situated just northeast of Adelaide, where a warm Mediterranean climate, ancient dry-farmed soils, and some of the world's oldest surviving ungrafted vines yield rich, powerful, and intensely flavoured red and white wines."
   subregions:
     - id: eden-valley
       name: Eden Valley
@@ -1007,7 +1007,7 @@
     - id: seaview
       name: Seaview
       known_for: [shiraz, cabernet-sauvignon, grenache]
-      notes: "An elevated ridge subregion overlooking the gulf, featuring shallow soils over hard limestone and ancient siltstones that produce powerful, structured, and intensely flavored red wines."
+      notes: "An elevated ridge subregion overlooking the gulf, featuring shallow soils over hard limestone and ancient siltstones that produce powerful, structured, and intensely flavoured red wines."
 
 - id: adelaide-hills
   name: Adelaide Hills
