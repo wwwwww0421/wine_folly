@@ -34,7 +34,8 @@ def normalise(text: str) -> str:
 
     text = unicodedata.normalize("NFKD", text.lower())
     text = "".join(c for c in text if not unicodedata.combining(c))
-    return re.sub(r"[^a-z0-9 ]+", " ", text).strip()
+    text = re.sub(r"[^a-z0-9 ]+", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
 
 
 @dataclass
@@ -82,7 +83,7 @@ class WineDetail:
 @dataclass
 class RegionDetail:
     region: dict
-    wines: list[str]
+    wines: list[dict]
     flavour_profile: list[str]
     siblings: list[dict]
 
@@ -99,7 +100,7 @@ class Engine:
             "SELECT data FROM wines WHERE id = ?", (wine_id,)
         ).fetchone()
         if row and row["data"]:
-            return json.loads(row["data"] if row else None)
+            return json.loads(row["data"]) if row else None
         return None
 
     def _regions_of(self, record: dict) -> list[dict]:
@@ -247,7 +248,7 @@ class Engine:
             ).fetchall()
 
             for row in rows:
-                exact_food_ids.add(row["tag_id"])
+                # exact_food_ids.add(row["tag_id"])
                 add("food", row["tag_id"], row["label"])
 
         # ---------------------------------------------------------------
@@ -314,7 +315,7 @@ class Engine:
 
     ### Food to Wine Pairing
 
-    def pair_food(self, tag_ids: list[str], limit: int = 10) -> list[PairedWine]:
+    def pair_food(self, tag_ids: list[str], limit: int = 50) -> list[PairedWine]:
         """
         Multi-tag score merge: SUM strengths across matched tags, drop any wine that lists a matched tag under `avoid`.
         This is the same arthmetic app.js repeats client-side.
@@ -369,6 +370,9 @@ class Engine:
     def pair_text(
         self, query: str, limit: int = 10
     ) -> tuple[list[Match], list[PairedWine]]:
+        """
+        Free text straight to pairings. Returns the tags it matched too, so the UI can show 'interpreting as: Cured fish'.
+        """
         foods = [m for m in self.resolve(query) if m.kind == "food"]
         return foods, self.pair_food([m.id for m in foods], limit)
 
@@ -460,7 +464,7 @@ class Engine:
 
     ### Similarity & Flavouring Browsing
 
-    def similar(self, wine_id: str, limit: int = 5) -> list(SimilarWine):
+    def similar(self, wine_id: str, limit: int = 5) -> list[SimilarWine]:
         """
         Cosine similar over the scale dimensions BOTH wines have, so a missing paramter degrades gracefully instead of crashing.
         Shared flavours break ties - two wines can score alike numerically and taste nothing alike!

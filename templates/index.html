@@ -2,10 +2,15 @@
 {% from "macros.html" import wine_list %}
 {% block content %}
   <h2>What are you eating?</h2>
+  <p class="subtitle">Type a dish, a wine, a grape or a region.</p>
+
   <div class="search">
-    <input id="q" type="search" placeholder="bacalhau, ribeye, Assyrtiko…">
+    <label for="q" class="visually-hidden"></label>
+    <input id="q" type="search" placeholder="bacalhau, ribeye, Assyrtiko…" autocomplete="off">
     <ul class="results" id="results"></ul>
   </div>
+
+  <section id="pairings"></section>
 
   <h3>Start from a dish</h3>
   <ul class="chips">
@@ -13,4 +18,7 @@
       <li><a href="{{ root }}foods/{{ tag.id }}.html">{{ tag.label }}</a></li>
     {% endfor %}
   </ul>
+
+  <h3>Recently added</h3>
+  {{ wine_list(recent, root) }}
 {% endblock %}

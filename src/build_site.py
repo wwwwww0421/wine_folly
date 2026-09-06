@@ -250,7 +250,8 @@ class SiteBuilder:
 
         assets = self.out_dir / "assets"
         assets.mkdir(parents=True, exist_ok=True)
-        shutil.copy(TEMPLATES / "assets" / "style.css", assets / "style.css")
+        for asset in ("style.css", "app.js"):
+            shutil.copy(TEMPLATES / "assets" / asset, assets / asset)
 
         self.home()
 

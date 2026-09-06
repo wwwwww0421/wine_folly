@@ -220,7 +220,7 @@ from the same YAML at build time.
 | `food` | tag label (×2), aliases (×3) — aliases joined into one string | Food-tag results page (ranked wines + whys) |
 | `region` | name (×2), country, known_for grapes | Region page |
 
-All text is normalized at index *and* query time: lowercased, accents
+All text is normalised at index *and* query time: lowercased, accents
 stripped (`comte` must find `comté`), punctuation removed. The docs are
 written to `site/search-docs.json` (~100 entries — small enough that
 MiniSearch builds its index in the browser on page load in milliseconds;
@@ -298,17 +298,17 @@ same results for the same query — that's a test in itself.
 ### Phase 2 — The App
 
 **Week 5 — Static site generation**
-- [ ] Jinja2 templates: home, wine detail, food-tag pages, region pages
-- [ ] `build_site.py` renders everything into `site/`
+- [x] Jinja2 templates: home, wine detail, food-tag pages, region pages
+- [x] `build_site.py` renders everything into `site/`
 - 🎯 *Milestone:* open `site/index.html` locally, click through to
   Nebbiolo's full detail page.
 
 **Week 6 — Search & pairing UI (implements §5)**
-- [ ] `export.py` emits `search-docs.json` + per-tag `pairings/<tag>.json`
-- [ ] `app.js`: debounced search box, prefix + fuzzy matching, grouped
+- [x] `export.py` emits `search-docs.json` + per-tag `pairings/<tag>.json`
+- [x] `app.js`: debounced search box, prefix + fuzzy matching, grouped
   results (foods → wines → regions)
-- [ ] Multi-tag score merge + `avoid` filtering client-side (§5.3)
-- [ ] Parity check: browser results match `python -m src.query` results
+- [x] Multi-tag score merge + `avoid` filtering client-side (§5.3)
+- [x] Parity check: browser results match `python -m src.query` results
 - 🎯 *Milestone:* type "truffle cheddar" in the browser → ranked wines
   with reasons. No server running.
 

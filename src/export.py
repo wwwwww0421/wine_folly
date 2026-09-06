@@ -93,7 +93,7 @@ class Exporter:
                         "SELECT alias FROM aliases WHERE tag_id = ?", (tag_id,)
                     )
                 ],
-                "wines": [asdict(w) for w in self.engine.pair_food(tag_id, limit=50)],
+                "wines": [asdict(w) for w in self.engine.pair_food([tag_id], limit=50)],
                 "avoid": [
                     r["wine_id"]
                     for r in self.con.execute(

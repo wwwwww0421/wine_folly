@@ -177,5 +177,6 @@ def test_user_text_is_escaped(site, engine, con):
     """Autoescape on: a stray < or & in my notes must not break a page."""
     for row in con.execute("SELECT id FROM wines"):
         html = (site / "wines" / f"{row['id']}.html").read_text(encoding="utf-8")
-        body = html.split("<main")[1]
-        assert "<script" not in body
+        content = html.split("<main")[1].split("</main>")[0]
+        assert "<script" not in content, "user text injected a script tag"
+        # assert "<script" not in body
