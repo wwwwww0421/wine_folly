@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wine Folly</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="masthead">
+  <a href="index.html"><h1>Wine Folly</h1></a>
+  <nav>
+    <a href="wines.html">Wines</a>
+    <a href="foods.html">Food</a>
+    <a href="regions.html">Regions</a>
+    <a href="flavours.html">Flavours</a>
+  </nav>
+</header>
+<main class="wrap">
+  <h2>What are you eating?</h2>
+  <p class="subtitle">Type a dish, a wine, a grape or a region.</p>
+
+  <div class="search">
+    <label for="q" class="visually-hidden"></label>
+    <input id="q" type="search" placeholder="bacalhau, ribeye, Assyrtiko…" autocomplete="off">
+    <ul class="results" id="results"></ul>
+  </div>
+
+  <section id="pairings"></section>
+
+  <h3>Start from a dish</h3>
+  <ul class="chips">
+  </ul>
+
+  <h3>Recently added</h3>
+    <ul class="wines">
+    <li data-type="rosé light-red full-red">
+      <a href="wines/agiorgitiko.html">
+        <span class="wine-name">Agiorgitiko</span>
+<div class="wine-meta">raspberry, blackberry, plum-sauce, black-pepper</div>      </a>
+    </li>
+    <li data-type="rosé full-red">
+      <a href="wines/aglianico.html">
+        <span class="wine-name">Aglianico</span>
+<div class="wine-meta">white-pepper, black-cherry, smoke, game</div>      </a>
+    </li>
+    <li data-type="full-white">
+      <a href="wines/airen.html">
+        <span class="wine-name">Airén</span>
+<div class="wine-meta">apple, pineapple, grapefruit, banana</div>      </a>
+    </li>
+    <li data-type="light-white">
+      <a href="wines/albarino.html">
+        <span class="wine-name">Albariño</span>
+<div class="wine-meta">lemon-zest, graphfruit, honeydew, nectarine</div>      </a>
+    </li>
+    <li data-type="full-red">
+      <a href="wines/alicante-bouschet.html">
+        <span class="wine-name">Alicante Bouschet</span>
+<div class="wine-meta">black-cherry, blackberry-bramble, black-plum, black-pepper</div>      </a>
+    </li>
+    <li data-type="light-white full-white">
+      <a href="wines/arinto.html">
+        <span class="wine-name">Arinto</span>
+<div class="wine-meta">lemon-zest, graphfruit, hazelnut, beeswax</div>      </a>
+    </li>
+    <li data-type="light-white">
+      <a href="wines/assyrtiko.html">
+        <span class="wine-name">Assyrtiko</span>
+<div class="wine-meta">lime, passion-fruit, beeswax, flint</div>      </a>
+    </li>
+    <li data-type="sparkling rosé medium-red full-red">
+      <a href="wines/baga.html">
+        <span class="wine-name">Baga</span>
+<div class="wine-meta">blackberry, blackcurrant, dried-cherry, cocoa</div>      </a>
+    </li>
+  </ul>
+
+</main>
+<footer class="wrap">
+  60 wines · 40 food tags · 286 regions.
+  Built from my Wine Folly notes on 2026-09-09.
+</footer>
+<script>window.SITE_ROOT = "";</script>
+<script src="assets/app.js" defer></script>
+</body>
+</html>
