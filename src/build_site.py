@@ -19,6 +19,7 @@ Every page is reachable without JavaScript - search function enhances a site tha
 
 from __future__ import annotations
 
+import hashlib
 import json
 import shutil
 from datetime import date
@@ -243,6 +244,71 @@ class SiteBuilder:
             flavours.append({**entry, "wines": wines})
         self._render("flavours.html", self.out_dir / "flavours.html", flavours=flavours)
 
+    def _version(self) -> str:
+        """
+        Hash of dataset - changes whenever a note changes, which is what makes the service worker drop its old cache.
+        """
+        payload = json.dumps(self.index, sort_keys=True).encode("utf-8")
+        return hashlib.sha256(payload).hexdigest()[:12]
+
+    def manifest(self) -> None:
+        """Relative paths throughout: a project site lives at repo, not domain root."""
+        payload = {
+            "name": "Wine Folly",
+            "short_name": "WineFolly",
+            "description": "An offline wine pairing and serving search engine",
+            "start_url": "./index.html",
+            "scope": "./",
+            "display": "standalone",
+            "orientation": "portrait",
+            "background_color": "#EDEEE9",
+            "theme_color": "#7E2B3C",
+            "icons": [
+                {
+                    "src": "assets/icons/icon-192.png",
+                    "size": "192x192",
+                    "type": "image/png",
+                },
+                {
+                    "src": "assets/icons/icon-512.png",
+                    "size": "512x512",
+                    "type": "image/png",
+                },
+                {
+                    "src": "assets/icons/icon-maskable-512.png",
+                    "size": "512x512",
+                    "type": "image/png",
+                    "purpose": "maskable",
+                },
+            ],
+        }
+        (self.out_dir / "manifest.webmanifest").write_text(
+            json.dumps(payload, indent=2), encoding="utf-8"
+        )
+
+    def service_worker(self) -> None:
+        """Written to the SITE ROOT so its scope covers every page."""
+        candidates = [
+            "index.html",
+            "wines.html",
+            "foods.html",
+            "regions.html",
+            "flavours.html",
+            "assets/style.css",
+            "assets/app.js",
+            "assets/register-sw.js",
+            "assets/icons/icon-192.png",
+            "data/search-doc.json",
+            "data/index.json",
+        ]
+        shell = ["./"] + [f"./{c}" for c in candidates if (self.out_dir / c).exists()]
+
+        tempalte = (TEMPLATES / "assets" / "sw.js.template").read_text(encoding="utf-8")
+        source = tempalte.replace("__VERSION__", self._version()).replace(
+            "__SHELL__", json.dumps(shell)
+        )
+        (self.out_dir / "sw.js").write_text(source, encoding="utf-8")
+
     #### EXECUTE
     def run(self) -> dict[str, int]:
         for stale in ("wines", "foods", "regions"):
@@ -252,6 +318,17 @@ class SiteBuilder:
         assets.mkdir(parents=True, exist_ok=True)
         for asset in ("style.css", "app.js"):
             shutil.copy(TEMPLATES / "assets" / asset, assets / asset)
+        shutil.copytree(
+            TEMPLATES / "assets" / "icons",
+            assets / "icons",
+            dirs_exist_ok=True,
+        )
+
+        shutil.copy(
+            TEMPLATES / "assets" / "icons" / "favicon.ico",
+            self.out_dir / "favicon.ico",
+        )
+        (self.out_dir / ".nojekyll").touch()
 
         self.home()
 
@@ -261,6 +338,8 @@ class SiteBuilder:
             "regions": self.region_page(),
         }
 
+        self.manifest()
+        self.service_worker()
         self.wine_index()
         self.food_index()
         self.region_index()

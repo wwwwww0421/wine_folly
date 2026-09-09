@@ -4,6 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}Wine Folly{% endblock %}</title>
+<meta name="theme-color" content="#7E2B3C">
+<meta name="description" content="Wine pairings and serving notes from my Wine Folly study.">
+<link rel="manifest" href="{{ root }}manifest.webmanifest">
+<link rel="icon" href="{{ root }}favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="{{ root }}assets/icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="WineFolly">
 <link rel="stylesheet" href="{{ root }}assets/style.css">
 </head>
 <body>
@@ -25,5 +33,6 @@
 </footer>
 <script>window.SITE_ROOT = "{{ root }}";</script>
 <script src="{{ root }}assets/app.js" defer></script>
+<script src="{{ root }}assets/register-sw.js" defer></script>
 </body>
 </html>

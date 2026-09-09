@@ -313,7 +313,7 @@ same results for the same query — that's a test in itself.
   with reasons. No server running.
 
 **Week 7 — Deploy**
-- [ ] GitHub Pages via Actions: push → build → deploy
+- [x] GitHub Pages via Actions: push → build → deploy
 - [ ] Polish mobile layout (this is primarily a phone tool)
 - 🎯 *Milestone:* live URL, usable from phone browser.
 

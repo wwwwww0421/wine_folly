@@ -48,7 +48,7 @@ def exported(tmp_path_factory, engine) -> Path:
 
 
 def run_node(script: str) -> str:
-    """Run a snippet with Sommelier loaded; returns stdout."""
+    """Run a snippet with WineFolly loaded; returns stdout."""
     prelude = f"const S = require({str(APP_JS)!r});\n"
     result = subprocess.run(
         ["node", "-e", prelude + textwrap.dedent(script)],

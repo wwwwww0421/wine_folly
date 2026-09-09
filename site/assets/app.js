@@ -1,7 +1,7 @@
-/* Sommelier — search and pairing.  (templates/assets/app.js)
+/* WineFolly — search and pairing.  (templates/assets/app.js)
  *
  * No library, no CDN: a fetched script fails in airplane mode, and
- * offline is the point. Pure logic lives in Sommelier.* so tests can
+ * offline is the point. Pure logic lives in WineFolly.* so tests can
  * require() this file in Node and check parity against the Python engine
  * (tests/test_search_parity.py). DOM wiring is at the bottom, guarded.
  *
@@ -164,11 +164,11 @@
     return out;
   }
 
-  root.Sommelier = {
+  root.WineFolly = {
     normalise: normalise, editDistance: editDistance,
     search: search, mergePairings: mergePairings, STRENGTH_SCORE: STRENGTH_SCORE
   };
-  if (typeof module !== "undefined" && module.exports) module.exports = root.Sommelier;
+  if (typeof module !== "undefined" && module.exports) module.exports = root.WineFolly;
 })(typeof window !== "undefined" ? window : globalThis);
 
 
@@ -177,7 +177,7 @@
 if (typeof document !== "undefined") (function () {
   "use strict";
 
-  var S = window.Sommelier;
+  var S = window.WineFolly;
   var ROOT = window.SITE_ROOT || "";
   var input = document.getElementById("q");
   var output = document.getElementById("results");

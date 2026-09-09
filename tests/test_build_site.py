@@ -179,4 +179,100 @@ def test_user_text_is_escaped(site, engine, con):
         html = (site / "wines" / f"{row['id']}.html").read_text(encoding="utf-8")
         content = html.split("<main")[1].split("</main>")[0]
         assert "<script" not in content, "user text injected a script tag"
-        # assert "<script" not in body
+
+
+# --- search wiring (Week 6) -----------------------------------------------
+
+
+def test_search_assets_are_shipped(site):
+    assert (site / "assets" / "app.js").exists()
+    assert (site / "data" / "search-docs.json").exists()
+
+
+def test_every_page_loads_the_search_script(site):
+    """SITE_ROOT must be correct at every depth or fetch() 404s."""
+    for page in site.rglob("*.html"):
+        html = page.read_text(encoding="utf-8")
+        assert "assets/app.js" in html
+        depth = len(page.relative_to(site).parts) - 1
+        assert f'window.SITE_ROOT = "{"../" * depth}"' in html
+
+
+def test_search_docs_reference_real_pages(site):
+    """Every search hit must lead somewhere that exists."""
+    import json
+
+    docs = json.loads((site / "data" / "search-docs.json").read_text(encoding="utf-8"))
+    folders = {"food": "foods", "wine": "wines", "region": "regions"}
+    for doc in docs:
+        target = site / folders[doc["kind"]] / f"{doc['ref']}.html"
+        assert target.exists(), f"search points at missing page {target.name}"
+
+
+def test_search_box_is_present_and_empty(site):
+    html = (site / "index.html").read_text(encoding="utf-8")
+    assert 'id="q"' in html and 'id="results"' in html
+
+
+# --- progressive web app (Week 8) -----------------------------------------
+
+
+def test_pwa_files_exist(site):
+    assert (site / "manifest.webmanifest").exists()
+    assert (
+        site / "sw.js"
+    ).exists(), "service worker must sit at the site root for scope"
+    assert (site / "favicon.ico").exists()
+    for size in (180, 192, 512):
+        assert (site / "assets" / "icons" / f"icon-{size}.png").exists()
+
+
+def test_manifest_is_valid_and_relative(site):
+    import json
+
+    m = json.loads((site / "manifest.webmanifest").read_text(encoding="utf-8"))
+    for key in ("name", "short_name", "start_url", "display", "icons"):
+        assert key in m
+    assert m["display"] == "standalone"
+    # a project site lives at /<repo>/ — absolute paths would 404
+    assert not m["start_url"].startswith("/")
+    for icon in m["icons"]:
+        assert not icon["src"].startswith("/")
+        assert (
+            site / icon["src"]
+        ).exists(), f"manifest points at missing {icon['src']}"
+
+
+def test_precached_shell_urls_all_exist(site):
+    """cache.addAll() rejects the whole install if ONE url 404s — that would
+    silently break offline mode."""
+    import json, re
+
+    src = (site / "sw.js").read_text(encoding="utf-8")
+    shell = json.loads(re.search(r"const SHELL = (\[.*?\]);", src, re.S).group(1))
+    for url in shell:
+        if url == "./":
+            continue
+        assert (site / url[2:]).exists(), f"precache lists missing {url}"
+
+
+def test_service_worker_version_changes_with_data(site, engine, tmp_path):
+    """A stale cache would keep serving old notes."""
+    import re
+    from src.build_site import SiteBuilder
+    from src.export import Exporter
+
+    first = re.search(r'VERSION = "(.*?)"', (site / "sw.js").read_text()).group(1)
+    assert len(first) >= 8
+    Exporter(engine, tmp_path / "data").run()
+    SiteBuilder(engine, tmp_path, TEMPLATES).run()
+    again = re.search(r'VERSION = "(.*?)"', (tmp_path / "sw.js").read_text()).group(1)
+    assert first == again, "same data must give the same version (deterministic build)"
+
+
+def test_every_page_declares_ios_install_metadata(site):
+    for page in site.rglob("*.html"):
+        html = page.read_text(encoding="utf-8")
+        assert "apple-touch-icon" in html
+        assert "manifest.webmanifest" in html
+        assert 'name="theme-color"' in html
