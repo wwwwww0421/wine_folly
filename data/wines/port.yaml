@@ -1,0 +1,36 @@
+id: port
+name: Port
+wine_type: [dessert]
+grapes: [touriga-franca, touriga-nacional, tinta-barroca, tinta-roriz, tinto-cao, rabigato, viosinho]
+# --- Wine Folly 1–5 scales ---
+body: 5
+sweetness: 5
+tannin: 5
+acidity: 4
+alcohol: 5
+flavours: [black-plum, dried-cherry, chocolate, raisin, cinnamon]
+countries: [portugal]
+price_band: "£££"
+serving:
+  temp_c: [12, 15]
+  glass: dessert-glass
+  decant_minutes: 30
+  cellar_years: [50, 1000]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [blue-cheese]
+    strength: perfect           # perfect | great | good
+    why: "Perfect pairing taste like a bottle of LBV or Vintage Port and a hunk of Stilton cheese."
+notes: >
+  The most famous fortified wine of Portugal is a blend made in a range of styles including white, rosé, red and tawny. Each style has a unique taste, so try them all!
+
+  Types:
+  - White Port: A white grape Port. Off-dry with flavours of dried peach, white pepper, tangerine zest and incense.
+  - Rosé Port: Rosé style, Strawberry, cinnamon, honey, and raspberry sweets.
+  - Ruby Port: Basic red Port. Sweet black fruits, chocolate, and spice. Drink young.
+  - LBV Port: (Late Bottled Vintage Port) a ready to drink single-vintage Port.
+  - Tawny Port: A barrel-aged Port that gets better (and more pricy) with age. Try a 20-year.
+  - Colheita Port: A single vintage oxidative, barrel-aged Port.
+  - Crusted Port: A multi-vintage Port designed to age. Uncommon.
+  - Vintage Port: Single vintage Port wines from exceptional years. Drinks well in the first 5 years, then will continue to cellar from 30 to 50 more more years!
+also_try: [recioto-della-valpolicella, banyuls, rivesaltes, vin-santo-rosso, late-harvest-reds]

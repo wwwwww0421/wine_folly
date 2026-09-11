@@ -308,6 +308,18 @@
       known_for: [greco]
       notes: "Sulfur- and tuff-rich volcanic soils give this crisp white its signature intense minerality, bright citrus profile, and a dry, almond-bitter finish."
 
+- id: oltrepo-pavese-franciacorta
+  name: Oltrepò Pavese & Franciacorta
+  country: Italy
+  climate: continental
+  known_for: [pinot-nero, chardonnay, pinot-bianco, croatina, barbera]
+  notes: "A major northern Italian sparkling and red wine macro-region spanning the hills of Lombardy south of the Po River and east toward Brescia, featuring ancient morainic amphitheaters, gravelly glacial drift, and limestone-rich clay soils that produce world-class traditional-method sparkling wines and robust, fruit-forward reds."
+  subregions:
+    - id: franciacorta
+      name: Franciacorta
+      known_for: [chardonnay, pinot-nero, pinot-bianco]
+      notes: "Italy's premier sparkling wine appellation nestled south of Lake Iseo, featuring mineral-rich, well-draining morainic and glacial soils that yield refined, complex, and elegant traditional-method sparkling wines."
+
 - id: piedmont
   name: Piedmont
   country: Italy
@@ -774,11 +786,6 @@
   climate: continental
   known_for: [nebbiolo, chardonnay, pinot-noir, croatina, barbera]
   notes: "A sophisticated northern Italian wine region stretching from the high Alpine peaks to the Po River plain and the glacial lakes. Famed for producing Italy's finest traditional-method sparkling wines and elegant, mountain-influenced reds."
-  subregions:
-    - id: franciacorta
-      name: Franciacorta
-      known_for: [chardonnay, pinot-noir, pinot-blanc]
-      notes: "Italy's premier sparkling wine region, crafted via the traditional method (refermentation in the bottle) to produce rich, creamy, and complex bubbles."
 
 - id: friuli-venezia-giulia
   name: Friuli-Venezia Giulia
@@ -791,6 +798,30 @@
       name: Collio Goriziano
       known_for: [friulano, ribolla-gialla, sauvignon-blanc, pinot-bianco]
       notes: "A breathtaking hilly border region featuring iconic *ponca* (marl and sandstone flysch) soils that impart striking minerality, depth, and elegance to iconic white wines."
+
+- id: valdobbiadene
+  name: Valdobbiadene
+  country: Italy
+  climate: maritime
+  known_for: [glera, verdiso, bianchetta-trevigiana, perera]
+  notes: "The historic, precipitous mountain heartland of Prosecco production in northeastern Italy's Veneto region, where dramatic steep limestone-and-sandstone slopes, severe diurnal temperature variation, and ancient glacial moraines produce Italy's most refined, complex, and intensely mineral-driven sparkling wines."
+  subregions:
+    - id: cartizze
+      name: Superiore di Cartizze
+      known_for: [glera]
+      notes: "A legendary 108-hectare grand cru hillside amphitheater featuring ancient ancient morainic sandstone soils and an optimal microclimate that yields the region's most opulent, harmonious, and exquisitely balanced sparkling wines with a distinct touch of natural sweetness."
+
+- id: trentino-alto-adige
+  name: Trentino-Alto Adige
+  country: Italy
+  climate: continental
+  known_for: [pinot-grigio, gewurztraminer, chardonnay, schiava, teroldego, lagrein]
+  notes: "A dramatic alpine wine macro-region in northeastern Italy nestled within the towering peaks of the Dolomites and the Adige River valley, where extreme diurnal temperature shifts, abundant sunshine, and diverse glacial, limestone, and porphyry soils produce world-class, intensely aromatic white wines and vibrant, structured reds."
+  subregions:
+    - id: alto-adige-suedtirol
+      name: Alto Adige (Südtirol)
+      known_for: [gewurztraminer, pinot-grigio, sauvignon-blanc, pinot-bianco, lagrein]
+      notes: "The northern, German-speaking alpine subregion characterized by steep, terraced mountain vineyards, cool air drafts, and mineral-rich sandy and gravelly soils that yield exceptionally crisp, aromatic white wines and deep, velvety reds."
 
 - id: mount-etna
   name: Mount Etna (Etna)
@@ -930,6 +961,13 @@
       known_for: [syrah, malbec]
       notes: "The central irrigated lowlands producing rich, velvety, and fruit-forward reds, with Syrah shining as the local specialty."
 
+- id: oregon
+  name: Oregon
+  country: United States
+  climate: maritime-continental
+  known_for: [pinot-noir, chardonnay, pinot-gris, riesling, syrah]
+  notes: "A premier Pacific Northwest wine region defined by a cool maritime climate moderated by the Coast Range and the Cascade Mountains, featuring ancient marine sedimentary, volcanic basalt, and windblown loess soils that produce world-class, elegantly structured Pinot Noir and vibrant, mineral-driven whites."
+
 - id: patagonia
   name: Patagonia
   country: Argentina
@@ -1021,17 +1059,17 @@
       known_for: [chardonnay, pinot-noir]
       notes: "The cool, misty heartland of the region situated in an ancient amphitheater of hills, featuring weathered sandstone and clay soils over yellow-brown podzolic earth that yield world-class, complex, and mineral-driven sparkling and still wines."
 
-- id: yarra-valley
-  name: Yarra Valley
+- id: victoria
+  name: Victoria
   country: Australia
-  climate: maritime
-  known_for: [chardonnay, pinot-noir, shiraz, cabernet-sauvignon]
-  notes: "Victoria's oldest and most prestigious wine region, nestled along the Yarra River and framed by the Great Dividing Range, renowned for producing world-class, elegant, and complex cool-climate wines."
+  climate: continental-maritime
+  known_for: [shiraz, chardonnay, pinot-noir, cabernet-sauvignon, rousanne, nebbiolo]
+  notes: "Australia's most geographically diverse and culturally rich wine state, spanning cool coastal maritime influences to warm inland valleys and high-altitude alpine slopes, where ancient granitic, volcanic, and sedimentary soils yield an extraordinary spectrum of elegant, terroir-driven wines."
   subregions:
-    - id: upper-yarra
-      name: Upper Yarra
-      known_for: [chardonnay, pinot-noir]
-      notes: "The higher-altitude, cooler sector featuring ancient red volcanic and grey loamy soils, yielding exceptionally refined, highly aromatic, and structure-driven Chardonnays and Pinot Noirs."
+    - id: yarra-valley
+      name: Yarra Valley
+      known_for: [chardonnay, pinot-noir, shiraz, cabernet-sauvignon]
+      notes: "Victoria's historic cool-climate heartland nestled in the rolling ranges east of Melbourne, featuring deep grey-brown red volcanic and sedimentary soils that produce benchmark, highly perfumed Pinot Noir and structured, elegant Chardonnay."
 
 - id: tuscany
   name: Tuscany (Toscana)
@@ -1441,6 +1479,18 @@
   known_for: [cabernet-sauvignon, shiraz, chardonnay, riesling]
   notes: "Australia's legendary red wine region famous for its narrow strip of unique terra rossa soil over limestone, delivering world-class, minty, and structured Cabernet Sauvignon."
 
+- id: mornington-peninsula
+  name: Mornington Peninsula
+  country: Australia
+  climate: maritime
+  known_for: [pinot-noir, chardonnay, pinot-gris, shiraz]
+  notes: "A premier maritime wine region in southeastern Australia framed by Port Phillip and Western Port bays, where cooling oceanic breezes, high humidity, and ancient, highly weathered red and grey volcanic and sedimentary soils produce exceptionally elegant, refined, and aromatic cool-climate wines."
+  subregions:
+    - id: red-hill
+      name: Red Hill
+      known_for: [pinot-noir, chardonnay]
+      notes: "The elevated, cooler heartland of the peninsula featuring deep, fertile red volcanic (Janjuc) soils that yield deeply structured, complex, and intensely perfumed Pinot Noir and richly textured Chardonnay."
+
 - id: hebei
   name: Hebei
   country: China
@@ -1700,3 +1750,124 @@
       name: Suhindol
       known_for: [gamza, cabernet-sauvignon, merlot]
       notes: "A historic winemaking heartland within the central Danube Plain featuring rolling limestone hills and well-drained soils that yield elegant, earthy red wines led by the indigenous Gamza grape."
+
+
+- id: steiermark
+  name: Steiermark (Styria)
+  country: Austria
+  climate: continental-mediterranean
+  known_for: [sauvignon-blanc, welschriesling, gelber-muskateller, chardonnay, pinot-blane]
+  notes: "Austria's lush, mountainous southeastern wine region where steep, dramatic hillside vineyards, a unique collision of Alpine and Mediterranean weather patterns, and mineral-rich soils of weathered primary rock, marl, and limestone produce some of Europe's most vibrant, aromatic, and structured white wines."
+  subregions:
+    - id: sudoststeiermark
+      name: Südoststeiermark (Southeast Styria)
+      known_for: [sauvignon-blanc, gewurztraminer, pinot-blanc, welschriesling]
+      notes: "A volcanic and rolling hill subregion characterized by ancient basaltic, tuff, and clay soils that yield opulent, spicy, and texturally rich aromatic white wines."
+
+- id: alsace
+  name: Alsace
+  country: France
+  climate: continental
+  known_for: [riesling, gewurztraminer, pinot-gris, pinot-blanc, sylvaner, pinot-noir]
+  notes: "A distinctive eastern French wine region nestled in the rain shadow of the Vosges Mountains along the Rhine River, featuring an extraordinarily dry, sunny climate and a complex geological mosaic of granite, limestone, marl, and sandstone that yields highly aromatic, intensely flavored, and mineral-driven varietal wines."
+  subregions:
+    - id: haut-rhin
+      name: Haut-Rhin (Colmar Hills)
+      known_for: [riesling, gewurztraminer, pinot-gris, muscat]
+      notes: "The southern half of the Alsatian wine route featuring steep, highly fractured hillside soils and a high concentration of Grand Cru vineyards that produce structured, age-worthy, and deeply complex wines with pronounced terroir expression."
+
+- id: jura
+  name: Jura
+  country: France
+  climate: continental
+  known_for: [chardonnay, savagnin, poulsard, trousseau, pinot-noir]
+  notes: "A picturesque, small alpine wine region nestled in the eastern folds of France between Burgundy and Switzerland, where cool continental weather, steep slopes, and unique grey marl and limestone soils create oxidative and mineral-driven wines of profound individuality, including the legendary Vin Jaune."
+  subregions:
+    - id: arbois
+      name: Arbois
+      known_for: [poulsard, trousseau, chardonnay, savagnin]
+      notes: "The historic wine capital of the Jura featuring rich, heavy marl and limestone soils that yield complex, earthy red wines alongside intensely textured, saline whites and celebrated oxidative styles."
+
+- id: pfalz
+  name: Pfalz
+  country: Germany
+  climate: continental-mediterranean
+  known_for: [riesling, spatburgunder, weissburgunder, grauburgunder, dornfelder]
+  notes: "Germany's second-largest wine region stretching north from the French border along the protected, sun-drenched strip of the Haardt mountains, where a remarkably warm and dry climate combined with a complex mosaic of sandstone, limestone, loess, and basalt soils yields richly textured, expressive, and fruit-forward wines."
+  subregions:
+    - id: mittelhaardt-deutsche-weinstrasse
+      name: Mittelhaardt
+      known_for: [riesling, spatburgunder, weissburgunder]
+      notes: "The prestigious central sector of the region nestled against the mountain slopes, featuring wind-protected microclimates and mineral-rich sandstone and limestone soils that produce some of Germany's most powerful, dry, and intensely structured Rieslings."
+
+- id: ahr
+  name: Ahr
+  country: Germany
+  climate: continental
+  known_for: [spatburgunder, fruhburgunder, riesling, weissburgunder]
+  notes: "Germany's northernmost red-wine-dominated region tucked into a steep, slate-lined river valley protected by high wooded hills, where a microclimate traps solar heat to produce some of Europe's finest, most silky and mineral-driven Pinot Noir."
+  subregions:
+    - id: mayschoss-altenahr
+      name: Upper Ahr (Mayschoß-Altenahr)
+      known_for: [spatburgunder, fruhburgunder]
+      notes: "The dramatic, terraced upper valley sector featuring precarious slate slopes and poor soils that yield deeply concentrated, intensely structured Pinot Noir with striking smoky minerality."
+
+- id: wurttemberg
+  name: Württemberg
+  country: Germany
+  climate: continental
+  known_for: [trollinger, lemberger, riesling, spatburgunder, rieslaner]
+  notes: "Germany's premier red wine region centered around the Neckar River valley, where rolling hills, sheltered microclimates, and diverse Keuper marl, limestone, and shell-limestone soils produce deeply expressive, food-friendly red wines led by Lemberger and Trollinger."
+  subregions:
+    - id: remstal-stuttgart
+      name: Remstal-Stuttgart
+      known_for: [lemberger, trollinger, riesling]
+      notes: "The historic heartland surrounding Stuttgart featuring steep, terraced hillside vineyards on mineral-rich Keuper soils that yield structured, elegant Lemberger and vibrant, aromatic Rieslings."
+
+- id: baden
+  name: Baden
+  country: Germany
+  climate: continental-mediterranean
+  known_for: [spatburgunder, grauburgunder, weissburgunder, riesling, muller-thurgau]
+  notes: "Germany's southernmost and warmest wine region stretching along the upper Rhine valley against the backdrop of the Black Forest, where a uniquely mild climate and diverse volcanic, limestone, and loess soils foster exceptionally rich, full-bodied white wines and world-class, elegant Pinot Noir."
+  subregions:
+    - id: kaiserstuhl
+      name: Kaiserstuhl
+      known_for: [spatburgunder, grauburgunder, weissburgunder]
+      notes: "An extinct volcanic massif within the Rhine plain featuring deep, warm loess and volcanic-weathered soils that yield some of Germany's most powerful, concentrated, and velvety Pinot Noir and rich, opulent Pinot varieties."
+
+- id: rheinhessen
+  name: Rheinhessen
+  country: Germany
+  climate: continental
+  known_for: [riesling, grauburgunder, weissburgunder, silvaner, spatburgunder]
+  notes: "Germany's largest wine region, nestled in a protected basin framed by the Rhine River and the rolling hills of the Wonnegau, where a dry, sunny continental climate and a remarkably diverse patchwork of limestone, clay, red sandstone, and slate soils produce everything from crisp, everyday whites to world-class, mineral-driven Rieslings and expressive Pinot Noirs."
+  subregions:
+    - id: rheinterrasse
+      name: Rheinterrasse (Nierstein to Oppenheim)
+      known_for: [riesling, silvaner, spatburgunder]
+      notes: "The historic, steep slope corridor overlooking the Rhine featuring rare, red-colored clay-slate soils (Rotliegend) that absorb and radiate solar heat, yielding some of Germany's most powerful, smoky, and deeply structured Rieslings."
+
+- id: marlborough
+  name: Marlborough
+  country: New Zealand
+  climate: maritime
+  known_for: [sauvignon-blanc, pinot-noir, chardonnay, pinot-gris, riesling]
+  notes: "New Zealand's flagship wine region situated at the northeastern tip of the South Island, featuring a unique combination of high sunshine hours, cool maritime nights, and alluvial river valley soils that produce world-renowned, intensely aromatic Sauvignon Blanc and elegant, fruit-forward Pinot Noir."
+  subregions:
+    - id: wairau-valley
+      name: Wairau Valley
+      known_for: [sauvignon-blanc, pinot-noir, chardonnay]
+      notes: "The historic northern valley floor featuring ancient stony, silt-loam riverbed soils that yield powerfully expressive, pungent Sauvignon Blanc with vibrant tropical and herbaceous fruit notes alongside structured reds."
+
+- id: hawkes-bay
+  name: Hawke's Bay
+  country: New Zealand
+  climate: maritime
+  known_for: [cabernet-sauvignon, merlot, syrah, chardonnay, sauvignon-blanc]
+  notes: "One of New Zealand's oldest and sunniest wine regions on the eastern coast of the North Island, protected by mountain ranges and shaped by sweeping river valleys, where complex alluvial and volcanic gravel soils produce world-class Bordeaux-style red blends, structured Syrah, and opulent Chardonnay."
+  subregions:
+    - id: gimblett-gravels
+      name: Gimblett Gravels
+      known_for: [cabernet-sauvignon, merlot, syrah, malbec]
+      notes: "An iconic inland wine district defined by deep, free-draining, stonewashed gravel soils that absorb and radiate solar heat, yielding exceptionally concentrated, structured, and age-worthy red wines."

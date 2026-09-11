@@ -1,0 +1,28 @@
+id: nero-d-avola
+name: Nero d'Avola
+wine_type: [full-red]
+grapes: [nero-d-avola]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 4
+acidity: 3
+alcohol: 4
+flavours: [black-cherry, black-plum, liquorice, tobacco, chilli-pepper]
+regions: [sicily]
+countries: [italy, argentina]
+popularity: uncommon
+price_band: "££"
+serving:
+  temp_c: [15, 20]
+  glass: oversized
+  decant_minutes: 60
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [roasted-meat-rich]
+    strength: great           # perfect | great | good
+    why: "Great wine to match with rich meats. Some classic pairings including oxtail soup and beef stew."
+notes: >
+  Sicily's most important red wine variety is often likened to Cabernet Sauvignon due to its full-bodied style and flavours of black cherry and tobacco.
+also_try: [bordeaux-blend, cabernet-sauvignon, montepulciano, agiorgitiko, mencia]

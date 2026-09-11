@@ -1,0 +1,34 @@
+id: nerello-mascalese
+name: Nerello Mascalese
+wine_type: [light-red, medium-red]
+grapes: [nerello-mascalese]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 1
+tannin: 3
+acidity: 4
+alcohol: 3
+flavours: [dried-cherry, orange-zest, dried-thyme, allspice, crushed-gravel]
+regions: [sicily]
+countries: [italy]
+popularity: rare
+price_band: "££"
+serving:
+  temp_c: [12, 15]
+  glass: aroma-collector
+  decant_minutes: 30
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [vegetable-driven]
+    strength: good           # perfect | great | good
+    why: "Try Nerello Mascalese with roasted tomatoes and pepper flavours."
+  - tags: [light-meat]
+    strength: good
+    why: "Nerello Mascalese with lighter meats like poultry and pork."
+  - tags: [spice-accented]
+    strength: great
+    why: "Pairs well with oregano, thyme, coriander, and sage."
+notes: >
+  A rare red grape found on the slopes of Mount Etna in Sicily that produces high-quality light-bodied reds that are suprprisingly reminiscent of Pinot Noir.
+also_try: [pinot-noir, grenache, frappato, carignan]

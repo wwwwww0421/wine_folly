@@ -1,0 +1,28 @@
+id: petit-verdot
+name: Petit Verdot
+wine_type: [full-red]
+grapes: [petit-verdot]
+# --- Wine Folly 1–5 scales ---
+body: 5
+sweetness: 1
+tannin: 5
+acidity: 3
+alcohol: 4
+flavours: [black-cherry, plum, violet, lilac, sage]
+regions: [castilla-la-mancha, mentrida, bordeaux, columbia-valley, aconcagau, colchagua, tupungato, uco-valley]
+countries: [spain, australia, france, usa, italy, south-africa, chile, argentina, portugal, uruguay, canada]
+popularity: uncommon
+price_band: "££"
+serving:
+  temp_c: [15, 20]
+  glass: oversized
+  decant_minutes: 60
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [roasted-meat-rich]
+    strength: great           # perfect | great | good
+    why: "Pairs well with rich roasted meats due to its bold, tannic with a shorter finish."
+notes: >
+  Considered a minor blending grape in Bordeaux, Petit Verdot has shown promise as a single varietal wine in warmer climates, where it makes smooth full-bodied reds.
+also_try: [touriga-nacional, petite-sirah, sagrantino, tannat, bonarda]

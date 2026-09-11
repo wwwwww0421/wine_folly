@@ -1,0 +1,31 @@
+id: picpoul
+name: Picpoul
+wine_type: [light-white]
+grapes: [picpoul]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 1
+tannin: 1
+acidity: 5
+alcohol: 3
+flavours: [green-apple, citrus-blossom, lemon, thyme, saline]
+regions: [languedoc-roussillon, cotes-du-rhone]
+countries: [france, spain, usa]
+popularity: rare
+price_band: "£"
+serving:
+  temp_c: [3, 7]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 3]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [shellfish]
+    strength: great           # perfect | great | good
+    why: "Made to pair with seafood, shellfish, and sushi, as well as appetizers."
+  - tags: [light-dish]
+    strength: great           # perfect | great | good
+    why: "Made to pair with seafood, shellfish, and sushi, as well as appetizers."
+notes: >
+  An old france grape that's rising in popularity. Picpoul means "stings the lip" and makes lip-zapping white wines that have a distinct saline note.
+also_try: [assyrtiko, muscadet, vinho-verde, albarino, grillo]

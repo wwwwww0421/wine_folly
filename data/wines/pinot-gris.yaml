@@ -1,0 +1,31 @@
+id: pinot-gris
+name: Pinot Gris
+wine_type: [light-white, rosé]
+grapes: [pinot-gris]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 4
+tannin: 1
+acidity: 4
+alcohol: 3
+flavours: [white-peach, lemon-zest, cantaloupe, raw-almond, crushed-gravel]
+regions: [veneto, friuli-venezia-giulia, trentino-alto-adige, oregon, california, baden, rheinhessen, pfalz, barossa-valley, mornington-peninsula, alsace, marlborough, hawkes-bay]
+countries: [italy, usa, germany, australia, france, moldova, hungary, new-zealand, romania, canada, slovenia, czech-republic]
+popularity: common
+price_band: "££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [light-meat]
+    strength: perfect           # perfect | great | good
+    why: "Excellent pairing with white meats"
+  - tags: [fish-lean]
+    strength: perfect
+    why: "Excellent pairing with seafood and food with a fruit element such as lemon, oranges, peaches, or apricots."
+notes: >
+  Pinot Gris (aka Pinot Grigio) is a pink grape mutation of Pinot Noir that's most famous for its zesty white wines that range in style from dry to just plain sweet.
+also_try: [pinot-blanc, albarino, grechetto, arneis, friulano]

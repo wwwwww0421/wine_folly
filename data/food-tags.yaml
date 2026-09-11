@@ -31,12 +31,18 @@
 - id: beef-stroganoff
   label: Beef Stroganoff & creamy mushroom dishes
   aliases: [beef stroganoff, stroganoff, mushroom stroganoff, creamy beef pasta]
+- id: fat-umami-dishes
+  label: Fat & umami-driven dishes
+  aliases: [fat and umami-driven dishes, pork belly, bone marrow, tonkotsu ramen, braised pork belly, rich umami stew]
 - id: exotic-lean-meats
   label: Exotic & lean game meats
   aliases: [ostrich, venison steak, wild boar, kangaroo, bison, elk]
 - id: cured-deli-meats
   label: Cured & smoked deli meats
   aliases: [pastrami, corned beef, smoked brisket, roast beef deli style, salami, mortadella]
+- id: duck
+  label: Rich poultry & duck dishes
+  aliases: [duck, roasted duck, duck breast, confit de canard, peking duck, duck leg]
 
 # --- fish & seafood: lean / oily / cured / shellfish ---
 - id: fish-lean
@@ -113,6 +119,9 @@
 - id: stuffed-pasta
   label: Stuffed & sweet-savory pasta
   aliases: [butternut ravioli, pumpkin ravioli, sweet potato gnocchi, agnolotti, squash tortelli]
+- id: spicy-asian-cuisine
+  label: Spicy Asian cuisine
+  aliases: [spicy asian food, sichuan cuisine, korean spicy pork, hot pot, kimchi jjigae, mapo tofu, spicy ramen, dandan noodles]
 
 # --- vegetables & sweets ---
 - id: vegetable-driven

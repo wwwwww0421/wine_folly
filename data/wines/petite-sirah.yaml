@@ -1,0 +1,31 @@
+id: petite-sirah
+name: Petite Sirah
+wine_type: [full-red]
+grapes: [petite-sirah]
+# --- Wine Folly 1–5 scales ---
+body: 5
+sweetness: 1
+tannin: 5
+acidity: 3
+alcohol: 5
+flavours: [sugar-plum, blueberry, dark-chocolate, black-pepper, black-tea]
+regions: [napa-valley, paso-robles, california, columbia-valley, baja]
+countries: [usa, australia, mexico, chile, south-africa, brazil]
+popularity: rare
+price_band: "££"
+serving:
+  temp_c: [15, 20]
+  glass: red-glass
+  decant_minutes: 60
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [fat-umami-dishes]
+    strength: perfect           # perfect | great | good
+    why: "Best with fat and umami dishes due to its aggressive tannin profile. It can pair from steak to grill or plate of beef stroganoff"
+  - tags: [beef-stroganoff]
+    strength: perfect
+    why: "Due to its aggressive tannin profile, it's best to pair from steak to grill or plate of beef stroganoff"
+notes: >
+    Petite Sirah is loved for its deeply coloured wines with rich black fruit flavours and bold tannins. The grape is related to Syrah and the rare French-Alps grape, Peloursin.
+also_try: [syrah, dolcetto, touriga-nacional, sagrantino, tannat]

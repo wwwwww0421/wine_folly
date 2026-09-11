@@ -1,0 +1,28 @@
+id: pinot-blanc
+name: Pinot Blanc
+wine_type: [sparkling, light-white]
+grapes: [pinot-blanc]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 3
+tannin: 1
+acidity: 3
+alcohol: 4
+flavours: [pear, peach, raw-almond, lemon-zest, crushed-gravel]
+regions: [baden, pfalz, lombardy, alto-adige, niederosterreich, steiermark, alsace]
+countries: [germany, italy, austria, france, czech-republic, russia, slovenia, slovakia, moldova, turkey, usa, georgia, croatia]
+popularity: uncommon
+price_band: "££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [soft-cheese]
+    strength: perfect           # perfect | great | good
+    why: "You'll love it with soft cheeses, salads with creamy dressings and flaky fish."
+notes: >
+    Pinot Blanc is a mutation of Pinot Noir that's known mostly for its dry, refreshing white wines. It's also key blending grape in Franciacorta sparklers.
+also_try: [pinot-gris, auxerrois, silvaner, verdicchio, fernao-pires]

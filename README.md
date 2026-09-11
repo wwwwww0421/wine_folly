@@ -318,8 +318,8 @@ same results for the same query — that's a test in itself.
 - 🎯 *Milestone:* live URL, usable from phone browser.
 
 **Week 8 — Make it installable & offline**
-- [ ] Web manifest (name, icon, colours)
-- [ ] Service worker caching the whole site
+- [x] Web manifest (name, icon, colours)
+- [x] Service worker caching the whole site
 - 🎯 *Milestone:* installed on home screen, **works in airplane mode**.
 
 ### Phase 3 — Forever mode
@@ -327,6 +327,8 @@ same results for the same query — that's a test in itself.
 - Backlog ideas: attribute-based pairing inference for untagged foods
   (v2 engine), personal tasting journal, "what's in my rack" inventory,
   label photo notes, quiz mode for studying.
+- Add map for region search
+- Improve search with AI
 
 ---
 

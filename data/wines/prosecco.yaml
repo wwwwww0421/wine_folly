@@ -1,0 +1,39 @@
+id: prosecco
+name: Prosecco
+wine_type: [sparkling]
+grapes: [glera]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 3
+tannin: 1
+acidity: 4
+alcohol: 3
+flavours: [green-apple, honeydew, pear, lager, cream]
+regions: [veneto, friuli-venezia-giulia, valdobbiadene]
+countries: [italy]
+price_band: "££"
+serving:
+  temp_c: [3, 7]
+  glass: flute-glass
+  decant_minutes: 0
+  cellar_years: [1, 3]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [cured-deli-meats]
+    strength: great           # perfect | great | good
+    why: "Traditional Italian pairings include antipasto, cured meats, and almond."
+
+avoid:
+  - tags: [spicy-asian-cuisine]
+    why: "If you are step up your game, try it!"
+
+notes: >
+  Italy's most popular sparkling wine is created with Glera grapes grown in Veneto and Friuli-venezia Giulia. The best Prosecco wines come from Valdobiaddene!
+
+  Quality Level:
+  1. Valdobbiadene Superiore di Cartizze DOCG: A micro region of just 265 acres just outside Valdobbiadene.
+  2. Prosecco Conegliano Valdobbiadene Superiore Rive DOCG: Wines from 43 communes or vineyards within Conegliano-Valdobbiadene.
+  3. Colli Asolani DOCG: Another smaller hillside region across the river from the Conegliano-Valdobbiadene region.
+  4. Prosecco Congegliano Valdobbiadene Superiore DOCG: A smaller, more focused growing area between Valdobbiadene and Conegliano in the hills.
+  5. Prosecco DOC: Basic quality Prosecco made in 9 provinces from Veneto and Friuli-Venezia Giulia regions.
+also_try: [cava, cremant, sekt, champagne, cap-classique]

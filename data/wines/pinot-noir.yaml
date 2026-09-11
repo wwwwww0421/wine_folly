@@ -1,0 +1,34 @@
+id: pinot-noir
+name: Pinot Noir
+wine_type: [sparkling, full-white, rosé, light-red]
+grapes: [pinot-noir]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 1
+tannin: 2
+acidity: 4
+alcohol: 3
+flavours: [cherry, raspberry, clove, mushroom, vanilla]
+regions: [burgundy, champagne, loire-valley, jura, california, oregon, ahr, pfalz, wuttemberg, baden, oltrepo-pavesse-franciacorta, malborough, mornington-peninsula, yarra-valley, victoria]
+countries: [france, usa, germany, moldova, italy, new-zealand, australia, switzerland, chile, hungary, romania, argentina]
+popularity: popular
+price_band: "£££"
+serving:
+  temp_c: [12, 15]
+  glass: aroma-collector
+  decant_minutes: 30
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [duck]
+    strength: great           # perfect | great | good
+    why: "It's taste is meant for duck."
+  - tags: [light-meat]
+    strength: great
+    why: "The taste is meant for chicken, pork and mushrooms."
+notes: >
+  The world's most popular light-bodied red is loved for its red fruit and spice flavours that are accentuated by a long, smooth, soft-tannin finish.
+  Burgundy region taste with mushroom, cranberry, plum sauce, fruit pastille, hibiscus.
+  California region taste with raspberry sauce, plum, gun smoke, vanilla, allspice.
+  Cooler climate regions offer more tart fruit flavours while warmer climate regions ripe, boisterous fruit flavours.
+also_try: [st-laurent, gamay, nerello-mascalese, schiava, zweigelt]

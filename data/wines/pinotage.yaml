@@ -1,0 +1,28 @@
+id: pinotage
+name: Pinotage
+wine_type: [full-red]
+grapes: [pinotage]
+# --- Wine Folly 1–5 scales ---
+body: 5
+sweetness: 1
+tannin: 4
+acidity: 1
+alcohol: 5
+flavours: [black-cherry, blackberry, fig, menthol, roasted-meat]
+regions: [swartland, paarl, stellenbosch, california]
+countries: [south-africa, brazil, new-zealand, usa]
+popularity: uncommon
+price_band: "££"
+serving:
+  temp_c: [15, 20]
+  glass: red-glass
+  decant_minutes: 60
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [roasted-meat-rich]
+    strength: great           # perfect | great | good
+    why: "It is great with roasted meats and vegetables topped with flavourful sauces like teriyaki, plum sauce, and barbecue."
+notes: >
+  South Africa's own hearty red was created in 1925. It is a cross between Cinsault and Pinot Noir. Pinotage tastes bolder than both its parent grapes!
+also_try: [alicante-bouschet, syrah, petite-sirah, monastrell, tannat]
