@@ -216,15 +216,22 @@ from the same YAML at build time.
 
 | Doc type | Indexed fields (boost) | Selecting a result opens |
 |---|---|---|
-| `wine` | name (×3), grapes (×2), flavours (×1.5), region names | Wine detail page |
-| `food` | tag label (×2), aliases (×3) — aliases joined into one string | Food-tag results page (ranked wines + whys) |
-| `region` | name (×2), country, known_for grapes | Region page |
+| `wine` | name (×5), grapes (×3), flavours (×2), wine type (×1), region names (×1), tasting notes (×1), every pairing's *why* text (×1.5) | Wine detail page |
+| `food` | tag label (×4), aliases (×6) — aliases joined into one string | Food-tag results page (ranked wines + whys) |
+| `region` | name (×2), country (×2), known_for grapes (×1.5) | Region page |
 
 All text is normalised at index *and* query time: lowercased, accents
 stripped (`comte` must find `comté`), punctuation removed. The docs are
 written to `site/search-docs.json` (~100 entries — small enough that
 MiniSearch builds its index in the browser on page load in milliseconds;
 no pre-serialized index needed).
+
+Wine docs also carry their raw 1–5 scale values (body, sweetness, tannin,
+acidity, alcohol) — not as searchable text, but so a descriptive word like
+"sweet" or "tannic" can be scored against how the wine actually tastes (see
+`ATTRIBUTE_WORDS` in `app.js` / `engine.py`) rather than needing that word
+to literally appear anywhere. A query like *"sweet blackcurrant"* combines
+both: a literal flavour match plus a scale-value boost.
 
 ### 5.2 Query behavior in the app (`app.js`)
 - **Search-as-you-type:** input debounced ~150 ms, then
@@ -251,6 +258,18 @@ Query: `"truffle cheddar"`
 
 So the *only* runtime pairing logic is a score merge — everything else
 was computed in Python at build time.
+
+### 5.3b The other direction: wine query resolution
+
+Search also works from a wine, not just a dish. Query: `"chardonnay good
+match food"` — "good", "match" and "food" score 0 against every doc (terms
+score independently, so filler words can't veto a real hit) and
+`"chardonnay"` wins on the `wine` doc's name. Whenever the **top-ranked
+hit is a wine**, the pairings panel switches direction: it fetches that
+wine's own `site/data/wines/<id>.json` (the same file its detail page
+renders from, already carrying `pairs_with`) and lists "Pairs well with…"
+instead of running the food merge. No phrase-parsing involved — any query
+whose best hit is a wine gets this treatment.
 
 ### 5.4 CLI equivalents (development, weeks 2–4)
 ```bash
@@ -328,7 +347,7 @@ same results for the same query — that's a test in itself.
   (v2 engine), personal tasting journal, "what's in my rack" inventory,
   label photo notes, quiz mode for studying.
 - Add map for region search
-- Improve search with AI
+- Improve search with AI, and including regions, flavours, etc.
 
 ---
 

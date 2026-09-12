@@ -14,13 +14,14 @@ from pathlib import Path
 import yaml
 from pydantic import ValidationError
 
-from .schema import FoodTag, Wine, RegionEntry
+from .schema import FoodCategory, FoodTag, Wine, RegionEntry
 
 
 @dataclass
 class Dataset:
     wines: list[Wine]
     food_tags: list[FoodTag]
+    food_categories: list[FoodCategory]
     regions: dict[str, RegionEntry]
     warnings: list[str] = field(default_factory=list)
 
@@ -39,18 +40,39 @@ def load_dataset(data_dir: Path = Path("data")) -> Dataset:
     errors: list[str] = []
     warnings: list[str] = []
 
+    ### FOOD CATEGORIES CHECK
+    food_categories: list[FoodCategory] = []
+    categories_path = data_dir / "food-categories.yaml"
+    if categories_path.exists():
+        try:
+            food_categories = FoodCategory.load_categories(
+                yaml.safe_load(categories_path.read_text(encoding='utf-8')) or []
+            )
+        except (ValueError, ValidationError) as e:
+            errors.append(f"{categories_path}: {e}")
+    else:
+        warnings.append(f"no {categories_path} - food category check skipping...")
+
     ### FOOD TAGS CHECK
     food_tags: list[FoodTag] = []
     tags_path = data_dir / "food-tags.yaml"
     if tags_path.exists():
         try:
-            food_tags = FoodTag.load_food_tags(yaml.safe_load(tags_path.read_text(encoding='utf-8')) or []) 
+            food_tags = FoodTag.load_food_tags(yaml.safe_load(tags_path.read_text(encoding='utf-8')) or [])
 
         except (ValueError, ValidationError) as e:
             errors.append(f"{tags_path}: {e}")
 
     else:
         warnings.append(f"no {tags_path} - food tag skipping...")
+
+    if food_tags and food_categories:
+        category_ids = {c.id for c in food_categories}
+        for t in food_tags:
+            if t.category not in category_ids:
+                errors.append(
+                    f"{tags_path}: tag '{t.id}' has unknown category '{t.category}' - ADD TO FOOD-CATEGORIES!"
+                )
 
 
     ### REGIONS CHECK
@@ -120,7 +142,7 @@ def load_dataset(data_dir: Path = Path("data")) -> Dataset:
     if errors:
         raise DatasetError(errors)
 
-    return Dataset(wines, food_tags, regions, warnings)
+    return Dataset(wines, food_tags, food_categories, regions, warnings)
 
 
 ### Compiling
@@ -140,9 +162,16 @@ CREATE TABLE pairings (
     is_avoid    INTEGER NOT NULL DEFAULT 0
 );
 
+CREATE TABLE food_categories (
+    id                  TEXT PRIMARY KEY,
+    label               TEXT NOT NULL,
+    pairing_principle   TEXT NOT NULL
+);
+
 CREATE TABLE food_tags (
     id          TEXT PRIMARY KEY,
-    label       TEXT NOT NULL
+    label       TEXT NOT NULL,
+    category_id TEXT NOT NULL REFERENCES food_categories(id)
 );
 
 CREATE TABLE aliases (
@@ -154,7 +183,8 @@ CREATE TABLE regions (
     id          TEXT PRIMARY KEY,
     name        TEXT NOT NULL,
     country     TEXT,
-    parent_id   TEXT
+    parent_id   TEXT,
+    known_for   TEXT
 );
 
 CREATE VIRTUAL TABLE search_index USING fts5(
@@ -191,13 +221,32 @@ def write_sqlite(ds: Dataset, db_path: Path = Path("build/wine.db")) -> Path:
                 )
 
         region_names = [ds.regions[r].name for r in w.regions if r in ds.regions]
-        content = " ".join([w.name, *w.grapes, *w.flavours, *region_names])
+        why_text = [p.why for p in w.pairings] + [a.why for a in (w.avoid or [])]
+        content = " ".join(
+            [
+                w.name,
+                *w.grapes,
+                *w.flavours,
+                *region_names,
+                *w.wine_type,
+                w.notes or "",
+                *why_text,
+            ]
+        )
         con.execute(
             "INSERT INTO search_index VALUES ('wine', ?, ?)", (w.id, content)
         )
 
+    for c in ds.food_categories:
+        con.execute(
+            "INSERT INTO food_categories VALUES (?, ?, ?)",
+            (c.id, c.label, c.pairing_principle),
+        )
+
     for t in ds.food_tags:
-        con.execute("INSERT INTO food_tags VALUES (?, ?)", (t.id, t.label))
+        con.execute(
+            "INSERT INTO food_tags VALUES (?, ?, ?)", (t.id, t.label, t.category)
+        )
         for a in t.aliases:
             con.execute("INSERT INTO aliases VALUES (?, ?)", (a, t.id))
 
@@ -206,12 +255,13 @@ def write_sqlite(ds: Dataset, db_path: Path = Path("build/wine.db")) -> Path:
 
     for r in ds.regions.values():
         con.execute(
-            "INSERT INTO regions VALUES (?, ?, ?, ?)", (r.id, r.name, r.country, r.parent)
+            "INSERT INTO regions VALUES (?, ?, ?, ?, ?)",
+            (r.id, r.name, r.country, r.parent, " ".join(r.known_for)),
         )
 
         con.execute(
             "INSERT INTO search_index VALUES ('region', ?, ?)",
-            (r.id, f"{r.name} {r.country}")
+            (r.id, " ".join([r.name, r.country, *r.known_for]))
         )
 
     con.commit()

@@ -7,7 +7,8 @@
 
   {% if groups %}
     {% for group in groups %}
-      <h3>{{ group.name }}</h3>
+      <h3{% if group.id %} id="{{ group.id }}"{% endif %}>{{ group.name }}</h3>
+      {% if group.subtitle %}<p class="subtitle group-subtitle">{{ group.subtitle }}</p>{% endif %}
       {% if group.wines is defined %}
         {{ wine_list(group.wines, root) }}
       {% else %}

@@ -82,11 +82,20 @@ class Exporter:
         total_bytes = 0
         for tag_id in self._tag_ids():
             row = self.con.execute(
-                "SELECT label FROM food_tags WHERE id = ?", (tag_id,)
+                """
+                SELECT f.label, c.id AS category_id, c.label AS category_label,
+                       c.pairing_principle
+                FROM food_tags f JOIN food_categories c ON c.id = f.category_id
+                WHERE f.id = ?
+                """,
+                (tag_id,),
             ).fetchone()
             payload = {
                 "tag": tag_id,
                 "label": row["label"],
+                "category": row["category_id"],
+                "category_label": row["category_label"],
+                "pairing_principle": row["pairing_principle"],
                 "aliases": [
                     r["alias"]
                     for r in self.con.execute(
@@ -123,19 +132,35 @@ class Exporter:
         docs = []
         for row in self.con.execute("SELECT id, name, data FROM wines"):
             record = json.loads(row["data"])
-            docs.append(
-                {
-                    "id": f"wine:{row['id']}",
-                    "kind": "wine",
-                    "ref": row["id"],
-                    "title": row["name"],
-                    "grapes": normalise(" ".join(record.get("grapes", []))),
-                    "flavours": normalise(" ".join(record.get("flavours", []))),
-                    "regions": normalise(
-                        " ".join(r["name"] for r in self.engine._regions_of(record))
-                    ),
-                }
+            why_text = " ".join(
+                r["why"]
+                for r in self.con.execute(
+                    "SELECT why FROM pairings WHERE wine_id = ?", (row["id"],)
+                )
             )
+            doc = {
+                "id": f"wine:{row['id']}",
+                "kind": "wine",
+                "ref": row["id"],
+                "title": row["name"],
+                "grapes": normalise(" ".join(record.get("grapes", []))),
+                # A list of phrases, not one flattened string: a flavour
+                # like "black-cherry" normalises to two words, and a query
+                # for "black" alone should only get partial credit for it,
+                # not the full weight of a genuine one-word match.
+                "flavours": [normalise(f) for f in record.get("flavours", [])],
+                "regions": normalise(
+                    " ".join(r["name"] for r in self.engine._regions_of(record))
+                ),
+                "wine_type": normalise(" ".join(record.get("wine_type", []))),
+                "notes": normalise(record.get("notes") or ""),
+                "why": normalise(why_text),
+            }
+            # Scale values ride along unnormalised (used numerically, not as
+            # text) so the browser can match attribute words like "sweet" or
+            # "tannic" against how the wine actually tastes.
+            doc.update({d: record.get(d) for d in SCALE_DIMS})
+            docs.append(doc)
 
         for row in self.con.execute("SELECT id, label FROM food_tags"):
             aliases = [
@@ -151,11 +176,16 @@ class Exporter:
                     "ref": row["id"],
                     "title": row["label"],
                     "label": normalise(row["label"]),
-                    "aliases": normalise(" ".join(aliases)),
+                    # A list of phrases, not one flattened string - see the
+                    # comment on the wine doc's "flavours" above. Without
+                    # this, one incidental word inside a long multi-word
+                    # alias (e.g. "green" inside "green curry") scores as
+                    # high as a real one-word match like "truffle".
+                    "aliases": [normalise(a) for a in aliases],
                 }
             )
 
-        for row in self.con.execute("SELECT id, name, country FROM regions"):
+        for row in self.con.execute("SELECT id, name, country, known_for FROM regions"):
             docs.append(
                 {
                     "id": f"region:{row['id']}",
@@ -164,6 +194,7 @@ class Exporter:
                     "title": row["name"],
                     "label": normalise(row["name"]),
                     "country": normalise(row["country"] or ""),
+                    "known_for": normalise(row["known_for"] or ""),
                 }
             )
 
@@ -195,15 +226,38 @@ class Exporter:
             },
             "wines": wines,
             "food_tags": [
-                {"id": r["id"], "label": r["label"]}
+                {
+                    "id": r["id"],
+                    "label": r["label"],
+                    "category": r["category_id"],
+                    "category_label": r["category_label"],
+                    "pairing_principle": r["pairing_principle"],
+                }
                 for r in self.con.execute(
-                    "SELECT id, label FROM food_tags ORDER BY label"
+                    """
+                    SELECT f.id, f.label, c.id AS category_id, c.label AS category_label,
+                           c.pairing_principle
+                    FROM food_tags f JOIN food_categories c ON c.id = f.category_id
+                    ORDER BY f.label
+                    """
                 )
             ],
             "regions": [
                 {"id": r["id"], "name": r["name"], "country": r["country"]}
                 for r in self.con.execute(
                     "SELECT id, name, country FROM regions ORDER BY name"
+                )
+            ],
+            "food_categories": [
+                {
+                    "id": r["id"],
+                    "label": r["label"],
+                    "pairing_principle": r["pairing_principle"],
+                }
+                # rowid order = data/food-categories.yaml order (its intended
+                # display order), not alphabetical.
+                for r in self.con.execute(
+                    "SELECT id, label, pairing_principle FROM food_categories ORDER BY rowid"
                 )
             ],
             "flavours": self.engine.all_flavours(),

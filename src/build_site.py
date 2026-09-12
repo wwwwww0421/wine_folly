@@ -21,7 +21,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import shutil
+import xml.etree.ElementTree as ET
 from datetime import date
 from pathlib import Path
 
@@ -32,6 +34,46 @@ from .schema import SCALE_DIMS
 
 SITE = Path("site")
 TEMPLATES = Path("templates")
+
+SVG_NS = "http://www.w3.org/2000/svg"
+ET.register_namespace("", SVG_NS)
+
+# Country name (exactly as written in data/regions.yaml) -> lowercase ISO
+# alpha-2 code(s) used as the <g>/<path> id or class in the vendored world
+# map. A region entry like "Spain, Portugal" lights up both shapes.
+COUNTRY_ISO: dict[str, list[str]] = {
+    "Algeria": ["dz"],
+    "Argentina": ["ar"],
+    "Australia": ["au"],
+    "Austria": ["at"],
+    "Bulgaria": ["bg"],
+    "Canada": ["ca"],
+    "Chile": ["cl"],
+    "China": ["cn"],
+    "Croatia": ["hr"],
+    "France": ["fr"],
+    "Germany": ["de"],
+    "Greece": ["gr"],
+    "Hungary": ["hu"],
+    "Italy": ["it"],
+    "Morocco": ["ma"],
+    "New Zealand": ["nz"],
+    "Portugal": ["pt"],
+    "Romania": ["ro"],
+    "Slovakia": ["sk"],
+    "Slovenia": ["si"],
+    "South Africa": ["za"],
+    "Spain": ["es"],
+    "Spain, Portugal": ["es", "pt"],
+    "Switzerland": ["ch"],
+    "Tunisia": ["tn"],
+    "Turkey": ["tr"],
+    "United States": ["us"],
+}
+
+
+def slugify(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
 
 SCALE_LABELS = {
     "body": "Body",
@@ -193,17 +235,94 @@ class SiteBuilder:
         )
 
     def food_index(self) -> None:
-        items = [
-            {"href": f"foods/{t['id']}.html", "label": t["label"]}
-            for t in self.index["food_tags"]
-        ]
+        tags_by_category: dict[str, list] = {}
+        for t in self.index["food_tags"]:
+            tags_by_category.setdefault(t["category"], []).append(t)
+
+        groups = []
+        for cat in self.index["food_categories"]:
+            tags = tags_by_category.get(cat["id"], [])
+            if not tags:
+                continue
+            items = [{"href": f"foods/{t['id']}.html", "label": t["label"]} for t in tags]
+            groups.append(
+                {
+                    "id": cat["id"],
+                    "name": cat["label"],
+                    "subtitle": cat["pairing_principle"],
+                    "links": items,
+                }
+            )
+
         self._render(
             "list.html",
             self.out_dir / "foods.html",
             heading="Food",
-            subtitle="Pick a dish to see what goes with it!",
-            groups=[{"name": "Every dish I have tagged", "links": items}],
+            subtitle="Pick a dish to see what goes with it — grouped by why it pairs the way it does.",
+            groups=groups,
         )
+
+    def _build_world_map(self, wines_by_country: dict[str, int]) -> str:
+        """
+        Loads the vendored world map SVG and, for every country we have wine
+        data on, wraps its shape in a link straight down to that country's
+        section on the page (so clicking the map needs no JavaScript at all)
+        and marks it as coloured-in. Everything else is dimmed and left
+        unlinked.
+        """
+        tree = ET.parse(TEMPLATES / "assets" / "world-map.svg")
+        root = tree.getroot()
+
+        iso_to_country: dict[str, str] = {}
+        for country, codes in COUNTRY_ISO.items():
+            for code in codes:
+                iso_to_country[code] = country
+
+        def tag_subtree(el, extra_class: str) -> None:
+            """
+            Some countries (France, Spain, the US, China...) are drawn as
+            several <path> children that each carry their own "landxx ..."
+            class, rather than inheriting styling from the group. A rule
+            matched directly on an element always wins over an inherited
+            one regardless of specificity, so colouring only the outer
+            <g> silently no-ops on those countries. Tagging every
+            descendant sidesteps that entirely.
+            """
+            for node in el.iter():
+                classes = (node.get("class") or "").split()
+                if extra_class not in classes:
+                    classes.append(extra_class)
+                    node.set("class", " ".join(classes))
+
+        for shape in list(root):
+            tokens = {shape.get("id", ""), *(shape.get("class") or "").split()}
+            iso = next((c for c in tokens if c in iso_to_country), None)
+            if iso is None:
+                continue
+
+            country = iso_to_country[iso]
+            count = wines_by_country.get(country, 0)
+
+            if count:
+                tag_subtree(shape, "has-wine")
+                idx = list(root).index(shape)
+                link = ET.Element(f"{{{SVG_NS}}}a")
+                link.set("href", f"#country-{slugify(country)}")
+                title = ET.SubElement(link, f"{{{SVG_NS}}}title")
+                title.text = f"{country} — {count} wine{'s' if count != 1 else ''}"
+                root.remove(shape)
+                link.append(shape)
+                root.insert(idx, link)
+            else:
+                tag_subtree(shape, "no-wine")
+
+        # Scale by CSS (width:100%; height:auto) instead of the vendored
+        # file's fixed pixel size, so the map fits a phone screen.
+        root.set("class", "world-map")
+        root.attrib.pop("width", None)
+        root.attrib.pop("height", None)
+
+        return ET.tostring(root, encoding="unicode")
 
     def region_index(self) -> None:
         wines_by_region: dict[str, int] = {}
@@ -215,26 +334,36 @@ class SiteBuilder:
         for r in self.index["regions"]:
             by_country.setdefault(r["country"] or "Elsewhere", []).append(r)
 
+        wines_by_country = {
+            country: sum(wines_by_region.get(r["id"], 0) for r in regions)
+            for country, regions in by_country.items()
+        }
+
         groups = []
-        for (
-            country,
-            regions,
-        ) in sorted(by_country.items()):
-            regions.sort(key=lambda x: (-wines_by_region.get(r["id"], 0), r["name"]))
+        for country, regions in sorted(by_country.items()):
+            regions.sort(key=lambda r: (-wines_by_region.get(r["id"], 0), r["name"]))
             items = []
             for r in regions:
                 count = wines_by_region.get(r["id"], 0)
                 label = f"{r['name']} ({count})" if count else r["name"]
                 items.append({"href": f"regions/{r['id']}.html", "label": label})
-            groups.append({"name": country, "links": items})
+            groups.append(
+                {
+                    "name": country,
+                    "slug": slugify(country),
+                    "count": wines_by_country[country],
+                    "links": items,
+                }
+            )
 
         covered = sum(1 for r in self.index["regions"] if wines_by_region.get(r["id"]))
         self._render(
-            "list.html",
+            "regions.html",
             self.out_dir / "regions.html",
             heading="Regions",
-            subtitles=f"{covered} of {len(self.index['regions'])} have a wine in my notes so far",
-            group=groups,
+            subtitle=f"{covered} of {len(self.index['regions'])} have a wine in my notes so far",
+            groups=groups,
+            world_map=self._build_world_map(wines_by_country),
         )
 
     def flavour_index(self) -> None:
@@ -243,6 +372,14 @@ class SiteBuilder:
             wines = self.engine.by_flavour(entry["flavour"])
             flavours.append({**entry, "wines": wines})
         self._render("flavours.html", self.out_dir / "flavours.html", flavours=flavours)
+
+    def journal(self) -> None:
+        """
+        Static shell only - notes.js reads the browser's IndexedDB and
+        fills this page in entirely client-side, so there is no server
+        data to pass here.
+        """
+        self._render("journal.html", self.out_dir / "journal.html")
 
     def _version(self) -> str:
         """
@@ -294,8 +431,10 @@ class SiteBuilder:
             "foods.html",
             "regions.html",
             "flavours.html",
+            "journal.html",
             "assets/style.css",
             "assets/app.js",
+            "assets/notes.js",
             "assets/register-sw.js",
             "assets/icons/icon-192.png",
             "data/search-doc.json",
@@ -316,7 +455,7 @@ class SiteBuilder:
 
         assets = self.out_dir / "assets"
         assets.mkdir(parents=True, exist_ok=True)
-        for asset in ("style.css", "app.js"):
+        for asset in ("style.css", "app.js", "notes.js", "register-sw.js"):
             shutil.copy(TEMPLATES / "assets" / asset, assets / asset)
         shutil.copytree(
             TEMPLATES / "assets" / "icons",
@@ -331,6 +470,7 @@ class SiteBuilder:
         (self.out_dir / ".nojekyll").touch()
 
         self.home()
+        self.journal()
 
         counts = {
             "wines": self.wine_page(),

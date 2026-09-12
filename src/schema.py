@@ -211,6 +211,41 @@ class Wine(BaseModel):
         return {d: v for d in SCALE_DIMS if (v := getattr(self, d)) is not None}
 
 
+class FoodCategory(BaseModel):
+    """
+    Single entry in data/food-categories.yaml.
+
+    Groups food tags by *why* they pair the way they do (fat needs tannin,
+    delicate food needs acid, ...) rather than by cuisine style. Purely
+    display grouping - a tag's id/aliases never depend on its category.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    id: Slug
+    label: str = Field(min_length=1)
+    pairing_principle: str = Field(min_length=1)
+
+    @field_validator("pairing_principle")
+    @classmethod
+    def _tidy_principle(cls, v: str) -> str:
+        return v.strip()
+
+    @staticmethod
+    def load_categories(entries: list[dict]) -> list[FoodCategory]:
+        cats = [FoodCategory.model_validate(e) for e in entries]
+        seen: dict[str, str] = {}
+        errors: list[str] = []
+        for c in cats:
+            if c.id in seen:
+                errors.append(f"duplicate category id - {c.id}")
+            seen[c.id] = c.id
+
+        if errors:
+            raise ValueError("food-categories.yaml: " + "; ".join(errors))
+        return cats
+
+
 class FoodTag(BaseModel):
     """
     Single yaml for food.
@@ -222,6 +257,7 @@ class FoodTag(BaseModel):
 
     id: Slug
     label: str = Field(min_length=1)
+    category: Slug
     aliases: list[str] = Field(min_length=1)
 
     @field_validator("aliases")
@@ -275,6 +311,7 @@ class Region(BaseModel):
     name: str
     country: str
     parent: str | None = None
+    known_for: list[Slug] = []
 
 
 class SubRegion(BaseModel):
@@ -302,9 +339,22 @@ class RegionEntry(BaseModel):
         Hierachy -> flat Region views (self first, then subregions).
         """
 
-        out = [Region(id=self.id, name=self.name, country=self.country)]
+        out = [
+            Region(
+                id=self.id,
+                name=self.name,
+                country=self.country,
+                known_for=self.known_for,
+            )
+        ]
         out += [
-            Region(id=s.id, name=s.name, country=self.country, parent=self.id)
+            Region(
+                id=s.id,
+                name=s.name,
+                country=self.country,
+                parent=self.id,
+                known_for=s.known_for,
+            )
             for s in self.subregions
         ]
         return out

@@ -26,6 +26,32 @@ from .schema import SCALE_DIMS
 
 STRENGTH_SCORE = {"perfect": 3.0, "great": 2.0, "good": 1.0}
 
+# Mirror of templates/assets/app.js's ATTRIBUTE_WORDS/attribute_boost - kept
+# here only so tests/test_search_parity.py can prove the two agree; nothing
+# in the CLI/engine path calls this today, the browser is the only caller.
+ATTRIBUTE_WORDS: dict[str, tuple[str, int]] = {
+    "sweet": ("sweetness", 1), "dry": ("sweetness", -1),
+    "tannic": ("tannin", 1), "soft": ("tannin", -1), "smooth": ("tannin", -1),
+    "acidic": ("acidity", 1), "crisp": ("acidity", 1), "tart": ("acidity", 1),
+    "full": ("body", 1), "bold": ("body", 1), "big": ("body", 1),
+    "light": ("body", -1), "delicate": ("body", -1),
+    "boozy": ("alcohol", 1), "strong": ("alcohol", 1),
+}
+ATTRIBUTE_BOOST_SCALE = 3
+
+
+def attribute_boost(term: str, doc: dict) -> float:
+    """How well a wine doc matches a descriptive word like "sweet"."""
+    hit = ATTRIBUTE_WORDS.get(term)
+    if not hit or doc.get("kind") != "wine":
+        return 0.0
+    dim, direction = hit
+    value = doc.get(dim)
+    if value is None:
+        return 0.0
+    lean = direction * (value - 3)
+    return lean * ATTRIBUTE_BOOST_SCALE if lean > 0 else 0.0
+
 
 def normalise(text: str) -> str:
     """

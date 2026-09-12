@@ -1,138 +1,199 @@
-# --- smoke, char & glaze ---
-- id: bbq
-  label: Barbecue & smoked
-  aliases: [bbq, barbecue, smoked ribs, pulled pork, brisket, smoked sausage, teriyaki]
-- id: vinegar-bbq
-  label: Vinegar-based BBQ
-  aliases: [vinegar bbq, carolina bbq, tangy barbecue]
-- id: grilled
-  label: Grilled & charred
-  aliases: [grilled, char grilled, kebab, souvlaki]
-- id: salty-fried
-  label: Salty & Fried dishes
-  aliases: [fried chicken, french fries, potato chips, tempura, calamari, fried fish, arancini, churros]
+# Food tag vocabulary. Grouped by data/food-categories.yaml — i.e. by *why*
+# a dish pairs the way it does, not by cuisine. Tag ids/aliases are the
+# search-bridge food-to-wine relies on; category is display grouping only.
 
-# --- red meat: quick-cooked vs slow-cooked pair differently ---
+# --- red-meat-steak: seared, high-protein cuts want tannin ---
 - id: steak
   label: Steak
+  category: red-meat-steak
   aliases: [ribeye, filet mignon, strip steak, porterhouse, flank steak, skirt steak, t-bone]
+- id: grilled
+  label: Grilled & charred
+  category: red-meat-steak
+  aliases: [grilled, char grilled, kebab, souvlaki]
+- id: exotic-lean-meats
+  label: Exotic & lean game meats
+  category: red-meat-steak
+  aliases: [ostrich, venison steak, wild boar, kangaroo, bison, elk]
+
+# --- slow-cooked-braised: long cooking concentrates fat and umami ---
 - id: braised-meat
   label: Braised & stewed meats
+  category: slow-cooked-braised
   aliases: [beef stew, braised short ribs, osso buco]
 - id: roasted-meat-rich
   label: Rich roasted meats
+  category: slow-cooked-braised
   aliases: [roast beef, rack of lamb, prime rib, roast pork, leg of lamb, roasted venison, sunday roast]
-- id: light-meat
-  label: Light & white meats
-  aliases: [chicken breast, roast chicken, turkey breast, roast turkey, veal, pork tenderloin, quail, pheasant, tofu]
-- id: salty-appetizer
-  label: Salty appetizers & finger foods
-  aliases: [salted nuts, pretzels, olives, popcorn, cured meats, crostini with tapenade, bérico ham]
 - id: beef-stroganoff
   label: Beef Stroganoff & creamy mushroom dishes
+  category: slow-cooked-braised
   aliases: [beef stroganoff, stroganoff, mushroom stroganoff, creamy beef pasta]
 - id: fat-umami-dishes
   label: Fat & umami-driven dishes
+  category: slow-cooked-braised
   aliases: [fat and umami-driven dishes, pork belly, bone marrow, tonkotsu ramen, braised pork belly, rich umami stew]
-- id: exotic-lean-meats
-  label: Exotic & lean game meats
-  aliases: [ostrich, venison steak, wild boar, kangaroo, bison, elk]
-- id: cured-deli-meats
-  label: Cured & smoked deli meats
-  aliases: [pastrami, corned beef, smoked brisket, roast beef deli style, salami, mortadella]
 - id: duck
   label: Rich poultry & duck dishes
+  category: slow-cooked-braised
   aliases: [duck, roasted duck, duck breast, confit de canard, peking duck, duck leg]
 
-# --- fish & seafood: lean / oily / cured / shellfish ---
-- id: fish-lean
-  label: Lean & white fish
-  aliases: [cod, halibut, sole, snapper, sea bass, mahi mahi, monkfish]
-- id: fish-oily
-  label: Oily & rich fish
-  aliases: [salmon, tuna, trout, mackerel, sardines, herring, swordfish]
-- id: fish-cured
-  label: Cured & salted fish
-  aliases: [bacalhau, salt cod, smoked salmon, anchovies]
-- id: shellfish
-  label: Shellfish
-  aliases: [clams, oysters, mussels, prawns, scallops, lobster, crab, seafood pasta]
+# --- bbq-smoke-char: smoke and char want ripe, fruit-forward wine ---
+- id: bbq
+  label: Barbecue & smoked
+  category: bbq-smoke-char
+  aliases: [bbq, barbecue, smoked ribs, pulled pork, brisket, smoked sausage, teriyaki]
+- id: vinegar-bbq
+  label: Vinegar-based BBQ
+  category: bbq-smoke-char
+  aliases: [vinegar bbq, carolina bbq, tangy barbecue]
+- id: salty-fried
+  label: Salty & Fried dishes
+  category: bbq-smoke-char
+  aliases: [fried chicken, french fries, potato chips, tempura, calamari, fried fish, arancini, churros]
 
-# --- sauce & cuisine families ---
-- id: tomato-sauce
-  label: Tomato-sauce dishes
-  aliases: [tomato pasta, marinara, pizza, napoletana]
-- id: tomato-feta
-  label: Tomato & feta dishes
-  aliases: [tomato feta pasta, tomato feta salad, greek salad]
+# --- cured-charcuterie: cured, salty meat wants acid or bubbles ---
+- id: cured-deli-meats
+  label: Cured & smoked deli meats
+  category: cured-charcuterie
+  aliases: [pastrami, corned beef, smoked brisket, roast beef deli style, salami, mortadella]
+- id: charcuterie-plate
+  label: Charcuterie & mixed cured platters
+  category: cured-charcuterie
+  aliases: [charcuterie plate, charcuterie board, mixed cured meats, antipasto board, salumi platter]
+- id: salty-appetizer
+  label: Salty appetizers & finger foods
+  category: cured-charcuterie
+  aliases: [salted nuts, pretzels, olives, popcorn, cured meats, crostini with tapenade, bérico ham]
+
+# --- global-spice-heat: chilli heat clashes with tannin and alcohol ---
 - id: spiced-cuisine
   label: Spiced cuisine (Indian, Middle Eastern, Mexican)
+  category: global-spice-heat
   aliases: [curry, indian curry, tagine, lahmacun, shawarma, mole sauces, curried potatoes]
+- id: spicy-asian-cuisine
+  label: Spicy Asian cuisine
+  category: global-spice-heat
+  aliases: [spicy asian food, sichuan cuisine, korean spicy pork, hot pot, kimchi jjigae, mapo tofu, spicy ramen, dandan noodles]
+- id: thai-vietnamese
+  label: Thai & Vietnamese cuisine
+  category: global-spice-heat
+  aliases: [pad thai, pho, green curry, som tam, banh mi, spring rolls, lemongrass chicken, pad see ew]
 - id: tapas
   label: Spanish tapas
+  category: global-spice-heat
   aliases: [croquetas, spanish olives, salt almonds, empanadas, tacos al pastor, portuguese octopus, paella]
 - id: east-european-cuisine
   label: East European cuisine
+  category: global-spice-heat
   aliases: [goulash, red potato goulash, spaetzle, cheesy spaetzle dumplings]
 - id: spice-accented
   label: Spice- & herb-accented dishes
+  category: global-spice-heat
   aliases: [sage, anise, cinnamon, sumac, white pepper, five spice, chimichurri, salsa verde, gremolata, mint sauce, herb oil]
-- id: berry-sauce
-  label: Berry-based sauce dishes
-  aliases: [berry sauce, raspberry glazed, cranberry reduction, blackberry sauce, duck with berry reduction, venison with berry sauce]
-- id: thai-vietnamese
-  label: Thai & Vietnamese cuisine
-  aliases: [pad thai, pho, green curry, som tam, banh mi, spring rolls, lemongrass chicken, pad see ew]
-- id: light-dish
-  label: Light Dish
-  aliases: [sushi, salad, california-sushi-rolls, spring-rolls, summer-rolls, sashimi, fresh fruit]
 - id: peanut-butter
   label: Peanut butter dishes & pairings
+  category: global-spice-heat
   aliases: [peanut butter, peanut sauce, satay, peanut butter cookies, pad thai sauce, peanut butter cups]
+
+# --- lean-delicate-fish: delicate protein is overwhelmed by tannin and oak ---
+- id: fish-lean
+  label: Lean & white fish
+  category: lean-delicate-fish
+  aliases: [cod, halibut, sole, snapper, sea bass, mahi mahi, monkfish]
+- id: light-meat
+  label: Light & white meats
+  category: lean-delicate-fish
+  aliases: [chicken breast, roast chicken, turkey breast, roast turkey, veal, pork tenderloin, quail, pheasant, tofu]
+- id: light-dish
+  label: Light Dish
+  category: lean-delicate-fish
+  aliases: [sushi, salad, california-sushi-rolls, spring-rolls, summer-rolls, sashimi, fresh fruit]
+
+# --- oily-fish-shellfish: oily fish and brine need real acidity ---
+- id: fish-oily
+  label: Oily & rich fish
+  category: oily-fish-shellfish
+  aliases: [salmon, tuna, trout, mackerel, sardines, herring, swordfish]
+- id: fish-cured
+  label: Cured & salted fish
+  category: oily-fish-shellfish
+  aliases: [bacalhau, salt cod, smoked salmon, anchovies]
+- id: shellfish
+  label: Shellfish
+  category: oily-fish-shellfish
+  aliases: [clams, oysters, mussels, prawns, scallops, lobster, crab, seafood pasta]
+
+# --- vegetable-herb: green, herbal dishes want acid and their own herbal notes ---
+- id: vegetable-driven
+  label: Vegetable-driven dishes
+  category: vegetable-herb
+  aliases: [roasted vegetables, ratatouille, grilled zucchini, asparagus, mushroom risotto, stuffed peppers, roasted red pepper, sun-dried tomato, green beans, artichokes, cabbage, brussel sprout, artichoke, pea soup]
+- id: pesto-pasta
+  label: Pesto sauce pasta
+  category: vegetable-herb
+  aliases: [pesto pasta, basil pesto, pasta al pesto, pesto genovese, linguine with pesto]
+
+# --- pasta-tomato-earthy: acidic sauces need an equally acidic wine; earthy dishes want a savoury red ---
+- id: tomato-sauce
+  label: Tomato-sauce dishes
+  category: pasta-tomato-earthy
+  aliases: [tomato pasta, marinara, pizza, napoletana]
+- id: tomato-feta
+  label: Tomato & feta dishes
+  category: pasta-tomato-earthy
+  aliases: [tomato feta pasta, tomato feta salad, greek salad]
+- id: stuffed-pasta
+  label: Stuffed & sweet-savory pasta
+  category: pasta-tomato-earthy
+  aliases: [butternut ravioli, pumpkin ravioli, sweet potato gnocchi, agnolotti, squash tortelli]
+- id: truffle
+  label: Truffle & earth-forward dishes
+  category: pasta-tomato-earthy
+  aliases: [truffle risotto, mushroom truffle rice, black truffle risotto, white truffle risotto, truffle cheddar, truffle, black truffle, white truffle, truffle sauce]
+
+# --- cheese-board: cheese pairing runs backwards from meat ---
 - id: soft-cheese
   label: Soft cheeses
+  category: cheese-board
   aliases: [brie, camembert, goat cheese, feta, ricotta, cream cheese, burrata, reblochon]
+- id: blue-cheese
+  label: Pungent & blue cheeses
+  category: cheese-board
+  aliases: [blue cheese, roquefort, gorgonzola, stilton, blue d'auvergne]
+- id: aged-cured-meats-cheeses
+  label: Aged & cured meats and cheeses
+  category: cheese-board
+  aliases: [prosciutto di parma, parmigiano-reggiano, parmesan, aged cheddar, ibérico ham, pecorino, manchego, bresaola, carbonara, queijo de ovelha]
+
+# --- dessert-creamy-baked: match sweetness first; creamy texture wants an equally rich wine ---
 - id: creamy-desserts
   label: Creamy desserts
+  category: dessert-creamy-baked
   aliases: [fruit tarts, cheesecake, ice cream]
 - id: custard-desserts
   label: Custard & egg-based desserts
+  category: dessert-creamy-baked
   aliases: [zabaglione, flan, crème brûlée, crème caramel, panna cotta, egg custard]
-- id: aged-cured-meats-cheeses
-  label: Aged & cured meats and cheeses
-  aliases: [prosciutto di parma, parmigiano-reggiano, parmesan, aged cheddar, ibérico ham, pecorino, manchego, bresaola, carbonara, queijo de ovelha]
-- id: blue-cheese
-  label: Pungent & blue cheeses
-  aliases: [blue cheese, roquefort, gorgonzola, stilton, blue d'auvergne]
 - id: afternoon-tea
   label: Afternoon tea & finger foods
+  category: dessert-creamy-baked
   aliases: [high tea, afternoon tea, cucumber sandwiches, scones, clotted cream, finger sandwiches, tea pastries]
 - id: almond-biscotti
   label: Almond biscotti & hard Italian cookies
+  category: dessert-creamy-baked
   aliases: [almond biscotti, biscotti, cantucci, hard almond cookies, Italian dry cookies]
-- id: charcuterie-plate
-  label: Charcuterie & mixed cured platters
-  aliases: [charcuterie plate, charcuterie board, mixed cured meats, antipasto board, salumi platter]
-- id: truffle
-  label: Truffle & earth-forward dishes
-  aliases: [truffle risotto, mushroom truffle rice, black truffle risotto, white truffle risotto, truffle cheddar, truffle, black truffle, white truffle, truffle sauce]
-- id: stuffed-pasta
-  label: Stuffed & sweet-savory pasta
-  aliases: [butternut ravioli, pumpkin ravioli, sweet potato gnocchi, agnolotti, squash tortelli]
-- id: spicy-asian-cuisine
-  label: Spicy Asian cuisine
-  aliases: [spicy asian food, sichuan cuisine, korean spicy pork, hot pot, kimchi jjigae, mapo tofu, spicy ramen, dandan noodles]
-
-# --- vegetables & sweets ---
-- id: vegetable-driven
-  label: Vegetable-driven dishes
-  aliases: [roasted vegetables, ratatouille, grilled zucchini, asparagus, mushroom risotto, stuffed peppers, roasted red pepper, sun-dried tomato, green beans, artichokes, cabbage, brussel sprout, artichoke, pea soup]
-- id: chocolate-desserts
-  label: Rich chocolate desserts
-  aliases: [chocolate truffles, ganache, chocolate mousse, dark chocolate, molten lava cake]
-- id: pesto-pasta
-  label: Pesto sauce pasta
-  aliases: [pesto pasta, basil pesto, pasta al pesto, pesto genovese, linguine with pesto]
 - id: nut-cakes
   label: Nut-based & almond cakes
+  category: dessert-creamy-baked
   aliases: [almond cake, torta di mandorle, pistachio cake, walnut cake, hazelnut torte, financier]
+
+# --- dessert-chocolate-berry: intense enough to need a bold, often fortified sweet wine ---
+- id: chocolate-desserts
+  label: Rich chocolate desserts
+  category: dessert-chocolate-berry
+  aliases: [chocolate truffles, ganache, chocolate mousse, dark chocolate, molten lava cake]
+- id: berry-sauce
+  label: Berry-based sauce dishes
+  category: dessert-chocolate-berry
+  aliases: [berry sauce, raspberry glazed, cranberry reduction, blackberry sauce, duck with berry reduction, venison with berry sauce]

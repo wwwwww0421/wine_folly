@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block title %}{{ payload.label }} — Wine Folly{% endblock %}
 {% block content %}
+  <a class="breadcrumb" href="{{ root }}foods.html#{{ payload.category }}">{{ payload.category_label }}</a>
   <h2>{{ payload.label }}</h2>
+  {% if payload.pairing_principle %}<p class="note">{{ payload.pairing_principle }}</p>{% endif %}
   <p class="subtitle">
     {% if payload.aliases %}Also: {{ payload.aliases|join(', ') }}{% endif %}
   </p>

@@ -1,0 +1,83 @@
+# Food tag categories — grouped by *why* a dish pairs the way it does
+# (what characteristic of the food actually drives the wine match), not by
+# cuisine style. Order here is display order on foods.html.
+#
+# Adding a tag to a category is just setting its `category:` in
+# data/food-tags.yaml to one of these ids — no wine YAML ever needs to
+# change, since these ids only affect grouping, not pairing lookup.
+
+- id: red-meat-steak
+  label: Red Meat & Steak
+  pairing_principle: >
+    Seared, high-protein cuts want tannin: tannin binds to protein and
+    softens, so the wine feels smoother and the meat feels more tender.
+
+- id: slow-cooked-braised
+  label: Slow-Cooked & Braised
+  pairing_principle: >
+    Long, slow cooking concentrates fat and umami — the wine needs enough
+    acid or ripe fruit to keep the dish from feeling heavy.
+
+- id: bbq-smoke-char
+  label: BBQ, Smoke & Char
+  pairing_principle: >
+    Smoke and char are their own flavour layer — ripe, fruit-forward wine
+    matches the intensity better than a lean, high-acid one.
+
+- id: cured-charcuterie
+  label: Cured Meats & Charcuterie
+  pairing_principle: >
+    Cured, salty meat wants acid (or bubbles) to reset the palate between
+    bites — tannin alone reads as bitter against salt.
+
+- id: global-spice-heat
+  label: Global Spice & Heat
+  pairing_principle: >
+    Chilli heat clashes with tannin and alcohol — off-dry, fruity,
+    lower-alcohol wine tastes cooling instead of hot.
+
+- id: lean-delicate-fish
+  label: Lean & Delicate Fish
+  pairing_principle: >
+    Delicate fish and light dishes are overwhelmed by tannin and oak — a
+    crisp, light wine lets the food lead.
+
+- id: oily-fish-shellfish
+  label: Oily Fish & Shellfish
+  pairing_principle: >
+    Oily fish and brine-forward shellfish need real acidity to cut through
+    — one of the few fish categories that can also take a light,
+    cool-climate red.
+
+- id: vegetable-herb
+  label: Vegetable & Herb-Driven
+  pairing_principle: >
+    Green, herbal dishes want a wine with its own herbal or grassy notes
+    and enough acid to match the vegetables' freshness.
+
+- id: pasta-tomato-earthy
+  label: Pasta, Tomato & Earthy Sauces
+  pairing_principle: >
+    An acidic sauce needs an equally acidic wine or it tastes flat by
+    comparison; earthy dishes like truffle want a savoury, earthy red that
+    echoes rather than fights them.
+
+- id: cheese-board
+  label: Cheese Board
+  pairing_principle: >
+    Cheese pairing runs backwards from meat: soft/fresh cheese wants acid,
+    pungent blue cheese wants sweetness, and aged hard cheese is one of the
+    few things that loves big tannin.
+
+- id: dessert-creamy-baked
+  label: "Desserts: Creamy & Baked"
+  pairing_principle: >
+    Match sweetness first — a dry wine next to a sweet dessert tastes sour.
+    Creamy or custard texture pairs best with an equally rich wine (e.g.
+    botrytis, PX).
+
+- id: dessert-chocolate-berry
+  label: "Desserts: Chocolate & Berry-Rich"
+  pairing_principle: >
+    Chocolate and dark berry sauces are intense enough to need a bold,
+    often fortified sweet wine — anything lighter disappears next to them.

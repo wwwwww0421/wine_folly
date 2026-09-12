@@ -95,13 +95,25 @@ def test_search_docs_cover_every_kind(exported, con):
 def test_search_docs_are_normalized(exported):
     """Index-time and query-time rules must match, or accented names miss."""
     from src.engine import normalise
+    from src.schema import SCALE_DIMS
+
+    # Wine docs also carry their raw 1-5 scale values (unnormalised numbers,
+    # not text) so the browser can score descriptive words like "sweet"
+    # against how the wine actually tastes - see ATTRIBUTE_WORDS.
+    NON_TEXT_FIELDS = {"id", "kind", "ref", "title", *SCALE_DIMS}
 
     docs = json.loads((exported / "search-docs.json").read_text(encoding="utf-8"))
     for doc in docs:
         for field, value in doc.items():
-            if field in ("id", "kind", "ref", "title"):
+            if field in NON_TEXT_FIELDS:
                 continue
-            assert value == normalise(value), f"{doc['id']}.{field} not normalized"
+            # aliases/flavours are a list of phrases, not one flattened
+            # string (see export_search_docs) - check each phrase.
+            if isinstance(value, list):
+                for item in value:
+                    assert item == normalise(item), f"{doc['id']}.{field} item {item!r} not normalized"
+            else:
+                assert value == normalise(value), f"{doc['id']}.{field} not normalized"
 
 
 def test_index_counts_match_the_database(exported, con):

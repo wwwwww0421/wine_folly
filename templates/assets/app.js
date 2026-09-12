@@ -16,11 +16,43 @@
 
   var STRENGTH_SCORE = { perfect: 3, great: 2, good: 1 };
   var WEIGHTS = {
-    aliases: 6, label: 4,                        // food tags
-    name: 5, grapes: 3, flavours: 2, regions: 1,  // wines
-    country: 2                                   // regions
+    aliases: 6, label: 4,                          // food tags
+    name: 5, grapes: 3, flavours: 2, regions: 1,    // wines
+    notes: 1, why: 1.5, wine_type: 1,               // wines (tasting notes + pairing reasons)
+    country: 2, known_for: 1.5                      // regions
   };
   var KIND_ORDER = { food: 0, wine: 1, region: 2 };
+
+  /* Descriptive words that describe how a wine *tastes* rather than what
+     it's made of — not literal text anywhere, so they can't be found by
+     the normal field-matching loop above. Maps a word to which of the
+     wine's 1-5 scale dimensions it describes, and which direction (+1 =
+     wants a high value, -1 = wants a low one). A small fixed vocabulary,
+     not NLP — good enough for "sweet blackcurrant" or "a dry, tannic red".
+     NOTE: normalise() strips hyphens, so a query word always arrives as
+     single tokens ("full", "bodied") — there is deliberately no compound
+     "full-bodied" key here, it would never match. */
+  var ATTRIBUTE_WORDS = {
+    sweet: ["sweetness", 1], dry: ["sweetness", -1],
+    tannic: ["tannin", 1], soft: ["tannin", -1], smooth: ["tannin", -1],
+    acidic: ["acidity", 1], crisp: ["acidity", 1], tart: ["acidity", 1],
+    full: ["body", 1], bold: ["body", 1], big: ["body", 1],
+    light: ["body", -1], delicate: ["body", -1],
+    boozy: ["alcohol", 1], strong: ["alcohol", 1]
+  };
+  var ATTRIBUTE_BOOST_SCALE = 3;
+
+  /* How well a wine doc matches a descriptive word like "sweet" — 0 if the
+     word isn't in the vocabulary, the doc isn't a wine, or the wine sits on
+     the wrong side of the middle (3) for that dimension. */
+  function attributeBoost(term, doc) {
+    var hit = ATTRIBUTE_WORDS[term];
+    if (!hit || doc.kind !== "wine") return 0;
+    var value = doc[hit[0]];
+    if (value === undefined || value === null) return 0;
+    var lean = hit[1] * (value - 3);
+    return lean > 0 ? lean * ATTRIBUTE_BOOST_SCALE : 0;
+  }
 
   /* Mirror of engine.normalise(): lowercase, strip accents, drop punctuation. */
   function normalise(text) {
@@ -59,6 +91,23 @@
     return 0;                                    // short words: exact only
   }
 
+  /* Best a single space-joined phrase's words can offer one query term. */
+  function scoreWords(words, term, weight, allowFuzzy) {
+    var best = 0;
+    for (var w = 0; w < words.length; w++) {
+      var word = words[w];
+      if (word === term) best = Math.max(best, weight * 3);
+      else if (word.indexOf(term) === 0) best = Math.max(best, weight * 2);
+      else if (allowFuzzy) {
+        var budget = fuzzyBudget(term);
+        if (budget && editDistance(word, term, budget) <= budget) {
+          best = Math.max(best, weight);         // typo hits score lowest
+        }
+      }
+    }
+    return best;
+  }
+
   /* Terms score independently and a doc needs only ONE to land: a query
      like "oysters with salt cod" must surface BOTH dishes (and the filler
      word must not veto everything). More terms matched = higher total. */
@@ -68,21 +117,32 @@
       var term = terms[i], best = 0;
       for (var field in WEIGHTS) {
         var value = doc[field];
-        if (!value) continue;
-        var weight = WEIGHTS[field], words = value.split(" ");
-        for (var w = 0; w < words.length; w++) {
-          var word = words[w];
-          if (word === term) best = Math.max(best, weight * 3);
-          else if (word.indexOf(term) === 0) best = Math.max(best, weight * 2);
-          else if (allowFuzzy) {
-            var budget = fuzzyBudget(term);
-            if (budget && editDistance(word, term, budget) <= budget) {
-              best = Math.max(best, weight);     // typo hits score lowest
-            }
+        if (!value || !value.length) continue;
+        var weight = WEIGHTS[field];
+
+        if (Array.isArray(value)) {
+          /* A list of discrete items (food aliases, wine flavours), not
+             one flattened blob. A phrase like "green curry" is TWO words
+             once normalised, so a query for "green" only really matches
+             half of it - divide the credit by the phrase's word count, so
+             an incidental word inside someone else's long alias can't
+             outscore a genuine one-word match like "truffle". A one-word
+             phrase (words.length === 1) is unaffected: full credit. */
+          for (var p = 0; p < value.length; p++) {
+            var phrase = value[p], words = phrase.split(" ");
+            var hit = scoreWords(words, term, weight, allowFuzzy);
+            if (!hit && phrase.indexOf(term) !== -1) hit = weight;
+            if (hit && words.length > 1) hit = hit / words.length;
+            best = Math.max(best, hit);
           }
+        } else {
+          var fieldWords = value.split(" ");
+          var fieldHit = scoreWords(fieldWords, term, weight, allowFuzzy);
+          if (!fieldHit && value.indexOf(term) !== -1) fieldHit = weight;
+          best = Math.max(best, fieldHit);
         }
-        if (!best && value.indexOf(term) !== -1) best = Math.max(best, weight);
       }
+      best = Math.max(best, attributeBoost(term, doc));
       total += best;                             // 0 is fine: other terms may land
     }
     return total;
@@ -166,7 +226,8 @@
 
   root.WineFolly = {
     normalise: normalise, editDistance: editDistance,
-    search: search, mergePairings: mergePairings, STRENGTH_SCORE: STRENGTH_SCORE
+    search: search, mergePairings: mergePairings, STRENGTH_SCORE: STRENGTH_SCORE,
+    attributeBoost: attributeBoost, ATTRIBUTE_WORDS: ATTRIBUTE_WORDS
   };
   if (typeof module !== "undefined" && module.exports) module.exports = root.WineFolly;
 })(typeof window !== "undefined" ? window : globalThis);
@@ -217,17 +278,18 @@ if (typeof document !== "undefined") (function () {
     });
   }
 
-  function loadTag(tagId) {
-    if (cache[tagId]) return Promise.resolve(cache[tagId]);
-    return fetch(ROOT + "data/pairings/" + tagId + ".json")
+  function loadJSON(path) {
+    if (cache[path]) return Promise.resolve(cache[path]);
+    return fetch(ROOT + path)
       .then(function (r) { return r.json(); })
-      .then(function (payload) { cache[tagId] = payload; return payload; });
+      .then(function (payload) { cache[path] = payload; return payload; });
   }
 
-  function renderPairings(foodHits) {
-    if (!panel) return;
-    if (!foodHits.length) { panel.innerHTML = ""; return; }
+  function loadTag(tagId) { return loadJSON("data/pairings/" + tagId + ".json"); }
+  function loadWine(wineId) { return loadJSON("data/wines/" + wineId + ".json"); }
 
+  /* dish -> wines: merge every matched food tag's ranked wines (§5.3). */
+  function renderFoodPairings(foodHits) {
     var tags = foodHits.slice(0, 3).map(function (h) { return h.doc.ref; });
     Promise.all(tags.map(loadTag)).then(function (payloads) {
       var merged = S.mergePairings(payloads);
@@ -258,11 +320,57 @@ if (typeof document !== "undefined") (function () {
     });
   }
 
+  /* wine -> dishes: the reverse direction. A query like "chardonnay good
+     match food" resolves to the wine first, so show what it already pairs
+     with (data/wines/<id>.json, precomputed by engine.wine_detail()) rather
+     than requiring the phrase to be parsed. */
+  function renderWinePairings(wineHit) {
+    loadJSON("data/wines/" + wineHit.doc.ref + ".json").then(function (detail) {
+      panel.innerHTML = "";
+      panel.appendChild(el("h3", null, "Pairs well with"));
+      panel.appendChild(el("p", "subtitle", detail.wine.name));
+
+      if (!detail.pairs_with.length) {
+        panel.appendChild(el("p", "empty", "No food pairing written down for this one yet."));
+        return;
+      }
+      var list = el("ul", "pairs");
+      detail.pairs_with.slice(0, 8).forEach(function (pair) {
+        var li = el("li"), head = el("div", "head");
+        var a = document.createElement("a");
+        a.href = ROOT + "foods/" + pair.tag_id + ".html";
+        a.textContent = pair.label;
+        head.appendChild(a);
+        var badge = el("span", "strength", pair.strength);
+        badge.setAttribute("data-s", pair.strength);
+        head.appendChild(badge);
+        li.appendChild(head);
+        li.appendChild(el("p", "why", pair.why));
+        list.appendChild(li);
+      });
+      panel.appendChild(list);
+    });
+  }
+
+  function renderPairings(hits) {
+    if (!panel) return;
+    if (!hits.length) { panel.innerHTML = ""; return; }
+
+    var top = hits[0];
+    if (top.doc.kind === "wine") {
+      renderWinePairings(top);
+    } else {
+      var foodHits = hits.filter(function (h) { return h.doc.kind === "food"; });
+      if (foodHits.length) renderFoodPairings(foodHits);
+      else panel.innerHTML = "";
+    }
+  }
+
   function run() {
     var query = input.value;
     var hits = S.search(docs, query, 10);
     renderResults(hits, query);
-    renderPairings(hits.filter(function (h) { return h.doc.kind === "food"; }));
+    renderPairings(hits);
   }
 
   var timer = null;

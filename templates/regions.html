@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ heading }} — Wine Folly{% endblock %}
+{% block content %}
+  <h2>{{ heading }}</h2>
+  {% if subtitle %}<p class="subtitle">{{ subtitle }}</p>{% endif %}
+
+  {{ world_map|safe }}
+  <p class="subtitle map-hint">Coloured countries have a wine in my notes — click one to jump to its regions.</p>
+
+  {% for group in groups %}
+    <section id="country-{{ group.slug }}" class="country-block">
+      <h3>{{ group.name }}{% if group.count %} <span class="wine-meta">({{ group.count }})</span>{% endif %}</h3>
+      <ul class="chips">
+        {% for item in group.links %}<li><a href="{{ root }}{{ item.href }}">{{ item.label }}</a></li>{% endfor %}
+      </ul>
+    </section>
+  {% endfor %}
+{% endblock %}

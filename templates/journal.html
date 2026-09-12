@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}My Tasting Journal — Wine Folly{% endblock %}
+{% block content %}
+  <h2>My Tasting Journal</h2>
+  <p class="subtitle">Every note you've added, from every wine — saved privately in this browser, never uploaded anywhere.</p>
+
+  <div class="journal-actions">
+    <button type="button" id="export-notes">Export backup (JSON)</button>
+    <label class="button-like">
+      Import backup
+      <input type="file" id="import-notes" accept="application/json" hidden>
+    </label>
+  </div>
+
+  <p class="empty" id="journal-empty" hidden>No notes yet — add one from any wine's page.</p>
+  <div id="journal-list"></div>
+{% endblock %}
