@@ -1,0 +1,28 @@
+id: savatiano
+name: Savatiano
+wine_type: [full-white]
+grapes: [savatiano]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 1
+tannin: 1
+acidity: 2
+alcohol: 3
+flavours: [green-apple, honeydew, lime-zest, lemon-curd, resin]
+regions: [attica]
+countries: [greece]
+popularity: uncommon
+price_band: "£"
+serving:
+  temp_c: [7, 12]
+  glass: aroma-collector
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [marinated-meats]
+    strength: good           # perfect | great | good
+    why: "An unique wine that has the ability to pair with heavily marinated meats from Mexican, Caribbean, and Polynesian cuisine."
+notes: >
+  Greece's most planted variety is making a comeback as winemakers continue to focus on quality. It makes a rich, full-bodied white wine that's reminiscent of Chardonnay.
+also_try: [trebbiano-toscano, chardonnay, falanghina, fiano, semillon]

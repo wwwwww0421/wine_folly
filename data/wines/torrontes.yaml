@@ -1,0 +1,28 @@
+id: torrontes
+name: Torrontés
+wine_type: [aromatic-white]
+grapes: [torrontes]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 3
+tannin: 1
+acidity: 3
+alcohol: 3
+flavours: [meyer-lemon, peach, rose-petal, geranium, citrus-zest]
+regions: [salta, mendoza, san-juan]
+countries: [argentina, chile, peru]
+popularity: uncommon
+price_band: "£"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [spice-accented]
+    strength: good           # perfect | great | good
+    why: "Makes good match with savoury dishes that feature exotic spices, fruit, and aromatic herbs."
+notes: >
+  Argentina's very own white is actually a group of 3 varieties that are natural crossing with Muscat of Alexandria. Torrontés Riojano is considered the best.
+also_try: [fernao-pires, cserszegi-fuszeres, silvaner, grasevina, pinot-blanc]

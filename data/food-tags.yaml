@@ -15,6 +15,10 @@
   label: Exotic & lean game meats
   category: red-meat-steak
   aliases: [ostrich, venison steak, wild boar, kangaroo, bison, elk]
+- id: marinated-meats
+  label: Marinated & seasoned meats
+  category: global-spice-heat
+  aliases: [marinated meats, carne asada, marinated chicken skewers, bulgogi, marinated steak, seasoned meat dishes]
 
 # --- slow-cooked-braised: long cooking concentrates fat and umami ---
 - id: braised-meat
@@ -65,6 +69,10 @@
   label: Salty appetizers & finger foods
   category: cured-charcuterie
   aliases: [salted nuts, pretzels, olives, popcorn, cured meats, crostini with tapenade, bérico ham]
+- id: foie-gras-pate
+  label: Foie gras & rich pâtés
+  category: slow-cooked-braised
+  aliases: [foie gras, pate, pâté, chicken liver mousse, terrine, rillettes, duck liver mousse]
 
 # --- global-spice-heat: chilli heat clashes with tannin and alcohol ---
 - id: spiced-cuisine

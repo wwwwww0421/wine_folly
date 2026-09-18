@@ -1,0 +1,31 @@
+id: trebbiano-toscano
+name: Trebbiano Toscano (Ugni Blanc)
+wine_type: [light-white, full-white, dessert]
+grapes: [trebbiano-toscano]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 3
+tannin: 1
+acidity: 4
+alcohol: 3
+flavours: [white-peach, lemon, green-apple, seashell, basil]
+regions: [cognac, armagnac, south-west-france, puglia, abruzzo, sicily, tuscany, lazio, mendoza]
+countries: [france, italy, argentina, uruguay, bulgaria, greece, portugal, croatia, brazil, australia, south-africa, usa, spain]
+popularity: popular
+price_band: "£"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [shellfish]
+    strength: great           # perfect | great | good
+    why: "Pairs well with hard Italian cheeses, seafood pastas, white pizza."
+  - tags: [light-meat]
+    strength: great           # perfect | great | good
+    why: "Pairs well with roast chicken and even pesto."
+notes: >
+  One of the top grapes in both Italy and France (called Ugni-Blanc in the France), but you wouldn't know it because it's mostly used in the production of brandy or balsamic vinegar!
+also_try: [chardonnay, savatiano, semillon, roussanne, grenache-blanc]

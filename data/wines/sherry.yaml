@@ -1,0 +1,50 @@
+id: sherry
+name: Sherry
+wine_type: [dessert]
+grapes: [palomino-fino, muscat-of-alexandria]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 5
+tannin: 1
+acidity: 4
+alcohol: 5
+flavours: [jackfruit, saline, preserved-lemon, brazil-nut, almond]
+countries: [spain]
+price_band: "£££"
+serving:
+  temp_c: [12, 15]
+  glass: dessert-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [fish-cured]
+    strength: great           # perfect | great | good
+    why: "Serve a Fino or Manzanilla Sherry with smoked, fried, or grilled fish, or vegetables."
+  - tags: [bbq]
+    strength: great
+    why: "Try Amontillado Sherry with barbecue."
+  - tags: [soft-cheese]
+    strength: great
+    why: "Try PX or Cream Sherry with gooey cheeses liek camembert."
+notes: >
+  Sherry is Spain's top fortified wine, made primariily with Palomino Fino grapes and extended oxidative ageing. It's available in a range of styles of bone-dry to very sweet.
+
+  Sherry uses an ageing method called a solera. Soleras are tiers of barrels with 3-9 steps called criaderas or `scales`. Young wines go into the top scale and finished wine is taken form the bottom scale. Wines age for at least 3 years and some can age more than 50 years. There's also a rare single-vintage Sherry called Añada.
+
+  Dry Styles:
+  - Fino & Manzanilla: The lightest styles from Jerez and Sanlúcar de Barrameda with salty fruit flavours. Best served chilled.
+  - Amontillado: A slightly bolder, nutty style in between Fino and Oloroso.
+  - Palo Cortado: A richer style with roasted flavours of coffee and molasses.
+  - Oloroso: The boldest style made from oxidative oak ageing. Seasoned Oloroso barrels are in high demand for making whisky.
+
+  Sweet Styles:
+  - PX (Pedro Ximénez): The sweetest style, having upwards to 600g/L TS. Wines are deep brown coloured, with fig and date flavours.
+  - Moscatel: An aromatic style made with Muscat of Alexandria, featuring caramel flavours.
+  - Sweetened Sherry: The most affordable style is typically made by blending PX with Oloroso. Wines are labelled by sweeteness level:
+    - Dry: 5 - 45 g/L RS
+    - Medium: 5 - 115 g/L RS
+    - Pale Cream: 45 - 115 g/L RS
+    - Cream: 115 - 140 g/L RS
+    - Dulce: 160+ g/L RS
+also_try: [sercial-madeira, dry-marsala]

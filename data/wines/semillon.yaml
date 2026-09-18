@@ -1,0 +1,31 @@
+id: semillon
+name: Sémillon
+wine_type: [light-white, full-white, dessert]
+grapes: [semillon]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 2
+tannin: 1
+acidity: 3
+alcohol: 3
+flavours: [lemon, beeswax, yellow-peach, chamomile, saline]
+regions: [bordeaux, provence, hunter-valley, margaret-river, clare-valley, barossa-valley, franschhoek, breedeklook, mendoza, maule, marmara, napa-valley, sonoma, yakima-valley]
+countries: [france, australia, south-africa, argentina, chile, turkey, usa, new-zealand, portugal, hungary, italy]
+popularity: common
+price_band: "£"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [5, 10]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [fish-lean]
+    strength: perfect           # perfect | great | good
+    why: "Best pairing with ricker fish entrées like black cod."
+  - tags: [light-meat]
+    strength: perfect
+    why: "Best pairing with white meats like chicken and pork chops."
+notes: >
+  A major grape of Sauternes, which is Bordeaux's prized dessert wine. Dry Sémillon wines can be surprisingly rich when oaked, with a taste similar to Chardonny.
+also_try: [garganega, viura, friulano, savatiano, rkstsiteli]

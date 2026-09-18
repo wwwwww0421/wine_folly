@@ -1,0 +1,55 @@
+id: sangiovese
+name: Sangiovese
+wine_type: [rosé, medium-red]
+grapes: [sangiovese]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 4
+acidity: 5
+alcohol: 4
+flavours: [cherry, roasted-tomato, sweet-balsamic, oregano, espresso]
+regions: [tuscany, puglia, emilia-romagna, umbria, mendoza, corsica, california, washington, south-australia]
+countries: [italy, argentina, france, usa, tunisia, australia, chile, ethiopia, romania]
+popularity: popular
+price_band: "££"
+serving:
+  temp_c: [12, 15]
+  glass: red-glass
+  decant_minutes: 30
+  cellar_years: [5, 25]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [spiced-cuisine]
+    strength: good           # perfect | great | good
+    why: "The high acidity match well with all manner of well-spiced foods."
+  - tags: [tomato-sauce]
+    strength: good
+    why: "Sangiovese will neven get lost with tomato sauce."
+notes: >
+  Sangiovese is Italy's most planted grape and the key variety in Tuscany's renowned Chianti. It's sensitive, tasting quite different depending on where it grows.
+
+  Chianti, Tuscany classifies its wines based on region, quality and ageing specifications:
+  - Gran Selezione: 2.5 years
+  - Riserva: 2 years
+  - Superiore: 1 year
+  - Ch. Classico, Ch. Colli Fiorentini, Ch. Rufina: 1 year
+  - Ch. Montespertoli: 9 months
+  - Chianti and others: 6 months
+
+  Montalcino Tuscany region:
+  - Brunello di Montalcino Riserva: Aged 2 years in oak, and 4 more years after that.
+  - Burnello di Montalcino: Aged 2 years in oak, and 3 additional years after that.
+  - Rosso di Montalcino: Aged 1 year.
+
+  Regional Names:
+  - Carmignano
+  - Chianti
+  - Montefalco Rosso
+  - Morellino di Scansano
+  - Rosso Conero
+  - Rosso di Monalcino
+  - Torgiano Rosso
+  - Vino Nobile di Montepulciano
+
+also_try: [nebbiolo, tempranillo, agiorgitiko, aglianico, mencia]

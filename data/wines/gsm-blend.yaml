@@ -1,0 +1,31 @@
+id: gsm-blend
+name: Rhône / GSM Blend
+wine_type: [rosé, medium-red, full-red]
+grapes: [grenache, syrah, mourvedre, cinsault, counoise, grenache-blanc, carignana, vaccarese, muscardin, picardin, marselan, grenache-gris, picpoul, terret-noir, bourboulenc, picpoul-noir, rolle, calitor]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 4
+acidity: 4
+alcohol: 4
+flavours: [raspberry, blackberry, rosemary, baking-spices, lavender]
+regions: [cotes-du-rhone, california, provence]
+countries: [france, spain]
+price_band: "££"
+serving:
+  temp_c: [15, 20]
+  glass: oversized
+  decant_minutes: 30
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [spice-accented]
+    strength: great           # perfect | great | good
+    why: "Matches well with dishes featuring Mediterranean spices including red pepper, sage, rosemary, and olives."
+notes: >
+  GSM stands for Grenache, Syrah, and Mourvèdre. These 3 grape create the base of Southern France and Northern Spain's most important red wine blends.
+
+  Côte du Rhône GSM Blend tastes of black olive, dried cranberry, dried herbs, cinnamon, leather.
+  Paso Robles, CA GSM Blend tastes of black raspberry, mission fig, gingersnap, bacon fat, camphor.
+  Provence Rosé tastes of strawberry, honeydew melon, pink peppercorn, celery, orange peel.
+also_try: [grenache, zinfandel, sangiovese, mencia, carignan]

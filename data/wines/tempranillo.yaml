@@ -1,0 +1,35 @@
+id: tempranillo
+name: Tempranillo
+wine_type: [rosé, medium-red, full-red]
+grapes: [tempranillo]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 4
+acidity: 4
+alcohol: 4
+flavours: [cherry, dried-fig, cedar, tobacco, dill]
+regions: [rioja, ribera-del-jucar, douro, languedoc-roussillon, california, washington]
+countries: [spain, portugal, argentina, france, australia, usa, mexico, romania, chile, south-africa, italy]
+popularity: popular
+price_band: "£"
+serving:
+  temp_c: [12, 15]
+  glass: red-glass
+  decant_minutes: 60
+  cellar_years: [5, 25]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [steak]
+    strength: great           # perfect | great | good
+    why: "Aged Tempranillo pair nicely with steak, gourmet burgers and rack of lambs."
+  - tags: [tomato-sauce]
+    strength: good
+    why: "Fresher Tempranillo pair well with baked pasta and other tomato-based dishes."
+notes: >
+  Spain's top variety, made famous by the wines of Rioja, where wines are classified by how long they age in oak. Fine Tempranillo ages 20+ years but costs a little more.
+
+  Northern Spain Tempranillo tastes of dried cherry, sour cherry, pastrami, roasted tomato, chard.
+  Spanish `Reserva` tastes of black cherry, dill, cigar box, brown sugar, fig.
+  Rosé Tempranillo tastes with strawberry, white pepper, clove, tomato, and bay leaf.
+also_try: [sangiovese, nebbiolo, agiorgitiko, montepulciano, aglianico]

@@ -1,0 +1,35 @@
+id: riesling
+name: Riesling
+wine_type: [sparkling, light-white, aromatic-white, dessert]
+grapes: [riesling]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 5
+tannin: 1
+acidity: 5
+alcohol: 2
+flavours: [lime, green-apple, beeswax, jasmine, petroleum]
+regions: [rheingau, rheinhessen, pfalz, mosel, washington, california, new-york, clare-valley, adelaide-hills, alsace, kunsag]
+countries: [germany, usa, australia, france, ukraine, russia, austria, moldova, hungary, czech-republic, new-zealand, canada, croatia, romania]
+popularity: common
+price_band: "£££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [5, 10]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [spicy-asian-cuisine]
+    strength: great           # perfect | great | good
+    why: "Great pairing to spicy Indian and Asian cuisines."
+  - tags: [duck]
+    strength: perfect
+    why: "Excellent alongside duck, bacon, prawns and crabs."
+notes: >
+  An aromatic white variety that can produce white wines ranging in style from bone-dry to very sweet. Germany is the world's most important producer of Riesling.
+
+  Germany Riesling with taste of apricot, meyer lemon, beeswax, petroleum, wet slate.
+  Alsace, France Riesling with taste of green apple, lime, lemon, smoke, thai basil.
+  South Australia Riesling with taste of lime peel, green apple, green papaya, jasmine, diesel.
+also_try: [furmint, assyrtiko, loureiro, muller-thurgau]

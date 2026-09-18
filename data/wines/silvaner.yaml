@@ -1,0 +1,31 @@
+id: silvaner
+name: Silvaner
+wine_type: [light-white]
+grapes: [silvaner]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 3
+tannin: 1
+acidity: 4
+alcohol: 3
+flavours: [peach, passion-fruit, orange-blossom, thyme, crushed-gravel]
+regions: [rheinhessen, franken, alsace, valais]
+countries: [germany, france, switzerland, croatia, czech-republic, slovakia, moldova, italy, austria, new-zealand, hungary, argentina]
+popularity: uncommon
+price_band: "££"
+serving:
+  temp_c: [3, 7]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [light-dish]
+    strength: perfect           # perfect | great | good
+    why: "Best with fruit-driven salads."
+  - tags: [light-meat]
+    strength: perfect
+    why: "Best with lighter meat, tofu, and fish dishes, especially those with fresh aromatic herbs."
+notes: >
+  An undervalued white wine primarily found in Germany. Delivers explosive peach aromas and contrasting, yet subtle herb and mineral notes.
+also_try: [pinot-blanc, malagousia, pinot-gris, verdicchio, fernao-pires]

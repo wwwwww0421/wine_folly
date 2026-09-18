@@ -1,0 +1,31 @@
+id: touriga-nacional
+name: Touriga Nacional
+wine_type: [full-red, dessert]
+grapes: [touriga-nacional]
+# --- Wine Folly 1–5 scales ---
+body: 5
+sweetness: 1
+tannin: 5
+acidity: 4
+alcohol: 5
+flavours: [violet, blueberry, plum, mint, wet-slate]
+regions: [douro, lisboa, breedekloof, paarl, california]
+countries: [portugal, south-africa, usa, australia, argentina, brazil, chile]
+popularity: uncommon
+price_band: "£££"
+serving:
+  temp_c: [15, 20]
+  glass: oversized
+  decant_minutes: 60
+  cellar_years: [5, 25]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [steak]
+    strength: great           # perfect | great | good
+    why: "Touriga Nacional's elegant floral fruit aromas and massive tannins will make you yearn for thick-cut steaks topped with flavoured butter"
+  - tags: [blue-cheese]
+    strength: good           # perfect | great | good
+    why: "Floral fruit aromas and massive tannins yearn for blue cheese."
+notes: >
+  Originally used in Port wines, this increasinglu important Portugese grape is now featured in single-varietal red wines and blend from the Douro Valley and beyond.
+also_try: [syrah, sagrantino, monastrell, petit-verdot, petite-sirah]

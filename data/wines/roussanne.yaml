@@ -1,0 +1,31 @@
+id: roussanne
+name: Roussanne
+wine_type: [light-white, full-white]
+grapes: [roussanne]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 1
+tannin: 1
+acidity: 3
+alcohol: 4
+flavours: [meyer-lemon, apricot, beeswax, chamomile, brioche]
+regions: [cotes-du-rhone, languedoc-roussillon, santa-barbara, paso-robles, washington, tuscany, puglia, yarra-valley, mclaren-vale, barossa-valley, swartland]
+countries: [france, usa, italy, australia, south-africa, chile, canada, uruguay, new-zealand]
+popularity: rare
+price_band: "£££"
+serving:
+  temp_c: [7, 12]
+  glass: aroma-collector
+  decant_minutes: 0
+  cellar_years: [5, 7]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [shellfish]
+    strength: great           # perfect | great | good
+    why: "A great match with buttery meats like lobster, crab."
+  - tags: [foie-gras-pate]
+    strength: great
+    why: "Great match with foie gras and paté due to the oaking in Roussanne."
+notes: >
+  A rare, intriguing, full-bodied white wine found mostly in Southern France, where it's typically blened with Grenache Blanc, Marsanne, and sometimes Viognier.
+also_try: [marsanne, chardonnay, grenache-blanc, savatiano, viura]

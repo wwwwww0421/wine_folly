@@ -1,0 +1,32 @@
+id: syrah
+name: Syrah
+wine_type: [rosé, full-red]
+grapes: [syrah]
+# --- Wine Folly 1–5 scales ---
+body: 5
+sweetness: 1
+tannin: 4
+acidity: 4
+alcohol: 4
+flavours: [blueberry, plum, milk-chocolate, tobacco, green-peppercorn]
+regions: [cotes-du-rhone, languedoc-roussillon, provence, castilla-la-mancha, catalonia, valencia, aragon, mendoza, western-cape, california, washington, sicily, tuscany, puglia, sardinia]
+countries: [france, australia, spain, argentina, south-africa, usa, italy, chile, portugal, russia, ukraine, austria, israel]
+popularity: popular
+price_band: "£££"
+serving:
+  temp_c: [15, 20]
+  glass: red-glass
+  decant_minutes: 60
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [spiced-cuisine]
+    strength: perfect           # perfect | great | good
+    why: "Darker meats and exotic spices bring out the fruit notes of Syrah. Try with lamb shawarma, gyros, Asian five spice, port and Indian tandoori."
+notes: >
+  A rich, powerful, and sometimes meaty red wine that originated in Rhône Valley of France. It's the most planted grape of Australia, where it's called Shiraz.
+
+  South Australia Syrah with flavours of blackberry sauce, fruit cake, sassafras, camphor, sweet tobacco.
+  Rhône Valley, France Syrah with flavours of plum, black pepper, tobacco leaf, bacon fat, graphite.
+  Chile Syrah with flavours of boysenberry, black cherry, star anise, graphite, green peppercorn.
+also_try: [touriga-nacional, monastrell, petite-sirah, mencia, alicante-bouschet]

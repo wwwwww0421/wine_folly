@@ -1,0 +1,38 @@
+id: sauvignon-blanc
+name: Sauvignon Blanc
+wine_type: [sparkling, light-white, dessert]
+grapes: [sauvignon-blanc]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 2
+tannin: 1
+acidity: 5
+alcohol: 3
+flavours: [gooseberry, honeydew, grapefruit, white-peach, passion-fruit]
+regions: [loire-valley, bordeaux, burgundy, marlborough, hawkes-bay, nelson, casablanca-valley, breedekloof, california, washington, adelaide-hills, margaret-river, victoria, rueda]
+countries: [france, new-zealand, chile, south-africa, moldova, usa, australia, romania, spain, argentina, hungary, russia, austria]
+popularity: popular
+price_band: "££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [spice-accented]
+    strength: perfect           # perfect | great | good
+    why: "Wonderful pairing partner with herb-driven sauces, salty cheeses"
+  - tags: [light-meat]
+    strength: perfect
+    why: "Wonderful pairing partner with light meats"
+  - tags: [spicy-asian-cuisine]
+    strength: perfect
+    why: "Wonderful pairing partner with Asian food."
+notes: >
+  A unique-tasting wine wiht strong herbaceous flavours that are derived from compounds called methoxypyrazines (also found in peppers).
+
+  Loire Valley France region Sauvignon Blanc with flavours of lime, gooseberry, grapefruit, slate, smoke.
+  New Zealand with flavours of passion fruit, kiwi, pea shoot, jasmine, ripe pear.
+  North Coast, California flavours of white peach, matcha powder, lemongrass, buttered bread, saline.
+also_try: [gruner-veltliner, vermentino, chenin-blanc, colombard, verdejo]

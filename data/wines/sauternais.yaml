@@ -1,0 +1,27 @@
+id: sauternais
+name: Sauternais
+wine_type: [dessert]
+grapes: [semillon, sauvignon-blanc, muscadelle]
+# --- Wine Folly 1–5 scales ---
+body: 5
+sweetness: 5
+tannin: 1
+acidity: 4
+alcohol: 3
+flavours: [lemon-curd, apricot, quince, honey, ginger]
+regions: [bordeaux]
+countries: [france]
+price_band: "£££"
+serving:
+  temp_c: [7, 12]
+  glass: dessert-glass
+  decant_minutes: 0
+  cellar_years: [10, 30]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [soft-cheese]
+    strength: perfect           # perfect | great | good
+    why: "Best with wash-rind soft cheeses where the sweetness of wine can counteract the `funk`. The most classic pairing is Roquefort."
+notes: >
+  A group of dessert wine regions in Bordeaux that make wine with Sémillon, Sauvignon Blanc, and Muscadelle grapes infected with a fungus called Botrytis Cinerea.
+also_try: [ice-wine, late-harvest-white-wines, tokaji-aszu]

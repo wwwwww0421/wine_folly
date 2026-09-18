@@ -1,0 +1,31 @@
+id: schiava
+name: Schiava
+wine_type: [rosé, light-red]
+grapes: [schiava]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 2
+tannin: 2
+acidity: 4
+alcohol: 2
+flavours: [strawberry, raspberry, rose-sweets, lemon, smoke]
+regions: [wurttemberg, alto-adige]
+countries: [germany, italy]
+popularity: uncommon
+price_band: "££"
+serving:
+  temp_c: [12, 15]
+  glass: aroma-collector
+  decant_minutes: 0
+  cellar_years: [1, 3]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [light-meat]
+    strength: perfect           # perfect | great | good
+    why: "A wonderful pairing with prawns, chicken, and tofu."
+  - tags: [thai-vietnamese]
+    strength: perfect
+    why: "A wonderful pairing particular with South-East Asian cuisinces that features basil, ginger, galangal, and other aromatic herbs."
+notes: >
+  A group of several varieties, the finest of which is Schiava Gentile. It produces a sweetly aromatic light-bodied wine with aroma reminiscent of cherry sweets
+also_try: [pinot-noir, st-laurent, frappato, gamay, zweigelt]
