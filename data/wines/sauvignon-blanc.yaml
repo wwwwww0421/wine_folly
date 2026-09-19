@@ -20,6 +20,9 @@ serving:
   cellar_years: [1, 5]
 # --- pairings live ON the wine ---
 pairings:
+  - tags: [fresh-goat-cheese]
+    strength: perfect           # perfect | great | good
+    why: "The textbook Sancerre pairing: the wine's own herbaceous, grassy edge echoes the goat cheese's tang, and the searing acidity cuts straight through its creaminess."
   - tags: [spice-accented]
     strength: perfect           # perfect | great | good
     why: "Wonderful pairing partner with herb-driven sauces, salty cheeses"

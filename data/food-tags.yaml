@@ -164,7 +164,14 @@
 - id: soft-cheese
   label: Soft cheeses
   category: cheese-board
-  aliases: [brie, camembert, goat cheese, feta, ricotta, cream cheese, burrata, reblochon]
+  aliases: [brie, camembert, feta, ricotta, cream cheese, burrata, reblochon]
+- id: fresh-goat-cheese
+  label: Fresh Goat Cheese
+  category: cheese-board
+  # Tangy and high-acid, not creamy like brie/camembert - it wants a
+  # high-acid wine to match, the opposite of what "soft-cheese" wants.
+  # Split out on its own rather than lumped in with the rest.
+  aliases: [goat cheese, chevre, chèvre, fresh chevre, crottin]
 - id: blue-cheese
   label: Pungent & blue cheeses
   category: cheese-board
