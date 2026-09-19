@@ -1,0 +1,31 @@
+id: xinomavro
+name: Xinomavro
+wine_type: [medium-red, full-red]
+grapes: [xinomavro]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 1
+tannin: 5
+acidity: 5
+alcohol: 4
+flavours: [raspberry, plum-sauce, anise, allspice, tobacco]
+regions: [naoussa, amynteo]
+countries: [greece]
+popularity: rare
+price_band: "££"
+serving:
+  temp_c: [15, 20]
+  glass: oversized
+  decant_minutes: 60
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [vegetable-driven]
+    strength: great           # perfect | great | good
+    why: "Sop up the rigorous tannin and acidity, it pairs well with cheesy pastas, mushroom risotto"
+  - tags: [roasted-meat-rich]
+    strength: great
+    why: "Sop up the rigorous tannin and acidity, it pairs well with roasted meats."
+notes: >
+  Xinomavro is the most important grape of Naoussa in Greece. Maoussa wines have been compared to Italian Nebbiolo and the coveted wines of Barolo.
+also_try: [nebbiolo, tempranillo, mencia, sangiovese, aglianico]

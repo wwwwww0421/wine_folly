@@ -16,7 +16,9 @@
     {% if d.flavours %}<dt>Tastes of</dt><dd>{{ d.flavours|join(', ') }}</dd>{% endif %}
     {% if d.wine.grapes %}<dt>Grapes</dt><dd>{{ d.wine.grapes|join(', ') }}</dd>{% endif %}
     {% if d.regions %}<dt>From</dt><dd>
-      {% for r in d.regions %}<a href="{{ root }}regions/{{ r.id }}.html">{{ r.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+      <ul class="region-list">
+        {% for r in d.regions %}<li><a href="{{ root }}regions/{{ r.id }}.html">{{ r.name }}</a></li>{% endfor %}
+      </ul>
     </dd>{% endif %}
     {% if serving.temp %}<dt>Serve at</dt><dd>{{ serving.temp }}</dd>{% endif %}
     {% if serving.glass %}<dt>Glass</dt><dd>{{ serving.glass }}</dd>{% endif %}
@@ -46,8 +48,9 @@
       <li>
         <div class="head"><a href="{{ root }}wines/{{ s.wine_id }}.html">{{ s.name }}</a></div>
         <div class="wine-meta">
-          {{ '%.0f'|format(s.similarity * 100) }}% alike on {{ s.shared_dims|join(', ') }}
-          {%- if s.shared_flavours %}; both show {{ s.shared_flavours|join(', ') }}{% endif %}
+          {{ '%.0f'|format(s.similarity * 100) }}% alike on
+          {%- for dim in s.shared_dim %} {{ scale_labels.get(dim, dim) }}{% if not loop.last %},{% endif %}{% endfor %}
+          {%- if s.shared_flavours %}; both tastes {{ s.shared_flavours|join(', ') }}{% endif %}
         </div>
       </li>
     {% endfor %}

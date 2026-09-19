@@ -1,0 +1,37 @@
+id: viognier
+name: Viognier
+wine_type: [full-white]
+grapes: [viognier]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 3
+tannin: 1
+acidity: 2
+alcohol: 4
+flavours: [tangerine, peach, mango, honeysuckle, rose]
+regions: [cotes-du-rhone, languedoc-roussillon, adelaide-hills, barossa-valley, eden-valley, sicily, umbria, tuscany, paarl, stellenbosch, swartland, mendoza]
+countries: [france, australia, usa, italy, south-africa, argentina, chile, new-zealand, portugal]
+popularity: uncommon
+price_band: "£££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [raw-nuts]
+    strength: perfect           # perfect | great | good
+    why: "Dishes flavoured with almonds, citrus, stewed fruits, and aromatic herbs like Thai basil or tarragon and bring the best of Viognier."
+  - tags: [citrus-fruits]
+    strength: perfect           # perfect | great | good
+    why: "Dishes flavoured with almonds, citrus, stewed fruits, and aromatic herbs like Thai basil or tarragon and bring the best of Viognier."
+  - tags: [stewed-fruits]
+    strength: perfect           # perfect | great | good
+    why: "Dishes flavoured with almonds, citrus, stewed fruits, and aromatic herbs like Thai basil or tarragon and bring the best of Viognier."
+  - tags: [fresh-herbs]
+    strength: perfect           # perfect | great | good
+    why: "Dishes flavoured with almonds, citrus, stewed fruits, and aromatic herbs like Thai basil or tarragon and bring the best of Viognier."
+notes: >
+  A rich, oily white wine that originated in the Northern Rhône and rapidly growing in popularity in California, Australia, and beyond, where it's often aged in oak.
+also_try: [malagousia, marsanne, fiano, chardonnay, fernao-pires]

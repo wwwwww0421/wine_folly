@@ -7,6 +7,7 @@ It will reject if invalid yaml file or unknown food tags.
 from __future__ import annotations
 
 import json
+import re
 import sqlite3
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -16,6 +17,21 @@ from pydantic import ValidationError
 
 from .schema import FoodCategory, FoodTag, Wine, RegionEntry
 
+# A couple of common abbreviations that show up in wines' `countries:` but
+# never as the spelled-out name regions.yaml uses for its own `country:`.
+COUNTRY_SYNONYMS = {"usa": "united-states", "us": "united-states", "uk": "united-kingdom"}
+
+
+def _country_slug(name: str) -> str:
+    """
+    "United States" and "united-states" must compare equal - both sides of
+    the also_try/region cross-check below normalise through this, so a
+    slug (from a wine's `countries:`) and a plain name (from a region's
+    `country:`) are judged the same way instead of failing on formatting.
+    """
+    slug = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+    return COUNTRY_SYNONYMS.get(slug, slug)
+
 
 @dataclass
 class Dataset:
@@ -24,6 +40,10 @@ class Dataset:
     food_categories: list[FoodCategory]
     regions: dict[str, RegionEntry]
     warnings: list[str] = field(default_factory=list)
+    # also_try id -> which wine(s) named it, for every id that isn't a
+    # written wine or a known alias of one. One deduplicated study list
+    # instead of a repeated warning per wine that mentions it.
+    unwritten_also_try: dict[str, list[str]] = field(default_factory=dict)
 
 
 class DatasetError(Exception):
@@ -115,6 +135,22 @@ def load_dataset(data_dir: Path = Path("data")) -> Dataset:
     tag_ids = {t.id for t in food_tags}
     wine_ids = {w.id for w in wines}
 
+    # A wine's aliases (e.g. sherry.yaml declaring aliases: [cream-sherry,
+    # palo-cortado-sherry]) must be globally unique and distinct from every
+    # wine's own id - otherwise "which wine does this id mean" is
+    # ambiguous, the same rule FoodTag.load_food_tags enforces for aliases.
+    alias_owner: dict[str, str] = {}
+    for w in wines:
+        for a in w.aliases:
+            if a in wine_ids:
+                errors.append(f"{w.id}: alias '{a}' collides with an existing wine id.")
+            elif a in alias_owner:
+                errors.append(f"{w.id}: alias '{a}' already used by '{alias_owner[a]}'.")
+            else:
+                alias_owner[a] = w.id
+    known_wine_refs = wine_ids | set(alias_owner)
+    unwritten_also_try: dict[str, list[str]] = {}
+
     for w in wines:
         if food_tags:
             for group_name, group in (("pairing", w.pairings), ("avoid", w.avoid)):
@@ -130,19 +166,19 @@ def load_dataset(data_dir: Path = Path("data")) -> Dataset:
                 if r not in regions:
                     errors.append(f"{w.id}: unknown region '{r}'. - ADD TO REGION!")
 
-            implied = {regions[r].country.lower() for r in w.regions if r in regions}
-            declared = {c.lower() for c in w.countries}
+            implied = {_country_slug(regions[r].country) for r in w.regions if r in regions}
+            declared = {_country_slug(c) for c in w.countries}
             if declared and implied and not (declared & implied):
                 warnings.append(f"{w.id}: countries {sorted(declared)} don't match! - CHECK REGION!")
 
         for t in w.also_try:
-            if t not in wine_ids:
-                warnings.append(f"{w.id}: also_try '{t}' not written yet.")
+            if t not in known_wine_refs:
+                unwritten_also_try.setdefault(t, []).append(w.id)
 
     if errors:
         raise DatasetError(errors)
 
-    return Dataset(wines, food_tags, food_categories, regions, warnings)
+    return Dataset(wines, food_tags, food_categories, regions, warnings, unwritten_also_try)
 
 
 ### Compiling
@@ -152,6 +188,14 @@ CREATE TABLE wines (
     id          TEXT PRIMARY KEY,
     name        TEXT NOT NULL,
     data        TEXT NOT NULL
+);
+
+-- Other ids the SAME wine is also written as (e.g. "cream-sherry" -> the
+-- wine whose own id is "sherry"). Lets also_try/similar-wine lookups
+-- resolve a style-variant id to the one page that actually exists.
+CREATE TABLE wine_aliases (
+    alias       TEXT PRIMARY KEY,
+    wine_id     TEXT NOT NULL REFERENCES wines(id)
 );
 
 CREATE TABLE pairings (
@@ -206,6 +250,8 @@ def write_sqlite(ds: Dataset, db_path: Path = Path("build/wine.db")) -> Path:
             "INSERT INTO wines VALUES (?, ?, ?)",
             (w.id, w.name, json.dumps(w.model_dump(mode="json"))),
         )
+        for a in w.aliases:
+            con.execute("INSERT INTO wine_aliases VALUES (?, ?)", (a, w.id))
         for p in w.pairings:
             for t in p.tags:
                 con.execute(

@@ -1,0 +1,28 @@
+id: vermentino
+name: Vermentino
+wine_type: [light-white, rosé]
+grapes: [vermentino]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 2
+tannin: 1
+acidity: 4
+alcohol: 3
+flavours: [lime, grapefruit, green-apple, almond, daffodil]
+regions: [sardinia, tuscany, liguria, provence, sierra-footfills]
+countries: [italy, france, usa, argentina, brazil]
+popularity: uncommon
+price_band: "££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [light-meat]
+    strength: perfect           # perfect | great | good
+    why: "Vermentino does wonders with grilled light meats, fish, and dishes that highlight green and herbal flavours."
+notes: >
+  Vermentino is a white wine found in Sardinia and Tuscany, where producers offer both oaked and unoaked styles. It's also the secret sauce in Provence rosé!
+also_try: [chenin-blanc, sauvignon-blanc, gruner-veltliner, colombard, semillon]

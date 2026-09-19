@@ -1,0 +1,26 @@
+id: vinho-verde
+name: Vinho Verde
+wine_type: [light-white, rosé, light-red]
+grapes: [alvarinho, arinto, avesso, azal, loureiro, trajadura, espadeiro, padeiro, vinhao]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 2
+tannin: 1
+acidity: 5
+alcohol: 2
+flavours: [lemonade, pink-grapefruit, lime-zust, yellow-apple, white-blossom]
+countries: [portugal]
+price_band: "£"
+serving:
+  temp_c: [3, 7]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 3]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [spice-accented]
+    strength: perfect           # perfect | great | good
+    why: "It's almost like this wine was made for fish tacos, mango salsa, and ceviche. Heck anything that needs coriander and limes also need Vinho Verde!"
+notes: >
+  A regional wine blend from Portugal offered in white, rosé, and red styles. The most popular style is a low-alcohol, fruity white with a touch of spritz.
+also_try: [albarino, arinto, assyrtiko, riesling, colombard]

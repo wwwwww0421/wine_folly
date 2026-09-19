@@ -1,0 +1,31 @@
+id: viura
+name: Viura
+wine_type: [sparkling, light-white, full-white]
+grapes: [viura]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 2
+tannin: 1
+acidity: 3
+alcohol: 3
+flavours: [honeydew, lime-peel, lemon-verbena, tarragon, hazelnut]
+regions: [catalonia, rioja, aragon, valencia, extremadura, languedoc-roussillon]
+countries: [spain, france]
+popularity: common
+price_band: "££"
+serving:
+  temp_c: [7, 12]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [5, 15]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [thai-vietnamese]
+    strength: great           # perfect | great | good
+    why: "It pair well with South-East Asian cuisine like coconut curries, vermicelli noodle bowls."
+  - tags: [roasted-meat-rich]
+    strength: great
+    why: "Aged Viura pairs nicely with roasted meats and resinous herbs."
+notes: >
+  Viura is the primary grape in Spanish Rioja Blanco and Cava sparkling wines (where it's called `Macabeo`). Viura wines become increasingly rich and nutty with age.
+also_try: [grenache-blanc, arinto, trebbiano-toscano, chardonnay, semillon]

@@ -1,0 +1,35 @@
+id: zinfandel
+name: Zinfandel
+wine_type: [medium-red, full-red]
+grapes: [zinfandel]
+# --- Wine Folly 1–5 scales ---
+body: 4
+sweetness: 2
+tannin: 4
+acidity: 2
+alcohol: 5
+flavours: [blackberry, strawberry, peach-preserves, cinnamon, sweet-tobacco]
+regions: [lodi, sonoma, paso-robles, puglia]
+countries: [usa, italy, tunisia, australia, croatia, chile, south-africa, romania, canada]
+popularity: common
+price_band: "££"
+serving:
+  temp_c: [15, 20]
+  glass: red-glass
+  decant_minutes: 30
+  cellar_years: [5, 7]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [grilled]
+    strength: perfect           # perfect | great | good
+    why: "Zinfandel is ideal with Turkish, Moroccan, and Arabic cuisine, which brings out the grape's cinnamon-like spices."
+  - tags: [spicy-asian-cuisine]
+    strength: great
+    why: "Try with Asian BBQ too."
+notes: >
+  A fruit-forward yet bold red that's loved for its jammy fruit and smoky, exotic spice notes. Originally from Croatia, Zinfandel is related to Croatia's #1 red, Plavic Mali.
+
+  Puglia, Italy Zinfandel with flavours of strawberry, leather, candied currant, dried herbs, spiced orange.
+  Lodi, California region with flavours of respberry jam, peach preserves, blackberry bramble, hickory, star anise.
+  North Coast, California, region with flavour of blackberry, black plum, crushed gravel, allspice, white pepper.
+also_try: [plavic-mali, grenache, carignan, castelao, frappato]

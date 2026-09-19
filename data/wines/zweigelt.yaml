@@ -1,0 +1,28 @@
+id: zweigelt
+name: Zweigelt
+wine_type: [rosé, light-red]
+grapes: [zweigelt]
+# --- Wine Folly 1–5 scales ---
+body: 2
+sweetness: 3
+tannin: 3
+acidity: 4
+alcohol: 3
+flavours: [red-cherry, raspberry, black-pepper, liquorice, chocolate]
+regions: [burgenland, kunsag, eger, british-columbia]
+countries: [austria, hungary, czech-republic, japan, croatia, slovakia, romania, canada, italy, switzerland, united-kingdom, usa]
+popularity: common
+price_band: "£"
+serving:
+  temp_c: [12, 15]
+  glass: aroma-collector
+  decant_minutes: 30
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [bbq]
+    strength: perfect           # perfect | great | good
+    why: "It will moisten up even the driest barbecue-grilled chicken and will make that store-bought macaroni salad taste amazing."
+notes: >
+  Austria's most planted red wine grape is a cross between Blaufränkisch, and St. Laurent (which taste like Pinot Noir). Zweigelt wines are typically bright, tart, and fruity.
+also_try: [blaufrankisch, st-laurent, gamay, frappato, schiava]

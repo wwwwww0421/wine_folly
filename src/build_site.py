@@ -106,7 +106,7 @@ def _serving_facts(wine: dict) -> dict:
     facts = {}
 
     if s.get("temp_c"):
-        facts["temp"] = f"{s['temp_c'][0]-s['temp_c'][1]}ºC"
+        facts["temp"] = f"{s['temp_c'][0]}-{s['temp_c'][1]}ºC"
     if s.get("glass"):
         facts["glass"] = s["glass"].replace("-", " ")
     if s.get("decant_minutes"):

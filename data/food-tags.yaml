@@ -28,7 +28,7 @@
 - id: roasted-meat-rich
   label: Rich roasted meats
   category: slow-cooked-braised
-  aliases: [roast beef, rack of lamb, prime rib, roast pork, leg of lamb, roasted venison, sunday roast]
+  aliases: [roast beef, rack of lamb, prime rib, roast pork, leg of lamb, roasted venison, sunday roast, carnitas, seitan steaks]
 - id: beef-stroganoff
   label: Beef Stroganoff & creamy mushroom dishes
   category: slow-cooked-braised
@@ -82,11 +82,11 @@
 - id: spicy-asian-cuisine
   label: Spicy Asian cuisine
   category: global-spice-heat
-  aliases: [spicy asian food, sichuan cuisine, korean spicy pork, hot pot, kimchi jjigae, mapo tofu, spicy ramen, dandan noodles]
+  aliases: [spicy asian food, sichuan cuisine, korean spicy pork, hot pot, kimchi jjigae, mapo tofu, spicy ramen, dandan noodles, asian bbq]
 - id: thai-vietnamese
   label: Thai & Vietnamese cuisine
   category: global-spice-heat
-  aliases: [pad thai, pho, green curry, som tam, banh mi, spring rolls, lemongrass chicken, pad see ew]
+  aliases: [pad thai, pho, green curry, som tam, banh mi, spring rolls, lemongrass chicken, pad see ew, coconut curry, vermicelli noodles]
 - id: tapas
   label: Spanish tapas
   category: global-spice-heat
@@ -98,7 +98,7 @@
 - id: spice-accented
   label: Spice- & herb-accented dishes
   category: global-spice-heat
-  aliases: [sage, anise, cinnamon, sumac, white pepper, five spice, chimichurri, salsa verde, gremolata, mint sauce, herb oil]
+  aliases: [sage, anise, cinnamon, sumac, white pepper, five spice, chimichurri, salsa verde, gremolata, mint sauce, herb oil, fish taco, mango salsa, ceviche]
 - id: peanut-butter
   label: Peanut butter dishes & pairings
   category: global-spice-heat
@@ -164,7 +164,7 @@
 - id: soft-cheese
   label: Soft cheeses
   category: cheese-board
-  aliases: [brie, camembert, feta, ricotta, cream cheese, burrata, reblochon]
+  aliases: [brie, camembert, feta, ricotta, cream cheese, burrata, reblochon, taleggio]
 - id: fresh-goat-cheese
   label: Fresh Goat Cheese
   category: cheese-board
@@ -185,7 +185,7 @@
 - id: creamy-desserts
   label: Creamy desserts
   category: dessert-creamy-baked
-  aliases: [fruit tarts, cheesecake, ice cream]
+  aliases: [fruit tarts, cheesecake, ice cream, souffles]
 - id: custard-desserts
   label: Custard & egg-based desserts
   category: dessert-creamy-baked
@@ -212,3 +212,21 @@
   label: Berry-based sauce dishes
   category: dessert-chocolate-berry
   aliases: [berry sauce, raspberry glazed, cranberry reduction, blackberry sauce, duck with berry reduction, venison with berry sauce]
+
+
+- id: raw-nuts
+  label: Raw & whole nuts
+  category: cheese-board
+  aliases: [almonds, raw almonds, walnuts, hazelnuts, cashews, macadamia nuts]
+- id: citrus-fruits
+  label: Fresh citrus & whole fruits
+  category: lean-delicate-fish
+  aliases: [citrus, lemon, lime, orange, grapefruit, fresh citrus]
+- id: stewed-fruits
+  label: Stewed & preserved fruits
+  category: vegetable-herb
+  aliases: [stewed fruits, compote, poached pears, apple compote, stewed apples, fruit preserves]
+- id: fresh-herbs
+  label: Fresh aromatic herbs
+  category: vegetable-herb
+  aliases: [thai basil, tarragon, fresh basil, chervil, fresh herbs, aromatic herbs]

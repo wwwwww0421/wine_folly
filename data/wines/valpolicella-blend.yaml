@@ -1,0 +1,36 @@
+id: valpolicella-blend
+name: Valpolicella Blend
+wine_type: [medium-red, full-red, dessert]
+grapes: [corvina, corvinone, molinara, rondinella]
+# --- Wine Folly 1–5 scales ---
+body: 3
+sweetness: 3
+tannin: 2
+acidity: 5
+alcohol: 3
+flavours: [tart-cherry, cinnamon, chocolate, green-peppercorn, almond]
+regions: [valpolicella]
+countries: [italy]
+price_band: "£££"
+serving:
+  temp_c: [12, 15]
+  glass: red-glass
+  decant_minutes: 30
+  cellar_years: [5, 25]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [aged-cured-meats-cheeses]
+    strength: good           # perfect | great | good
+    why: "Finer Ripasso and Amarone styles deserve braised meats, steaks, mushrooms and aged cheese."
+  - tags: [light-meat]
+    strength: great           # perfect | great | good
+    why: "The more simple Valpolicella wines pair with burgers and roast chicken."
+notes: >
+  The region's most famous wine, Amarone della Valpolicella uses partially dried grapes (a process called `appasimento`) that are then fermented into a rich red wine.
+
+  - Recioto Della Valpolicella: A dessert wine style made with the apassimento method where grapes are dried on straw mats to concentrate sugars. Features flavours of black raisin, black cherry, chocolate, clove and roasted hazelnut.
+  - Amarone Della Valpolicella: A dry wine made with the apassimento method. Wines take up to 50 days to ferment. Expect flavours of black cherry, fig, sassafras, and dark chocolate.
+  - Valpolicella Superiore Ripasso: Superiore Valpolicella wines blended with the leftover grape must of Amarone wine. Features cherry sauce, green peppercorn, and carob.
+  - Valpolicella Superiore: Higher-quality Valpolicella grapes make more concentrated wines.
+  - Valpolicella Classico: Basic-quality grape producing entry level wines. Tart cherry and ash.
+also_try: [blaufrankisch, mencia, zweigelt, gsm-blend, grenache]

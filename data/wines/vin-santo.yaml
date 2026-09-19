@@ -1,0 +1,31 @@
+id: vin-santo
+name: Vin Santo
+wine_type: [dessert]
+grapes: [trebbiano, malvasia, sangiovese]
+# --- Wine Folly 1–5 scales ---
+body: 5
+sweetness: 5
+tannin: 2
+acidity: 4
+alcohol: 5
+flavours: [perfume, fig, raisin, almond, toffee]
+regions: []
+countries: [italy]
+price_band: "££££"
+serving:
+  temp_c: [12, 15]
+  glass: dessert-glass
+  decant_minutes: 0
+  cellar_years: [5, 10]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [almond-biscotti]
+    strength: perfect           # perfect | great | good
+    why: "Vin Santo is a favourite with Italian pastries and almond biscotti."
+  - tags: [soft-cheese]
+    strength: perfect
+    why: "It also makes an excellent pairing partner with soft and funky cheeses like Taleggio."
+notes: >
+  Vin Santo (`holy wine`) is a rare Italian dessert wine made of Trbbiano, Malvasia, and / or Sangiovese. Because Vin Santo is so sweet, fermentations can last for up to 4 years!
+also_try: [tawny-port, moscatel-de-setubal, boal-madeira, malmsey-madeira, cream-sherry]
+aliases: [vin-santo-rosso]

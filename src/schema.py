@@ -159,6 +159,13 @@ class Wine(BaseModel):
     ## Similarity
     also_try: list[Slug] = []
 
+    ## Other ids this SAME wine is also known/written as (e.g. sherry.yaml
+    ## might declare aliases: [cream-sherry, palo-cortado-sherry] rather
+    ## than those styles getting their own separate YAML) - see load.py's
+    ## cross-file check for the global-uniqueness rule and engine.py's
+    ## wine_detail() for how also_try resolves through this.
+    aliases: list[Slug] = []
+
     @field_validator("notes")
     @classmethod
     def _strip_wrapping_quotes(cls, v: Optional[str]) -> Optional[str]:
@@ -186,6 +193,8 @@ class Wine(BaseModel):
     def _dont_try_itself(self) -> "Wine":
         if self.id in self.also_try:
             raise ValueError("also_try cannot include itself!")
+        if self.id in self.aliases:
+            raise ValueError("aliases cannot include its own id!")
 
         return self
 

@@ -1,0 +1,31 @@
+id: verdejo
+name: Verdejo
+wine_type: [light-white]
+grapes: [verdejo]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 1
+tannin: 1
+acidity: 4
+alcohol: 3
+flavours: [lime, honeydew, grapefruit-pith, fennel, white-peach]
+regions: [rueda]
+countries: [spain]
+popularity: uncommon
+price_band: "££"
+serving:
+  temp_c: [3, 7]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 5]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [fat-umami-dishes]
+    strength: good           # perfect | great | good
+    why: "With high acidity and subtle bitterness, Verdejo makes a great food wine and palate cleanser and good with carnitas, seitan steaks."
+  - tags: [light-meat]
+    strength: great           # perfect | great | good
+    why: "It's also good with fish taco and lime chicken."
+notes: >
+  A herbaceous white wine that grows almost exclusively in the Rueda region of Spain. Not to be confused with Verdelho, a Portugese grape used in Madeira.
+also_try: [sauvignon-blanc, friulano, melon, vermentino, colombard]

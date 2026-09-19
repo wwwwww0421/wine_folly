@@ -80,6 +80,13 @@ def main() -> int:
         ) in study:
             print(f"{wine_id}: {', '.join(gaps)}")
 
+    if df.unwritten_also_try:
+        ids = sorted(df.unwritten_also_try)
+        print(f"Also-try wines not written yet ({len(ids)}):")
+        for wine_id in ids:
+            named_by = ", ".join(df.unwritten_also_try[wine_id])
+            print(f"  {wine_id}  (named by: {named_by})")
+
     return 0
 
 

@@ -423,11 +423,28 @@ class Engine:
         pairs.sort(key=lambda p: -STRENGTH_SCORE.get(p["strength"], 0))
 
         also_try = []
+        seen_also_try: set[str] = set()
         for other in record.get("also_try", []):
+            # A direct id match wins; otherwise "other" may be a style
+            # alias (e.g. "cream-sherry") of a wine written under a
+            # different id ("sherry") - resolve through wine_aliases so
+            # the chip still links somewhere instead of quietly vanishing.
             row = self.con.execute(
                 "SELECT id, name FROM wines WHERE id = ?", (other,)
             ).fetchone()
-            if row:
+            if row is None:
+                row = self.con.execute(
+                    """
+                    SELECT w.id, w.name FROM wine_aliases a
+                    JOIN wines w ON w.id = a.wine_id
+                    WHERE a.alias = ?
+                    """,
+                    (other,),
+                ).fetchone()
+            # Two aliases can resolve to the same wine (boal-madeira and
+            # malmsey-madeira both mean "madeira") - only show it once.
+            if row and row["id"] not in seen_also_try:
+                seen_also_try.add(row["id"])
                 also_try.append(dict(row))
 
         return WineDetail(

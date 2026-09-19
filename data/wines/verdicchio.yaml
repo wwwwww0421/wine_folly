@@ -1,0 +1,31 @@
+id: verdicchio
+name: Verdicchio
+wine_type: [light-white]
+grapes: [verdicchio]
+# --- Wine Folly 1–5 scales ---
+body: 1
+sweetness: 1
+tannin: 1
+acidity: 4
+alcohol: 3
+flavours: [peach, lemon-curd, almond-skin, oily, saline]
+regions: [le-marche, veneto]
+countries: [italy, brazil, argentina]
+popularity: rare
+price_band: "££"
+serving:
+  temp_c: [3, 7]
+  glass: white-glass
+  decant_minutes: 0
+  cellar_years: [1, 3]
+# --- pairings live ON the wine ---
+pairings:
+  - tags: [tapas]
+    strength: good           # perfect | great | good
+    why: "A stellar aperitif wine, Verdelho is great alongside with marcona almonds, prosciutto, quiche."
+  - tags: [creamy-desserts]
+    strength: good           # perfect | great | good
+    why: "Verdelho is great alongside with savoury tarts and soufflés."
+notes: >
+  A fascinating white found primarily in Le Marche, Italy. Verdicchio wines are loved for their sweet, peachy aromas and somewhat oily texture.
+also_try: [pinot-blanc, silvaner, grechetto, fernao-pires, pinot-gris]

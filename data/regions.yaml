@@ -1305,6 +1305,18 @@
       known_for: [bianka, kiralyleanyka, cerszegi-fuszeres]
       notes: "The central sandy district of the region featuring deep, loose sand and windblown soils that produce light, refreshing, and highly fragrant white varietal wines."
 
+- id: eger
+  name: Eger
+  country: Hungary
+  climate: continental
+  known_for: [kekfrankos, kiralyleanyka, pinot-noir, merlot, cabernet-franc]
+  notes: "A historic, picturesque wine region in northern Hungary nestled in the volcanic foothills of the Bükk Mountains, featuring a cool continental climate tempered by autumn sunshine and mineral-rich volcanic, rhyolite tuff, and brown forest soils that produce elegant, high-acid red and white blends, most notably the legendary 'Bikavér' (Bull's Blood)."
+  subregions:
+    - id: nagy-eged
+      name: Nagy-Eged
+      known_for: [kekfrankos, furmint, syrah]
+      notes: "Eger's most prestigious, steep, and limestone-dominant grand cru hill, featuring shallow, highly calcareous soils that produce deeply structured, concentrated, and age-worthy Kékfrankos and complex terroir-driven blends."
+
 - id: somlo
   name: Somló
   country: Hungary
@@ -1766,6 +1778,18 @@
       name: Nussberg
       known_for: [riesling, weissburgunder, gemischter-satz]
       notes: "Vienna's premier steep hillside vineyard zone overlooking the Danube, featuring shallow limestone, marl, and volcanic soils that yield mineral-driven, elegant, and exceptionally complex white wines."
+
+- id: burgenland
+  name: Burgenland
+  country: Austria
+  climate: continental
+  known_for: [blaufrankisch, zweigelt, gruner-veltliner, welschriesling, pinot-noir]
+  notes: "Austria's premier eastern red wine region situated along the Hungarian border, shaped by the moderating influence of the shallow, sprawling Lake Neusiedl, featuring warm Pannonian sunshine and diverse limestone, slate, and loam soils that produce structured reds and world-class, botrytized sweet wines."
+  subregions:
+    - id: leithaberg
+      name: Leithaberg
+      known_for: [blaufrankisch, gruner-veltliner, weissburgunder]
+      notes: "A scenic ridge subregion west of Lake Neusiedl featuring primary slate and ancient limestone soils that impart a distinctive mineral tension, elegant structure, and savory spice to Blaufränkisch and mineral-driven whites."
 
 - id: south-west-romania
   name: South-West Romania (Oltenia and Banat)
