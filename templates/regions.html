@@ -5,7 +5,7 @@
   {% if subtitle %}<p class="subtitle">{{ subtitle }}</p>{% endif %}
 
   {{ world_map|safe }}
-  <p class="subtitle map-hint">Coloured countries have a wine in my notes — click one to jump to its regions.</p>
+  <p class="subtitle map-hint">Darker means more wines in my notes — click a country to jump to its regions.</p>
 
   {% for group in groups %}
     <section id="country-{{ group.slug }}" class="country-block">

@@ -23,7 +23,7 @@ from pathlib import Path
 
 import pytest
 
-from src.engine import Engine, normalise
+from src.engine import Engine
 
 DB = "build/wine.db"
 APP_JS = Path("templates/assets/app.js").resolve()
@@ -64,30 +64,14 @@ def tag_ids(engine) -> list[str]:
     return [r["id"] for r in engine.con.execute("SELECT id FROM food_tags ORDER BY id")]
 
 
-# --- normalise parity -----------------------------------------------------
-
-
-@pytest.mark.parametrize(
-    "text",
-    [
-        "Comté",
-        "Rías Baixas!",
-        "SALT COD",
-        "  spaced  out  ",
-        "Château d'Yquem",
-        "jalapeño",
-        "crème brûlée",
-        "Nero d'Avola",
-    ],
-)
-def test_normalise_matches_python(text):
-    """Index-time (Python) and query-time (JS) rules must be identical or
-    accented names silently miss."""
-    js = run_node(f"console.log(JSON.stringify(S.normalise({text!r})));")
-    assert json.loads(js) == normalise(text)
-
-
 # --- merge parity ---------------------------------------------------------
+#
+# (There used to be a normalise-parity section here: Python's normalise()
+# vs. a hand-written JS twin, kept in sync by hand. Since app.js now
+# configures MiniSearch's processTerm as the ONE place query text gets
+# folded/lowercased - applied identically at index and query time by
+# MiniSearch itself - there's no second implementation left to drift, so
+# there's nothing to test parity against.)
 
 
 def _merge_in_node(exported: Path, tags: list[str]) -> list[dict]:
@@ -153,11 +137,14 @@ def test_three_tag_merge_matches_engine(exported, engine):
 
 
 def _search_in_node(exported: Path, query: str) -> list[dict]:
-    path = str(exported / "search-docs.json")
+    docs_path = str(exported / "search-docs.json")
+    config_path = str(exported / "search-config.json")
     return json.loads(run_node(f"""
-        const docs = require({path!r});
-        const hits = S.search(docs, {query!r}, 10);
-        console.log(JSON.stringify(hits.map(h => ({{kind: h.doc.kind, ref: h.doc.ref}}))));
+        const docs = require({docs_path!r});
+        const config = require({config_path!r});
+        const idx = S.buildIndex(docs, config);
+        const hits = S.search(idx, {query!r}, 10);
+        console.log(JSON.stringify(hits.map(h => ({{kind: h.kind, ref: h.ref}}))));
     """))
 
 

@@ -96,7 +96,7 @@
   category: global-spice-heat
   aliases: [goulash, red potato goulash, spaetzle, cheesy spaetzle dumplings]
 - id: spice-accented
-  label: Spice- & herb-accented dishes
+  label: Spice & herb-accented dishes
   category: global-spice-heat
   aliases: [sage, anise, cinnamon, sumac, white pepper, five spice, chimichurri, salsa verde, gremolata, mint sauce, herb oil, fish taco, mango salsa, ceviche]
 - id: peanut-butter

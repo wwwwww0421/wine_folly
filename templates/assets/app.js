@@ -1,11 +1,23 @@
 /* WineFolly — search and pairing.  (templates/assets/app.js)
  *
- * No library, no CDN: a fetched script fails in airplane mode, and
- * offline is the point. Pure logic lives in WineFolly.* so tests can
- * require() this file in Node and check parity against the Python engine
- * (tests/test_search_parity.py). DOM wiring is at the bottom, guarded.
+ * This file is a CONTRACT, not the place search decisions get made. Field
+ * weights and stopwords live in src/engine.py and are shipped here as plain
+ * data (site/data/search-config.json) — see export_search_config() in
+ * src/export.py. Descriptive words like "sweet"/"tannic"/"strong" need no
+ * runtime logic at all: export.py's taste_tags() already turns a wine's own
+ * scale values into literal searchable words at build time, so the browser
+ * just searches them like any other field. Tuning search means editing
+ * Python; this file just wires the config into MiniSearch (vendored in
+ * assets/minisearch.js — MIT, no CDN, works in airplane mode like
+ * everything else here) and renders DOM. buildIndex()/search() are the two
+ * functions doing that wiring; tests can require() this file in Node to
+ * exercise them the same way the browser does.
  *
- * The merge in mergePairings() MUST match engine.pair_food():
+ * The merge in mergePairings() is the one piece of real logic still native
+ * to this file, because it combines several PRECOMPUTED per-tag JSON files
+ * at read time (which tags to combine is only known once a query resolves
+ * in the browser) rather than ranking free text — it MUST match
+ * engine.pair_food():
  *   score  = sum of strength scores across matched tags
  *          + 0.5 per additional distinct tag covered
  *   drop   any wine listed in avoided_by for ANY matched tag
@@ -14,167 +26,61 @@
 (function (root) {
   "use strict";
 
+  var MiniSearch = (typeof window !== "undefined" && window.MiniSearch) ||
+    (typeof require !== "undefined" && require("./minisearch.js"));
+
   var STRENGTH_SCORE = { perfect: 3, great: 2, good: 1 };
-  var WEIGHTS = {
-    aliases: 6, label: 4,                          // food tags
-    name: 5, grapes: 3, flavours: 2, regions: 1,    // wines
-    notes: 1, why: 1.5, wine_type: 1,               // wines (tasting notes + pairing reasons)
-    country: 2, known_for: 1.5                      // regions
-  };
   var KIND_ORDER = { food: 0, wine: 1, region: 2 };
 
-  /* Descriptive words that describe how a wine *tastes* rather than what
-     it's made of — not literal text anywhere, so they can't be found by
-     the normal field-matching loop above. Maps a word to which of the
-     wine's 1-5 scale dimensions it describes, and which direction (+1 =
-     wants a high value, -1 = wants a low one). A small fixed vocabulary,
-     not NLP — good enough for "sweet blackcurrant" or "a dry, tannic red".
-     NOTE: normalise() strips hyphens, so a query word always arrives as
-     single tokens ("full", "bodied") — there is deliberately no compound
-     "full-bodied" key here, it would never match. */
-  var ATTRIBUTE_WORDS = {
-    sweet: ["sweetness", 1], dry: ["sweetness", -1],
-    tannic: ["tannin", 1], soft: ["tannin", -1], smooth: ["tannin", -1],
-    acidic: ["acidity", 1], crisp: ["acidity", 1], tart: ["acidity", 1],
-    full: ["body", 1], bold: ["body", 1], big: ["body", 1],
-    light: ["body", -1], delicate: ["body", -1],
-    boozy: ["alcohol", 1], strong: ["alcohol", 1]
-  };
-  var ATTRIBUTE_BOOST_SCALE = 3;
-
-  /* How well a wine doc matches a descriptive word like "sweet" — 0 if the
-     word isn't in the vocabulary, the doc isn't a wine, or the wine sits on
-     the wrong side of the middle (3) for that dimension. */
-  function attributeBoost(term, doc) {
-    var hit = ATTRIBUTE_WORDS[term];
-    if (!hit || doc.kind !== "wine") return 0;
-    var value = doc[hit[0]];
-    if (value === undefined || value === null) return 0;
-    var lean = hit[1] * (value - 3);
-    return lean > 0 ? lean * ATTRIBUTE_BOOST_SCALE : 0;
+  /* Strip accents so "comte" finds "comté" — the one piece of text
+     processing still written here, because it has to run on whatever the
+     user types, and MiniSearch's processTerm is the single place (index
+     AND query time, automatically) it needs to exist. */
+  function foldAccents(term) {
+    return String(term).toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "");
   }
 
-  /* Mirror of engine.normalise(): lowercase, strip accents, drop punctuation. */
-  function normalise(text) {
-    return String(text)
-      .toLowerCase()
-      .normalize("NFKD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9 ]+/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
+  /* Builds a MiniSearch index from the exported doc corpus, configured
+     entirely from search-config.json (field weights + stopwords) —
+     nothing here is a hardcoded number or word list. Descriptive words
+     like "sweet"/"tannic"/"strong" need no special handling: export.py's
+     taste_tags() already turned them into literal words in each wine's
+     `taste_tags` field at build time, so they're just an ordinary field
+     to search like any other. */
+  function buildIndex(docs, config) {
+    var weights = (config && config.weights) || {};
+    var stopwords = {};
+    ((config && config.stopwords) || []).forEach(function (w) { stopwords[w] = true; });
 
-  /* Bounded edit distance — bails as soon as it exceeds the budget, so
-     this stays cheap across a few hundred docs. */
-  function editDistance(a, b, max) {
-    if (Math.abs(a.length - b.length) > max) return max + 1;
-    var prev = [], cur = [], i, j;
-    for (j = 0; j <= b.length; j++) prev[j] = j;
-    for (i = 1; i <= a.length; i++) {
-      cur[0] = i;
-      var best = cur[0];
-      for (j = 1; j <= b.length; j++) {
-        cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1,
-                          prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
-        if (cur[j] < best) best = cur[j];
-      }
-      if (best > max) return max + 1;
-      prev = cur.slice();
+    function processTerm(term) {
+      term = foldAccents(term).replace(/[^a-z0-9]/g, "");
+      if (!term) return null;
+      return stopwords[term] ? null : term;
     }
-    return prev[b.length];
+
+    var mini = new MiniSearch({
+      fields: Object.keys(weights),
+      storeFields: ["kind", "ref", "title"],
+      idField: "id",
+      processTerm: processTerm,
+      searchOptions: { boost: weights, fuzzy: 0.2, prefix: true, combineWith: "OR" }
+    });
+    mini.addAll(docs);
+    return mini;
   }
 
-  function fuzzyBudget(term) {
-    if (term.length >= 7) return 2;
-    if (term.length >= 4) return 1;
-    return 0;                                    // short words: exact only
-  }
-
-  /* Best a single space-joined phrase's words can offer one query term. */
-  function scoreWords(words, term, weight, allowFuzzy) {
-    var best = 0;
-    for (var w = 0; w < words.length; w++) {
-      var word = words[w];
-      if (word === term) best = Math.max(best, weight * 3);
-      else if (word.indexOf(term) === 0) best = Math.max(best, weight * 2);
-      else if (allowFuzzy) {
-        var budget = fuzzyBudget(term);
-        if (budget && editDistance(word, term, budget) <= budget) {
-          best = Math.max(best, weight);         // typo hits score lowest
-        }
-      }
-    }
-    return best;
-  }
-
-  /* Terms score independently and a doc needs only ONE to land: a query
-     like "oysters with salt cod" must surface BOTH dishes (and the filler
-     word must not veto everything). More terms matched = higher total. */
-  function scoreDoc(doc, terms, allowFuzzy) {
-    var total = 0;
-    for (var i = 0; i < terms.length; i++) {
-      var term = terms[i], best = 0;
-      for (var field in WEIGHTS) {
-        var value = doc[field];
-        if (!value || !value.length) continue;
-        var weight = WEIGHTS[field];
-
-        if (Array.isArray(value)) {
-          /* A list of discrete items (food aliases, wine flavours), not
-             one flattened blob. A phrase like "green curry" is TWO words
-             once normalised, so a query for "green" only really matches
-             half of it - divide the credit by the phrase's word count, so
-             an incidental word inside someone else's long alias can't
-             outscore a genuine one-word match like "truffle". A one-word
-             phrase (words.length === 1) is unaffected: full credit. */
-          for (var p = 0; p < value.length; p++) {
-            var phrase = value[p], words = phrase.split(" ");
-            var hit = scoreWords(words, term, weight, allowFuzzy);
-            if (!hit && phrase.indexOf(term) !== -1) hit = weight;
-            if (hit && words.length > 1) hit = hit / words.length;
-            best = Math.max(best, hit);
-          }
-        } else {
-          var fieldWords = value.split(" ");
-          var fieldHit = scoreWords(fieldWords, term, weight, allowFuzzy);
-          if (!fieldHit && value.indexOf(term) !== -1) fieldHit = weight;
-          best = Math.max(best, fieldHit);
-        }
-      }
-      best = Math.max(best, attributeBoost(term, doc));
-      total += best;                             // 0 is fine: other terms may land
-    }
-    return total;
-  }
-
-  function collect(docs, terms, allowFuzzy) {
-    var hits = [];
-    for (var i = 0; i < docs.length; i++) {
-      var score = scoreDoc(docs[i], terms, allowFuzzy);
-      if (score > 0) hits.push({ doc: docs[i], score: score });
-    }
-    return hits;
-  }
-
-  /* Two passes: exact/prefix first, fuzzy only if that found nothing, so
-     a typo can never outrank a real match. */
-  function search(docs, query, limit) {
-    var terms = normalise(query).split(" ").filter(Boolean);
-    if (!terms.length) return [];
-    var hits = collect(docs, terms, false);
-    var fuzzy = false;
-    if (!hits.length) { hits = collect(docs, terms, true); fuzzy = true; }
+  /* Runs a query against an index built by buildIndex(), applying the one
+     bit of tie-breaking MiniSearch doesn't know about: dishes read above
+     wines above regions when scores land equal. */
+  function search(index, query, limit) {
+    var hits = index.search(query);
     hits.sort(function (a, b) {
       if (b.score !== a.score) return b.score - a.score;
-      var ka = KIND_ORDER[a.doc.kind], kb = KIND_ORDER[b.doc.kind];
-      if (ka !== kb) return ka - kb;             // dishes first
-      // return a.doc.title.localeCompare(b.doc.title);
-      return a.doc.title < b.doc.title ? -1 : a.doc.title > b.doc.title ? 1 : 0;
+      var ka = KIND_ORDER[a.kind], kb = KIND_ORDER[b.kind];
+      if (ka !== kb) return ka - kb;
+      return a.title < b.title ? -1 : a.title > b.title ? 1 : 0;
     });
-    hits = hits.slice(0, limit || 10);
-    hits.fuzzy = fuzzy;
-    return hits;
+    return hits.slice(0, limit || 10);
   }
 
   /* §5.3 — merge per-tag pairing files client-side. `payloads` is an
@@ -218,16 +124,14 @@
     }
     out.sort(function (a, b) {
       if (b.score !== a.score) return b.score - a.score;
-      // return a.name.localeCompare(b.name);
       return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
     });
     return out;
   }
 
   root.WineFolly = {
-    normalise: normalise, editDistance: editDistance,
-    search: search, mergePairings: mergePairings, STRENGTH_SCORE: STRENGTH_SCORE,
-    attributeBoost: attributeBoost, ATTRIBUTE_WORDS: ATTRIBUTE_WORDS
+    buildIndex: buildIndex, search: search,
+    mergePairings: mergePairings, STRENGTH_SCORE: STRENGTH_SCORE
   };
   if (typeof module !== "undefined" && module.exports) module.exports = root.WineFolly;
 })(typeof window !== "undefined" ? window : globalThis);
@@ -245,12 +149,12 @@ if (typeof document !== "undefined") (function () {
   var panel = document.getElementById("pairings");
   if (!input || !output) return;
 
-  var docs = [], cache = {};
+  var index = null, cache = {};
   var KIND_LABEL = { food: "dish", wine: "wine", region: "region" };
 
-  function href(doc) {
-    var folder = doc.kind === "food" ? "foods" : doc.kind === "wine" ? "wines" : "regions";
-    return ROOT + folder + "/" + doc.ref + ".html";
+  function href(hit) {
+    var folder = hit.kind === "food" ? "foods" : hit.kind === "wine" ? "wines" : "regions";
+    return ROOT + folder + "/" + hit.ref + ".html";
   }
 
   function el(tag, className, text) {
@@ -267,12 +171,11 @@ if (typeof document !== "undefined") (function () {
       output.appendChild(el("li", "empty", "Nothing matches — try a grape, a region or a flavour."));
       return;
     }
-    if (hits.fuzzy) output.appendChild(el("li", "empty", "No exact match. Closest I know:"));
     hits.forEach(function (hit) {
       var li = el("li"), a = document.createElement("a");
-      a.href = href(hit.doc);
-      a.appendChild(el("span", null, hit.doc.title));
-      a.appendChild(el("span", "kind", KIND_LABEL[hit.doc.kind]));
+      a.href = href(hit);
+      a.appendChild(el("span", null, hit.title));
+      a.appendChild(el("span", "kind", KIND_LABEL[hit.kind]));
       li.appendChild(a);
       output.appendChild(li);
     });
@@ -286,11 +189,10 @@ if (typeof document !== "undefined") (function () {
   }
 
   function loadTag(tagId) { return loadJSON("data/pairings/" + tagId + ".json"); }
-  function loadWine(wineId) { return loadJSON("data/wines/" + wineId + ".json"); }
 
   /* dish -> wines: merge every matched food tag's ranked wines (§5.3). */
   function renderFoodPairings(foodHits) {
-    var tags = foodHits.slice(0, 3).map(function (h) { return h.doc.ref; });
+    var tags = foodHits.slice(0, 3).map(function (h) { return h.ref; });
     Promise.all(tags.map(loadTag)).then(function (payloads) {
       var merged = S.mergePairings(payloads);
       panel.innerHTML = "";
@@ -325,7 +227,7 @@ if (typeof document !== "undefined") (function () {
      with (data/wines/<id>.json, precomputed by engine.wine_detail()) rather
      than requiring the phrase to be parsed. */
   function renderWinePairings(wineHit) {
-    loadJSON("data/wines/" + wineHit.doc.ref + ".json").then(function (detail) {
+    loadJSON("data/wines/" + wineHit.ref + ".json").then(function (detail) {
       panel.innerHTML = "";
       panel.appendChild(el("h3", null, "Pairs well with"));
       panel.appendChild(el("p", "subtitle", detail.wine.name));
@@ -352,15 +254,48 @@ if (typeof document !== "undefined") (function () {
     });
   }
 
+  /* region -> wines: "good wines in Burgundy" resolves to the region
+     first, same reasoning as the wine -> food direction above - show what
+     the region already has (data/regions/<id>.json, from
+     engine.region_detail()) instead of making the user click through. */
+  function renderRegionWines(regionHit) {
+    loadJSON("data/regions/" + regionHit.ref + ".json").then(function (detail) {
+      panel.innerHTML = "";
+      panel.appendChild(el("h3", null, "Wines from here"));
+      panel.appendChild(el("p", "subtitle", detail.region.name));
+
+      if (!detail.wines.length) {
+        panel.appendChild(el("p", "empty", "No wine in my notes from here yet."));
+        return;
+      }
+      var list = el("ul", "wines");
+      detail.wines.slice(0, 8).forEach(function (wine) {
+        var li = el("li");
+        li.setAttribute("data-type", (wine.wine_type || []).join(" "));
+        var a = document.createElement("a");
+        a.href = ROOT + "wines/" + wine.id + ".html";
+        a.appendChild(el("span", "wine-name", wine.name));
+        if (wine.flavours && wine.flavours.length) {
+          a.appendChild(el("div", "wine-meta", wine.flavours.slice(0, 4).join(", ")));
+        }
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+      panel.appendChild(list);
+    });
+  }
+
   function renderPairings(hits) {
     if (!panel) return;
     if (!hits.length) { panel.innerHTML = ""; return; }
 
     var top = hits[0];
-    if (top.doc.kind === "wine") {
+    if (top.kind === "wine") {
       renderWinePairings(top);
+    } else if (top.kind === "region") {
+      renderRegionWines(top);
     } else {
-      var foodHits = hits.filter(function (h) { return h.doc.kind === "food"; });
+      var foodHits = hits.filter(function (h) { return h.kind === "food"; });
       if (foodHits.length) renderFoodPairings(foodHits);
       else panel.innerHTML = "";
     }
@@ -368,7 +303,7 @@ if (typeof document !== "undefined") (function () {
 
   function run() {
     var query = input.value;
-    var hits = S.search(docs, query, 10);
+    var hits = index ? S.search(index, query, 10) : [];
     renderResults(hits, query);
     renderPairings(hits);
   }
@@ -386,16 +321,30 @@ if (typeof document !== "undefined") (function () {
     else if (e.key === "Enter" && links.length) { e.preventDefault(); window.location.href = links[0].href; }
   });
 
+  /* The suggestions list floats over the page (so it doesn't shove
+     content down while typing), which means it must also know how to get
+     out of the way: close it once focus leaves the search box entirely,
+     not just on blur (blur alone would fire — and wrongly close it — the
+     moment ArrowDown moves focus from the input into the list itself). */
+  var searchBox = input.closest(".search") || input.parentElement;
+  searchBox.addEventListener("focusout", function (e) {
+    if (!searchBox.contains(e.relatedTarget)) output.innerHTML = "";
+  });
+  input.addEventListener("focus", function () {
+    if (input.value.trim()) run();
+  });
+
   input.disabled = true;
-  fetch(ROOT + "data/search-docs.json")
-    .then(function (r) { return r.json(); })
-    .then(function (data) {
-      docs = data;
-      input.disabled = false;
-      input.placeholder = "Search " + docs.length + " wines, dishes and regions";
-      if (input.value) run();
-    })
-    .catch(function () {
-      input.placeholder = "Search needs http:// — run: cd site && python3 -m http.server";
-    });
+  Promise.all([
+    fetch(ROOT + "data/search-docs.json").then(function (r) { return r.json(); }),
+    fetch(ROOT + "data/search-config.json").then(function (r) { return r.json(); })
+  ]).then(function (results) {
+    var docs = results[0], config = results[1];
+    index = S.buildIndex(docs, config);
+    input.disabled = false;
+    input.placeholder = "Search " + docs.length + " wines, dishes and regions";
+    if (input.value) run();
+  }).catch(function () {
+    input.placeholder = "Search needs http:// — run: cd site && python3 -m http.server";
+  });
 })();

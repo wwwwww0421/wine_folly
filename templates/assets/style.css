@@ -8,12 +8,14 @@
   --rule:       #E2E2E6;
   --rule-strong: #D2D2D7;
 
-  /* wine types carry their own colour — functional, not decoration */
+  /* wine types carry their own colour — functional, not decoration.
+     No green: it reads as "unripe" for a wine app, so sparkling is a
+     cool blue instead (its old value, #6E9E93, was a muted sage green). */
   --white:      #C9A227;
   --rose:       #D2687F;
   --red:        #7E2B3C;
   --red-rgb:    126, 43, 60;
-  --sparkling:  #6E9E93;
+  --sparkling:  #4A6FA1;
   --dessert:    #A96A20;
 
   --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -111,19 +113,24 @@ body {
 
 /* ------------------------------------------------------------- wine list */
 
-.wines { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
-.wines li { border-bottom: none; }
+/* One card holding every row (Settings-app style) rather than a
+   drop-shadowed card per row - many rows on one page reads calmer this
+   way than the same shadow repeated dozens of times. */
+.wines {
+  list-style: none; margin: 0; padding: 0;
+  background: var(--card); border-radius: var(--radius);
+  box-shadow: var(--shadow-sm); overflow: hidden;
+}
+.wines li { border-bottom: 1px solid var(--rule); }
+.wines li:last-child { border-bottom: none; }
 .wines a {
   display: block; padding: .85rem 1.1rem;
   border-left: 4px solid var(--rule-strong);
-  background: var(--card); border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
   color: inherit; text-decoration: none;
-  transition: transform var(--fast) var(--ease), box-shadow var(--fast) var(--ease);
+  transition: background var(--fast) var(--ease);
 }
 .wines a:hover, .wines a:focus-visible {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  background: rgba(0,0,0,.035);
   outline: none;
 }
 .wine-name { font-weight: 600; letter-spacing: -.005em; }
@@ -194,14 +201,17 @@ h3 { font: 600 1rem/1.3 var(--sans); margin: 1.9rem 0 .6rem; letter-spacing: -.0
 .region-list a { color: inherit; text-decoration: none; }
 .region-list a:hover, .region-list a:focus-visible { color: var(--red); text-decoration: underline; }
 
-.pairs { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
-.pairs li {
-  padding: 1rem 1.1rem; border-bottom: none;
+.pairs {
+  list-style: none; margin: 0; padding: 0;
   background: var(--card); border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--fast) var(--ease), transform var(--fast) var(--ease);
+  box-shadow: var(--shadow-sm); overflow: hidden;
 }
-.pairs li:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+.pairs li {
+  padding: 1rem 1.1rem; border-bottom: 1px solid var(--rule);
+  transition: background var(--fast) var(--ease);
+}
+.pairs li:last-child { border-bottom: none; }
+.pairs li:hover { background: rgba(0,0,0,.025); }
 .pairs .head { display: flex; align-items: baseline; gap: .5rem; flex-wrap: wrap; }
 .pairs a { color: inherit; font-weight: 600; text-decoration: none; }
 .pairs a:hover { text-decoration: underline; }
@@ -223,11 +233,10 @@ h3 { font: 600 1rem/1.3 var(--sans); margin: 1.9rem 0 .6rem; letter-spacing: -.0
 .chips a {
   display: inline-block; padding: .4rem .85rem;
   background: var(--card); border-radius: var(--pill);
-  box-shadow: var(--shadow-sm);
   font-size: .85rem; color: var(--ink); text-decoration: none;
-  transition: box-shadow var(--fast) var(--ease), transform var(--fast) var(--ease);
+  transition: background var(--fast) var(--ease);
 }
-.chips a:hover, .chips a:focus-visible { box-shadow: var(--shadow-md); transform: translateY(-1px); outline: none; }
+.chips a:hover, .chips a:focus-visible { background: rgba(0,0,0,.06); outline: none; }
 
 .empty { color: var(--ink-soft); font-size: .9rem; }
 
@@ -236,12 +245,16 @@ h3 { font: 600 1rem/1.3 var(--sans); margin: 1.9rem 0 .6rem; letter-spacing: -.0
 .world-map { display: block; width: 100%; height: auto; margin: 1rem 0 1rem; }
 .map-hint { margin-top: 0; }
 .world-map .oceanxx { fill: var(--paper); }
-.world-map .landxx { fill: var(--rule-strong); stroke: var(--paper); }
+/* has-wine countries carry their own fill (a per-country colour set at
+   build time - see wine_count_colour in build_site.py), so the flat
+   default here must not apply to them: a stylesheet rule always beats a
+   presentation attribute regardless of specificity. */
+.world-map .landxx:not(.has-wine) { fill: var(--rule-strong); stroke: var(--paper); }
+.world-map .has-wine { stroke: var(--paper); transition: filter var(--fast) var(--ease); }
 .world-map .no-wine { opacity: .6; }
 .world-map a { cursor: pointer; }
-.world-map a .has-wine { fill: var(--red); transition: fill var(--fast) var(--ease); }
 .world-map a:hover .has-wine,
-.world-map a:focus-visible .has-wine { fill: var(--sparkling); }
+.world-map a:focus-visible .has-wine { filter: brightness(1.2); }
 .world-map a:focus-visible { outline: 2px solid var(--red); outline-offset: 1px; }
 .country-block, h3[id] { scroll-margin-top: 4.5rem; }
 
@@ -260,12 +273,14 @@ h3 { font: 600 1rem/1.3 var(--sans); margin: 1.9rem 0 .6rem; letter-spacing: -.0
 
 .note-form {
   display: grid; gap: .9rem; max-width: var(--measure);
+  min-width: 0; box-sizing: border-box;
   margin: 1rem 0; padding: 1.1rem; background: var(--card);
   border-radius: var(--radius-lg); box-shadow: var(--shadow-md);
 }
 .note-form[hidden] { display: none; }
-.note-form label { display: grid; gap: .35rem; font-size: .85rem; color: var(--ink-soft); }
+.note-form label { display: grid; gap: .35rem; min-width: 0; font-size: .85rem; color: var(--ink-soft); }
 .note-form input[type="date"], .note-form textarea, .note-form input[type="file"] {
+  width: 100%; min-width: 0; box-sizing: border-box;
   font: 1rem var(--sans); color: var(--ink);
   background: var(--paper); border: none; border-radius: var(--radius-sm); padding: .55rem .65rem;
   box-shadow: inset 0 0 0 1px var(--rule-strong);

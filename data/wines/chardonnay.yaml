@@ -22,7 +22,7 @@ serving:
 pairings:
   - tags: [spice-accented]
     strength: perfect           # perfect | great | good
-    why: "Best with subtle spces and flavours."
+    why: "Best with subtle spices and flavours."
   - tags: [shellfish]
     strength: perfect
     why: "Perfect match with lobsters!"

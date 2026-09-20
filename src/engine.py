@@ -26,9 +26,36 @@ from .schema import SCALE_DIMS
 
 STRENGTH_SCORE = {"perfect": 3.0, "great": 2.0, "good": 1.0}
 
-# Mirror of templates/assets/app.js's ATTRIBUTE_WORDS/attribute_boost - kept
-# here only so tests/test_search_parity.py can prove the two agree; nothing
-# in the CLI/engine path calls this today, the browser is the only caller.
+# --------------------------------------------------------------------------
+# Search tuning. This is the ONE place these decisions get made: export.py's
+# export_search_config() ships them as data (site/data/search-config.json),
+# and the browser's MiniSearch instance (templates/assets/app.js) is
+# configured from that file rather than hand-carrying its own copy. Change
+# a weight or add a stopword here and both the CLI and the browser pick it
+# up - there is nothing left to keep in sync by hand.
+# --------------------------------------------------------------------------
+
+# Field boost for MiniSearch's `boost` search option.
+SEARCH_WEIGHTS: dict[str, float] = {
+    "aliases": 6, "label": 4,                       # food tags
+    "name": 5, "flavours": 4, "grapes": 3, "regions": 1,  # wines
+    "taste_tags": 3, "notes": 1, "why": 1.5, "wine_type": 1,
+    "country": 2, "known_for": 1.5,                 # regions
+}
+
+# Grammatical filler a typed sentence ("I want something with beef stew")
+# carries but a keyword search doesn't need - dropped by MiniSearch's
+# processTerm at both index and query time.
+SEARCH_STOPWORDS: frozenset[str] = frozenset(
+    "i im me my we you your a an the this that these those is are was be "
+    "been have has having want wanting wants need needs looking like "
+    "would something some anything good nice really very taste tastes "
+    "tasting of in on at to for with from and or but".split()
+)
+
+# Descriptive words that describe how a wine TASTES rather than what it's
+# made of - word -> (scale dimension, direction: +1 wants a high value,
+# -1 wants a low one). A small fixed vocabulary, not NLP.
 ATTRIBUTE_WORDS: dict[str, tuple[str, int]] = {
     "sweet": ("sweetness", 1), "dry": ("sweetness", -1),
     "tannic": ("tannin", 1), "soft": ("tannin", -1), "smooth": ("tannin", -1),
@@ -37,20 +64,28 @@ ATTRIBUTE_WORDS: dict[str, tuple[str, int]] = {
     "light": ("body", -1), "delicate": ("body", -1),
     "boozy": ("alcohol", 1), "strong": ("alcohol", 1),
 }
-ATTRIBUTE_BOOST_SCALE = 3
+def taste_tags(scale_values: dict) -> list[str]:
+    """
+    Turns a wine's 1-5 scale values into literal, searchable words ("sweet",
+    "tannic", "full"...) via ATTRIBUTE_WORDS, so a query for "sweet" or
+    "strong" is answered by ordinary field search - no runtime query-time
+    inference needed in the browser at all.
 
-
-def attribute_boost(term: str, doc: dict) -> float:
-    """How well a wine doc matches a descriptive word like "sweet"."""
-    hit = ATTRIBUTE_WORDS.get(term)
-    if not hit or doc.get("kind") != "wine":
-        return 0.0
-    dim, direction = hit
-    value = doc.get(dim)
-    if value is None:
-        return 0.0
-    lean = direction * (value - 3)
-    return lean * ATTRIBUTE_BOOST_SCALE if lean > 0 else 0.0
+    Each matching word is repeated once per point the value "leans" away
+    from the middle (3), so a sweetness=5 wine naturally scores higher for
+    "sweet" than a sweetness=4 one: that's just word frequency, which
+    MiniSearch's BM25 ranking already rewards, so there's no separate boost
+    factor to maintain.
+    """
+    tags: list[str] = []
+    for word, (dim, direction) in ATTRIBUTE_WORDS.items():
+        value = scale_values.get(dim)
+        if value is None:
+            continue
+        lean = direction * (value - 3)
+        if lean > 0:
+            tags.extend([word] * lean)
+    return tags
 
 
 def normalise(text: str) -> str:

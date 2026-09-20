@@ -22,7 +22,7 @@ import sqlite3
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
-from .engine import Engine, normalise
+from .engine import Engine, SEARCH_STOPWORDS, SEARCH_WEIGHTS, normalise, taste_tags
 from .schema import SCALE_DIMS
 
 SITE_DATA = Path("site/data")
@@ -155,11 +155,12 @@ class Exporter:
                 "wine_type": normalise(" ".join(record.get("wine_type", []))),
                 "notes": normalise(record.get("notes") or ""),
                 "why": normalise(why_text),
+                # Literal words ("sweet", "tannic"...) derived from this
+                # wine's own scale values - see taste_tags() - so a query
+                # like "something sweet" is answered by ordinary field
+                # search, with no attribute-word logic needed in the browser.
+                "taste_tags": taste_tags({d: record.get(d) for d in SCALE_DIMS}),
             }
-            # Scale values ride along unnormalised (used numerically, not as
-            # text) so the browser can match attribute words like "sweet" or
-            # "tannic" against how the wine actually tastes.
-            doc.update({d: record.get(d) for d in SCALE_DIMS})
             docs.append(doc)
 
         for row in self.con.execute("SELECT id, label FROM food_tags"):
@@ -267,6 +268,21 @@ class Exporter:
     def export_flavours(self) -> int:
         return _write(self.out_dir / "flavours.json", self.engine.all_flavours())
 
+    def export_search_config(self) -> int:
+        """
+        The browser's MiniSearch instance (templates/assets/app.js) is
+        configured entirely from this file - field weights and stopwords
+        both live in src/engine.py and are shipped here as plain data, so
+        tuning search means editing Python, not JavaScript. (The
+        attribute-word vocabulary lives in engine.py too, but is only ever
+        needed at build time - see taste_tags() - so it isn't shipped here.)
+        """
+        payload = {
+            "weights": SEARCH_WEIGHTS,
+            "stopwords": sorted(SEARCH_STOPWORDS),
+        }
+        return _write(self.out_dir / "search-config.json", payload)
+
     def run(self) -> dict[str, int]:
         """Run all exports and return a dict of file sizes."""
         if self.out_dir.exists():
@@ -275,6 +291,7 @@ class Exporter:
         return {
             "index.json": self.export_index(),
             "search-docs.json": self.export_search_docs(),
+            "search-config.json": self.export_search_config(),
             "flavours.json": self.export_flavours(),
             "wines/": self.export_wines(),
             "pairings/": self.export_pairing(),

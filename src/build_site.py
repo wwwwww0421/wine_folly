@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import re
 import shutil
 import xml.etree.ElementTree as ET
@@ -74,6 +75,24 @@ COUNTRY_ISO: dict[str, list[str]] = {
 
 def slugify(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+# Single-hue sequential scale, pale tint -> the brand red: a country with
+# more wines reads as visibly darker rather than everything with any data
+# at all getting the same flat colour.
+_MAP_LIGHT = (0xF0, 0xDA, 0xDD)
+_MAP_DARK = (0x7E, 0x2B, 0x3C)  # --red
+
+
+def wine_count_colour(count: int, max_count: int) -> str:
+    """Sqrt-scaled, since counts are skewed - a few countries have 40+
+    wines and most have 1-5, and a straight linear scale would leave
+    almost everything looking pale next to those few outliers."""
+    if max_count <= 0:
+        return "#%02x%02x%02x" % _MAP_DARK
+    t = math.sqrt(count / max_count)
+    r, g, b = (round(lo + (hi - lo) * t) for lo, hi in zip(_MAP_LIGHT, _MAP_DARK))
+    return f"#{r:02x}{g:02x}{b:02x}"
 
 SCALE_LABELS = {
     "body": "Body",
@@ -267,8 +286,8 @@ class SiteBuilder:
         Loads the vendored world map SVG and, for every country we have wine
         data on, wraps its shape in a link straight down to that country's
         section on the page (so clicking the map needs no JavaScript at all)
-        and marks it as coloured-in. Everything else is dimmed and left
-        unlinked.
+        and colours it by how many wines it has - darker means more.
+        Everything else is dimmed and left unlinked.
         """
         tree = ET.parse(TEMPLATES / "assets" / "world-map.svg")
         root = tree.getroot()
@@ -277,6 +296,8 @@ class SiteBuilder:
         for country, codes in COUNTRY_ISO.items():
             for code in codes:
                 iso_to_country[code] = country
+
+        max_count = max(wines_by_country.values(), default=0)
 
         def tag_subtree(el, extra_class: str) -> None:
             """
@@ -305,6 +326,9 @@ class SiteBuilder:
 
             if count:
                 tag_subtree(shape, "has-wine")
+                fill = wine_count_colour(count, max_count)
+                for node in shape.iter():
+                    node.set("fill", fill)
                 idx = list(root).index(shape)
                 link = ET.Element(f"{{{SVG_NS}}}a")
                 link.set("href", f"#country-{slugify(country)}")
@@ -340,7 +364,7 @@ class SiteBuilder:
         }
 
         groups = []
-        for country, regions in sorted(by_country.items()):
+        for country, regions in sorted(by_country.items(), key=lambda kv: (-len(kv[1]), kv[0])):
             regions.sort(key=lambda r: (-wines_by_region.get(r["id"], 0), r["name"]))
             items = []
             for r in regions:
@@ -433,11 +457,13 @@ class SiteBuilder:
             "flavours.html",
             "journal.html",
             "assets/style.css",
+            "assets/minisearch.js",
             "assets/app.js",
             "assets/notes.js",
             "assets/register-sw.js",
             "assets/icons/icon-192.png",
-            "data/search-doc.json",
+            "data/search-docs.json",
+            "data/search-config.json",
             "data/index.json",
         ]
         shell = ["./"] + [f"./{c}" for c in candidates if (self.out_dir / c).exists()]
@@ -455,7 +481,7 @@ class SiteBuilder:
 
         assets = self.out_dir / "assets"
         assets.mkdir(parents=True, exist_ok=True)
-        for asset in ("style.css", "app.js", "notes.js", "register-sw.js"):
+        for asset in ("style.css", "minisearch.js", "app.js", "notes.js", "register-sw.js"):
             shutil.copy(TEMPLATES / "assets" / asset, assets / asset)
         shutil.copytree(
             TEMPLATES / "assets" / "icons",
