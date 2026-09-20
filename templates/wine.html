@@ -17,7 +17,7 @@
     {% if d.wine.grapes %}<dt>Grapes</dt><dd>{{ d.wine.grapes|join(', ') }}</dd>{% endif %}
     {% if d.regions %}<dt>From</dt><dd>
       <ul class="region-list">
-        {% for r in d.regions %}<li><a href="{{ root }}regions/{{ r.id }}.html">{{ r.name }}</a></li>{% endfor %}
+        {% for r in d.regions %}<li><a href="{{ root }}regions/{{ r.id }}.html">{{ r.name }}</a>{% if r.country %}, {{ r.country }}{% endif %}</li>{% endfor %}
       </ul>
     </dd>{% endif %}
     {% if serving.temp %}<dt>Serve at</dt><dd>{{ serving.temp }}</dd>{% endif %}

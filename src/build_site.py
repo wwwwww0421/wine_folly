@@ -90,7 +90,7 @@ def wine_count_colour(count: int, max_count: int) -> str:
     almost everything looking pale next to those few outliers."""
     if max_count <= 0:
         return "#%02x%02x%02x" % _MAP_DARK
-    t = math.sqrt(count / max_count)
+    t = min(1.0, math.sqrt(count / max_count))
     r, g, b = (round(lo + (hi - lo) * t) for lo, hi in zip(_MAP_LIGHT, _MAP_DARK))
     return f"#{r:02x}{g:02x}{b:02x}"
 
@@ -292,12 +292,21 @@ class SiteBuilder:
         tree = ET.parse(TEMPLATES / "assets" / "world-map.svg")
         root = tree.getroot()
 
-        iso_to_country: dict[str, str] = {}
+        # An ISO code can be claimed by more than one COUNTRY_ISO entry -
+        # "es" belongs to both "Spain" and the combined "Spain, Portugal"
+        # region group - so this keeps every candidate rather than letting
+        # the last one silently overwrite the rest (which was under-
+        # counting Spain's actual wine total on the map).
+        iso_candidates: dict[str, list[str]] = {}
         for country, codes in COUNTRY_ISO.items():
             for code in codes:
-                iso_to_country[code] = country
+                iso_candidates.setdefault(code, []).append(country)
 
-        max_count = max(wines_by_country.values(), default=0)
+        iso_totals = {
+            iso: sum(wines_by_country.get(c, 0) for c in candidates)
+            for iso, candidates in iso_candidates.items()
+        }
+        max_count = max(iso_totals.values(), default=0)
 
         def tag_subtree(el, extra_class: str) -> None:
             """
@@ -317,18 +326,34 @@ class SiteBuilder:
 
         for shape in list(root):
             tokens = {shape.get("id", ""), *(shape.get("class") or "").split()}
-            iso = next((c for c in tokens if c in iso_to_country), None)
+            iso = next((c for c in tokens if c in iso_candidates), None)
             if iso is None:
                 continue
 
-            country = iso_to_country[iso]
-            count = wines_by_country.get(country, 0)
+            candidates = iso_candidates[iso]
+            # The summed total (across every candidate sharing this ISO
+            # code) drives the colour, so Spain's shade reflects its real
+            # total rather than just the small combined group; link/label
+            # with whichever candidate actually has the wines, so the
+            # anchor lands somewhere useful.
+            count = iso_totals[iso]
+            country = max(candidates, key=lambda c: wines_by_country.get(c, 0))
 
             if count:
                 tag_subtree(shape, "has-wine")
                 fill = wine_count_colour(count, max_count)
                 for node in shape.iter():
-                    node.set("fill", fill)
+                    # An inline style="" attribute, not a fill="" one: the
+                    # vendored SVG's own embedded <style> block declares
+                    # ".landxx { fill: #e0e0e0 }", and ANY stylesheet rule
+                    # (embedded or external) always overrides a bare
+                    # presentation attribute regardless of specificity - it
+                    # silently won for every mainland-sized shape (they all
+                    # carry the "landxx" class), which is why the colour
+                    # scale rendered as flat grey. An inline style wins
+                    # over every stylesheet, so this actually sticks.
+                    existing = node.get("style") or ""
+                    node.set("style", f"fill:{fill};{existing}")
                 idx = list(root).index(shape)
                 link = ET.Element(f"{{{SVG_NS}}}a")
                 link.set("href", f"#country-{slugify(country)}")
@@ -405,6 +430,10 @@ class SiteBuilder:
         """
         self._render("journal.html", self.out_dir / "journal.html")
 
+    def references(self) -> None:
+        """Static credits/citations page - plain content, no server data."""
+        self._render("references.html", self.out_dir / "references.html")
+
     def _version(self) -> str:
         """
         Hash of dataset - changes whenever a note changes, which is what makes the service worker drop its old cache.
@@ -456,6 +485,7 @@ class SiteBuilder:
             "regions.html",
             "flavours.html",
             "journal.html",
+            "references.html",
             "assets/style.css",
             "assets/minisearch.js",
             "assets/app.js",
@@ -497,6 +527,7 @@ class SiteBuilder:
 
         self.home()
         self.journal()
+        self.references()
 
         counts = {
             "wines": self.wine_page(),

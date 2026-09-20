@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}References — Wine Folly{% endblock %}
+{% block content %}
+  <h2>References</h2>
+  <p class="subtitle">Where the knowledge, data, and code behind this came from.</p>
+
+  <h3>Source material</h3>
+  <p class="note">
+    Every tasting note, pairing, and scale rating here started as my own study
+    notes while reading <strong>Wine Folly: The Essential Guide to Wine</strong>
+    by Madeline Puckette &amp; Justin Hammack, and its companion site
+    <a href="https://winefolly.com" target="_blank" rel="noopener">winefolly.com</a>.
+    The food categories on the Food page are grouped the same way Wine Folly's
+    own pairing charts are — by what characteristic of the dish actually drives
+    the match. This is a personal study tool: the wording and reasoning here
+    are my own paraphrasing, not a reproduction of the book's text, charts, or
+    infographics.
+  </p>
+
+  <h3>Third-party code &amp; assets</h3>
+  <dl class="facts">
+    <dt>World map</dt>
+    <dd>
+      <a href="https://commons.wikimedia.org/wiki/File:BlankMap-World-Compact.svg" target="_blank" rel="noopener">BlankMap-World-Compact.svg</a>,
+      by Canuckguy et al. via Wikimedia Commons — released into the public domain.
+    </dd>
+    <dt>Search</dt>
+    <dd>
+      <a href="https://github.com/lucaong/minisearch" target="_blank" rel="noopener">MiniSearch</a>
+      by Luca Ongaro — MIT License. Vendored as a local file
+      (<code>assets/minisearch.js</code>), never loaded from a CDN, so search
+      still works offline.
+    </dd>
+  </dl>
+
+  <h3>Built with</h3>
+  <p class="subtitle">
+    Python (Pydantic, PyYAML, Jinja2, openpyxl) turns the YAML notes into a
+    SQLite database and a static site; the site itself is plain HTML, CSS,
+    and vanilla JavaScript. No server, no accounts, no tracking — everything
+    ships as files and works in airplane mode once installed.
+  </p>
+{% endblock %}

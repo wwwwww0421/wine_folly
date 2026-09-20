@@ -150,7 +150,6 @@ if (typeof document !== "undefined") (function () {
   if (!input || !output) return;
 
   var index = null, cache = {};
-  var KIND_LABEL = { food: "dish", wine: "wine", region: "region" };
 
   function href(hit) {
     var folder = hit.kind === "food" ? "foods" : hit.kind === "wine" ? "wines" : "regions";
@@ -175,7 +174,6 @@ if (typeof document !== "undefined") (function () {
       var li = el("li"), a = document.createElement("a");
       a.href = href(hit);
       a.appendChild(el("span", null, hit.title));
-      a.appendChild(el("span", "kind", KIND_LABEL[hit.kind]));
       li.appendChild(a);
       output.appendChild(li);
     });

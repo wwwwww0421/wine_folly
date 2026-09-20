@@ -109,7 +109,6 @@ body {
 }
 .results li.empty { padding: .65rem .75rem; }
 .results li a:hover, .results li a:focus-visible { background: rgba(0,0,0,.045); outline: none; }
-.kind { font-size: .72rem; color: var(--ink-soft); }
 
 /* ------------------------------------------------------------- wine list */
 
@@ -336,6 +335,8 @@ footer {
   margin-top: 3.5rem; padding: 1.25rem var(--space) 2.5rem;
   border-top: 1px solid rgba(0,0,0,.065); color: var(--ink-soft); font-size: .82rem;
 }
+footer a { color: inherit; }
+footer a:hover, footer a:focus-visible { color: var(--red); }
 
 @media (max-width: 30rem) {
   .facts { grid-template-columns: 1fr; gap: 0 0; }
